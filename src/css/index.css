@@ -1,0 +1,72 @@
+@import url("//fonts.googleapis.com/css?family=Chewy");
+
+.bg-img{
+  background-image: url("../assets/fondos/fondo.jpg");
+  background-size: cover;
+  background-repeat: repeat-y();
+}
+@font-face {
+  font-family: Happy_Lucky;
+  src: url("../assets/fonts/Happy\ Lucky\ Free.ttf");
+}
+.bg-cinco{
+  background: #76b5c5;
+}
+.text-select{
+  width: 100%;
+  padding: 7px;
+  border: beige;
+}
+.bg-tres{
+  background:#abdbe3;
+}
+
+.bg-cuatro{
+  background: #7bcad6;
+}
+
+.font-secondary{
+   font-family: Chewy;
+}
+
+.link-formateado{
+  text-decoration: none;
+}
+
+.hei-text-area{
+  height: 5560px;
+}
+.centrar-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ .line{
+  width: 30%;
+  height: 4px;
+  border-radius: 3px;
+  margin-right: 89%;
+}
+
+.bg-pink-2{
+  background-color:#F50057 ;
+}
+
+.text-pink{
+  color: #F50057;
+}
+
+.Eliminar{
+  display: none;
+}
+
+.text-lucky{
+    font-family:Happy_Lucky ;
+}
+
+@media (max-width:999px){
+  .form-input-recuperar{
+    max-width: 100%;
+  }
+}
+

@@ -1,0 +1,38 @@
+.container-acudientes{
+    margin: 2%;
+}
+
+.book{
+    width: 100%;
+    height: 50rem;
+}
+
+.book > div > div:last-child {
+    opacity: 0;
+    position: absolute;
+}
+
+.book > div > div > button > span {
+    display: none;
+}
+
+.img-nino{
+    width: 20px;
+    height: 20px;
+    border-radius: 30%;
+}
+
+@media (max-width : 340px) {
+    .book{
+        width: 100%;
+        height: 50rem;
+    }
+}
+
+
+@media (max-width : 420px) {
+    .book{
+        width: 100%;
+        height: 50rem;
+    }
+}

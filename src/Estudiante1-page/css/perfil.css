@@ -1,0 +1,137 @@
+.cont-avatar-perfil-estu1{
+    
+}
+.cont-avatar-perfil-estu1 img{
+   width: 278px;
+   height: 278px;
+}
+.cont-avatar-descri-estu1{
+    margin-top: 40px;
+}
+.cont-datos-acu-estu1{
+    margin: -40px 5% 30px 15%;
+}
+.cont-generon-peerfil-estu1{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0px 110px 40px 20px;
+}
+.cont-generon-peerfil-estu1 > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 109px;
+    height: 57px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+.cont-generon-peerfil-estu1 img{
+    width: 30px;
+    height: 30px;
+}
+.cont-info-estu1-perfil{
+    display: grid;
+    grid-template-columns: .5fr 1fr;
+    margin: 100px 0 20px 14%;
+}
+
+.datos-basi-estu1-perfil{
+    margin-top: 70px;
+}
+.datos-basi-estu1-perfil > h5{
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 38px;
+    color: #000000;
+    border-bottom: 2px solid black;
+    display: inline-block;
+    padding-right: 28%;
+}
+.datos-basi-estu1-perfil > form{
+    margin-top:40px;
+    width: 65%;
+    display: grid;
+    grid-template-columns: 1.3fr .4fr;
+}
+.datos-basi-estu1-perfil > form >div{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: .5fr 1fr;
+    margin-bottom: 25px;
+}
+.datos-basi-estu1-perfil  label{
+    display: inline-block;
+    font-weight: 500;
+    font-size: 16px;
+    height: 24px;
+    color: #04293A;
+}
+.datos-basi-estu1-perfil  input{
+    background: rgba(166, 188, 199, 0.5);
+    border-radius: 60px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #04293A;
+    outline: none;
+    border: none;
+    padding-left: 20px;
+}
+.femenino-estu1{
+    background-color: rgba(255, 153, 153, 1);  
+}
+.femenino-estu1:hover{
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%),
+    linear-gradient(0deg, #FF7373, #FF7373);
+    position: relative;
+    top:-4px;
+}
+.input-medio-perfil-estu1{
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+.input-sangre-estu1-perfil{
+    margin-left: 20px;
+}
+.input-sangre-estu1-perfil1{
+    margin-left: 70px;
+    width: 140%;
+}
+.masculino-estu1{
+    background-color: rgba(4, 154, 201, 1);   
+}
+.masculino-estu1:hover{
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%),
+    linear-gradient(0deg, #03769A, #03769A);
+    position: relative;
+    top:-4px;
+
+}
+.recor-perfil-estu1{
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: #04293A;
+    margin: 0px 20px 0px -10px;
+    padding-right: 90px;
+}
+.selec-avatar-perfil-estu1{
+    margin-top: 10px;
+    margin-left: 70px;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 24px;
+    color: #04293A;
+}
+.titu-perfil-estu1{
+    background-color: #00052B;
+    border-top-left-radius: 60px;
+    border-bottom-left-radius: 60px;
+    font-weight: 700;
+    font-size: 33px;
+    line-height: 41px;
+    color: #FFFFFF;
+    padding: 20px 40px;
+    margin-left: -50px;
+}

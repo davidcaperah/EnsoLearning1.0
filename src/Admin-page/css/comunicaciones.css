@@ -1,0 +1,32 @@
+.cont-card-comunicaciones-coord{
+    background-color:  #00639A;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-left: 50px;
+    padding-top: 70px;
+    justify-content: center;
+    margin-top: 90px;
+}
+.cont-card-comunicaciones-coord div{
+    height: 133px;
+    width: 283px;
+    border: 2px solid white;
+    border-radius: 20px;
+    margin: 45px;
+    display: grid;
+    grid-template-columns: .4fr 1fr;
+    align-items: center;
+    padding: 0px 20px 0px 50px;
+    cursor: pointer;
+}
+.cont-card-comunicaciones-coord svg > g{
+    fill: white;
+}
+.cont-card-comunicaciones-coord h5{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+}

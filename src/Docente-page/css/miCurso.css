@@ -1,0 +1,46 @@
+.cont-descri-mi-curso{
+    background-color: #00639A;
+    width: 100%;
+    min-height: 110px;
+    margin-top: 80px;
+    border-top-left-radius: 120px;
+    color: white;
+    text-align: center;
+    font-weight: 300;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    padding: 0px 60px;
+}
+.datos-salon-mi-curso{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    margin-left: 30px;
+    margin-top: 20px;
+}
+.datos-salon-mi-curso h3{
+    color: rgba(0, 99, 154, 1);
+    font-weight: 700;
+    font-size: 23px;
+    text-align: center;
+}
+.datos-salon-mi-curso p{
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+    color: #00639A;
+}
+
+.header-miscursos > p{
+    position: absolute;
+    color: white;
+    top: 60px;
+    left: 70px;
+}
+.header-miscursos > h2{
+    position: absolute;
+    color: white;
+    top: 130px;
+    left: 140px;
+}

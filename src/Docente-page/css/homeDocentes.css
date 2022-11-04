@@ -1,0 +1,71 @@
+.cont-agenda-home{
+    
+    margin-bottom: 100px;
+}
+.cont-agenda-home > div{
+     display: grid;
+     grid-template-columns: 1fr .6fr ;
+     padding: 0px 120px 0px 0px;
+}
+.cont-agenda-home > div > p{
+   padding: 0;
+   margin: 4px 0px;
+   font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+
+    color: #676767;
+}
+.cont-calendario-home-cont{
+    padding: 40px;
+}
+.cont-calendario-home{
+    background: #F2F2F2;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    margin: 0px 70px 110px 70px;
+}
+.cont-circulares-home{
+    background: #F2F2F2;
+    border-radius: 25px 0px;
+    padding: 20px 60px;
+}
+.cont-circulares-home p{
+  line-height: 18px;
+}
+.cont-info-home{
+    display: grid;
+    grid-template-columns: 1fr .7fr;
+    margin: 90px 200px; 
+    color:#676767;
+}
+.cont-info-home1{
+    display: grid;
+    grid-template-columns: 1fr .7fr;
+    margin: 90px 110px; 
+    color:#676767;
+}
+.cont-info-home h4{
+    color: #00639A; 
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+}
+.dias-calendario-home{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    font-size: 16px;
+    background: white;
+    margin: 10px 20px;
+    text-align: center;
+    padding: 10px;
+    color: #00639A;
+    border-radius: 10px;
+}
+
+.ver-mas-agenda{
+    margin-right: 70px;
+    margin-top: 10px;
+    color: #00639A;
+    cursor: pointer;
+}

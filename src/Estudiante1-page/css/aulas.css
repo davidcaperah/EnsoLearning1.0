@@ -1,0 +1,149 @@
+.aulas-estu1{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr .4fr;
+    text-align: center;
+    background: radial-gradient(157.11% 105.47% at 79.6% 104.76%, #FFF1F1 0%, #696969 98.44%) ;
+    border-radius: 15px;
+    width: 390px;
+    height: 260px;
+    margin-right: 50px;
+    color: white;
+    cursor: pointer;
+}
+.aulas-estu1:hover{
+    box-shadow:  rgba(255, 248, 68, .7) -5px 5px, rgba(255, 248, 68, 0.3) -10px 10px, rgba(255, 248, 68, 0.2) -15px 15px, rgba(255, 248, 68, 0.1) -20px 20px, rgba(255, 248, 68, 0.05) -25px 25px;
+    position: relative;
+    top:-10px;
+    left:10px;
+}
+.aulas-estu1 h6{
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 31px;
+    color: white;
+}
+.cont-aulas-estu1{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 30px 18%;
+}
+.cont-img-estu1-aulas{
+    border-radius: 100%;
+    background-color: rgba(18, 102, 140, 1);
+    width: 250px;
+    height: 250px;
+    margin-right: 150px;
+    
+}
+.cont-img-estu1-actividades{
+    border-radius: 100%;
+    background-color: rgba(18, 102, 140, 1);
+    width: 250px;
+    height: 250px;
+    margin-left: 90px;
+    
+}
+.con-titulo-estu-1{
+    margin-left: 12vw;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 31px;
+    color: #04293A;
+    border-bottom: 2px solid rgba(4, 41, 58, 1);
+    margin-bottom: 50px;
+    display: inline-block;
+
+}
+.cont-mis-aulas-estudiante-1{
+    display: grid;
+    grid-template-columns: .6fr 1.2fr;
+    margin:150px 11% 50px 18%;
+}
+.circulo-aulas-estu1{
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    background-color: rgba(255, 241, 111, 0.8);
+    border-radius: 100%;
+    top:420px;
+    left: 130px;
+    filter: blur(40px);
+    transform-origin: 210px 0px ; 
+    animation: rotar 6s 1;
+}
+
+.circulo-aulas-estu11{
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-color: rgba(161, 161, 161, 0.8);
+    border-radius: 100%;
+    top:370px;
+    left: 130px;
+    filter: blur(30px);
+   
+}
+
+.circulo1-aulas-estu1{
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    background-color: rgba(0, 164, 255, 0.8);
+    border-radius: 100%;
+    top:320px;
+    left: 410px;
+    filter: blur(40px);
+    transform-origin: -80px 110px ; 
+    animation: rotar2 6s 1;
+}
+.circulo1-aulas-estu11{
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    background-color: rgba(0, 164, 255, 0.8);
+    border-radius: 100%;
+    top:260px;
+    left: 410px;
+    filter: blur(30px);
+}
+.descri-aulas-estu1 {
+    margin-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.descri-aulas-estu1 h4{ 
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-size: 33px;
+    line-height: 41px;
+    color: #04293A;
+}
+
+#svg-carpetas-img{
+    position: relative;
+    top:-37px;
+    left:-90px;
+}
+#svg-carpetas-img1{
+    position: relative;
+    top:-145px;
+    left:85px;
+}
+
+@keyframes rotar {
+    0%{
+        transform: rotateZ(0deg);
+    }
+    100%{
+        transform: rotateZ(200deg);
+    }
+}
+@keyframes rotar2 {
+    0%{
+        transform: rotateZ(0deg);
+    }
+    100%{
+        transform: rotateZ(150deg);
+    }
+}

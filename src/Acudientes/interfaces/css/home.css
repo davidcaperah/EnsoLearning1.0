@@ -1,0 +1,121 @@
+.circulares-cont-acu{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: -150px 13% 50px 13%;
+}
+.color-acu-tablero{
+    background: rgba(225, 225, 225, 0.7);
+    border-radius: 30px;
+    padding: 20px ;
+}
+.cont-btn-menus-acu{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 90px 22% 0px 22%;
+}
+
+.cont-btn-menus-acu p{
+    color: white;
+    text-align: center;
+    padding: 10px 40px;
+    margin-bottom: 10px;
+}
+.cont-btn-menus-acu svg {
+    margin: 10px 90px;
+}
+.cont-btn-menus-acu svg >g{
+    fill: white; 
+}
+.cont-btn-menus-acu > div{
+    background: #406882;
+    border: 1px solid #406882;
+    box-sizing: border-box;
+    border-radius: 30px;
+    width: 225px;
+    height: 125px;
+    margin-left: 30px;
+    cursor: pointer;
+}
+.cont-datos-estu-acu{
+    display: grid;
+    grid-template-columns: 1fr .8fr;
+    margin: 150px 14%;
+    
+}
+.cont-info-home-acu{
+    display: grid;
+    grid-template-columns: .5fr 1fr;
+    margin: 120px 18% 40px 18%; 
+}
+.cont-info-home-acu h4{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 60px;
+    color: #0A2749;
+    padding: 0;
+    margin: 0;
+}
+.cont-info-home-acu h5{
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 45px;
+    color: #0A2749;
+    padding: 0;
+    margin: 0;
+}
+.cont-info-home-acu p{
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 26px;
+    color: #525252;
+    padding: 0;
+    margin: 0;
+    margin-top: 30px;
+}
+.info-estudiate-acu{
+    display: grid;
+    grid-template-columns: 1fr;
+    border: 1px solid #0A2749;
+    border-radius: 30px;
+    padding-left: 40px;
+    padding-bottom: 40px; 
+    height: 209px;
+
+}
+.info-estudiate-acu h4{
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 42px;
+    color: #0A2749;
+    margin-top: 20px;
+    
+}
+.info-estudiate-acu > div{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    
+}
+.info-estudiate-acu > div >div{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #04293A;
+    
+}
+.img-colegio-acu{
+    margin-right: 50px;
+}
+.tablero-estu4{
+    margin-bottom: 130px;
+    margin-left: 180px;
+    margin-right: 180px;
+    margin-top: 10px;
+    border-radius: 45px;
+}
+#cuadrado-redo-acu{
+    position: absolute;
+    top: 140px;
+    left: 90px;
+    z-index: -1000;
+}

@@ -1,0 +1,84 @@
+.cont-contac-curso-estu2{
+    border: 2px dashed #04293A;
+    background: rgb(255,255,255);
+    background: linear-gradient(155deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.6362744927072391) 44%, rgba(126,126,126,0.202100823239452) 44%, rgba(126,126,126,0.202100823239452) 100%); 
+    box-sizing: border-box;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 150px;
+    padding: 40px 0px;
+    margin-top: -50px;
+}
+.cont-contac-curso-estu2 h5{
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 31px;
+    text-align: center;
+    color: #04293A
+}
+.cont-contac-curso-estu2 p{
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 31px;
+    text-align: center;
+    color: #04293A
+}
+.cont-contac-curso-estu2 img{
+    padding-right: 10px;
+}
+.cont-info-curso-estu2 {
+    font-weight: 700;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin:  0px 50px 0px 10px;
+}
+.cont-info-curso-estu2 h5{
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 31px;
+    text-align: center;
+    color: #04293A
+}
+.cont-info-curso-estu2 p{
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 31px;
+    text-align: center;
+    color: #04293A
+}
+.curso-info-estu2{
+    display: grid;
+    grid-template-columns: 1fr .6fr;
+    margin-left: 80px;
+    margin-top: 180px;
+}
+.tablero-curso2-circulo-estu2{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+     
+}
+
+.tablero-curso2-circulo-estu2 > img{
+    border-radius: 100%;
+    margin-top: 20px;
+    margin-left: 140px;
+    height: 50px;
+    width: 50px;
+
+}
+.tablero-estu2-curso{
+    margin:70px 160px 100px 160px;
+    border-radius: 45px;
+    background-color:rgba(126, 126, 126, 0.95) ; 
+    padding-bottom: 10px;
+}
+
+#fondo-curso-estu2{
+    position: absolute;
+    top:-70px;
+    z-index: -10000;
+    
+}

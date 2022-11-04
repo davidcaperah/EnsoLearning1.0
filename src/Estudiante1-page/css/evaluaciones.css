@@ -1,0 +1,154 @@
+.circulo-evaluaciones-estu1{
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    background: rgba(255, 111, 111, 0.8);
+    border-radius: 100%;
+    top:370px;
+    left: 80px;
+    filter: blur(30px);
+    transform-origin: 210px 0px ; 
+    animation: rotarEvaluaciones 6s 1;
+}
+.circulo1-evaluaciones-estu1{
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    background-color: rgba(0, 164, 255, 0.8);
+    border-radius: 100%;
+    top:190px;
+    left: 300px;
+    filter: blur(30px);
+    transform-origin: -80px 110px ; 
+    animation: rotar2Evaluaciones 6s 1;
+}
+.cont-card-evaluaciones-estu1{
+    background: rgba(196, 196, 196, 0.16);
+    border: 2px solid #12668C;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin-bottom: 50px;
+    margin-right: 40px;
+}
+.cont-card-evaluaciones-estu1:hover{
+    transition: background-color .3s;
+    background-color: rgba(0, 146, 227, 0.1);
+    border: 2px solid #12668C;
+    box-sizing: border-box;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.308);
+    border-radius: 10px;
+    margin-bottom: 50px;
+    margin-right: 40px;
+}
+.cont-cards-evaluaciones-estu1{
+    margin: 40px 0 10px 23%;
+}
+.cont-calentadrio-estu-evalua{
+    padding: 40px 80px;
+}
+.cont-evaluaciones-estu1{
+    display: grid;
+    grid-template-columns: 1fr .8fr;
+}
+.cont-info-evaluaciones-estudiantes{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 30px 10%;
+}
+.con-img-regla-evaluaciones{
+    margin-left:40px ;
+}
+
+.datos-card-evaluacion-estu1{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.datos-info-estu1{
+    padding: 20px 40px;
+}
+.datos-info-estu1 h5 strong{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 18px;
+    color: #04293A;
+}
+.datos-info-estu1 h5 {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: #04293A;
+}
+.datos-info-estu1 p {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 16px;
+    color: #3D3C3C;
+    margin-top:40px
+}
+
+.deco-img-card-estu1 img{
+    margin-top:20px;
+    margin-left:20px
+}
+.deco-img-card-estu1 > div{
+    margin-top:10px;
+    margin-left:30px;
+    margin-bottom: 20px;
+    background-color: rgba(0, 146, 227, 1);
+    display: inline-block;
+    padding: 10px 40px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 500;
+    font-size: 13px;
+    cursor: pointer;
+}
+.deco-img-card-estu1 > div:hover{
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%),
+        linear-gradient(0deg, #FF993C, #FF993C);    
+}
+.evaluacio-estu-1{
+    display: inline-block;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 31px;
+    color: #04293A;
+    border-bottom :2px solid #04293A;
+    margin-left: 10%; 
+    margin-bottom: 40px;
+    padding-right: 340px;
+}
+.informacion-evaluaciones-estu1{
+    margin-top: 100px;
+}
+.informacion-evaluaciones-estu1 h4{
+    font-weight: 700;
+    font-size: 33px;
+    line-height: 41px;
+    color: #04293A;
+    margin-bottom: 20px;
+}
+.informacion-evaluaciones-estu1 p{
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: #04293A;
+}
+
+@keyframes rotarEvaluaciones {
+    0%{
+        transform: rotateZ(0deg);
+    }
+    100%{
+        transform: rotateZ(150deg);
+    }
+}
+@keyframes rotar2Evaluaciones {
+    0%{
+        transform: rotateZ(0deg);
+    }
+    100%{
+        transform: rotateZ(130deg);
+    }
+}

@@ -1,0 +1,38 @@
+.cont-avatar-header-acu{
+    display: flex;
+    align-items: center;
+    border-left: 1px solid white;
+    padding-left: 30px;
+    margin: 25px 0px;
+}
+.cont-datos-heder-acu{
+    display: grid;
+    grid-template-columns: .3fr .3fr .3fr 1.2fr .2fr;
+}
+.con-img-header-acu{
+    padding: 20px 25px;
+}
+
+.header-acudiente{
+    background-color: rgba(10, 39, 73, 1);
+    display: grid;
+    grid-template-columns: 1fr .7fr;
+}
+.icono-acu-header{
+    display: flex; 
+    align-items: center;
+    height: 100%;
+}
+.isvg-iconos-header-estu3 > g{
+    fill: white;
+}
+.nombre-acu-header{
+    color: white;
+    display: flex;
+    align-items: center;
+}
+.nombre-acu-header p {
+    font-weight: 400;
+    font-size: 12.5px;
+    line-height: 19px;
+}

@@ -1,0 +1,17 @@
+.deco-img-card-estu3 img{
+    margin-top:0px;
+    margin-left:20px
+}
+.deco-img-card-estu3 > div{
+    margin-top:10px;
+    margin-left:30px;
+    margin-bottom: 0px;
+    background: #56A4CF;;
+    display: inline-block;
+    padding: 10px 40px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 500;
+    font-size: 13px;
+    cursor: pointer;
+}

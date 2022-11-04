@@ -1,0 +1,85 @@
+.btn-ver-actividad-crear1{
+    background-color:  #406882;
+    color: white;
+    padding: 13px 0px;
+    margin: 0px 10px;
+    border-radius: 7px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+    align-items: center;
+}
+.btn-ver-agregar-crear1{
+    background-color: white;
+    padding: 10px 0;
+    margin-right: 15px;
+    border-radius: 7px;
+    color:rgba(64, 104, 130, 1);
+    cursor: pointer;
+}
+.cont-datos-actividad-crear2{
+    display: grid;
+    grid-template-columns: repeat(3,1fr) 2fr;
+    align-items: center;
+    padding: 20px 5px;
+    text-align: center;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    margin: 8px 2%;
+    border-radius: 6px;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 19px;
+
+    color: #3D3C3C;
+}
+.cont-tabla-actividad3{
+    display: grid;
+    grid-template-columns:  repeat(5,1fr);
+    border-bottom :3px solid #0A2749; 
+    margin: 110px 2% 10px 2%;
+    
+}
+.cont-tabla-actividad3 > div{
+    text-align: center;
+    padding: 5px 25px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+}
+ 
+.cont-info-home-acu h6{
+    font-weight: 300;
+    font-size: 13.5px;
+    line-height: 18px;
+    text-align: left;
+    color: #04293A;
+    margin-right: 42%;
+    margin-left: 160px;
+    margin-top: 60px;
+    margin-bottom: 50px;
+}
+.input-buscador-acu1 {
+    width: 80vw;
+    
+}
+.input-buscador-acu1 input {
+    width: 50%;
+    height: 40px;
+    border-radius: 20px;
+    outline: none;
+    border: 1px solid #0A2749;
+    margin-top: 5px;
+    padding-left: 20px;
+}
+.img-acu-segui{
+    margin-right: 90px;
+}
+#cuadrados1-seguimiento-acu{
+    position: absolute;
+    top:180px;
+    left:150px;
+    z-index: -100;
+}

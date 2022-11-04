@@ -1,0 +1,214 @@
+.boton-modal-agenda{
+    background-color: #0092e3;
+    color: white;
+    border-radius: 8px;
+    padding: 13px 35px;
+    margin-right: 50px;
+    margin-bottom: 20px;
+    font-weight: 900;
+}
+.card-planilla-academica2{
+    box-shadow:  2px 2px 4px grey;
+    border-radius: 20px;
+    padding-top: 30px ;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin: 0px 10px;
+    max-height: 330px;
+}
+.card-img-info{
+    padding: 20px 50px;
+    
+}
+.card-parrafo-notas{
+    margin-bottom: 10px;
+    padding: 10px 30px 0px 30px;
+    color:#005481
+}
+.card-notas-info{
+    box-shadow: 2px 2px 3px grey;
+    border-radius: 15px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: .8fr .2fr .4fr;
+    background-image: url("../img/card-notas.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: -170px;
+}
+.card-nom-notas{
+    text-align: center;
+    color:#005481 ;
+    font-weight: 900;
+}
+.cerrar-modal-agenda{
+    color:#00639a ;
+    font-size: 30px;
+    padding: 5px 15px;
+}
+.cerrar-modal-agenda P{
+    cursor: pointer;
+}
+.cont-btn-planilla{
+    background-color: #d1efeb;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 20px 10px;
+    color:#00639a ;
+    font-weight: 900;
+}
+.cont-estudiantes-planilla{
+    min-height: 800px;
+    margin:-40px 17% 60px 17% !important; 
+}
+.cont-estu-promedio-planilla{
+    color: #2178a8;
+    margin-bottom: 50px;
+    margin-left: -65px;
+    font-size: 16px;
+}
+.cont-letras-planilla{
+    font-size: 12px;
+    position: absolute;
+    top:160px;
+    left:92%;
+    border-right:3px solid #0092e3;
+    padding-right: 10px;
+    margin-bottom: 10px;
+    color:rgba(87, 87, 87, 0.815);
+    text-align: center;
+    
+}
+.cont-letras-planilla ul{
+    cursor: pointer;  
+}
+.cont-title-planilla{
+    color:#0092e3;
+    font-size: 34px;
+    font-weight: 900;
+    border-bottom:  3px solid #0092e3 ;
+    margin: 0px 40px
+}
+.cont-modal-info{
+    margin-top: 17%;
+    border-radius: 20px;
+    background-color: white;
+    min-width: 760px;
+}
+.descri-mensaje-modal-input textarea {
+    width: 85%;
+    border:0px;
+    margin: 20px 0px;
+    border:3px solid #80b1cc;
+    outline: none;
+    height: 150px;
+    font-size: 14px;
+    padding-left: 10px;
+    align-items: flex-start;
+    border-radius: 8px;
+}
+.enviarMensaje-planilla{
+    border-right: 2px solid #00639a;
+    padding-right: 9px;
+    display: flex; 
+    flex-direction: column;
+    cursor: pointer;
+    align-items: center;
+}
+.enviarMensaje-planilla img{
+    width: 20px;
+    height: 20px;
+    stroke: blue
+}
+.enviarNotas-planilla{
+    padding-left: 9px;
+    display: flex;  
+    flex-direction: column;
+    cursor: pointer;
+    align-items: center;
+}
+.enviarNotas-planilla img{
+    width: 20px;
+    height: 20px;
+    stroke: blue
+}
+.foto-notas{
+    border-radius: 100%;
+    width: 120px;
+    height: 120px;
+
+}
+
+.titulo-materias-notas h6{
+    color: #005481;
+    font-weight: 900;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+.titulo-mensaje-modal-input input {
+    width: 85%;
+    border:0px;
+    margin: 40px 0px 10px 0;
+    border-bottom:3px solid #80b1cc;
+    border-left: 3px solid #80b1cc ;
+    outline: none;
+    height: 30px;
+    font-size: 14px;
+    padding-left: 10px;
+}
+.nota-f-notas{
+    border: 3px solid #408ab3;
+    border-radius: 6px;
+    display: flex;
+    color:#408ab3;
+    font-weight: 900;
+    padding: 15px 25px;
+    margin: 30px 32% 10px 12% ;
+    text-align: center;
+    font-weight: 900;
+}
+.notas-perido-notas{
+    display: grid;
+    grid-template-columns: 1.3fr 1fr ;
+    color:#075b88;
+    font-weight: 900;
+    border-bottom: 2px solid #075b88 ;
+}
+.notas-perido-nota{
+    display: grid;
+    grid-template-columns: 1.3fr 1fr ;
+    color:#075b88;
+    font-weight: 900;
+    padding-top: 15px;
+    padding-left: 5px;
+}
+.notas-perido-nota p{
+    padding: 0px 10px;
+    margin-bottom: 4px ;
+    font-weight: 100;
+}
+.nombre-card-planilla{
+    color:#00639a ;
+    
+    padding: 20px 20px;
+    font-weight: bold;
+    font-size: 17px;
+}
+.modal-agenda{
+    background-color: #3b3b3b31;
+    width: 100%;
+    height: 100vh;
+    z-index: 1000;
+    top:0px;
+    left:0px;
+}
+.modal-name-agenda{
+    background-color: #00639a;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color:white;
+    font-size:18px;
+    padding:15px 40px !important; 
+    font-weight: 900;
+    
+}

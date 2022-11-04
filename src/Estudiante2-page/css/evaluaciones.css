@@ -1,0 +1,84 @@
+.con-descri-evaluaciones-estu2{
+    text-align: center;
+    
+}
+.cont-card-evaluaciones-estu2{
+    background: rgba(196, 196, 196, 0.16);
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    margin-bottom: 50px;
+    margin-right: 40px;
+    display: grid;
+    grid-template-columns: 20px 1fr;
+}
+.cont-card-evaluaciones-estu2:hover{
+    transition:  background-color .3s;
+    background-color: rgba(85, 85, 85, 0.205);
+    
+
+}
+.datos-card-evaluacion-estu2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 15px;
+}
+.deco-img-card-estu2 img{
+    margin-top:0px;
+    margin-left:20px
+}
+.deco-img-card-estu2 > div{
+    margin-top:10px;
+    margin-left:30px;
+    margin-bottom: 0px;
+    background-color: rgba(255, 153, 60, 1);
+    display: inline-block;
+    padding: 10px 40px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 500;
+    font-size: 13px;
+    cursor: pointer;
+}
+.deco-img-card-estu2 > div:hover{
+    background: linear-gradient(180deg, rgba(98, 199, 255, 0.5) 0%, rgba(98, 199, 255, 0) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%),
+    linear-gradient(0deg, #FF993C, #FF993C);
+
+}
+.evaluaciones-titulo-estu2{
+    margin-top: 130px;
+}
+.titu-estu2-evalu{
+    margin-top: 120px;
+}
+
+#circuto1-estu2-evalucion{
+    position: absolute;
+    transform: rotate(180deg);
+    top:220px;
+}
+#circuto2-estu2-evalucion{
+    position: absolute;
+    top:70vh;
+    left: 50vw;
+}
+#img-card-evalu-estu2{
+    margin-top: 10px;
+}
+#tornillo1-evalu-estu2{
+    left: -293px;  
+    position: relative;
+}
+#tornillo2-evalu-estu2{
+    left: -343px;
+    top:-90px;
+    position: relative;
+    transform: rotate(5deg);
+}
+#tornillo3-evalu-estu2{
+    left: -395px;
+    top:-175px;
+    position: relative;
+    transform: rotate(5deg);
+}

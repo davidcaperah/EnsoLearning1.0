@@ -1,0 +1,326 @@
+.btn-datos-estudiantes{
+    text-align: center;
+    color: white;
+    background-color: rgba(110, 195, 58, 0.9);
+    border-radius: 20px;
+    padding: 10px 60px;
+    font-weight: 500;
+}
+
+.cont-datos{
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px 50px 100px 50px;
+    color:#00639A;
+    font-size: 20px;
+}
+.cont-datos1{
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px 50px 20px 50px;
+    color:#3E8F55;
+    font-size: 20px;
+}
+.cont-datos1 h4{
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px 50px 20px 50px;
+    color:#3E8F55;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: left;
+    padding: 8px 0px;
+}
+.cont-datos1 p{ 
+    padding: 0px 0px;
+    margin: 0px 0px;
+}
+.cont-estadisticas{
+    margin: -80px 200px 200px 200px;
+   
+}
+.cont-filtros-header{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    margin:  0 40px;
+    margin-top: 40px;
+}
+.cont-filtros-header h4{
+    color:#226e94;
+    font-size: 22px;
+    font-weight: 900;
+}
+.cont-header-estadisticas{
+    display: grid;
+    grid-template-columns: .7fr 1fr;
+    height: 300px;
+    margin-bottom: 60px;
+}
+.cont-lista{
+    border-bottom: 3px solid rgba(158, 158, 158, 0.781);
+    margin-right:160px;
+    height: 28px;
+}
+.cont-lista img{
+    height: 20px;
+    width: 20px;
+   margin-left: 40px;
+}
+.cont-lista h5{
+    color:rgb(114, 114, 114);
+    font-size: 17px;
+    padding-left: 10px;
+    margin-bottom: 0;
+}
+.cont-lista select{
+    color:rgb(114, 114, 114);
+    font-size: 17px;
+    padding-left: 10px;
+    margin-bottom: 0;
+    border: none;
+    border-bottom: 3px solid rgba(158, 158, 158, 0.781);
+    box-shadow: none;
+    outline: none;
+}
+.cont-lista1{
+    border-bottom: 3px solid rgba(158, 158, 158, 0.781);
+    margin-right:160px;
+    height: 28px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.cont-lista1 select{
+    color:rgb(114, 114, 114);
+    font-size: 17px;
+    padding-left: 10px;
+    margin-bottom: 0;
+    border: none;
+    border-bottom: 3px solid rgba(158, 158, 158, 0.781);
+    box-shadow: none;
+    outline: none;
+}
+.cont-lista1 img{
+    height: 20px;
+    width: 20px;
+   margin-left: 160px;
+}
+.cont-lista1 h5{
+    color:rgb(114, 114, 114);
+    font-size: 17px;
+    padding-left: 10px;
+    margin-bottom: 0;
+}
+.datos-estudiantes{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    display: grid;
+    grid-template-columns: .77fr;
+    grid-template-rows: 1fr .4fr;
+    align-items: center;
+    justify-content: center;
+}
+.estadisticas{
+    width: 100%;
+    background-color:  #e9fff4;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: .3fr 1fr;
+    padding: 50px 10px 30px 10px;
+    border-radius: 25px;
+    border-top-right-radius: 0px;
+}
+
+.estadisticas1{
+    width: 100%;
+    background-color:  #CEFFDC;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: .1fr 1fr;
+    padding: 50px 10px 30px 10px;
+    border-radius: 25px;
+    border-top-right-radius: 0px;
+}
+.grafica-circular{
+    margin-top: 30px;
+    border-radius: 100%;
+    border-top:  14px solid #0192e3;
+    border-right: 6px solid #0192e3;
+    border-bottom:  4px solid #0192e3;
+    border-left: 18px solid #0192e3;
+    width: 250px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    
+}
+.grafica-circular1{
+    margin-top: 30px;
+    border-radius: 100%;
+    border-top:  14px solid rgba(110, 195, 58, 0.9);
+    border-right: 6px solid rgba(110, 195, 58, 0.9);
+    border-bottom:  4px solid rgba(110, 195, 58, 0.9);
+    border-left: 18px solid rgba(110, 195, 58, 0.9);
+    width: 250px;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color:rgba(110, 195, 58, 0.9)
+    
+}
+.grafica-datos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.grafica-datos p{
+    width: 100%;
+    text-align: right;
+    margin-top: 18px;
+    color: #0190e3b6;
+    font-weight: 400;
+}
+
+.grafica-datos1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.grafica-datos1 p{
+    width: 100%;
+    text-align: right;
+    margin-top: 18px;
+    color: #3E8F55;
+    font-weight: 400;
+}
+.grafica-estudiantes{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3; 
+    background-color: white;
+    padding: 20px 50px;
+    border-radius: 20px;
+    margin-right: 80px;
+    margin-left: 30px;
+    color:#116294;
+    font-weight: 900;
+}
+
+.grafica-estudiantes h3{
+    text-align: center;
+}
+
+.grafica-estudiantes1{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3; 
+    background-color: white;
+    padding: 20px 50px;
+    border-radius: 20px;
+    margin-right: 80px;
+    margin-left: 30px;
+    color:#3E8F55;
+    font-weight: 900;
+}
+
+.grafica-estudiantes1 h3{
+    text-align: center;
+}
+.header{
+    position: relative;
+    top: 5px;
+    width: 200px;
+    height: 200px;
+    left: -5px;
+   
+}
+.header >h2{
+     color: white;
+     position: absolute;
+     font-size: 35px;
+     font-weight: 900;
+     height: 200px;
+     left: 90px;
+     top: 120px;
+ }
+ .header >p{
+    color: white;
+    position: absolute;
+    font-size: 15px;
+    height: 200px;
+    left: 40px;
+    top: 50px;
+}
+.titulo-estadisticas{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    text-align: left;
+    color:#116294;
+    font-weight: 900;
+}
+
+.titulo-estadisticas h3{
+    font-weight: 900;
+    font-size: 30px;
+    padding-left: 18%;
+}
+.titulo-estadisticas1{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    text-align: left;
+    color:#3E8F55;
+    font-weight: 900;
+}
+.titulo-estadisticas1 h3{
+    font-weight: 900;
+    font-size: 30px;
+    padding-left: 14%;
+}
+.titulo-estadisticas1 h4{
+    font-weight: 400;
+    font-size: 27px;
+    padding-left: 14%;
+}
+.secciones{
+    display: flex;
+    flex-direction: row-reverse;
+
+}
+.secciones > div{
+    height: 60px;
+    font-size: 25px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 10px;
+    margin-left: 10px;
+    padding: 20px 65px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.individual{
+    background-color: #88ffa9;
+    color: #3e8552;
+    font-weight: 900;
+    cursor: pointer;
+}
+.general{
+    background-color: #88bfff;
+    color: #116294;
+    font-weight: 900;
+    cursor: pointer;
+}

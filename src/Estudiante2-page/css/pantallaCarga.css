@@ -1,0 +1,176 @@
+.cont-pantalla-carga-estu2{
+    display: inline-block;
+    height: 100vh;
+    width: 100%
+}
+#carga1-carga-estu2{
+    position: absolute;
+    top: 21.4%;
+    left: 37.7%;
+    width: 340px;
+    height: 340px;
+}
+
+#engranaje-carga-logo{
+    position: absolute;
+    top: 34%;
+    left: 43%;
+    width: 200px;
+    height: 200px;
+    animation: rotarCarga1 15s infinite 0s linear ;
+}
+#engranaje-carga-1{
+    position: absolute;
+    top: 24%;
+    left: 38.5%;
+    width: 320px;
+    height: 320px;
+    animation: aparecerEngranaje3 3s infinite ;
+}
+#engranaje-carga-2{
+    position: absolute;
+    top: -180px;
+    left: -150px;
+    width: 420px;
+    height: 420px;
+    animation: aparecerEngranaje1 3s infinite ;
+}
+#engranaje-carga-3{
+    position: absolute;
+    top: 56%;
+    left: 59%;
+    width: 250px;
+    height: 250px;
+    animation: aparecerEngranaje4 3s infinite;
+}
+#engranaje-carga-4{
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    width: 330px;
+    height: 330px;
+    animation: aparecerEngranaje2 3s infinite;
+}
+#engranaje-carga-5{
+    position: absolute;
+    top: 60%;
+    left: 78%;
+    width: 150px;
+    height: 150px;
+    animation: aparecerEngranaje5 3s infinite;
+}
+#engranaje-carga-6{
+    position: absolute;
+    top: 70%;
+    left: 88%;
+    width: 180px;
+    height: 180px;
+    animation: aparecerEngranaje6 3s infinite;
+}
+#grupo1-carga-estu2{
+    transform-origin: 50.4% 51.5%;
+    animation: rotarCarga1  7s infinite ;
+}
+#grupo2-carga-estu2{
+    
+    transform-origin: 50.2% 51.65%;
+    animation: rotarCarga2  7s infinite ;
+}
+
+@keyframes aparecerEngranaje1 {
+    0%{
+        opacity: 0;
+    }
+    40%{
+        opacity: 1;
+    }
+    
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes aparecerEngranaje2 {
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes aparecerEngranaje3 {
+    0%{
+        opacity: 0;
+    }
+    60%{
+        opacity: 1;
+    }
+   
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes aparecerEngranaje4 {
+    0%{
+        opacity: 0;
+    }
+    70%{
+        opacity: 1;
+    }
+    
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes aparecerEngranaje5 {
+    0%{
+        opacity: 0;
+    }
+    80%{
+        opacity: 1;
+    }
+    
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes aparecerEngranaje6 {
+    0%{
+        opacity: 0;
+    }
+    90%{
+        opacity: 1;
+    }
+
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes rotarCarga1 {
+    0%{
+        transform: rotateZ(0deg);
+    }
+    50%{
+        transform: rotateZ(180deg);
+    }
+    100%{
+        transform: rotateZ(360deg);
+    }
+}
+@keyframes rotarCarga2 {
+    0%{
+        transform: rotateZ(0deg);
+        opacity: 0;
+    }
+    50%{
+        transform: rotateZ(-180deg);
+        opacity: 1;
+    }
+    100%{
+        transform: rotateZ(-360deg);
+        opacity: 0;
+    }
+}

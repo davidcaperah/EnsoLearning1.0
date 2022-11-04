@@ -1,0 +1,107 @@
+.Eliminar{
+  display:none;
+}
+
+.link:hover{
+    text-decoration: none;
+    color: rgb(173, 173, 173);
+}
+
+.link{
+    color: white;
+}
+
+.link-button{
+    color: white;
+}
+
+.link-button:hover{
+    text-decoration: none;
+    color: white;
+}
+
+.CeroBootstrap{
+    margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	border: none;
+	outline: none;
+    display: none;
+    font-weight: none;
+    color: none;
+    text-align: none;
+    vertical-align: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: none;
+    border: none;
+    padding: none;
+    font-size: none;
+    line-height: none;
+    border-radius: none;
+    transition: none;
+}
+
+
+.CeroBootstrap:hover {
+    color: none;
+    text-decoration: none;
+  }
+  
+  .CeroBootstrap:focus, .btn.focus {
+    outline: none;
+    box-shadow: none;
+  }
+  
+  .CeroBootstrap.disabled, .CeroBootstrap:disabled {
+    opacity: none;
+  }
+  
+  .CeroBootstrap:not(:disabled):not(.disabled) {
+    cursor: pointer;
+  }
+  
+  a.btn.disabled,
+  fieldset:disabled a.btn {
+    pointer-events: none;
+  }
+
+.text-pink{
+  color: #F50057;
+}
+
+.btn-menu{
+  cursor:pointer;
+}
+
+.Ocultar{
+  display:none;
+}
+
+
+.img-logo-nav{
+  width: 5rem;
+}
+
+@media(max-width: 1029px){
+  .navbar-normal{
+    display:none;
+  }
+
+  .navbar-responsive{
+    display:block;
+  }
+
+}
+
+@media(min-width: 1030px){
+  .navbar-responsive{
+    display:none;
+  }
+  .navbar-normal{
+    display:block;
+  }
+}

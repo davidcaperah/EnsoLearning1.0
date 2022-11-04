@@ -1,0 +1,90 @@
+.actividades-grados{
+    width: 73%;
+    border-radius: 20px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    margin: 50px 16% 100px 16%;
+}
+.cont-imagen-info1{
+    width: 20px;
+    height: 10px;
+    cursor: pointer;
+}
+
+.cont-promedio-acu1{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid #0A2749;
+    border-radius: 15px;
+    margin-right: 90px;
+    margin-top: 40px;
+    height: 85px;   
+}
+.cont-promedio-acu1 > div{
+   margin: 15px 0 ;
+   height: 55px;
+}
+
+.cont-promedio-acu1 h2{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    color: #0A2749;
+    padding: 0px;
+    margin: 0px;
+    
+}
+.cont-promedio-acu1 h3{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: center;
+    color: #0A2749;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+ .imagen-info1 > g{
+    fill:grey
+ }
+.grados1{
+    display:grid;
+    grid-template-columns: 1fr .04fr;
+    grid-template-rows: 1fr auto;
+    padding: 10px 40px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    color: #0A2749;  
+    border-bottom: 2px solid #B5B5B5;
+}
+.prom-gru-acu{
+    border-right: 1px solid #0A2749;
+    
+}
+.img-segui-cali-acu{
+    margin-right: 90px;
+}
+.titulo-actividades-grados1{
+    background-color:  rgba(64, 104, 130, 1);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 15px 40px;
+    font-weight: 500;
+    font-size: 22px;
+    color:white;
+}
+#bubujas1-segi-califi{
+    position: absolute;
+    top: 220px;
+    left: 120px;
+    z-index: -1000;
+}
+#bubujas2-segi-califi{
+    position: absolute;
+    top: 220px;
+    left: 300px;
+    z-index: -1000;
+}

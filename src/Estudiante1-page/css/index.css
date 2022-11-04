@@ -1,0 +1,74 @@
+.font-chewy{
+    font-family: Chewy;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.bg-purple-dos{
+    background: #4B44F2;
+}
+
+.animacion-infinita{
+    animation: girar 7s infinite;
+}
+
+.figura-1{
+    margin-left: 100px;
+}
+
+.figura-2{
+    margin-left: 10px;
+    margin-top: 100px;
+}
+
+.figura-3{
+    margin-left: 220px;
+}
+
+
+.figura-4{
+    margin-left: 150px;
+    margin-top: 70px;
+}
+
+.figura-5{
+    margin-left: 300px;
+    margin-top: 50px;
+}
+
+.figura-6{
+    margin-left: -50px;
+}
+
+.img-register-1{
+    width: 100%;
+    height: 200px;
+    margin: auto;
+}
+.opciones{
+    background-color: white;
+}
+.opciones:hover{
+    background-color: #4B44F2;
+    transition: 0.5s ease-in-out;
+    transform: translateY(-15px);
+}
+
+.bg-img{
+    background-image: url("https://previews.123rf.com/images/genika/genika1411/genika141100106/33984234-ni%C3%B1os-textura-perfecta-sobre-un-fondo-amarillo.jpg");
+}
+
+
+@keyframes girar {
+    from {
+        position: absolute;
+        transform: rotate(360deg);
+    }
+  
+    to {
+        position: absolute;
+        transform: rotate(0deg);
+    }
+  }

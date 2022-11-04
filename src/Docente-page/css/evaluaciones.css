@@ -1,0 +1,358 @@
+.barra-cant-preguntas{
+    width: 12px;
+    border-radius: 10px;
+    background-color: rgba(0, 146, 227, 0.87);
+    
+    display: flex;
+    flex-direction: row;
+    height: 20px;
+    margin-bottom: 3px;
+}
+.barra-preguntas-evaluacion{
+    background-color: #D6D6D6;
+    border-radius: 10px;
+    position: fixed;
+    left: 90%;
+    top:150px;
+    height: 70%;
+    width: 12px; 
+}
+.btn-form-Crear-evaluacion{
+    display: flex;
+    justify-content: flex-end;
+}
+.btn-form-Crear-evaluacion > button{
+   
+    padding: 7px 30px;
+    border-radius: 7px;
+    margin-top: 40px;
+    color: white;
+    background-color: #0092E3;
+}
+.boton-form-Crear-Evaluacion{
+    background-color: #0092e3;
+    border-radius: 10px;
+    color: white;
+    padding: 10px 30px;
+    font-weight: 900;
+    cursor: pointer;
+}
+.boton-evaluacion{
+    border: 3px solid rgba(255,175,141);
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 20px;
+    color:rgba(255,175,141) ;
+    font-weight: 900;
+    cursor: pointer;
+}
+.boton-evaluacion:hover{
+    
+    transition: color 0.8s;
+    color: white;
+    transition: background-color 0.8s;
+    background-color: rgba(255,175,141);
+   
+}
+.btn-estado-evaluacion{
+    background-color: #0092e3;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    padding: 8px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.cont-datos-evaluaciones{
+    padding: 5px 30px;
+}
+.cont-datos-evaluaciones h2{
+    font-size: 16px;
+    font-weight: 900;
+    margin-top: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+.cont-datos-evaluaciones h4{
+    font-size: 16px;
+}
+.cont-datos-evaluaciones p{
+    margin-top: 40px;
+    font-size: 13px;
+    color: rgba(77, 77, 77, 0.856);
+}  
+.cont-calendario{
+    background-color: #f2f2f2;
+    border-radius: 12px;
+    margin-top: 30px;
+    max-height: 260px;
+}
+.cont-card-evaluacion{
+   margin: 30px 20px;
+   box-shadow: 2px 2px 4px rgba(85, 85, 85, 0.473);
+   border-radius: 30px;
+   min-width: 230px;
+}
+.cont-creador-pregunta-form{
+    box-shadow: 2px 2px 2px grey;
+    margin: 50px 0px;
+    border-radius: 15px;
+    padding: 20px 50px;
+    display: grid;
+    grid-template-rows: .1fr 1.2fr;
+}
+.cont-creador-pregunta-form h5{
+    color:#0092E3;
+    border-bottom: 3px solid #0092E3;
+    display: inline-block;
+    max-width: 130px;
+    padding: 5px 0px;
+    font-weight: 600;
+    font-size: 18px;
+}
+.cont-creador-pregunta-form form{
+    margin: 10px 65px;
+}
+.con-descri-crearEvaluacion h6{
+    padding: 0 100px;
+    text-align: center;
+    font-size: 22px;
+    color: rgb(65, 65, 65);
+}
+.contenedor-ecaluacion{
+    max-width: 95vw;
+}
+.cont-form-crearevaluacion{
+    box-shadow: 2px 2px 4px rgba(128, 128, 128, 0.623);
+    border-radius: 20px;
+    padding-top: 40px;
+    margin-bottom: 50px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: -50px;
+}
+
+.cont-form-crearevaluacion p {
+    font-size: 14px;
+    margin-top: 5px;
+    padding: 0;
+}
+.con-ico-card-evaluaciones{
+    position: relative;
+    left: 25px;
+    top: 10px;
+}
+.con-ico-card-evaluaciones > div{ 
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+.con-ico-card-evaluaciones img{
+    width: 15px;
+    height: 15px;
+    margin-left:8px ;
+    margin-top: 3px;  
+}
+.cont-label-letra{
+    display: grid;
+    grid-template-columns: .1fr 2.6fr;
+    padding-bottom: 20px;
+}
+.cont-label-letra > label{
+    color:#0092E3 !important;
+    font-weight: 500!important;
+    font-size: 17px !important;
+}
+.cont-respuestas-evaluacion{
+    background-color: rgba(229, 241, 255, 1);
+    border-radius: 10px;
+    padding: 10px 40px;
+}
+.cont-respuestas-evaluacion h3{
+   color: rgba(0, 146, 227, 1);
+   font-size: 17px;
+}
+.col-preguntas-union{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+}
+.color-h6{
+    color:#0092E3;
+    font-weight: 600;
+}
+.col-preguntas-union > div{
+    margin-bottom: 15px;
+}
+.columna-b-union-evaluaciones{
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+.dias-calendario{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 4px 10px;
+    margin: 10px 20px;
+    background-color: white;
+    
+}
+.dias-calendario div{
+   padding: 2px 5px;
+   color:#02649b;
+   font-size: 19px;
+}
+.estado-evaluaciones{
+    background-color: #aeffb6;
+    text-align: center;
+    padding: 3px 40px;
+    border-top-left-radius: 20px;
+    font-size: 16px;
+    color: #66a56c;
+}
+.estado-evaluaciones1{
+    background-color: rgba(178, 228, 221, 0.6);
+    text-align: center;
+    padding: 3px 10px;
+    border-top-left-radius: 20px;
+    font-size: 16px;
+    color: rgba(0, 99, 154, 1);
+}
+
+.form-crear-preguntas{
+    padding-top: 10px;
+}
+.form-crear-preguntas label{
+    width: 100%;
+    color: #3D3C3C;
+}
+.form-crear-preguntas input{
+    width: 100%;
+    color: #3D3C3C;
+    border: 2px solid #0092E3;
+    border-radius: 10px;
+    
+    outline: none;
+}
+.form-crear-preguntas select{
+    color: #3D3C3C;
+    border: 2px solid #0092E3;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 15px;
+}
+.form-input-evaluaciones{
+    height: 30px;
+}
+.form-selecion{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.form-selecion select{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.from-select-tip-pregunta{
+    margin-right: 40px;
+    background: white;
+    height: 30px;
+    width: 90%;
+}
+.from-select-cat-opciones{
+    margin-left: 30px;
+    background: white;
+    height: 30px;
+    width: 90%; 
+}
+.from-select-opciones-correcta{
+    
+    background: white;
+    height: 30px;
+    width: 100%; 
+}
+.header-evaluacion p{
+    position: absolute;
+    top:70px;
+    left:60px;
+    font-size: 12px;
+    color:white;
+}
+.header-evaluacion h3{
+    position: absolute;
+    color:white;
+    top:140px;
+    left:110px;
+    font-size: 32px;
+    font-weight: 900;
+}
+.inputs-acti-union{
+    height: 57px;
+}
+.input-crearEvaluacion{
+    border: 3px solid #afddf6;
+    border-radius: 10px;
+}
+.input-tam-CrearEvaluacion{
+   width:100%;
+}
+.input-tam-medio-CrearEvaluacion{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.label-letra{
+    display: inline-block;
+    width: 20px !important;
+}
+.label-select-cat-opciones{
+    margin-left: 30px;
+}
+.opciones-evaluaciones{
+ font-size: 22px;
+ font-weight: 900;
+}
+.opcio-evalu-activa{
+    color: rgba(255,175,141);
+    border-bottom: 3px solid rgba(255,175,141) ;
+    cursor:pointer
+}
+
+.opcio-evalu-desacti{
+    color: rgba(110, 110, 110, 0.699);
+    cursor:pointer
+}
+.mes-calendario{
+    color:#02649b ;
+    font-weight: 900;
+    font-size: 15px;
+    padding: 5px 5px 5px 20px;
+}
+.mes-calendario p{
+    margin: 0;
+    padding: 0;
+}
+.mes-calendario-contenido{
+    display: grid;
+    grid-template-columns: .1fr 1fr .1fr;
+}
+.meses-evaluaciones{
+    padding: 0px 4vw;
+}
+.volver-evaluacion{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    left: -40px;
+    font-size: 25px;
+    text-align: center;
+    border:2px solid rgba(254, 166, 128, 0.9);
+    color:rgba(254, 166, 128, 0.9);
+    border-radius: 100%;
+    cursor: pointer;
+}

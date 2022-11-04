@@ -1,0 +1,181 @@
+.bg-pink{
+    background: #E4DBDC;
+}
+
+.opciones:hover{
+    background: #E4DBDC;
+}
+
+.dashboard{
+    margin-right: 3%;
+    margin-left: 3%;
+}
+
+.text-orange{
+    background:linear-gradient(#FA4808,#FA1368);
+    background-clip: text;
+    color: transparent;
+}
+
+.font-chewy{
+    font-family: Chewy
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.link-formateado:hover{
+    background:linear-gradient(#FA4808,#FA1368);
+    background-clip: text;
+    color: transparent;
+    text-decoration: none;
+}
+
+.Eliminar{
+    display: none  !important;
+    
+}
+
+.Desplegable{
+    position: absolute;
+    animation: Desplegable 0.5s;
+    z-index: 1;
+}
+
+
+.link-desplegable:hover{
+    background: #ECE3E4;
+}
+
+
+.img-banner-60{
+    width: 60%;
+}   
+
+.img-logo{
+    width: 20%;
+}
+
+.img-card{
+    width: 40%;
+}
+
+.Pruebas{
+    padding: 80px 0;
+}
+
+.card{
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+.imagen-1 img{
+    height: 200px;
+    width: 100%;
+    
+}
+
+.imagen-2 img{
+    position: relative;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    z-index: 1;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 7px solid #9c9698;
+    margin-top: -170px;
+}
+
+.card:hover .imagen-2 img{
+    border-color: #343a40;
+    transition: 1s ease-out;
+}
+
+.textos h2{
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 20px;
+    margin: 0 0 20px;
+}
+
+.textos p{
+    font-size: 16px;
+    padding: 0 35px;
+}
+
+.textos p:hover{
+    color: grey;
+    transition: 1s;
+}
+
+.card:hover{
+    border-radius: 15px;
+    transform: translateY(-25px);
+    transition: 1s;
+    overflow: hidden;
+}
+
+@keyframes Desplegable {
+    from {
+        opacity: 0;
+    }
+  
+    to {
+        opacity: 1;
+    }
+  }
+
+
+.Aparecer{
+    display: none;
+}
+
+.file{
+    opacity: 0;
+}
+
+.line{
+    height: 5px;
+    border-radius: 18px;
+    margin-right: 75%;
+}
+.border-radius-30{
+    height: 250px;
+    max-width: 36%;
+    min-width: 35%;
+    display: flex;
+    border-radius:60%;
+  }
+/* RESPONSIVE DEL NAVBAR */
+
+@media (max-width: 845px) {
+    .opcionesNav{
+        display: none;
+    }
+
+    .Aparecer{
+        display: block;
+    }
+    .border-radius-30{
+        width:300px;
+        height: 250px;
+        max-width: 100%;
+        display: flex;
+        border-radius:50%;
+      }
+      .respon{
+        display: flex;
+        flex-direction: column;
+    }
+    .ocultar{
+        display: none;
+        margin-bottom: 15px;
+    }
+
+    
+
+} 

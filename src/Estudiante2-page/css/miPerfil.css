@@ -1,0 +1,52 @@
+.datos-basi-estu2-perfil{
+    margin-top: 70px;
+}
+.datos-basi-estu2-perfil > h5{
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 38px;
+    color: #000000;
+    display: inline-block;   
+}
+.datos-basi-estu2-perfil > form{
+    margin-top:40px;
+    width: 65%;
+    display: grid;
+    grid-template-columns: 1.3fr .4fr;
+}
+.datos-basi-estu2-perfil > form >div{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: .5fr 1fr;
+    margin-bottom: 25px;
+}
+.datos-basi-estu2-perfil  label{
+    display: inline-block;
+    font-weight: 500;
+    font-size: 16px;
+    height: 24px;
+    color: #04293A;
+}
+.datos-basi-estu2-perfil  input{
+    border: none;
+    border-bottom: 4px solid rgba(166, 188, 199, 0.5);
+    
+    height: 40px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #04293A;
+    outline: none;
+    padding-left: 20px;
+}
+
+.titu-perfil-estu2{
+    background-color: rgba(142, 142, 142, 1);
+    border-top-left-radius: 60px;
+    border-bottom-left-radius: 60px;
+    font-weight: 700;
+    font-size: 33px;
+    line-height: 41px;
+    color: #FFFFFF;
+    padding: 20px 40px;
+    margin-left: -50px;
+}

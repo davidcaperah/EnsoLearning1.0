@@ -1,0 +1,78 @@
+.cont-pantalla-carga-estu1{
+    background-color: #00a4ff;
+    display: inline-block;
+    height: 100vh;
+    width: 100%
+    
+}
+#carga-parte1-estu1{
+    animation: desvanecer1 3s infinite 0s linear;
+}
+#carga-parte2-estu1{
+    animation: desvanecer2 3s infinite 0s linear;
+}
+#carga-parte3-estu1{
+    animation: desvanecer3 3s infinite 0s linear;
+}
+#engranaje-carga-logo1{
+    position: absolute;
+    top: 34%;
+    left: 43%;
+    width: 200px;
+    height: 200px;
+    animation: rotarCarga1 7s infinite 0s linear ;
+}
+#svg-carga-estu1{
+    position: absolute;
+    left: 347px;
+    top:10px
+}
+
+@keyframes desvanecer1 {
+
+    0%{
+        opacity: 0%;
+    }
+    20%{
+        opacity: 1;
+    }
+    70%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+    
+}
+@keyframes desvanecer2 {
+
+    0%{
+        opacity: 0%;
+    }
+    60%{
+        opacity: 1;
+    }
+    70%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+    
+}
+@keyframes desvanecer3 {
+
+    0%{
+        opacity: 0%;
+    }
+    80%{
+        opacity: 1;
+    }
+    90%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+    
+}

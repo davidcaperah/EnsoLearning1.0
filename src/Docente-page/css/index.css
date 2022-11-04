@@ -1,0 +1,192 @@
+*{
+  outline: none;
+}
+.img-perfil{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+  }
+  
+  .Eliminar{
+    display:none;
+  }
+
+  .alert-primary-mio:hover {
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+    animation: fondo 0.5s;
+  }
+  
+  .alert-primary-mio hr {
+    border-top-color: #9fcdff;
+  }
+  
+  .alert-primary-mio .alert-link-mio {
+    color: #002752;
+    cursor:pointer;
+    text-decoration: none;
+  }
+  
+  .logo{
+  border-radius: 100%;
+  width: 200px;
+  }
+  
+  
+  .alert-success-mio:hover {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+  animation: fondo 0.5s;
+  }
+  
+  .alert-success-mio .alert-link-mio {
+  color: #155724;
+  cursor:pointer;
+  text-decoration: none;
+  }
+  
+  .pointer{
+  cursor: pointer;
+  }
+  
+  .link-formateado:hover{
+  text-decoration: none;
+  }
+  
+  .list-min-width{
+  min-width: 170px;
+  }
+  
+.Interfaz{
+  margin-left: 1.2%;
+  margin-right: 1.2%;
+}
+  .tarjetas-libros-interfaz:hover{
+    transform: scaleX(25px);
+    background-color: rgba(217, 223, 191);
+    color: black;
+    transition: 1s ease;
+    border-radius: 15px;
+  }
+  
+  .header{
+    margin-left:3%;
+    margin-right:3%;
+  }
+  
+
+.texto-hover:hover{
+  text-decoration: underline;
+}
+
+.libros:hover{
+  animation: libro 0.5s; 
+}
+
+@keyframes libro {
+  100% {
+    opacity: 1;
+  }
+  
+  0% {
+    opacity: 0;
+  }
+  }
+
+
+
+  @keyframes fondo {
+  100% {
+    opacity:1;
+  }
+  
+  0% {
+    opacity:0;
+  }
+  }
+
+
+
+
+  .btn-file {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+  }
+
+
+  .img{
+    width: 200px;
+    height: 300px;
+  }
+
+
+  .img-grande{
+    width: 70%;
+  }
+
+
+  .img-user{
+    border-radius: 100%;
+    width: 20%;
+    height: 70%;
+  }
+
+  .border-1-mio{
+    border: 5px solid white;
+    transition: 0.2s;
+  }
+  .border-1-mio:hover{
+    border: 3px solid yellow;
+  }
+.img-aulas{
+  width: 100%;
+  height: 18rem;
+}
+
+.img-estudiantes-lista-curso{
+  width: 100%;
+  height: 13rem;
+}
+
+.scroll{
+  overflow-y: scroll;
+  height: 400px;
+  width: 100%;
+  padding: 3%;
+}
+
+.content_div_one_photo {
+  height: 10rem;
+  width: 12rem;
+  border-radius: 10px;
+}
+
+.padre {
+  position: relative;    /* para poder posicionar el texto de forma absoluta */
+  display: inline-block; /* para que solo ocupe el ancho de la imagen */
+}
+
+
+.transladar{
+  color: #155724;
+}
+.transladar:hover{
+  color: #004085;
+}

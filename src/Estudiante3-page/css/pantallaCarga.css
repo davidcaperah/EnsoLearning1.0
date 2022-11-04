@@ -1,0 +1,43 @@
+#carga1-carga-estu3{
+    position: absolute;
+    top: 21.8%;
+    left: 37.7%;
+    width: 340px;
+    height: 340px;
+}
+#carga1-estu3{
+    transform-origin: 50% 50%;
+    animation: rotar1-estu3 7s infinite;
+}
+#carga2-estu3{
+    transform-origin: 50% 50%;
+    animation: rotar2-estu3 7s infinite, opacar-estu3 15s infinite 0s linear;
+}
+
+@keyframes rotar1-estu3 {
+    0%{
+        transform: rotateZ(0deg);
+    }
+    100%{
+        transform: rotateZ(360deg);
+    }
+}
+@keyframes rotar2-estu3 {
+    0%{
+        transform: rotateZ(0deg);
+    }
+    100%{
+        transform: rotateZ(-360deg);
+    }
+}
+@keyframes opacar-estu3 {
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}

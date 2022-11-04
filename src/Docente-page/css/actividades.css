@@ -1,0 +1,159 @@
+.btn-agregarActividad{
+    display: flex;
+    align-items: center;
+    margin-bottom: 130px;
+    margin-left: 80px;
+}
+.btn-agregarActividad > div{
+    border-radius: 30px;
+    border: 3px solid #1a9de6;
+    padding: 8px  20px;
+    font-size: 20px;
+    color:#1a9de6 ;
+    cursor: pointer;
+}
+
+.btn-agregarActividad  strong{
+    font-size: 25px;
+}
+.boton-agregar:hover{
+    transition: color .8s;
+    color: white;
+    transition:  background-color .8s;
+    background-color: #1a9de6;
+}
+.cont-actividades{
+    display: grid;
+    grid-template-columns:  1fr 1fr 1fr ;
+    width: 78%;
+    height: auto;
+    margin: -90px 150px 90px 150px;
+}
+.cont-card-actividades{
+    margin: 20px 35px;
+    border-radius: 20px;
+    box-shadow: 4px 4px 6px rgba(83, 83, 83, 0.582);
+    min-width: 300px;
+}
+.cont-header-actividades{
+    display: grid;
+    grid-template-columns: .4fr 1fr 1fr;
+    height: 350px;
+}
+.cont-titulo-actividades p{
+    position: absolute;
+    top:120px;
+    left:110px;
+    color:white;
+    font-size:12px
+}
+.cont-titulo-actividades h2{
+    position: absolute;
+    top:210px;
+    left:160px;
+    color:white;
+    font-size:33px;
+    font-weight: 900;
+}
+.cont-titulo-selec-actividades{
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    margin-left: -20px;
+}
+.cont-titulo-selec-actividades div{
+   text-align: center;
+   font-size: 21px;
+   margin-top: 50px;
+   margin-right: 60px;
+   
+}
+.borrar-actividad{
+    position: relative;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    background-color: white;
+    top:-230px;
+    left:235px;
+    cursor: pointer;
+}
+.borrar-actividad img{
+    height: 20px;
+    width: 20px;
+    margin: 9px 10px;
+}
+
+.editar-actividad{
+    position: relative;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    background-color: white;
+    top:-190px;
+    left:20px;
+    cursor: pointer;
+}
+.editar-actividad img{
+    height: 30px;
+    width: 30px;
+    margin: 7px;
+}
+.info-card-actividad{
+    padding:  20px 30px;
+    margin-top: -80px;
+    background-color: #eef6ff;
+}
+.info-card-actividad h6 strong{
+    color: rgba(63, 63, 63, 0.685);
+    padding: 0;
+    font-size: 17px;
+    font-weight: 300;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 20vw;
+    
+}
+.info-card-actividad h6{
+    padding: 0;
+    font-size: 17px;
+    font-weight: 900;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 16vw;
+}
+.info-card-actividad p{
+   text-align: right;
+   font-size: 13px;
+   color: rgba(78, 78, 78, 0.856);
+   line-height: 15px;
+}
+.info-card-actividad div{
+    background-color: #1a9de6;
+    text-align: center;
+    margin-top: 40px ;
+    padding: 7px 20px;
+    border-radius: 8px;
+    font-size: 25px;
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+ }
+
+ 
+.img-actvidad{
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.text-acti{
+    color: #1a9de6;
+    border-bottom: 3px solid #1a9de6;
+    cursor: pointer;
+}
+.text-disble{
+    color: rgba(48, 48, 48, 0.712);
+    cursor: pointer;
+}

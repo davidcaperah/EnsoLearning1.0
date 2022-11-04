@@ -1,0 +1,82 @@
+.font-chewy{
+    font-family: chewy;
+}
+
+.dashboard{
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.line{
+    margin-right: 75%;
+    height: 4px;
+    border-radius: 18px;
+}
+
+.text-blue{
+    color:#3F51B5;
+}
+
+.img-logo{
+    border-radius: 100%;
+}
+.img-card{
+    width: 80%;
+}
+
+.bg-blue{
+    background: #3F51B5;
+}
+
+.img-banner-60{
+    width: 60%;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+
+.Desplegable{
+    position: absolute;
+    animation: Desplegable 0.5s;
+    z-index: 1;
+}
+
+
+.link-desplegable:hover{
+    background: #536aed;
+    z-index: 1;
+}
+
+.link-formateado:hover{
+    background: rgb(2, 2, 84);
+    background-clip: text;
+    color: transparent;
+    text-decoration: none;
+}
+
+.Eliminar{
+    display: none  !important;
+    
+}
+
+.Aparecer{
+    display: none;
+}
+
+
+.link-no:hover{
+    text-decoration: none;
+}
+
+@media (max-width: 845px) {
+    .opcionesNav{
+        display: none;
+    }
+
+    .Aparecer{
+        display: block;
+    }
+
+} 

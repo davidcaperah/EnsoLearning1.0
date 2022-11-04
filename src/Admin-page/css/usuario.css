@@ -1,0 +1,77 @@
+.btn-crear-use-cordi{
+    border: 2px solid #0A2749;
+    box-sizing: border-box;
+    border-radius: 100px;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 23px;
+    color: #0A2749;
+    height: 61px;
+    width: 208px;
+    text-align: center;
+    margin-bottom: 180px;
+    padding-top: 15px;
+}
+
+.card-usuario-coord{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows:  .3fr 1fr .3fr;
+    margin: -180px 12% 140px 12%;
+}
+.card-usuario-coord img{
+    width: 101%;
+    border-radius: 20px;
+}
+.card-usuario-coord h4{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #0A2749;
+    text-align: center;
+    padding-bottom: 20px;
+}
+.card-usuario-coord > a > div{
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    margin-right: 50px;
+    cursor: pointer;
+}
+.cont-header-usuario-coor{
+    display: grid;
+    grid-template-columns: 1fr .4fr ;
+}
+.cont-header-usuario-coor h4{
+    position: relative;
+    top:120px;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 45px;
+    color: white;
+    left: 100px;
+
+}
+.cont-header-usuario-coor svg{
+    position: relative;
+    top:-120px;
+    left:-100px;
+    z-index: -100;
+}
+#card-abajo-usuario-coor1{
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 4;
+}
+#card-arriba-usuario-coor{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+#card-abajo-usuario-coor2{
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 4;
+}

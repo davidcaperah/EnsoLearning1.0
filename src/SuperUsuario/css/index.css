@@ -1,0 +1,164 @@
+.bg-fondo{
+    background: #E0EAFC;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #CFDEF3, #E0EAFC);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #CFDEF3, #E0EAFC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+}
+
+.link-formateado-dos:hover{
+    color: black;
+    text-decoration: none;
+}
+
+.Areas:hover{
+    animation: Opacidad 0.5s;
+}
+
+.activityy:hover{
+    animation: Opacidad 1s;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.dashboard-Super{
+    margin: 0% 2% 2% 2%;
+}
+
+.bg-purple{
+    background: #A48AD4;
+}
+
+.Eliminar{
+    display: none !important;
+}
+
+@keyframes Opacidad {
+    from {
+        opacity: 0;
+    }
+  
+    to {
+        opacity: 1;
+    }
+  }
+
+.caja-fondo-2{
+    min-height: 10%;
+}
+
+.caja-fondo{
+    min-height: 83%;
+}
+
+.texto-malla{
+    font-size: 12px;
+    color: white;
+}
+
+.titulo-malla{
+    font-size: 15px;
+    color: white;
+}
+
+.caja-malla{
+    min-height: 200px;
+    max-height: 200px;
+}
+
+.ventana-emergente{
+    z-index: 100;
+    position: absolute;
+    transform: translateX(150px);
+    width: 100%;
+    background: white;
+}
+
+.ventana-emergente-subtema{
+    z-index: 100;
+    position: absolute;
+    transform: translateX(-250px);
+    width: 100%;
+    background: white;
+}
+
+.img-logo-mallas{
+    width: 30%;
+    height: 100px;
+}
+
+
+.malla{
+    position: absolute;
+    transform: translateX(-390px);
+    width: 1390px;
+    background: white;
+    z-index: 1000;
+}
+
+.text-blue-mallas{
+    color: #28A8E0;
+}
+
+.text-green-mallas{
+    color: green;
+}
+
+.text-rotate{
+    position: absolute; 
+    transform: rotate(-90deg);
+    margin-top: 12rem;
+}
+
+.text-rotate-pensamiento{
+    position: absolute; 
+    transform: rotate(-90deg);
+    margin-top:2.5rem;
+}
+
+.text-rotate-relative{
+    position: relative; 
+    transform: rotate(-90deg);
+}
+
+.border-red{
+    border: red solid 2px;
+}
+
+.border-green{
+    border: green solid 2px;
+}
+
+.border-blue {
+    border: #28A8E0 solid 2px;
+}
+
+.w-10{
+    width: 10%;
+}
+
+.w-90{
+    width: 90%;
+}
+
+.m-0{
+    margin: 0%;
+}
+
+
+.form-flotante{
+    width: 80%;
+    position: absolute;
+    background: white;
+    z-index: 1000;
+    margin-top: 5rem;
+}
+
+@media (max-width: 800px) {
+    .caja-malla{
+        max-height: 170px;
+    }
+}
+.cursorp{
+    cursor: pointer;
+}
