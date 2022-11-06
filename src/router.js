@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Routes,useParams } from 'react-router-dom';
+import {BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from './First-Page/components/login';
 import Register from './First-Page/components/register';
 import PaginaUno from './First-Page/components/page';
@@ -42,7 +42,7 @@ import EstudianteThreePage from './Estudiante3-page/EstudianteThreePage';
 
 import R404 from './404-page/r404.js';
 import LoginSuperUsuario from './First-Page/components/homes/LoginSuperUsuario';
-import SuperUsuario from './SuperUsuario/index'
+// import SuperUsuario from './SuperUsuario/index'
 import Acortador from './First-Page/components/Acortador'
 const Router = () => (
     <BrowserRouter>
