@@ -4,7 +4,6 @@ import Swal from 'sweetalert2'
 import { useSelector } from 'react-redux';
 import Volver from './volver.js';
 import axios from 'axios';
-import { CollectionsOutlined } from '@material-ui/icons';
 
 // const useStyles = makeStyles((theme) => ({
 //     root: {
@@ -154,7 +153,7 @@ const Evaluaciones = (props) => {
            
                 for (const prop in CamposRespuesta) {
                     console.log(`obj.${prop} = ${CamposRespuesta[prop]}`)
-                    if(prop != "A" && prop != "B" && prop != "C" && prop != "D" && prop != 'Correcta' && prop != 'pregunta'){
+                    if(prop !== "A" && prop !== "B" && prop !== "C" && prop !== "D" && prop !== 'Correcta' && prop !== 'pregunta'){
                         const temp = {
                             [prop]: CamposRespuesta[prop]
                             
@@ -236,7 +235,7 @@ const Evaluaciones = (props) => {
                 <div className='row'>
                     <div className='col-3 header-evaluacion'>
                         <p style={{marginTop:"20px",marginLeft:"10px"}} >{"Evaluacion > Crear evaluacion >"}</p>
-                        <h3 style={{marginTop:"30px"}}>Crear evaluacion</h3>
+                        <h3 style={{marginTop:"10px"}}>Crear evaluacion</h3>
                         <svg width="430" height="310" xmlns="http://www.w3.org/2000/svg"> 
                             <path fill="#ffe051" stroke="#000" opacity="undefined" d="m142.31161,201.31344c-61.40875,-29.87699 -143.30455,5.44752 -137.26003,-76.90065c6.04452,-82.34817 89.60334,-94.66375 171.82247,-78.7264c82.21913,15.93736 124.11448,79.06179 92.53753,125.09326c-31.57695,46.03147 -65.69122,60.41077 -127.09997,30.53378l0,0.00001z" id="svg_1" transform="rotate(42.3141, 142.34, 128.318)" strokeWidth="0"/>
                             <path fill="#ffe051" stroke="#000" opacity="undefined" d="m85.67218,274.0409c-54.73653,-1.12407 -146.407,-21.18349 -148.99923,-101.90566c-2.59222,-80.72218 113.33626,-73.67283 187.65755,2.46831c74.32129,76.14114 181.97181,20.27043 105.87094,59.48369c-76.10086,39.21326 -89.79273,41.07773 -144.52927,39.95366l0.00001,0z" id="svg_6" transform="rotate(3.44996, 96.437, 194.375)" strokeWidth="0"/>

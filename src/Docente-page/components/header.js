@@ -94,7 +94,7 @@ const Header = ()=>{
                             </div>
                             <div>
                                 <img src={`${URL.servidor}Archivos_u/iconos/flecha-hacia-abajo.svg`}/>
-                                <p onClick={CerrarSesion} >CerrarSesion</p>
+                                <p onClick={CerrarSesion} >Cerrar Sesion</p>
                             </div>
                         </div>
                         : null

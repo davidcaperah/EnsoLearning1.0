@@ -3,7 +3,6 @@ import { useSelector, useDispatch} from 'react-redux';
 import InterfazAulas from './Aulas/interfazAulas';
 import ViewAulas from './Aulas/viewAulas';
 import Cookies from 'universal-cookie';
-import Evaluaciones from './Aulas/Evaluaciones';
 import Actividades from './Aulas/Activdades';
 import AllPlanillas from './Aulas/Planillas/allPlanillas';
 import Libros from './Aulas/Libros';
@@ -20,7 +19,7 @@ import TipoActividad from './Aulas/ActividadesFolder/tipoActividad';
 import SeccionSelecion from './Aulas/ActividadesFolder/seccionSelecion';
 import SeccionGrupos from './Aulas/ActividadesFolder/seccionGrupos';
 import SeccionAbierta from './Aulas/ActividadesFolder/seccionAbierta';
-import SeccionEvaluaciones from './DocenteEvaluaciones'
+import CalificarEva from '../views-dashboard/Evaluaciones/CalificarEva';
 
 const MisAulas = () => {
     const dispatch = useDispatch()
@@ -55,14 +54,14 @@ const MisAulas = () => {
     const numberInterfazAula = useSelector(state => state.numberInterfazAula)
     
     return (
-        <div>
+        <div className='container'>
             {numberInterfazAula === 1000 ? <IdentificadorMallas /> : null}
             {numberInterfazAula === 1001 ? <UseMallas /> : null}
             {numberInterfazAula === 1002 ? <CreateMallas /> : null}
             {numberInterfazAula === 1003 ? <CargarAreas /> : null}
             {numberInterfazAula === 0 ? <ViewAulas /> : null}
             {numberInterfazAula === 1 ? <InterfazAulas /> : null}
-            {numberInterfazAula === 2 ? <Evaluaciones /> : null}
+            {numberInterfazAula === 2 ? <CalificarEva /> : null}
             {numberInterfazAula === 3 ? <Actividades /> : null}
             {numberInterfazAula === 4 ? <AllPlanillas /> : null}
             {numberInterfazAula === 5 ? <Libros /> : null}

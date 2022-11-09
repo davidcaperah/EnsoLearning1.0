@@ -3,12 +3,6 @@ import axios from 'axios';
 import URL from '../../../../URL.js';
 import { useSelector, useDispatch } from 'react-redux';
 import  '../../../css/misAulas.css'
-import matematicas from './../../../img/matematicas.jpg'
-import ingles from './../../../img/ingles.jpg'
-import ciencias from './../../../img/ciencias.jpg'
-import religion from './../../../img/religion.jpeg'
-import politica from './../../../img/politica.jpg'
-import espanol from './../../../img/español.jpg'
 
 
 
@@ -64,9 +58,10 @@ const ViewAulas = () => {
                 <div>
                     <div className='titulo-principal'>
                         <p>{`Mis aulas >`}</p>
-                    </div>
+                    
                     <div className='titulo-secunda'>
                         <h2>Mis aulas</h2>
+                    </div>
                     </div>
                 </div>
                 <div className='cont-descrip-vista'>
@@ -75,82 +70,37 @@ const ViewAulas = () => {
                     </h4>
                 </div>
             </div>
-            <div className='cont-cursos'>
-                    
-                {ValidacionCursos ?
-                    <div className="col-md-6" >
-                        <h2> ¡No tienes cursos a cargo! </h2>
-                    </div>
-                    : null}
-
-                {CodMateria.map(curso =>
-                    <div className="curso" key={curso.id} onClick={() => RetornarComponente(curso)}>
-                        <div >    
-                            {parseInt(curso.id_materia) === 6 ?
-                                <div >
-                                    <img className="img-tarjeta" src={politica} alt="Enso learning area de matematicas" />
-                                    <div className="cont-texto-card">
-                                        <h2 >
-                                            Aula {curso.Curso_Nu} Politica    
-                                        </h2>
-                                    </div>  
-                                </div>
-                                : null}
-                            {parseInt(curso.id_materia) === 5 ?
-                                <div >
-                                    <img className="img-tarjeta" src={ciencias} alt="Enso learning area de matematicas" />
-                                    <div className="cont-texto-card">
-                                        <h2 >
-                                            Aula {curso.Curso_Nu} Ciencias    
-                                        </h2>
-                                    </div>  
-                                </div>
-                                : null}
-                            {parseInt(curso.id_materia) === 4 ?
-                                <div >
-                                    <img className="img-tarjeta" src={religion} alt="Enso learning area de matematicas" />
-                                    <div className="cont-texto-card">
-                                        <h2 >
-                                            Aula {curso.Curso_Nu} Religion    
-                                        </h2>
-                                    </div>  
-                                </div>
-                                : null}
-                            {parseInt(curso.id_materia) === 3 ?
-                                <div >
-                                    <img className="img-tarjeta" src={espanol} alt="Enso learning area de matematicas" />
-                                    <div className="cont-texto-card">
-                                        <h2 >
-                                            Aula {curso.Curso_Nu} Español    
-                                        </h2>
-                                    </div>  
-                                </div>
-                                : null}
-                            {parseInt(curso.id_materia) === 2 ?
-                                <div >
-                                    <img className="img-tarjeta" src={ingles} alt="Enso learning area de matematicas" />
-                                    <div className="cont-texto-card">
-                                        <h2 >
-                                            Aula {curso.Curso_Nu} ingles    
-                                         </h2>
+            <div className='row'>
+                    {ValidacionCursos ?
+                        <div className="col-md-12" >
+                            <h2> ¡No tienes cursos a cargo! </h2>
+                        </div>
+                        : null}
+    
+                    {CodMateria.map(curso =>
+                        <div className="col-md-3 curso" key={curso.id} onClick={() => RetornarComponente(curso)}>
+                            <div >
+                                <img className="img-tarjeta" src={URL.servidor+"/Archivos_u/iconos/"+curso.imagen} alt="Enso learning area de matematicas" />
+                                <div className="cont-texto-card">
+                                    <h2 >Aula</h2>
+                                    <h2>{curso.Curso_Nu}</h2>
+                                    <h2>{curso.N_Materia}</h2>
                                 </div>  
                             </div>
-                                : null}
-                            {parseInt(curso.id_materia) === 1 ?
-                                <div >
-                                    <img className="img-tarjeta" src={matematicas} alt="Enso learning area de matematicas" />
-                                    <div className="cont-texto-card">
-                                         <h2 >
-                                             Aula {curso.Curso_Nu} Matematicas    
-                                         </h2>
-                                    </div>  
-                                </div>
-                                : null}
-                            
                         </div>
-                    </div>
-                )}
-            </div>
+
+                    )}
+                    <div className="col-md-3 curso"  onClick={() => RetornarComponente()}>
+                            <div >
+                                <img className="img-tarjeta" src={URL.servidor+"/Archivos_u/iconos/"} alt="Enso learning area de matematicas" />
+                                <div className="cont-texto-card">
+                                    <h2 >
+                                        Aula  Politica    
+                                    </h2>
+                                </div>  
+                            </div>
+                        </div>
+                </div>
         </div>
     );
 }
