@@ -1,68 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Swal from 'sweetalert2'
+import axios from 'axios';
 import AgregarPuntos from './ActividadesFolder/agregarPuntos';
+import Calificar from './ActividadesFolder/CalificarActividad'
 import { useSelector,useDispatch } from 'react-redux';
 import '../../../css/actividadesCurso.css'
 import URL from '../../../../URL'
 
+
 const Actividades = () => {
     const dispatch = useDispatch()
+    const [DatosCurso, setDatosCurso] = useState([])
     const [Campos, setCampos] = useState({})
-    const [Validacion, setValidacion] = useState(true)
-    console.log(URL.servidor)
+    const [Actividades, setActividades] = useState([])
+    const [item, setitem] = useState({})
+    const [vista, setvista] = useState(1)
 
     const aulaSeleccionada = useSelector(state => state.aulaSeleccionada)
     const docente = useSelector(state => state.docente)
 
-    let idCol = docente.colegio
     let idCurso = aulaSeleccionada.id_curso
     let iduser = docente.id
-    let idMateria = aulaSeleccionada.id_materia
 
 
-    const onChange = (e) => {
-        setCampos({
-            ...Campos,
-            [e.target.name]: e.target.value.trim()
-        });
-    }
-
-    const NoRecargar = async (e) => {
-        e.preventDefault()
-        if (Campos.periodo !== null && Campos.Nombre && Campos.descri) {
-            try {
-                let data = {
-                    periodo: parseInt(Campos.periodo),
-                    Nombre: Campos.Nombre,
-                    descri: Campos.descri,
-                    d: 0,
-                    idCurso: idCurso,
-                    idCol: idCol,
-                    iduser: iduser,
-                    idMateria: idMateria,
-                    fecha_max: Campos.fecha
-                }
-                dispatch({
-                    type : "CrearActividadDocente",
-                    CrearActividadDocente : data
-                })
-                setValidacion(false)
-
-            } catch (error) {
-                Swal.fire({
-                    icon: 'error',
-                    text: 'Ocurrió un error',
-                    title: error
-                })
-
-            }
-
-        } else {
-            Swal.fire({
-                icon: 'warning',
-                text: 'Recuerde llenar todos los campos.'
-            })
-        }
+    const C_vista = (x,item)=>{
+        console.log("los item"+item)
+        setvista(x)
+        setitem(item)
     }
     const volver = ()=>{
         dispatch({
@@ -70,23 +34,43 @@ const Actividades = () => {
             numberInterfazAula: 1
         })
     }
-
-
-
-
-
-
-  
-
+    useEffect(() => {
+        let curso = "";
+        let actividades = "";
+        const TraerCurso = async () => {
+            const DatosJson = JSON.stringify({ id: idCurso, d: 13})
+            const api = axios.create({ baseURL: URL.servidor });
+            const response = await api.post('/api-php-react/info_docente.php', DatosJson);
+            const data = response.data[0]
+            curso = data;
+            setDatosCurso(curso)
+            
+        }
+        const TraerActividades = async () => {
+            const DatosJson = JSON.stringify({ idc: idCurso, idP : iduser, d: 16})
+            const api = axios.create({ baseURL: URL.servidor });
+            const response = await api.post('/api-php-react/info_docente.php', DatosJson);
+            const data = response.data
+            actividades = data;
+            setActividades(data)
+        }
+        TraerCurso();
+        TraerActividades();
+        //eslint-disable-next-line
+    }, []);
+    console.log(Actividades)
+    console.log(DatosCurso)
+    console.log(vista)
+    console.log(item)
     return (
        <div>
-           <div className='row header-curso-actividades '>
+           <div className='row header-curso-actividades'>
                 <div className='cont-titulo-actividades '>
                     <p>{`Mis aulas > Matematicas > Actividades`}</p>
-                    <h2>Curso 402</h2>
+                    <h2>Curso {DatosCurso.Curso_Nu}</h2>
                     <svg width="450" height="329" xmlns="http://www.w3.org/2000/svg">
                         <g>
-                        <title>Layer 1</title>
+                        <title></title>
                         <line id="svg_2" y2="358" x2="331" y1="358" x1="334" stroke="#000" fill="none"/>
                         <line id="svg_3" y2="360" x2="41" y1="360" x1="42" stroke="#000" fill="none"/>
                         <path id="svg_1" d="m179.15621,301.11035c-75.62227,0.6074 -102.23703,-70.99978 -102.23703,-158.65384c0,-87.65405 21.79559,-158.73124 102.23703,-158.65384c80.44144,0.0774 120.62617,69.6731 120.62617,157.32715c0,87.65405 -45.0039,159.37312 -120.62617,159.98052z" transform="rotate(-45.1808, 188.351, 142.458)" opacity="undefined" strokeWidth="0" stroke="#000" fill="rgba(0, 99, 154, 1)"/>
@@ -121,62 +105,72 @@ const Actividades = () => {
                 </div>
            </div>
            <div className='d-flex justify-content-center cont-titu-actividade-curso'>
-                <div className='curso-actividades-acti'>Actividades activas</div>
-                <div className='curso-actividades-desacti'>Actividades vencidas</div>
+                <div className={`${vista === 1?"curso-actividades-acti":"curso-actividades-desacti"}`} onClick={()=>C_vista(1,0)}>Actividades activas</div>
+                <div className={`${vista === 2?"curso-actividades-acti":"curso-actividades-desacti"}`} onClick={()=>C_vista(2,0)} >Actividades vencidas</div>
            </div>
-
-           <div className='cont-cards-acti-curso'>
-               <div className='card-curso-actividades'>
-                    <div className='card-cont-img'>
-                        <img alt='matematicas-actividad' src={`${URL.servidor}Archivos_u/Archivos_Acti/image-matematicas.jpg`}></img>
+           <div className={`${vista === 3?".cont-cards-acti-calificar":"cont-cards-acti-curso"}`}>
+           {vista === 1 ?
+            Actividades.map(item =>
+            item.estado_d === 1?
+            <div key={item.id} className='card-curso-actividades'>
+                <div className='card-cont-img'>
+                    <img alt='matematicas-actividad' src={URL.servidor+"/Archivos_u/iconos/"+item.imagen}></img>
+                </div>
+                <div className='card-info-actiCurso'>
+                    <h3>
+                        Curso de {item.N_Materia} <br/>
+                        <strong> {item.Nombre}</strong>
+                    </h3>
+                    <p>
+                        Vencimiento <br/>
+                        {item.fecha_MAX}
+                    </p>
+                    <div></div>
+                </div>
+                <div className='d-flex justify-content-center con-btn-actiCurso' onClick={()=>C_vista(3,item)}>
+                    <div className='cont-btn-actividadCurso'>
+                    Calificar
                     </div>
-                    <div className='card-info-actiCurso'>
-                        <h3>
-                            Curso de matematicas <br/>
-                            <strong>Suma de tres cifras</strong>
-                        </h3>
-                        <p>
-                            Vencimiento <br/>
-                            22/04/2022
-                        </p>
-                        <div></div>
-                    </div>
-                    <div className='d-flex justify-content-center con-btn-actiCurso'>
-                        <div className='cont-btn-actividadCurso'>
-                            Ver actividad
-                        </div>
-                    </div>
-               </div>
-
-
-
-
-      
-
-               <div className='card-curso-actividades'>
-                    <div className='card-cont-img'>
-                        <img alt='matematicas-actividad' src={`${URL.servidor}Archivos_u/Archivos_Acti/image-matematicas.jpg`}></img>
-                    </div>
-                    <div className='card-info-actiCurso'>
-                        <h3>
-                            Curso de matematicas <br/>
-                            <strong>Suma de tres cifras</strong>
-                        </h3>
-                        <p>
-                            Vencimiento <br/>
-                            22/04/2022
-                        </p>
-                        <div></div>
-                    </div>
-                    <div className='d-flex justify-content-center con-btn-actiCurso'>
-                        <div className='cont-btn-actividadCurso'>
-                            Ver actividad
-                        </div>
-                    </div>
-               </div>
-                
+                </div>
+            </div> : null   
+            )
+            :null
+           }
+           { vista === 2 ?
+             Actividades.map(item =>
+                 item.estado_d === 2?
+                 <div key={item.id} className='card-curso-actividades'>
+                     <div className='card-cont-img'>
+                         <img alt='matematicas-actividad' src={URL.servidor+"/Archivos_u/iconos/"+item.imagen}></img>
+                     </div>
+                     <div className='card-info-actiCurso'>
+                         <h3>
+                             Curso de {item.N_Materia} <br/>
+                             <strong> {item.Nombre}</strong>
+                         </h3>
+                         <p>
+                             Vencimiento <br/>
+                             {item.fecha_MAX}
+                         </p>
+                         <div></div>
+                     </div>
+                     <div className='d-flex justify-content-center con-btn-actiCurso' onClick={()=>C_vista(3,item)}>
+                         <div className='cont-btn-actividadCurso'>
+                             Calificar
+                         </div>
+                     </div>
+                 </div> : null     
+             )
+             :null
+           } 
+            { vista === 3 ?
+            <div>
+            <Calificar actividad={item}/>
+            </div>
+             :null
+           }         
+            </div>
            </div>
-       </div> 
 
     )
 }

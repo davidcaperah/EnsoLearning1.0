@@ -6,11 +6,7 @@
  * @version 1.0 EDU_PLT
  * ==================================================
 */
-import React , { useState, useEffect } from 'react';
-import Cookies from 'universal-cookie';
-import axios from 'axios';
-import URL from '../../../../URL';
-import Swal from 'sweetalert2';
+import React , { useState } from 'react';
 import AsignarActividad from './AsignarActividad'
 const DocenteActividades = (actividad) => {
 

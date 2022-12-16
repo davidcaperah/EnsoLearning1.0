@@ -102,6 +102,9 @@ const DocenteActividades = (props) => {
             case 3:
                 console.log("imagen")
                 break;  
+            case 4:
+                LINK = "N/A";
+            break;  
             default:
                 Swal.fire({
                     title : 'Error',
@@ -110,6 +113,7 @@ const DocenteActividades = (props) => {
                   })
                 break;
         }
+        
         setformulario({
             ...formulario,
             preguntas: preguntaadd,
@@ -239,17 +243,19 @@ const DocenteActividades = (props) => {
                                 <option value="1">Link</option>
                                 <option value="2">Archivo PDF</option>
                                 <option value="3">Archivo IMAGEN</option>
+                                <option value="4">No aplica</option>
                             </select>
                         </div>
                         {formulario.archivo === "1"? 
                             <div className='mr-4'>
                                 <p className="mt-2">Recurso</p>
-                                <input  onChange={onChange} className="input-crearEvaluacion input-tam-CrearEvaluacion" type="text" name="adjunto" id="link"  />
+                                <input  onChange={onChange} className="input-crearEvaluacion input-tam-CrearEvaluacion" type="text" name="adjunto" id="link" required />
                             </div>
                         :
+                        formulario.archivo === "4"? null :
                             <div className='mr-4'>
                                 <p className="mt-2">Recurso</p>
-                                <input  onChange={onChange} className="input-crearEvaluacion input-tam-CrearEvaluacion" accept="image/png, .jpeg, .jpg, image/gif, .pdf" type="file" name="adjunto" id="adjunto"  />
+                                <input  onChange={onChange} className="input-crearEvaluacion input-tam-CrearEvaluacion" accept="image/png, .jpeg, .jpg, image/gif, .pdf" type="file" name="adjunto" id="adjunto"  required />
                             </div>
                         }
 

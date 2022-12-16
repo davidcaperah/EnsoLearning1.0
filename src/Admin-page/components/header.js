@@ -16,7 +16,7 @@ const Header = ()=>{
     let IdDocEncriptado = cookies.get('iduser')
     let bytesDoc = CryptoJS.AES.decrypt(IdDocEncriptado, 'A')
     let IdDoc = JSON.parse(bytesDoc.toString(CryptoJS.enc.Utf8))
-
+    console.log(Docente);
     const DatosDoc = {
         id: IdDoc
     }
@@ -78,7 +78,7 @@ const Header = ()=>{
                         } 
                 </div>
                 <div className='cont-nombreDocente'>
-                    <p>{`${Docente.Nombre} ${Docente.apellido} docente`} </p>
+                    <p>{`${Docente.Nombre} ${Docente.apellido}`} Coordinador</p>
                 </div>
                 <div className='sub-menu-header'>
                     <img onClick={menu} src={`${URL.servidor}Archivos_u/iconos/flecha-hacia-abajo.svg`}/>

@@ -11,6 +11,7 @@ import Calendario from '../../calendario'
 import Cactividad from './Actividades/CrearActividad'
 import VerActividad from './Actividades/VerActividad'
 import AsignarActividad from './Actividades/AsignarActividad'
+import CambiarEstado from './Actividades/CambiarEstado'
 
 const DocenteActividades = () => {
 
@@ -141,17 +142,14 @@ const DocenteActividades = () => {
                         <div className='boton-evaluacion offset-md-2' onClick={()=>Cambiarintefaz(2,0)} >+ Crear Actividad</div> 
                     </div>
                     <div className="d-flex flex-row justify-content-center">
-                        <div className='col-sm-12 col-md-3 col-xl-4 p-2 px-3 py-5 '>
+                        <div className='col-sm-12 col-md-4 col-xl-4 p-2 px-3 py-5 '>
                             <h5 className={`opciones-evaluaciones ${estadoA ===0?"opcio-evalu-activa":"opcio-evalu-desacti"}`} onClick={()=>CambiarEA(0,0)} >Actividades Creadas</h5>
                         </div>
-                        <div className='col-sm-12 col-md-3 col-xl-4 p-2 px-3 py-5   '>
+                        <div className='col-sm-12 col-md-4 col-xl-4 p-2 px-3 py-5   '>
                             <h5 className={`opciones-evaluaciones ${estadoA ===1?"opcio-evalu-activa":"opcio-evalu-desacti"}`} onClick={()=>CambiarEA(1,0)} >Actividades Activas</h5>
                         </div>
-                        <div className='col-sm-12 col-md-3 col-xl-4 p-2 px-3 py-5  '>
+                        <div className='col-sm-12 col-md-4 col-xl-4 p-2 px-3 py-5  '>
                             <h5 className={`opciones-evaluaciones ${estadoA ===2?"opcio-evalu-activa":"opcio-evalu-desacti"}`} onClick={()=>CambiarEA(2,0)}>Actividades vencidas</h5>
-                        </div>
-                        <div className='col-sm-12 col-md-3 col-xl-4 p-2 px-3 py-5  '>
-                            <h5 className={`opciones-evaluaciones ${estadoA ===3?"opcio-evalu-activa":"opcio-evalu-desacti"}`} onClick={()=>CambiarEA(3,0)}>Actividades Por calificar</h5>
                         </div>
                     </div>
                 </div>
@@ -193,6 +191,7 @@ const DocenteActividades = () => {
                             {
                             estadoA === 1 ?
                             DatosRecibidosasig.map(actividad =>
+                                actividad.estado_d == 1 ?
                                 <div className='cont-card-evaluacion col-3 ' key={actividad.id}>
                                     <div className='d-flex flex-row'>
                                         <div className='estado-evaluaciones'>Estado:activa </div>
@@ -212,29 +211,28 @@ const DocenteActividades = () => {
                                             </p>
                                         </div>
                                         <div>
-                                            <div className='btn-estado-evaluacion'>
+                                            <div className='btn-estado-evaluacion' onClick={()=>CambiarEA(3,actividad)}>
                                                 estado
                                             </div> 
                                         </div> 
                                     </div>
                                     
                                 </div>
+                                : null
                             
                             ):null}
                                                         {
                             estadoA === 2  ?
-                            DatosRecibidos.map(actividad =>
-                                actividad.estado_d === 2 && actividad.id_curso != 0?
+                            DatosRecibidosasig.map(actividad =>
+                                parseInt(actividad.estado_d) === 2 ?
                                 <div className='cont-card-evaluacion col-3 ' key={actividad.id}>
                                     <div className='d-flex flex-row'>
-                                        <div className='estado-evaluaciones'>Estado:vencidas </div>
+                                        <div className='estado-evaluaciones-vencida'>Estado:vencidas </div>
                                         <div className=''></div>
                                     </div>
                                     <div className='cont-datos-evaluaciones'>
                                         <div>
-                                            <h2> {actividad.Titulo}</h2>
-                                            <h4 className='overflow'>Descripcion: {actividad.texto} </h4>
-
+                                            <h2> {actividad.Nombre}</h2>
                                         </div>
                                         <div>
                                             <p>
@@ -246,7 +244,7 @@ const DocenteActividades = () => {
                                             </p>
                                         </div>
                                         <div>
-                                            <div className='btn-estado-evaluacion'>
+                                            <div className='btn-estado-evaluacion' onClick={()=>CambiarEA(3,actividad)}>
                                                 estado
                                             </div> 
                                         </div> 
@@ -257,38 +255,10 @@ const DocenteActividades = () => {
                             ):null}
                             {
                             estadoA === 3 ?
-                            DatosRecibidos.map(actividad =>
-                                actividad.estado_d === 4 && actividad.id_curso !== 0 ?
-                                <div className='cont-card-evaluacion col-3 ' key={actividad.id}>
-                                    <div className='d-flex flex-row'>
-                                        <div className='estado-evaluaciones'>Estado:Por calificar </div>
-                                        <div className=''></div>
-                                    </div>
-                                    <div className='cont-datos-evaluaciones'>
-                                        <div>
-                                            <h2> {actividad.Titulo}</h2>
-                                            <h4 className='overflow'>Descripcion: {actividad.texto} </h4>
-
-                                        </div>
-                                        <div>
-                                            <p>
-                                                Fecha de creacion <br/>
-                                                {actividad.fecha_c}<br/>
-                                                Fecha max de entrega: <br/>
-                                                {actividad.fecha_MAX} <br/>
-                                                Periodo : {actividad.periodo}
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <div className='btn-estado-evaluacion'>
-                                                estado
-                                            </div> 
-                                        </div> 
-                                    </div>
-                                    
-                                </div>:null
-                            
-                            ):null}
+                           <div className='col-md-12'>
+                        <CambiarEstado actividad={Veractividad} />
+                           </div>
+                           :null}
                             {
                             estadoA === 4 ?
                            <div className='col-md-12'>

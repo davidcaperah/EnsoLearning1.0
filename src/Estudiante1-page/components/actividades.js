@@ -141,7 +141,7 @@ function Actividades() {
                     <div className='progres-bar-actividadesa'></div>
                 </div>
                 <div className='card-cont-img-actividades'>
-                    <img src={`${URL.servidor}Archivos_u/iconos/matematicas.svg`}/>
+                    <img src={`${URL.servidor}Archivos_u/iconos/`+Acti.imagen}/>
                 </div>
                 <div className='btn-iniciar-acti-estu-1' onClick={()=> DesarrollarActividad(Acti) }>
                     Iniciar actividad

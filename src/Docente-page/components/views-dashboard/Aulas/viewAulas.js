@@ -90,16 +90,6 @@ const ViewAulas = () => {
                         </div>
 
                     )}
-                    <div className="col-md-3 curso"  onClick={() => RetornarComponente()}>
-                            <div >
-                                <img className="img-tarjeta" src={URL.servidor+"/Archivos_u/iconos/"} alt="Enso learning area de matematicas" />
-                                <div className="cont-texto-card">
-                                    <h2 >
-                                        Aula  Politica    
-                                    </h2>
-                                </div>  
-                            </div>
-                        </div>
                 </div>
         </div>
     );

@@ -31,6 +31,16 @@ const Actividad = ({idActividad}) => {
 
 
     useEffect(()=>{
+        const verificarActividad = async () =>{
+            console.log(idActividad)
+            let idCurso = JSON.stringify({idm : idActividad.id , d : 4, iduser : iduser,id:idActividad.id_acti})
+            const api = axios.create({baseURL : URL.servidor});
+            const response = await api.post('/api-php-react/info_estudiante.php', idCurso);
+            const data = response.data
+            console.log(data) 
+            let estado = data.cantidad > 0 ? false : true ;
+            setValidacionActividad(estado)
+        }
         const TraerDatos = async () =>{
             console.log(idActividad)
             let idCurso = JSON.stringify({idm : idActividad.id , d : 2, iduser : iduser,id:idActividad.id_acti})
@@ -41,9 +51,14 @@ const Actividad = ({idActividad}) => {
             if(data.length > 0){
                 setArregloDeActividades(data)
                 const h = data[0]
-                console.log(h.puntos)
                 const l = h.puntos
                 const json = JSON.parse(l)
+                for(const ob in json){
+                    let i = parseInt(ob) + 1;
+                    json[ob].id = i;
+                    json[ob].pos = ob;
+                    console.log(json[ob])
+                }
                 setpuntos(json)
                 console.log(json)
                 let d = data[0]
@@ -53,16 +68,16 @@ const Actividad = ({idActividad}) => {
                         let link = d.video.substr(32,100)
                         let linkfinal = `${com}/embed/${link}` 
                         setLink(linkfinal)
-                        setValidacionActividad(true)
+                        
                     }  
                 }
                 
             }else if(data.mensaje) {
-                setValidacionActividad(false)
                 setArregloDeActividades([])
             }
         }
-        TraerDatos()
+        TraerDatos();
+        verificarActividad();
         //eslint-disable-next-line
     }, []);  
     console.log(puntos)
@@ -80,21 +95,17 @@ const Actividad = ({idActividad}) => {
             }   
           })
     }
-    const preguntas = async (e) =>{
-        let hola = document.getElementById(e).value
-        setrespuntos({
+    const contestar = (pregunta,respuesta) =>{
+        setrespuntos( {
             ...respuntos,
-            [e] : hola
-        }
-        )
+           [pregunta] : respuesta})
     }
-    console.log(respuntos)
+
     const EnviarTarea = async  (e) =>{
         e.preventDefault()
-        console.log(document.getElementById("PDF").files);
-        if(document.getElementById("PDF").files.length > 0 &&  document.getElementById("comentario").value !== ""){
             let Archivo = document.getElementById("PDF").files[0]
-            if(Archivo.type === "application/pdf" || Archivo.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" || Archivo.type === "application/msword" ){
+            let data = ""; 
+            if(Archivo && (Archivo.type === "application/pdf" || Archivo.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" || Archivo.type === "application/msword" )){
                 const formData = new FormData();
                 formData.append('archivo', Archivo )
                 let res = await axios.post(`${URL.servidor}/api-php-react/Subir_archivo_tarea.php`, formData,{
@@ -102,18 +113,13 @@ const Actividad = ({idActividad}) => {
                         'content-type': 'multipart/form-data'
                     }
                 })
-                let data = res.data
-                if(data.status === "error"){
-                    Swal.fire({
-                        title : 'Error',
-                        text : data.error,
-                        icon : 'error'
-                    })
-                }else if(data.status === "success"){
-                    let comentario = document.getElementById("comentario").value
+                data = res.data 
+            }
+                    let comentario = document.getElementById("comentario").value ? document.getElementById("comentario").value : 0;
+                    let url = data.url ? data.url : 0;
                     let datosEnviar = {
                         d : 3,
-                        tarea : data.url,
+                        tarea : url,
                         comentario : comentario,
                         id_act : idActividad.id,
                         curso : idCurso,
@@ -136,7 +142,7 @@ const Actividad = ({idActividad}) => {
                             title : "Actividad enviada correctamente",
                             text : `tu actividad se registro con el id ${datosRecibidos.id_tarea}`
                         })
-                        window.location.replace("EstudianteTwoActividades")
+                        window.location.reload();
                     }
 
                     if(datosRecibidos === true){
@@ -178,23 +184,8 @@ const Actividad = ({idActividad}) => {
                       } catch (error) {
                           console.log(error)
                       }*/
-                }else{
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Ocurrió un error al momento de enviar la actividad.',
-                    })
-                }
-            }
-        }else{
-            Swal.fire({
-                icon: 'warning',
-                title: 'Campos vacios, recuerda escribir en todos los campos y agregar archivos.',
-            })
-        }
     }
-console.log(ArregloDeActividades);
-
-
+console.log(respuntos);
     return (
         <div>
             {ValidacionActividad ? 
@@ -207,31 +198,51 @@ console.log(ArregloDeActividades);
                                     <p> <span className="h6" > Responde las siguientes preguntas, si tienes dudas comunicate con tu docente: </span></p>
                                         {
                                          puntos.map(datos =>
-                                            <form key={datos}>
-                                                <p><span className="h6" >*{datos}</span></p>
-                                                <input className="form-control m-2" id={datos} placeholder="Responde" />
-                                                <Button variant="contained" color="secondary" className="m-3" type="button" onClick={()=>preguntas(datos)}>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
-                                                <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
-                                                </svg>
-                                                    responder
-                                                </Button>
-                                            </form>
-                                                )
+                                            <div>
+                                                {data.Tipo === 2 ? 
+                                                    <div key={datos.id}>
+                                                        <h4>#{datos.id} - {datos.pregunta}</h4>
+                                                        <ul class="list-group">
+                                                        {datos.A ? <li onClick={()=>contestar(datos.id,'A')} class={`list-group-item ${respuntos[`${datos.id}`] === "A"? 'list-group-item-success' : null}`}>A. {datos.A}</li> : null }
+                                                        {datos.B ? <li onClick={()=>contestar(datos.id,'B')} class={`list-group-item ${respuntos[`${datos.id}`] === "B"? 'list-group-item-success' : null}`}>B. {datos.B}</li> : null }
+                                                        {datos.C ? <li onClick={()=>contestar(datos.id,'C')} class={`list-group-item ${respuntos[`${datos.id}`] === "C"? 'list-group-item-success' : null}`}>C. {datos.C}</li> : null }
+                                                        {datos.D ? <li onClick={()=>contestar(datos.id,'D')} class={`list-group-item ${respuntos[`${datos.id}`] === "D"? 'list-group-item-success' : null}`}>D. {datos.D}</li> : null }
+                                                        </ul> 
+                                                    </div>
+                                                    :
+                                                    data.Tipo === 1?                                
+                                                    <form key={datos.pregunta}>
+                                                        <p><span className="h6" >*{datos.pregunta}</span></p>
+                                                        <input className="form-control m-2" id={datos} placeholder="Responde" />
+                                                        <Button variant="contained" color="secondary" className="m-3" type="button" onClick={()=>contestar(1,1)}>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
+                                                        <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+                                                        </svg>
+                                                            responde
+                                                        </Button>
+                                                    </form>: null
+                                                }
+                                                </div>)
+                                                
                                         }
                                     <div>
-                                        {data.PDF !== "NULL" ?   
+                                        {data.tipo_s === 1 ?   
                                             <div>
                                                 <h4>Esta actividad contiene un archivo pdf para realizarlo</h4>
-                                                <a href={data.PDF}>LINK AL PDF</a>
+                                                <iframe id="inlineFrameExample"
+                                                    title="Inline Frame Example"
+                                                    width="100%"
+                                                    height="350"
+                                                    src={data.link}>
+                                                </iframe>
                                             </div>
                                         : null }
-                                        {data.imagen !== "NULL" ?
+                                        {data.tipo_s === 3 ?
                                             <div>
-                                                <img  src={data.imagen} alt={"Enso Learning "+data.Nombre}  className="w-50" />
+                                                <img  src={data.link} alt={"Enso Learning "+data.Nombre}  className="w-50" />
                                             </div>   
                                         : null }
-                                        {data.video !== "NULL" ? 
+                                        {data.tipo_s === 2 ? 
                                             <div>
                                                 <span className="w-100" >
                                                     <iframe 
@@ -246,10 +257,10 @@ console.log(ArregloDeActividades);
                                                 </span>
                                             </div>      
                                         : null }
-                                        {data.ICFES !== null ?    
+                                        {data.tipo_s === 4 ?    
                                             <div>
                                                 <div className="p-3" >
-                                                    {Validacion ? 
+                                                    {/* {Validacion ? 
                                                         <div className="shadow p-3" >
                                                             <h3> Preguntas ICFES </h3>
                                                             <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas? </p>
@@ -269,7 +280,7 @@ console.log(ArregloDeActividades);
                                                             </div>
                                                             <Icfes />
                                                         </div>
-                                                    }
+                                                    } */}
                                                 </div>
                                             </div>   
                                         : null }

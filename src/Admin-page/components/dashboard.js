@@ -10,12 +10,8 @@ const Dashboard = () => {
                 <Header/>
             </div>
             <div className='separador-admin'>
-                <div>
                     <Menu />
-                </div>
-                <div>
-                    <Rutas  />
-                </div>      
+                    <Rutas  />    
             </div>            
         </div>
     );

@@ -84,6 +84,7 @@
 .con-btn-actiCurso{
     grid-column-start: 1;
     grid-column-end: 3;
+    cursor: pointer;
 }
 .cont-btn-actividadCurso{
     background-color: #00639A;
@@ -102,6 +103,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin: 0px 180px;
+}
+.cont-cards-acti-calificar{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 50px;
 }
 .cont-datos-actividad-crear{
     display: grid;
@@ -246,4 +252,15 @@
     height: 40px;
     padding:  0px 5px;
     cursor: pointer;
+}
+.eliminar{
+    color: red;
+    cursor: pointer;
+}
+.calificar{
+    color: #8ee259;
+    cursor: pointer;
+}
+.pointer{
+    cursor:pointer;
 }

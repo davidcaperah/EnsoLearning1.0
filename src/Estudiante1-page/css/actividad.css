@@ -85,17 +85,23 @@
     font-weight: 300;
     font-size: 12px;
     line-height: 16px;
-    text-align: right;
+    margin-left: 125px;
+    text-align: left;
     color: #3D3C3C;
 }
 .card-actividades-estu1 img{
-   margin: 40px 60px;
+    margin-top: 30px;
+    margin-left: 30px;
+    width: 70%;
+    height: 70%;
+    border-radius: 10%;
 }
 .card-cont-img-actividades{
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 3;
+
 }
 .circulo-Actividades-estu1{
     position: absolute;
@@ -207,4 +213,6 @@
     background: #FFFFFF;
     border-radius: 20px;
     margin-left: 39%;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

@@ -95,6 +95,7 @@ const InterfazAulas = () => {
 
 
     const cambiarInterfaz = (num) => {
+        console.log("entraaa")
         dispatch({
             type: "@updateNumberInterfazAula",
             numberInterfazAula: num
@@ -112,18 +113,20 @@ const InterfazAulas = () => {
     return (
         <div>
             <div className='cont-header-curso'>
-                <div>
+                <div className='row'>
                     <div className='cuadrado-header-curso'>  
-                    </div>
+                    
                     <div  className='obalo-header-curso'> 
                         <h2 onClick={Volver} >{`Mis cursos >`}</h2>  
                     </div>
                     <div className="obalo-rosado" >
                         <h2>Curso {curso.Curso_Nu}</h2>
                     </div>
-                    <div className="obalo-rosado1" ></div> 
+                    <div className="obalo-rosado1" ></div>
+
+                    </div> 
                 </div>
-                <div >
+                <div className='row' >
                     <div className='cont-opciones-header'> 
                         <div>
                             <img onClick={() => cambiarInterfaz(4)} alt='planillaAcademica' src={`${URL.servidor}Archivos_u/iconos/user6.svg`}/>

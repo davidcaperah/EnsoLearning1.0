@@ -1,7 +1,7 @@
 import React from 'react';
 import Cookies from 'universal-cookie';
 import URL from '../../URL.js';
-
+import '../css/docente.css'
 
 const Menu = () => {
 

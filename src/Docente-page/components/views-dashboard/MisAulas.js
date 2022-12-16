@@ -54,7 +54,7 @@ const MisAulas = () => {
     const numberInterfazAula = useSelector(state => state.numberInterfazAula)
     
     return (
-        <div className='container'>
+        <div>
             {numberInterfazAula === 1000 ? <IdentificadorMallas /> : null}
             {numberInterfazAula === 1001 ? <UseMallas /> : null}
             {numberInterfazAula === 1002 ? <CreateMallas /> : null}
