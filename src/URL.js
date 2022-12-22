@@ -6,7 +6,7 @@ if(server === "localhost"){
     URL = {
         local: "http://localhost:3000/",
         compartido : "http://localhost:3000/",
-        servidor : "http://localhost/api/EnsoLearningBackend/",
+        servidor : "http://localhost/api/Enso-BackEnd/",
         servidordos : "http://localhost/"
     };
 }else{
