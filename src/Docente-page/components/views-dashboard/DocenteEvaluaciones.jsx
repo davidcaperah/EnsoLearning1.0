@@ -1,14 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
-
-import "flatpickr/dist/themes/material_green.css";
 import Cookies from 'universal-cookie';
 import axios from 'axios';
 import URL from '../../../URL.js';
 import Swal from 'sweetalert2';
-import CalifiacionEvaluacion from './califiacionEvaluacion.js';
 import '../../css/evaluaciones.css'
-import InterfazAulas from './Aulas/interfazAulas.js';
 import Evaluaciones from './Aulas/Evaluaciones'
 import Calendario from '../../calendario'
 const DocenteEvaluaciones = () => {
@@ -16,7 +12,7 @@ const DocenteEvaluaciones = () => {
     const [DatosRecibidos, setDatosRecibidos] = useState([])
     const [select, setselect] = useState([])
     const [curso, setcurso] = useState([])
-    const [estado, setEstado] = useState({})
+    // const [estado, setEstado] = useState({})
     const [numeroInterfaz, setnumeroInterfaz] = useState(0)
     const [datosEnviar, setdatosEnviar] = useState({})
     const [estadoEvalua , serEstadoEvalua] = useState(0)

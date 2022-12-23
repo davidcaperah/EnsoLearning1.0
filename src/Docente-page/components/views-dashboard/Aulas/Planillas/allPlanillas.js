@@ -1,3 +1,13 @@
+/**
+ * ==================================================
+ * Sistema de planeación de recursos empresariales 
+ * @author Enso-Learning
+ * @copyright Copyright (c) 2022, Enso-Learning
+ * @version 1.0 EDU_PLT
+ * ==================================================
+*/
+
+
 import React,{useEffect, useState} from 'react'
 import axios from 'axios';
 import Volver from '../volver';
@@ -12,8 +22,9 @@ const AllPlanillas = () => {
     const dispatch = useDispatch()
     const [Estudiantes, setEstudiantes] = useState([])
     const [CambiarInterfazModal, setCambiarInterfazModal] = useState(0)
-    const [letraFiltro , setLetraFiltro] = useState("A")
+    const [letraFiltro , setLetraFiltro] = useState("*")
     const planillasCurso = useSelector(state => state.planillasCurso)
+    const infoCurso = useSelector(state=>state.aulaSeleccionada);
     const letras = ['A','B','C','D','F','G','H','I','J','K','L','M','N','Ñ','O','P','Q','R','S','T','U','V','W','X' ,'Y','Z']
     let promGene = 0;
 
@@ -33,8 +44,6 @@ const AllPlanillas = () => {
     useEffect(() => {
         cargarEstudiantes()
     }, [])
-
-    console.log(planillasCurso)
 
     const filtrarLetra = (e)=>{
        let  letra = e.target;
@@ -69,7 +78,7 @@ const AllPlanillas = () => {
                 <div className="row" >
                 
                     <div className='col-4 header-evaluacion'>
-                        <p style={{marginTop:"-10px"}}>{`Mis cursos > curso 402 > Planilla academica`}</p>
+                        <p style={{marginTop:"-10px"}}>{`Mis cursos > curso ${infoCurso.Curso_Nu} > Planilla academica`}</p>
                         <h3 >Crear evaluacion</h3>
                         <svg width="450" height="329" xmlns="http://www.w3.org/2000/svg">
                             <g>      
@@ -115,11 +124,11 @@ const AllPlanillas = () => {
                                 </div>
                                 <div className='d-flex flex-row justify-content-center cont-btn-planilla'>
                                     <div className='enviarMensaje-planilla'  onClick={()=> cambiarInterfaz(7 , data) }  >
-                                        <img src={`${URL.servidor}Archivos_u/iconos/mensajes.svg`}/>
+                                        <img src={`${URL.servidor}Archivos_u/iconos/mensajes.svg`} alt="student"/>
                                         <div>Enviar mensaje</div>
                                     </div>
                                     <div className='enviarNotas-planilla' onClick={()=> cambiarInterfaz(6, data)}>
-                                        <img src={`${URL.servidor}Archivos_u/iconos/icon-misaulas.svg`}/>
+                                        <img src={`${URL.servidor}Archivos_u/iconos/icon-misaulas.svg`} alt="data"/>
                                         <div>Notas</div>
                                     </div>
                                 </div>
