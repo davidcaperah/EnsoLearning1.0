@@ -26,7 +26,6 @@ const Header = ()=>{
             let idDocente = JSON.stringify(DatosDoc)
             const api = axios.create({ baseURL: URL.servidor });
             const response = await api.post('/api-php-react/Cargar_proid.php', idDocente);
-            console.log(response.data)
             dispatch({
                 type: "@addDatauser",
                 user: response.data

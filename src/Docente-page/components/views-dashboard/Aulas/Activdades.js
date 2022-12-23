@@ -1,7 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import Swal from 'sweetalert2'
 import axios from 'axios';
-import AgregarPuntos from './ActividadesFolder/agregarPuntos';
 import Calificar from './ActividadesFolder/CalificarActividad'
 import { useSelector,useDispatch } from 'react-redux';
 import '../../../css/actividadesCurso.css'
@@ -58,10 +56,7 @@ const Actividades = () => {
         TraerActividades();
         //eslint-disable-next-line
     }, []);
-    console.log(Actividades)
-    console.log(DatosCurso)
-    console.log(vista)
-    console.log(item)
+
     return (
        <div>
            <div className='row header-curso-actividades'>
