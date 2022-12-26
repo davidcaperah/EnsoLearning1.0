@@ -101,7 +101,7 @@ const guardargenero = async () =>{
     
 }
 const GuardarCambios = async () =>{
-    if(Editar){
+    if(Editar.id){
         let archivo = "";
         if(datos.formFile){
             const formDatos = new FormData();
@@ -127,11 +127,12 @@ const GuardarCambios = async () =>{
                     title: 'Correcto',
                     text: 'Cambios realizados correctamente'
                   })
-                  window.location.reload();
+                //   window.location.reload();
             }
     }else{
         const formDatos = new FormData();
-        formDatos.append('archivo',datos.formFile  )
+        formDatos.append('archivo',datos.formFile)
+        console.log("🚀 ~ file: index.jsx:135 ~ GuardarCambios ~ formDatos", formDatos)
         const consulta = await axios.post(`${URL.servidor}/api-php-react/Subir_archivo_materia.php`, formDatos, {
           headers: {
               'content-type': 'multipart/form-data'
@@ -156,7 +157,7 @@ const GuardarCambios = async () =>{
                     title: 'Correcto',
                     text: 'Subido correctamente'
                   })
-                  window.location.reload();
+                //   window.location.reload();
             }
         }
     }
