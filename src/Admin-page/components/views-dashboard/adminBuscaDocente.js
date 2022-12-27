@@ -1,15 +1,14 @@
 import React,{useState} from 'react';
 import Cookies from 'universal-cookie';
 import URL from '../../../URL.js';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import '../../css/buscador-cordi.css'
 import axios from 'axios';
+import decode from '../../../utils/decode.js';
+import sign from '../../../utils/sign.js';
 
 
 const AdminBuscaDocente = () =>{
 
-    let CryptoJS = require("crypto-js")
     const cookies =  new Cookies();
 
     const [DatosRecibidos, setDatosRecibidos] = useState([]);
@@ -17,9 +16,7 @@ const AdminBuscaDocente = () =>{
     const [DatosDocente , setDatosDocente] = useState({})
     const [Mensaje, setMensaje] = useState({mensaje : "esperando busqueda" , tipo : "2"})
 
-    let IdcolEncriptado =  cookies.get('colid')
-    let bytescol = CryptoJS.AES.decrypt(IdcolEncriptado, 'A')
-    let colId = JSON.parse(bytescol.toString(CryptoJS.enc.Utf8))
+    let colId = decode('colid', 'A');
 
     const Datos = {
         id : colId
@@ -29,7 +26,7 @@ const AdminBuscaDocente = () =>{
 
    const AgregarAulas = (Docente) => {
         let id = Docente.id
-        let idEncriptado = CryptoJS.AES.encrypt(JSON.stringify(id), 'A').toString();
+        let idEncriptado = sign(id)
         cookies.set('idDoc', idEncriptado , {path: '/AdminDocenteCursos'  , expires: new Date(Date.now()+5*60*60*1000)});
         window.location.replace('/AdminDocenteCursos' );
    }

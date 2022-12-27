@@ -5,19 +5,7 @@ import URL from '../../../../URL';
 import Calendario from '../../../calendario';
 const Crear =() =>{
     const id = useParams();
-    useEffect(() => {
-        const TraerQr =  async () => {
-            let idCurso = JSON.stringify({d:0,id:id.id})
-            const api = axios.create({baseURL : URL.servidor});
-            const response = await api.post('/api-php-react/admin/cr_QR.php', idCurso);
-            const data = response.data
-            console.log(data);
-            if(data.length > 0){
-                console.log(data[0].link);
-            }
-        }
-        TraerQr()
-    }, [])
+
     return(
     <div> 
         <div className='row'>

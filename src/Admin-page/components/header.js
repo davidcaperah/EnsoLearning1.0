@@ -1,25 +1,26 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import URL from '../../URL'
 import Cookies from 'universal-cookie';
 import axios from 'axios';
 import Logo from '../../assets/img/VBBV.svg';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux';
+import decode from '../../utils/decode';
 
 
 const Header = ()=>{
-    const dispatch = useDispatch()
-    const Docente = useSelector(state => state.user)
-    const [abrirMenu , setAbrirMenu] = useState(0)
-    let CryptoJS = require("crypto-js")
+    const dispatch = useDispatch();
+
+    const Docente = useSelector(state => state.user);
+
+    const [abrirMenu , setAbrirMenu] = useState(0);
+
     const cookies = new Cookies();
 
-    let IdDocEncriptado = cookies.get('iduser')
-    let bytesDoc = CryptoJS.AES.decrypt(IdDocEncriptado, 'A')
-    let IdDoc = JSON.parse(bytesDoc.toString(CryptoJS.enc.Utf8))
-    console.log(Docente);
-    const DatosDoc = {
+    let IdDoc = decode('iduser', 'A');
+
+    const DatosDoc = useMemo(()=>({
         id: IdDoc
-    }
+    }), [IdDoc])
     
     useEffect(() => {
         const EnviarDocente = async () => {
@@ -34,7 +35,7 @@ const Header = ()=>{
         }
 
         EnviarDocente()
-    }, []);
+    }, [dispatch, DatosDoc]);
 
 
     const CerrarSesion = () =>{
@@ -55,14 +56,14 @@ const Header = ()=>{
     return(
         <div className='cont-header'>
             <div>
-                <img src={Logo} className='logo'/>
+                <img src={Logo} className='logo' alt='logo'/>
             </div>
             <div className='con-ico-header-pri'>
                 <div className='cont-ico-header'>
-                    <img src={`${URL.servidor}Archivos_u/iconos/mensajes.svg`}/>  
+                    <img src={`${URL.servidor}Archivos_u/iconos/mensajes.svg`} alt="message"/>  
                 </div>
                <div className='cont-ico-header' >
-                    <img src={`${URL.servidor}Archivos_u/iconos/campana1.svg`}/>  
+                    <img src={`${URL.servidor}Archivos_u/iconos/campana1.svg`} alt="campana"/>  
                 </div>   
             </div>
             <div className='cont-infoDocente'>
@@ -73,7 +74,7 @@ const Header = ()=>{
                             </div>
                             :
                             <div>
-                                <img className="foto-perfilDoce" src={`${URL.servidor}/Archivos_u/Logos_estu/F1.png`}/> 
+                                <img className="foto-perfilDoce" src={`${URL.servidor}/Archivos_u/Logos_estu/F1.png`} alt="logo student"/> 
                             </div>
                         } 
                 </div>
@@ -81,17 +82,17 @@ const Header = ()=>{
                     <p>{`${Docente.Nombre} ${Docente.apellido}`} <br/> Coordinador</p>
                 </div>
                 <div className='sub-menu-header'>
-                    <img onClick={menu} src={`${URL.servidor}Archivos_u/iconos/flecha-hacia-abajo.svg`}/>
+                    <img onClick={menu} src={`${URL.servidor}Archivos_u/iconos/flecha-hacia-abajo.svg`} alt="logo arrow down"/>
                 </div>
                     {
                         abrirMenu === 1 ?
                         <div className='menu-des-header'>
                             <div>
-                                <img src={`${URL.servidor}Archivos_u/iconos/flecha-hacia-abajo.svg`}/>
+                                <img src={`${URL.servidor}Archivos_u/iconos/flecha-hacia-abajo.svg`} alt="logo arrow up"/>
                                 <a href='/DocenteInfo'>Mi perfil</a>
                             </div>
                             <div>
-                                <img src={`${URL.servidor}Archivos_u/iconos/flecha-hacia-abajo.svg`}/>
+                                <img src={`${URL.servidor}Archivos_u/iconos/flecha-hacia-abajo.svg`} alt="logo arrow down"/>
                                 <p onClick={CerrarSesion} >CerrarSesion</p>
                             </div>
                         </div>

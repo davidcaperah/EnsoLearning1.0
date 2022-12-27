@@ -1,33 +1,24 @@
-import React,{useState, useEffect} from 'react'
-import Cookies from 'universal-cookie/es6'
-import Agenda from './interfaces/Agenda'
-import Anuncios from './interfaces/Anuncios'
+import React,{useState, useEffect, useCallback} from 'react'
 import Estudiante from './interfaces/Estudiante'
 import URL from '../URL.js'
-import axios from 'axios'
+import axios from 'axios';
+import decode from '../utils/decode'
+import Cookies from 'universal-cookie/es6';
 import './index.css'
 import './interfaces/css/header.css'
+
 const Dashboard = () => {
 
-
-    const CryptoJS = require("crypto-js")
-    const cookies =  new Cookies();
-
-    const Desencriptar = (NombreCookie , Llave) => {
-        const IdEncriptado =  cookies.get(NombreCookie)
-        const bytes  = CryptoJS.AES.decrypt(IdEncriptado, Llave)
-        const Datos = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-        return Datos
-    }
+    const cookies = new Cookies();
 
     const datosUsuario = {
-        id :Desencriptar("iduser" , "A")
+        id :decode("iduser" , "A")
     }
 
     const [numeroInterfaz, setnumeroInterfaz] = useState(1)
     const [datosEstudiantes, setdatosEstudiantes] = useState({})
 
-    const cargarDatosEstudiante = async () => {
+    const cargarDatosEstudiante = useCallback(async () => {
         const consulta = await axios({
             method : "post",
             url : `${URL.servidor}/api-php-react/CRUD_Acudiente.php`,
@@ -37,11 +28,11 @@ const Dashboard = () => {
             }
         })
         setdatosEstudiantes(consulta.data)
-    }
+    }, [datosUsuario.id])
 
     useEffect(() => {
         cargarDatosEstudiante()
-    }, [])
+    }, [cargarDatosEstudiante])
 
     const Salir = () => {
         cookies.remove("idcol")

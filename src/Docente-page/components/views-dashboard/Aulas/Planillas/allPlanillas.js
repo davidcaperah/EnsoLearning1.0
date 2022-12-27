@@ -98,8 +98,8 @@ const AllPlanillas = () => {
                         <div className='cont-title-planilla'>Planillas academicas</div>
                     </div>
                     <div className='col-3 d-flex align-items-end justify-content-start cont-estu-promedio-planilla'>
-                        <p>Total estudiantes curso   <strong> {Estudiantes.length} </strong> <br/>
-                            Promedio General curso  <strong> {promGene}</strong>
+                        <p>Total estudiantes   <strong> {Estudiantes.length} </strong> <br/>
+                            Promedio General  <strong> {promGene}</strong>
                         </p>    
                     </div>
                 </div> 

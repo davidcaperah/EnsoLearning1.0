@@ -9,6 +9,7 @@
 
 import React,{useState} from 'react';
 import { useSelector, useDispatch} from 'react-redux';
+import CryptoJS from 'crypto-js';
 import InterfazAulas from './Aulas/interfazAulas';
 import ViewAulas from './Aulas/viewAulas';
 import Cookies from 'universal-cookie';
@@ -33,7 +34,6 @@ import CalificarEva from '../views-dashboard/Evaluaciones/CalificarEva';
 const MisAulas = () => {
     const dispatch = useDispatch()
     const [valid, setValid] = useState(false)
-    let CryptoJS = require("crypto-js")
     const cookies =  new Cookies();
 
     const Desencriptar = (NombreCookie , Llave) => {
