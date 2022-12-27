@@ -1,9 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
-import Button from '@material-ui/core/Button';
 import URL from '../../URL.js';
-import BannerPage from './Page/bannerPage';
 import Actividad from './Actividad.js';
 import '../css/aulas.css'
 import '../css/actividad.css'

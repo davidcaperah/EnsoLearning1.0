@@ -1,9 +1,8 @@
 import React,{useState} from 'react';
-import '../css/header.css';
 import URL from '../../URL';
 import Cookies from 'universal-cookie';
-import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import '../css/header.css';
 
 const Header = () => {
     let CryptoJS = require("crypto-js")

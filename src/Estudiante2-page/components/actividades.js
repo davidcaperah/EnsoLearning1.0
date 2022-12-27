@@ -1,11 +1,8 @@
-import play from '../img/play.svg';
 import Actividad from './Actividad';
 import React,{useState, useEffect} from 'react';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
-import Button from '@material-ui/core/Button';
 import URL from '../../URL.js';
-import BannerPage from './bannerPage';
 import Calendario from '../../calendario'
 import '../css/actividades.css'
 const Actividades = () => {

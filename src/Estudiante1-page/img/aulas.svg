@@ -3,17 +3,17 @@
 <path d="M13.123 285.688C7.60058 285.755 3.07395 281.333 3.01247 275.81L0.58669 57.888C0.525216 52.3655 4.9522 47.834 10.4746 47.7667L415.728 42.8256C421.251 42.7582 425.777 47.1805 425.839 52.703L428.265 270.625C428.326 276.148 423.899 280.679 418.377 280.747L13.123 285.688Z" fill="url(#paint0_radial_1179_2799)"/>
 </g>
 <path d="M33.7256 47.4834L61.2589 5.20076L162.759 3.9632L184.226 45.6484L33.7256 47.4834Z" fill="#454545" fill-opacity="0.9"/>
-<path d="M161.85 5.4744L181.781 44.1781L36.5137 45.9493L62.0776 6.69089L161.85 5.4744Z" stroke="#2F2F2F" stroke-opacity="0.9" stroke-width="3"/>
+<path d="M161.85 5.4744L181.781 44.1781L36.5137 45.9493L62.0776 6.69089L161.85 5.4744Z" stroke="#2F2F2F" stroke-opacity="0.9" strokeWidth="3"/>
 <path d="M238.477 44.9869L266.001 1.94173L367.502 0.704171L388.977 43.1519L238.477 44.9869Z" fill="#454545" fill-opacity="0.9"/>
-<path d="M366.585 2.21546L386.552 41.6814L241.237 43.4532L266.828 3.43176L366.585 2.21546Z" stroke="#2F2F2F" stroke-opacity="0.9" stroke-width="3"/>
+<path d="M366.585 2.21546L386.552 41.6814L241.237 43.4532L266.828 3.43176L366.585 2.21546Z" stroke="#2F2F2F" stroke-opacity="0.9" strokeWidth="3"/>
 <g filter="url(#filter1_i_1179_2799)">
 <path d="M38.1006 47.4301L65.6933 10.4854L167.194 9.24786L188.601 45.5951L38.1006 47.4301Z" fill="#868686" fill-opacity="0.9"/>
 </g>
-<path d="M166.626 10.2549L186.864 44.6162L40.1133 46.4055L66.1984 11.4793L166.626 10.2549Z" stroke="#2F2F2F" stroke-opacity="0.9" stroke-width="2"/>
+<path d="M166.626 10.2549L186.864 44.6162L40.1133 46.4055L66.1984 11.4793L166.626 10.2549Z" stroke="#2F2F2F" stroke-opacity="0.9" strokeWidth="2"/>
 <g filter="url(#filter2_i_1179_2799)">
 <path d="M241.977 44.9442L269.569 7.99958L371.07 6.76202L392.477 43.1092L241.977 44.9442Z" fill="#868686" fill-opacity="0.9"/>
 </g>
-<path d="M370.502 7.76902L390.74 42.1304L243.989 43.9196L270.075 8.9935L370.502 7.76902Z" stroke="#2F2F2F" stroke-opacity="0.9" stroke-width="2"/>
+<path d="M370.502 7.76902L390.74 42.1304L243.989 43.9196L270.075 8.9935L370.502 7.76902Z" stroke="#2F2F2F" stroke-opacity="0.9" strokeWidth="2"/>
 <defs>
 <filter id="filter0_i_1179_2799" x="0.58606" y="42.8248" width="435.679" height="250.864" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>

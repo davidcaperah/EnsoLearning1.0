@@ -5,8 +5,6 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import URL from '../../../../../URL';
 import {useDispatch,useSelector} from 'react-redux';
-//import { DateRange } from '@material-ui/icons';
-
 
 const CrearActividades = ({idActividad}) => {
     const dispatch = useDispatch()

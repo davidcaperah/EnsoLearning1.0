@@ -1,4 +1,3 @@
-import { green, red } from '@material-ui/core/colors'
 import React ,{useState}from 'react'
 import '../css/calendario.css'
 
@@ -88,7 +87,7 @@ const Calendario = (props)=>{
             <div key={num}style={{gridColumnStart:6,gridColumnEnd:6}}>{num}</div>:
             num === 1 && diaSemana === "Sun"?
             <div key={num}style={{gridColumnStart:7,gridColumnEnd:7}}>{num}</div>:
-            num == 1?
+            num === 1?
             <div key={num}>{num}</div>:
             dia === num && mes === mesa?
             <div key={num} className='Dia'>{num}</div>:
