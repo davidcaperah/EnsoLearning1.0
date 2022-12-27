@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
 import URL from '../../../URL.js';
 import 'chart.piecelabel.js'
 import '../../css/estadisticas.css'
-import { DataUsageOutlined } from '@material-ui/icons';
 const Estadisticas =  () => {
 
   const dispatch = useDispatch()
@@ -72,7 +72,7 @@ const Estadisticas =  () => {
 
     EnviarDocente()
 
-  }, []);
+  }, [docente.id]);
   
   const cargarEstudiantes = async (id_curso) => {
     const consulta = await axios({
@@ -87,7 +87,7 @@ const Estadisticas =  () => {
     const estudiantesCurso = consulta.data
     let promedio = 0
     estudiantesCurso.map(el =>{
-      promedio = promedio + el.promedio ;
+      return promedio = promedio + el.promedio ;
     })
     setPromedio(promedio)
     console.log(consulta.data)
@@ -203,7 +203,7 @@ const Estadisticas =  () => {
                   <div className='grafica-circular'>
                     {promedio} / 100
                   </div>
-                  <p>ver top 10</p>
+                  <Link>ver top 10</Link>
                 </div>
               </div>
             </div>
@@ -222,7 +222,7 @@ const Estadisticas =  () => {
             <div className='estadisticas1'>
               <div className='titulo-estadisticas1'>
                 <h3>Estudiante</h3>
-                {promEstuIndividual.Nombre == undefined ?
+                {promEstuIndividual.Nombre === undefined ?
                   <h4>Seleciona un estudiante </h4>:
                   <h4>{`${promEstuIndividual.Nombre} ${promEstuIndividual.Apellido}`} </h4>
               }
@@ -245,7 +245,7 @@ const Estadisticas =  () => {
                   <div className='grafica-circular1'>
                     {promEstuIndividual.promedio} / 100
                   </div>
-                  <p>Ver detalle</p>
+                  <Link>Ver detalle</Link>
                 </div>
               </div>
             </div>

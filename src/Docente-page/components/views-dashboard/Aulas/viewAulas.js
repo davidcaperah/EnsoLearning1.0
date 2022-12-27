@@ -80,7 +80,7 @@ const ViewAulas = () => {
                     {CodMateria.map(curso =>
                         <div className="col-md-3 curso" key={curso.id} onClick={() => RetornarComponente(curso)}>
                             <div >
-                                <img className="img-tarjeta" src={URL.servidor+"/Archivos_u/iconos/"+curso.imagen} alt="Enso learning area de matematicas" />
+                                <img className="img-tarjeta" src={URL.servidor+"Archivos_u/iconos/"+curso.imagen} alt="Enso learning area de matematicas" />
                                 <div className="cont-texto-card">
                                     <h2 >Aula</h2>
                                     <h2>{curso.Curso_Nu}</h2>

@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
-import URL from '../../../URL.js';
-import EditAnuncios from './editActividad';
 import Swal from 'sweetalert2';
-import Calificar from './Calificar.js';
-import '../../css/actividades.css'
 import CrearActividad from './DocenteActividadesCrear'
 import Calendario from '../../calendario'
 import Cactividad from './Actividades/CrearActividad'
 import VerActividad from './Actividades/VerActividad'
 import AsignarActividad from './Actividades/AsignarActividad'
 import CambiarEstado from './Actividades/CambiarEstado'
+import URL from '../../../URL.js';
+import '../../css/actividades.css'
 
 const DocenteActividades = () => {
 
