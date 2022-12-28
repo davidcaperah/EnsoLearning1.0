@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import './css/home.css'
 import URL from '../../URL'
-import Calendario from '../../calendario'
+import Calendario from '../../components/calendario'
 import Agenda from './Agenda'
 import Anuncios from './Anuncios'
 import Mensaje from './Mensaje'

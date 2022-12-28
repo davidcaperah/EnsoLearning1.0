@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import URL from '../../URL';
 import Cookies from 'universal-cookie';
 import { useSelector, useDispatch } from 'react-redux';
-import BannerPage from './Page/bannerPage';
 import Evaluacion from './Evaluacion';
 import Page from './Sistema de Evaluaciones/Page';
 import '../css/evaluaciones.css'
-import Calendario from '../../calendario'
+import Calendario from '../../components/calendario'
 function Evaluaciones() {
 
     const numberInterfazEstudiantes = useSelector(state => state.numberInterfazEstudiantes)

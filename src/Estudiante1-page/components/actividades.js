@@ -5,7 +5,7 @@ import URL from '../../URL.js';
 import Actividad from './Actividad.js';
 import '../css/aulas.css'
 import '../css/actividad.css'
-import Calendario from '../../calendario';
+import Calendario from '../../components/calendario.js'
 
 function Actividades() {
     const [Validacion, setValidacion] = useState(true)

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Cookies from 'universal-cookie';
 import URL from '../../../URL.js';
 import Docente from './Docente';
@@ -49,12 +49,12 @@ const MisDocenteDocente = () => {
         }
     }
     const cargarMaterias = async ()=>{
-        /*let DatosJson = JSON.stringify({})
+        let DatosJson = JSON.stringify({})
         const api = axios.create({baseURL : URL.servidor});
         const response = await api.post('/api-php-react/Cargar_materia.php', DatosJson);
         let data = response.data
         console.log(data)
-        setMaterias(data)*/
+        setMaterias(data)
         
     }
 

@@ -6,7 +6,7 @@ import URL from '../../../URL.js';
 import Swal from 'sweetalert2';
 import '../../css/evaluaciones.css'
 import Evaluaciones from './Aulas/Evaluaciones'
-import Calendario from '../../calendario'
+import Calendario from '../../../components/calendario.js'
 const DocenteEvaluaciones = () => {
 
     const [DatosRecibidos, setDatosRecibidos] = useState([])

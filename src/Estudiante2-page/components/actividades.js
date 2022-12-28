@@ -3,7 +3,7 @@ import React,{useState, useEffect} from 'react';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
 import URL from '../../URL.js';
-import Calendario from '../../calendario'
+import Calendario from '../../components/calendario'
 import '../css/actividades.css'
 const Actividades = () => {
 

@@ -1,12 +1,9 @@
 import React,{useState, useEffect} from 'react';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
-import Button from '@material-ui/core/Button';
-import Banner  from './Banner';
-import play from '../img/kid.svg';
 import Actividad from './Actividad';
 import URL from './../../URL';
-import Calendario from '../../calendario';
+import Calendario from '../../components/calendario'
 import '../css/actividades.css'
 const Actividades = () => {
 

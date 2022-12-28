@@ -43,7 +43,7 @@ const InterfazAulas = () => {
         traerLibros()
         //eslint-disable-next-line
     }, []);
-    console.log(libros.id)
+    
     /*const eliminarLibro = (info) => {
         console.log(info)
         Swal.fire({
@@ -106,10 +106,6 @@ const InterfazAulas = () => {
         })
 
     }
-    console.log(curso)
-    console.log(libros.length);
-    console.log(libros);
-    console.log(aulaSeleccionada)
     return (
         <div>
             <div className='cont-header-curso'>
@@ -117,10 +113,10 @@ const InterfazAulas = () => {
                     <div className='cuadrado-header-curso'>  
                     
                     <div  className='obalo-header-curso'> 
-                        <h2 onClick={Volver} >{`Mis cursos >`}</h2>  
+                        <h2 onClick={Volver} >{`Mis aulas > aula ${curso.Curso_Nu}`}</h2>  
                     </div>
                     <div className="obalo-rosado" >
-                        <h2>Curso {curso.Curso_Nu}</h2>
+                        <h2>Aula {curso.Curso_Nu}</h2>
                     </div>
                     <div className="obalo-rosado1" ></div>
 
