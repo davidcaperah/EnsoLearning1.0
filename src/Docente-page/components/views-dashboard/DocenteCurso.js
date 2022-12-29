@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 import axios from "axios";
 import URL from "../../../URL.js";
 import "../../css/miCurso.css";
 
 const DocenteCurso = () => {
+  const navigate = useNavigate()
   // const planillasEstudiante = useSelector(state => state.planillasEstudiante);
   const numberInterfazCurso = useSelector((state) => state.numberInterfazCurso);
   const dispatch = useDispatch();
@@ -71,6 +73,7 @@ const DocenteCurso = () => {
       type: "@updateplanillasCurso",
       planillasCurso: curso,
     });
+    navigate('/DocenteAulas')
   };
 
   console.log(DatosRecibidos);

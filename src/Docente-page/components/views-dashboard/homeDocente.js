@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 import '../../css/homeDocentes.css'
-import Calendario from '../../calendario'
+import Calendario from '../../../components/calendario'
 
 const HomeDocentes = ()=>
 {

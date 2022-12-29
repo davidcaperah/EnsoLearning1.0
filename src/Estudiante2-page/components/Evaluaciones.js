@@ -8,8 +8,8 @@ import URL from '../../URL';
 import Cookies from 'universal-cookie';
 import { useSelector, useDispatch } from 'react-redux';
 import Page from './Sistema de Evaluaciones/Page';
+import Calendario from '../../components/calendario'
 import '../css/evaluaciones.css'
-import Calendario from '../../calendario';
 const Evaluaciones = () => {
 
     const numberInterfazEstudiantes = useSelector(state => state.numberInterfazEstudiantes)

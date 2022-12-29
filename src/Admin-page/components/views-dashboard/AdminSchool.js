@@ -4,7 +4,7 @@ import axios from 'axios';
 import URL from '../../../URL.js';
 import EditColegio from './editColegio';
 import { useDispatch } from 'react-redux';
-import Calendario from '../../../calendario'
+import Calendario from '../../../components/calendario.js'
 
 
 const AdminSchool = () => {

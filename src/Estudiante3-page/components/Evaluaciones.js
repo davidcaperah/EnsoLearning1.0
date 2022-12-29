@@ -8,7 +8,7 @@ import Cookies from 'universal-cookie';
 import BannerPage from './Banner';
 import Page from './Sistema de Evaluaciones/Page';
 import URL from './../../URL';
-import Calendario from '../../calendario';
+import Calendario from '../../components/calendario'
 import '../css/evaluaciones.css'
 const Evaluaciones = () => {
 

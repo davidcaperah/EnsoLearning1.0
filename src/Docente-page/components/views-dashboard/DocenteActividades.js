@@ -3,7 +3,7 @@ import Cookies from 'universal-cookie';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import CrearActividad from './DocenteActividadesCrear'
-import Calendario from '../../calendario'
+import Calendario from '../../../components/calendario'
 import Cactividad from './Actividades/CrearActividad'
 import VerActividad from './Actividades/VerActividad'
 import AsignarActividad from './Actividades/AsignarActividad'
