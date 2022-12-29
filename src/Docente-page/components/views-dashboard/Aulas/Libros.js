@@ -14,6 +14,7 @@ const Libros = () => {
     const [Validacionbtn, setValidacionbtn] = useState(true)
     const [Campos, setCampos] = useState({})
     const [DatosLibros, setDatosLibros] = useState([])
+    const [libros, setLibros] = useState([]);
     const [DatosProp, setDatosProp] = useState({})
 
     useEffect(()=>{
@@ -40,7 +41,18 @@ const Libros = () => {
 
         sendData();
         //eslint-disable-next-line
-      }, []);    
+      }, []);   
+      
+      useEffect(()=>{
+        let datos = {
+            d: 3
+        }
+        const datosJSON = JSON.stringify(datos);
+        const api = axios.create({baseURL:URL.servidor});
+        api.post(`/api-php-react/info_libros.php`, datosJSON).then(res=>{
+            setLibros(res.data);
+        })
+      }, [])
 
 
 
@@ -110,12 +122,10 @@ const Libros = () => {
         if(Genero > 0 && Autor > 0){
             let data = DatosRecibidosTres.filter(data => data.estrellas === 0 && data.autor === autor && data.genero === genero)
             setDatosLibros(data)
-            console.log(data);
         }
         if(Genero === 0){
             let data = DatosRecibidosTres.filter(data => data.estrellas === 0 && data.autor === autor)
             setDatosLibros(data)
-            console.log(data);
         }
         if(Autor === 0 ){
             let data = DatosRecibidosTres.filter(data => data.estrellas === 0 && data.genero === genero)
@@ -124,7 +134,6 @@ const Libros = () => {
 
         if(Autor === 0 && Genero === 0){
             setDatosLibros(DatosRecibidosTres)
-            console.log(DatosRecibidosTres);
         }
     }
 
@@ -165,8 +174,14 @@ const Libros = () => {
                     </div>
 
                     <div className="row" >
-                        {DatosLibros.map(data => 
-                            <div className="col-md-3" key={data.id}>
+                        {
+                            libros.length === 0 ?(
+                                <h1>
+                                    cargando...
+                                </h1>
+                            ):
+                            DatosLibros.length === 0 ? libros.map(data=>(
+                                <div className="col-md-3" key={data.id}>
                                 <div className="p-3 m-2 Areas pointer shadow" onClick={()=> cargarLibro(data) } >
                                     <div className="d-flex justify-content-center" >
                                         <img alt={"Enso Learning "+data.Nombre}  className="w-100" src={data.portada} />
@@ -176,7 +191,19 @@ const Libros = () => {
                                     <Estrellas data={data} />
                                 </div>   
                             </div>
-                        )}
+                            )):DatosLibros.map(data => 
+                                <div className="col-md-3" key={data.id}>
+                                    <div className="p-3 m-2 Areas pointer shadow" onClick={()=> cargarLibro(data) } >
+                                        <div className="d-flex justify-content-center" >
+                                            <img alt={"Enso Learning "+data.Nombre}  className="w-100" src={data.portada} />
+                                        </div> 
+                                        <h6 className="text-center text-white mt-3" > Editorial {data.editorial} </h6>
+                                        <p className="text-center text-white mt-3" > {data.Nombre} </p>
+                                        <Estrellas data={data} />
+                                    </div>   
+                                </div>
+                            )
+                        }
                     </div>
                 </div>
             :
