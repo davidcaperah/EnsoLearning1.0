@@ -11,6 +11,7 @@ const DocenteEvaluaciones = () => {
 
     const [DatosRecibidos, setDatosRecibidos] = useState([])
     const [select, setselect] = useState([])
+    console.log("🚀 ~ file: DocenteEvaluaciones.jsx:14 ~ DocenteEvaluaciones ~ select", select)
     const [curso, setcurso] = useState([])
     // const [estado, setEstado] = useState({})
     const [numeroInterfaz, setnumeroInterfaz] = useState(0)
