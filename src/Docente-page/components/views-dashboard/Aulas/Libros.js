@@ -183,7 +183,7 @@ const Libros = () => {
 
                     <div className="row" >
                         {
-                            libros.length === 0 ?(
+                            libros.length===0&&DatosLibros.length===0 ?(
                                 <h1>
                                     cargando...
                                 </h1>

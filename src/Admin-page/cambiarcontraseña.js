@@ -34,7 +34,6 @@ const CambiarContraseña = () => {
         ...Datos,
         infotoken: respuesta.data
       })
-      console.log(respuesta);
       if (!respuesta.data) {
         window.location.replace("/");
       } else {
@@ -54,9 +53,7 @@ const CambiarContraseña = () => {
   const claveNueva = async () => {
     const api = axios.create({ baseURL: URL.servidor });
     const respuesta = await api.post('/api-php-react/admin/Cambiar_pass.php', Datos);
-    console.log(respuesta);
     const resinfo = respuesta.data;
-    console.log(resinfo);
     return resinfo;
   }
 
