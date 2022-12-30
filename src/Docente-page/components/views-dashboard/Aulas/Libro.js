@@ -1,4 +1,12 @@
-import React, { useState } from 'react';
+
+/**
+ * ==================================================
+ * Sistema de planeación de recursos empresariales 
+ * @author Enso-Learning
+ * @copyright Copyright (c) 2022, Enso-Learning
+ * @version 1.0 EDU_PLT
+ * ==================================================
+*/import React, { useState } from 'react';
 import URL from '../../../../URL.js';
 import Swal from 'sweetalert2'
 import { useSelector } from 'react-redux';
