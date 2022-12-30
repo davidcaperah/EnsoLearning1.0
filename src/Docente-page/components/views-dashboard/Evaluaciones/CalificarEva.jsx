@@ -10,10 +10,6 @@ const Crear = () => {
   const dispatch = useDispatch();
   const volver = (e) => {
     dispatch({
-      type: "@uploadAulaSeleccionada",
-      aulaSeleccionada: {},
-    });
-    dispatch({
       type: "@updateNumberInterfazAula",
       numberInterfazAula: 1,
     });
@@ -59,6 +55,7 @@ const Crear = () => {
         </div>
         <div
           className="volver-actividadCurso d-flex justify-center items-center"
+          style={{zIndex:1000}}
           onClick={volver}
         >
           <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg">

@@ -75,7 +75,7 @@ const DocenteEvaluaciones = () => {
 
     const cambiarEstado = async (b,id,eva) => {
         console.log("esta es la id:"+id+"esta es la eva:"+eva+"  "+b );
-        if(eva == 2){
+        if(eva === 2){
             eva = 1;
         }else{
             eva = 2;

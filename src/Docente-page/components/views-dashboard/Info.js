@@ -1,102 +1,128 @@
-import React, { useState, useEffect } from 'react';
-import Cookies from 'universal-cookie';
-import axios from 'axios';
-import URL from '../../../URL.js';
-import Swal from 'sweetalert2'
-import { useDispatch, useSelector } from 'react-redux'
-import '../../css/docente.css'
+import React, { useState, useEffect } from "react";
+import Cookies from "universal-cookie";
+import axios from "axios";
+import URL from "../../../URL.js";
+import Swal from "sweetalert2";
+import { useDispatch, useSelector } from "react-redux";
+import "../../css/docente.css";
+import GradeComponent from "./Aulas/components/gradeComponent.jsx";
 
 const InfoDocente = () => {
-    const dispatch = useDispatch()
-    const Docente = useSelector(state => state.user)
+  //redux dispatch
+  const dispatch = useDispatch();
+  //Current profesor
+  const Docente = useSelector((state) => state.user);
+  //list of aulas
+  const [CodMateria, setCodMateria] = useState([]);
 
-    let CryptoJS = require("crypto-js")
-    const cookies = new Cookies();
-    const [CamposTemas, setCamposTemas] = useState({})
+  const [ValidacionCursos, setValidacionCursos] = useState(false);
 
+  //list theme fields
+  const [CamposTemas, setCamposTemas] = useState({});
 
-    let IdAdminEncriptado = cookies.get('idcol')
-    let bytesadmin = CryptoJS.AES.decrypt(IdAdminEncriptado, 'A')
-    let Idcol = JSON.parse(bytesadmin.toString(CryptoJS.enc.Utf8))
+  const [DatosRecibidos, setDatosRecibidos] = useState({});
+  const [Validacion, setValidacion] = useState(true);
+  // validation if the user is authenticate
+  let CryptoJS = require("crypto-js");
+  const cookies = new Cookies();
 
-    const Datos = {
-        id: Idcol
-    }
+  let IdAdminEncriptado = cookies.get("idcol");
+  let bytesadmin = CryptoJS.AES.decrypt(IdAdminEncriptado, "A");
+  let Idcol = JSON.parse(bytesadmin.toString(CryptoJS.enc.Utf8));
 
+  const Datos = {
+    id: Idcol,
+  };
 
-    let IdDocEncriptado = cookies.get('iduser')
-    let bytesDoc = CryptoJS.AES.decrypt(IdDocEncriptado, 'A')
-    let IdDoc = JSON.parse(bytesDoc.toString(CryptoJS.enc.Utf8))
+  let IdDocEncriptado = cookies.get("iduser");
+  let bytesDoc = CryptoJS.AES.decrypt(IdDocEncriptado, "A");
+  let IdDoc = JSON.parse(bytesDoc.toString(CryptoJS.enc.Utf8));
 
-    const DatosDoc = {
-        id: IdDoc
-    }
+  const DatosDoc = {
+    id: IdDoc,
+  };
 
-    const [DatosRecibidos, setDatosRecibidos] = useState({});
-    const [Validacion, setValidacion] = useState(true)
+  const TemasCampos = (e) => {
+    setCamposTemas({
+      ...CamposTemas,
+      [e.target.name]: e.target.value,
+    });
+  };
 
+  useEffect(() => {
+    const idDocente = JSON.stringify({ id: Docente.id });
+    const api = axios.create({ baseURL: URL.servidor });
+    api.post("/api-php-react/Cargar_Curaula.php", idDocente).then((res) => {
+      if (!res.data) {
+        setValidacionCursos(true);
+      } else {
+        setCodMateria(res.data);
+        dispatch({
+          type: "aulasList",
+          aulasList: res.data,
+        });
+      }
+    });
+    // probar()
+    //eslint-disable-next-line
+  }, [Docente.id]);
 
-    const TemasCampos = (e) => {
-        setCamposTemas({
-            ...CamposTemas,
-            [e.target.name]: e.target.value
-        })
-    }
+  useEffect(() => {
+    const sendData = async () => {
+      let DatosJson = JSON.stringify(Datos);
+      const api = axios.create({ baseURL: URL.servidor });
+      const response = await api.post(
+        "/api-php-react/Cargar_colid.php",
+        DatosJson
+      );
+      setDatosRecibidos(response.data);
+    };
 
-    useEffect(() => {
-        const sendData = async () => {
-            let DatosJson = JSON.stringify(Datos)
-            const api = axios.create({ baseURL: URL.servidor });
-            const response = await api.post('/api-php-react/Cargar_colid.php', DatosJson);
-            setDatosRecibidos(
-                response.data
-            )
-        }
+    const EnviarDocente = async () => {
+      let idDocente = JSON.stringify(DatosDoc);
+      const api = axios.create({ baseURL: URL.servidor });
+      const response = await api.post(
+        "/api-php-react/Cargar_proid.php",
+        idDocente
+      );
+      dispatch({
+        type: "@addDatauser",
+        user: response.data,
+      });
+    };
 
-        const EnviarDocente = async () => {
-            let idDocente = JSON.stringify(DatosDoc)
-            const api = axios.create({ baseURL: URL.servidor });
-            const response = await api.post('/api-php-react/Cargar_proid.php', idDocente);
-            dispatch({
-                type: "@addDatauser",
-                user: response.data
-            })
-        }
+    EnviarDocente();
+    sendData();
+    //eslint-disable-next-line
+  }, []);
 
-        EnviarDocente()
-        sendData();
-        //eslint-disable-next-line
-    }, []);
+  const NoRecargar = async (e) => {
+    e.preventDefault();
+    console.log(document.getElementById("IMG").files[0]);
+    if (document.getElementById("IMG").value === "") {
+      let datos = {
+        info: document.getElementById("info").value,
+        Nombres: document.getElementById("Nombres").value,
+        apellidos: document.getElementById("apellidos").value,
+        estudios: document.getElementById("estudios").value,
+        imagen: Docente.imagen,
+        d: 0,
+        id: DatosDoc.id,
+      };
 
+      let DatosJson = JSON.stringify(datos);
+      console.log(DatosJson);
+      const consulta = await axios({
+        method: "post",
+        url: `${URL.servidor}/api-php-react/info_docente.php`,
+        data: DatosJson,
+      });
+      let datosRecibidos = consulta.data;
 
-
-    const NoRecargar = async (e) => {
-        e.preventDefault()
-        console.log(document.getElementById("IMG").files[0]);
-        if (document.getElementById("IMG").value === "") { 
-            let datos = {
-                info: document.getElementById("info").value,
-                Nombres: document.getElementById("Nombres").value,
-                apellidos: document.getElementById("apellidos").value,
-                estudios: document.getElementById("estudios").value,
-                imagen: Docente.imagen,
-                d: 0,
-                id: DatosDoc.id
-            }
-
-            let DatosJson = JSON.stringify(datos)
-            console.log(DatosJson);
-            const consulta = await axios({
-                method : "post",
-                url:`${URL.servidor}/api-php-react/info_docente.php`,
-                data:DatosJson
-            })
-            let datosRecibidos = consulta.data
-
-            if (datosRecibidos === true) {
-                window.location.replace("/DocenteInfo")
-            }
-            /*try {
+      if (datosRecibidos === true) {
+        window.location.replace("/DocenteInfo");
+      }
+      /*try {
                 let Configuracion = {
                     method: 'POST',
                     headers: {
@@ -115,51 +141,55 @@ const InfoDocente = () => {
             } catch (error) {
                 console.log(error)
             }*/
-        } else {
-            let Archivo = document.getElementById("IMG").files[0]
-            if (Archivo.type === "image/jpeg" || Archivo.type === "image/png") {
-                console.log("entro")
-                const formData = new FormData();
-                formData.append('archivo', Archivo)
-                let res = await axios.post(`${URL.servidor}/api-php-react/Subir_perfil_pro.php`, formData, {
-                    headers: {
-                        'content-type': 'multipart/form-data'
-                    }
-                })
-                let data = res.data
-                console.log(data)
-                if (data.status === "error") {
-                    Swal.fire({
-                        title: 'Error',
-                        text: data.error,
-                        icon: 'error'
-                    })
-                } else if (data.status === "success") {
-                    let datos = {
-                        info: document.getElementById("info").value,
-                        Nombres: document.getElementById("Nombres").value,
-                        apellidos: document.getElementById("apellidos").value,
-                        estudios: document.getElementById("estudios").value,
-                        imagen: data.url,
-                        d: 0,
-                        id: DatosDoc.id
-                    }
+    } else {
+      let Archivo = document.getElementById("IMG").files[0];
+      if (Archivo.type === "image/jpeg" || Archivo.type === "image/png") {
+        console.log("entro");
+        const formData = new FormData();
+        formData.append("archivo", Archivo);
+        let res = await axios.post(
+          `${URL.servidor}/api-php-react/Subir_perfil_pro.php`,
+          formData,
+          {
+            headers: {
+              "content-type": "multipart/form-data",
+            },
+          }
+        );
+        let data = res.data;
+        console.log(data);
+        if (data.status === "error") {
+          Swal.fire({
+            title: "Error",
+            text: data.error,
+            icon: "error",
+          });
+        } else if (data.status === "success") {
+          let datos = {
+            info: document.getElementById("info").value,
+            Nombres: document.getElementById("Nombres").value,
+            apellidos: document.getElementById("apellidos").value,
+            estudios: document.getElementById("estudios").value,
+            imagen: data.url,
+            d: 0,
+            id: DatosDoc.id,
+          };
 
-                    let DatosJson = JSON.stringify(datos)
-                    console.log(DatosJson);
+          let DatosJson = JSON.stringify(datos);
+          console.log(DatosJson);
 
-                    const consulta = await axios({
-                        method : "post",
-                        url:`${URL.servidor}/api-php-react/info_docente.php`,
-                        data:DatosJson
-                    })
-                    let datosRecibidos = consulta.data
+          const consulta = await axios({
+            method: "post",
+            url: `${URL.servidor}/api-php-react/info_docente.php`,
+            data: DatosJson,
+          });
+          let datosRecibidos = consulta.data;
 
-                    if (datosRecibidos === true) {
-                        window.location.replace("/DocenteInfo")
-                    }
+          if (datosRecibidos === true) {
+            window.location.replace("/DocenteInfo");
+          }
 
-                    /*try {
+          /*try {
                         let Configuracion = {
                             method: 'POST',
                             headers: {
@@ -178,162 +208,158 @@ const InfoDocente = () => {
                     } catch (error) {
                         console.log(error)
                     }*/
-                }
-            }
         }
+      }
     }
-    console.log(Docente.imagen)
+  };
 
-    return (
-        <div className='contenedor-info'>
+  return (
+    <div className="contenedor-info">
+      <div>
+        <div className="cont-datos-docentes">
+          <div className="url1">
+            <p>{"Mi perfil >"}</p>
+          </div>
+          <div className="cont-ico-editar">
+            <img src={`${URL.servidor}Archivos_u/iconos/notas-copia2.svg`} />
+          </div>
+          <div className="cont-nombre-profesion">
+            <h4>{`${Docente.Nombre} ${Docente.apellido}`} </h4>
+            <h5>{Docente.Cargo}</h5>
+          </div>
+          <div className="cont-info-colegio">
+            <div className="cont-imagen-info">
+              {Docente.imagen ? (
+                <div>
+                  <img
+                    className="imagen-info"
+                    src={`${URL.servidor}${Docente.imagen}`}
+                    alt="logo"
+                  />
+                </div>
+              ) : (
+                <div>
+                  <img
+                    className="imagen-info"
+                    src={`${URL.servidor}/Archivos_u/Logos_estu/F1.png`}
+                    alt="logo"
+                  />
+                </div>
+              )}
+            </div>
+            <div id="cont-ubi-colegio">
+              <h6>{DatosRecibidos.nombreC}</h6>
+            </div>
             <div>
-                <div className='cont-datos-docentes'>
-                    <div className='url1'>
-                        <p>{'Mi perfil >'}</p>
-                    </div>
-                    <div className='cont-ico-editar' > 
-                        <img src={`${URL.servidor}Archivos_u/iconos/notas-copia2.svg`}/>  
-                    </div>
-                    <div className='cont-nombre-profesion'>
-                        <h4>{`${Docente.Nombre} ${Docente.apellido}`} </h4>
-                        <h5>{Docente.Cargo}</h5>
-                    </div>
-                    <div className='cont-info-colegio'>
-                        <div className='cont-imagen-info'>
-                            {Docente.imagen?
-                                <div>
-                                    <img className="imagen-info"  src={`${URL.servidor}${Docente.imagen}`} alt="logo" />
-                                </div>
-                                :
-                                <div>
-                                    <img className="imagen-info"  src={`${URL.servidor}/Archivos_u/Logos_estu/F1.png`} alt="logo" />
-                                </div>
-                            }
-                        </div>
-                        <div id='cont-ubi-colegio'>
-                            <h6>{DatosRecibidos.nombreC}</h6>
-                        </div>
-                        <div >
-                            <h6>ubi colegio</h6>
-                        </div>  
-                    </div>
-                </div>
+              <h6>ubi colegio</h6>
             </div>
-            <div className='cont-info-subDatos'>
-                <div className='cont-editar'>
-                    <img src={`${URL.servidor}Archivos_u/iconos/notas-copia2.svg`}/>  
-                </div>
-
-                <div className='cont-sobreMi'>
-
-                    <div className='cont-idiomas'>
-                        <div className="cont-titulo-idiomas">
-                            <h6>Idiomas</h6>
-                        </div>
-                            
-                        <div>
-                            <div className='datos-idioma'>
-                                <p>español</p> <div className="separador" > </div> <p>nativo</p>
-                            </div>
-                            <div className='datos-idioma'>
-                                <p>ingles</p> <div className="separador" > </div> <p>avanzado</p>
-                            </div> 
-                        </div>
-
-                    </div>
-
-                    <div className='cont-descripcion'>
-                        <h5>Sobre Mi</h5>
-                        <p> 
-                            {Docente.Descr}
-                        </p>
-                    </div>
-
-                </div>
-
-                <div className='cont-areasInteres'>
-                    <div>
-                        <h5>Areas de interes</h5>
-                    </div>
-                    <div className='cont-intereses'>
-                        <div className="con-ico-areaInteres">
-                            <img src={`${URL.servidor}Archivos_u/iconos/icon-areas-interes.svg`}/>
-                        </div>
-                        <div className='areas-interes'>
-                            <div>
-                                <p>Tecnologia</p>
-                            </div>
-                            <div>
-                                <p>Tecnologia</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className='profeciones'>
-                    <div className='formacion-academica'>
-                        <div className='image-info-forAcademica'>
-                            <img  src={`${URL.servidor}Archivos_u/iconos/icon-formacion-academica.svg`}/>
-                        </div>
-                        <div>
-                            <h4>Formacion Academica</h4>
-                        </div>
-                        <div>
-                            <img className='editar-info-formacion' src={`${URL.servidor}Archivos_u/iconos/notas-copia2.svg`}/>
-                        </div>
-                    </div>
-                    <div>
-                        <ul className='lista-profesiones'>
-                            <li>     
-                                <strong>{Docente.estudios}</strong>
-                                <br/>
-                                En didactica de la materia  para la educacion basica
-                                <br/>
-                                 2017 - 2020     
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div className='mis-cursos'>
-                    <h4>Mis cursos</h4>
-                    <div>
-                        <p>201 </p>
-                        <div className="separador1" > </div> 
-                        <p>301 </p>
-                        <div className="separador1" > </div> 
-                        <p>401</p> 
-                        <div className="separador1" > </div> 
-                        <p>501</p>
-                    </div>
-                </div>
-
-                <div className='actividades-grados'>
-                    <div className='titulo-actividades-grados'>Mis Actividades</div>
-                    <div className='grados'>
-                        <p>Grado 2</p>
-                        <div className='cont-imagen-info1'> 
-                            <img className="imagen-info1" src={`${URL.servidor}Archivos_u/iconos/flecha-hacia-abajo.svg`}/>
-                        </div>
-                    </div>
-                    <div className='grados'>
-                        <p>Grado 3</p>
-                        <div className='cont-imagen-info1'> 
-                            <img className="imagen-info1" src={`${URL.servidor}Archivos_u/iconos/flecha-hacia-abajo.svg`}/>
-                        </div>
-                    </div>
-                    <div className='grados'>  
-                        <p>Grado 4</p>
-                        <div className='cont-imagen-info1'> 
-                            <img className="imagen-info1" src={`${URL.servidor}Archivos_u/iconos/flecha-hacia-abajo.svg`}/>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
+          </div>
         </div>
-    );
-}
+      </div>
+      <div className="cont-info-subDatos">
+        <div className="cont-editar">
+          <img src={`${URL.servidor}Archivos_u/iconos/notas-copia2.svg`} />
+        </div>
+
+        <div className="cont-sobreMi">
+          <div className="cont-idiomas">
+            <div className="cont-titulo-idiomas">
+              <h6>Idiomas</h6>
+            </div>
+
+            <div>
+              <div className="datos-idioma">
+                <p>español</p> <div className="separador"> </div> <p>nativo</p>
+              </div>
+              <div className="datos-idioma">
+                <p>ingles</p> <div className="separador"> </div> <p>avanzado</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="cont-descripcion">
+            <h5>Sobre Mi</h5>
+            <p>{Docente.Descr}</p>
+          </div>
+        </div>
+
+        <div className="cont-areasInteres">
+          <div>
+            <h5>Areas de interes</h5>
+          </div>
+          <div className="cont-intereses">
+            <div className="con-ico-areaInteres">
+              <img
+                src={`${URL.servidor}Archivos_u/iconos/icon-areas-interes.svg`}
+              />
+            </div>
+            <div className="areas-interes">
+              <div>
+                <p>Tecnologia</p>
+              </div>
+              <div>
+                <p>Tecnologia</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="profeciones">
+          <div className="formacion-academica">
+            <div className="image-info-forAcademica">
+              <img
+                src={`${URL.servidor}Archivos_u/iconos/icon-formacion-academica.svg`}
+              />
+            </div>
+            <div>
+              <h4>Formacion Academica</h4>
+            </div>
+            <div>
+              <img
+                className="editar-info-formacion"
+                src={`${URL.servidor}Archivos_u/iconos/notas-copia2.svg`}
+              />
+            </div>
+          </div>
+          <div>
+            <ul className="lista-profesiones">
+              <li>
+                <strong>{Docente.estudios}</strong>
+                <br />
+                En didactica de la materia para la educacion basica
+                <br />
+                2017 - 2020
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="mis-cursos">
+          <h4>Mis cursos</h4>
+          <div className="d-flex">
+            {ValidacionCursos ? (
+              <div className="col-md-12">
+                <h2> ¡No tienes cursos a cargo! </h2>
+              </div>
+            ) : (
+              CodMateria.map((e) => (
+                <div key={e.id}>
+                  <p>{e.Curso_Nu}</p>
+                  <div className="separador1"> </div>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+
+        <div className="actividades-grados">
+          <div className="titulo-actividades-grados">Mis Actividades</div>
+          <GradeComponent />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 /*<div className='contenedor-info'>
             {Validacion ?
