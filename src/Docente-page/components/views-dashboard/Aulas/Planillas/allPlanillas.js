@@ -79,7 +79,6 @@ const AllPlanillas = () => {
                 
                     <div className='col-4 header-evaluacion'>
                         <p style={{marginTop:"-10px"}}>{`Mis cursos > curso ${infoCurso.Curso_Nu} > Planilla academica`}</p>
-                        <h3 >Crear evaluacion</h3>
                         <svg width="450" height="329" xmlns="http://www.w3.org/2000/svg">
                             <g>      
                                 <line id="svg_2" y2="358" x2="331" y1="358" x1="334" stroke="#000" fill="none"/>
