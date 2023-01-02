@@ -191,32 +191,57 @@ const Crear = () => {
           <div
             style={{ display: "flex", flexWrap: "wrap", overflowX: "scroll" }}
           >
-            {evalue.map((e) => {
-              return (
-                <div className="cont-card-evaluacion col-3 " key={e.id}>
-                  <div className="d-flex flex-row">
-                    <div className="estado-evaluaciones">Estado:Activo </div>
-                    <div className=""></div>
-                  </div>
-                  <div className="cont-datos-evaluaciones">
-                    <div>
-                      <h2>{e.Titulo} </h2>
-                      <h4 className="overflow">Descripcion: {e.texto} </h4>
+            {
+              isDefeated?evalue.map((e) => {
+                return e.estado===2&&(
+                  <div className="cont-card-evaluacion col-3 " key={e.id}>
+                    <div className="d-flex flex-row">
+                      <div className="estado-evaluaciones">Estado:Activo </div>
+                      <div className=""></div>
                     </div>
-                    <div>
-                      <p>
-                        Fecha de creacion: {e.fecha_c} <br />
-                        <br />
-                        Fecha max de entrega: {e.fecha_max} <br />
-                        <br />
-                        cantidad de preguntas : {e.preguntas}
-                      </p>
+                    <div className="cont-datos-evaluaciones">
+                      <div>
+                        <h2>{e.Titulo} </h2>
+                        <h4 className="overflow">Descripcion: {e.texto} </h4>
+                      </div>
+                      <div>
+                        <p>
+                          Fecha de creacion: {e.fecha_c} <br />
+                          <br />
+                          Fecha max de entrega: {e.fecha_max} <br />
+                          <br />
+                          cantidad de preguntas : {e.preguntas}
+                        </p>
+                      </div>
                     </div>
-                    <div></div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              }):evalue.map((e) => {
+                return e.estado===1&&(
+                  <div className="cont-card-evaluacion col-3 " key={e.id}>
+                    <div className="d-flex flex-row">
+                      <div className="estado-evaluaciones">Estado:Activo </div>
+                      <div className=""></div>
+                    </div>
+                    <div className="cont-datos-evaluaciones">
+                      <div>
+                        <h2>{e.Titulo} </h2>
+                        <h4 className="overflow">Descripcion: {e.texto} </h4>
+                      </div>
+                      <div>
+                        <p>
+                          Fecha de creacion: {e.fecha_c} <br />
+                          <br />
+                          Fecha max de entrega: {e.fecha_max} <br />
+                          <br />
+                          cantidad de preguntas : {e.preguntas}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            }
           </div>
         </div>
       </div>
