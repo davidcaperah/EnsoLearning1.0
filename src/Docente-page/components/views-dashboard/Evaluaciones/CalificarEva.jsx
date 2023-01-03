@@ -196,7 +196,7 @@ const Crear = () => {
                 return e.estado===2&&(
                   <div className="cont-card-evaluacion col-3 " key={e.id}>
                     <div className="d-flex flex-row">
-                      <div className="estado-evaluaciones">Estado:Activo </div>
+                      <div className="estado-evaluaciones-vencida">Estado: Vencida </div>
                       <div className=""></div>
                     </div>
                     <div className="cont-datos-evaluaciones">

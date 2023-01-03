@@ -70,7 +70,7 @@ const DocenteEvaluaciones = () => {
     }
   };
 
-  const cambiarEstado = async (b, id, eva) => {
+  const cambiarEstado = async (id, eva) => {
     if (eva === 2) {
       eva = 1;
     } else {
@@ -94,8 +94,8 @@ const DocenteEvaluaciones = () => {
         icon: "success",
         title: "Se ha cambiado el estado",
       });
-      window.location.reload();
     }
+    window.location.reload()
   };
   const asingar_curso = async (id) => {
     de.id = id;
