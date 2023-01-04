@@ -195,8 +195,8 @@ const Actividades = () => {
         }`}
       >
         {vista === 1
-          ? Actividades.map((item) =>
-              item.estado_d === 1 ? (
+          ? Actividades.length>0&&Actividades.some(e=>e.estado_d===1)?Actividades.map((item) =>
+              item.estado_d === 1 && (
                 <div key={item.id} className="card-curso-actividades">
                   <div className="card-cont-img">
                     <img
@@ -222,12 +222,13 @@ const Actividades = () => {
                     <div className="cont-btn-actividadCurso">Calificar</div>
                   </div>
                 </div>
-              ) : null
-            )
-          : null}
+              )
+            ):(
+              <h1>No hay actividades asignadas a esta aula</h1>
+            ):null}
         {vista === 2
-          ? Actividades.map((item) =>
-              item.estado_d === 2 ? (
+          ?Actividades.length>0&&Actividades.some(e=>e.estado_d===2)?Actividades.map((item) =>
+              item.estado_d === 2 && (
                 <div key={item.id} className="card-curso-actividades">
                   <div className="card-cont-img">
                     <img
@@ -253,9 +254,10 @@ const Actividades = () => {
                     <div className="cont-btn-actividadCurso">Calificar</div>
                   </div>
                 </div>
-              ) : null
-            )
-          : null}
+              )
+              ):(
+                <h1>No hay actividades vencidades</h1>
+              ):null}
         {vista === 3 ? (
           <div>
             <Calificar actividad={item} />
