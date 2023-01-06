@@ -1,3 +1,11 @@
+/**
+ * ==================================================
+ * Sistema de planeación de recursos empresariales 
+ * @author Enso-Learning
+ * @copyright Copyright (c) 2022, Enso-Learning
+ * @version 1.0 EDU_PLT
+ * ==================================================
+*/
 import React, { useState } from 'react';
 import URL from '../../../../URL.js';
 import Swal from 'sweetalert2'
@@ -223,7 +231,7 @@ const Evaluaciones = (props) => {
     const DatosPreguntas = (e) => {
         setCamposRespuesta({
             ...CamposRespuesta,
-            [e.target.name]: e.target.value.trim()
+            [e.target.name]: e.target.value
         });
     }
 
@@ -293,11 +301,11 @@ const Evaluaciones = (props) => {
                             <label>Escribe aqui el enunciado de tu pregunta</label>
                             {
                             tipoPregu === 1 || tipoPregu === 3 ?  
-                                <input className='form-input-evaluaciones' name="pregunta" onChange={DatosPreguntas} type='text'/>:null
+                                <input className='form-input-evaluaciones' name="pregunta" onChange={DatosPreguntas} type='text' value={CamposRespuesta.pregunta}/>:null
                             }
                             {
                             tipoPregu ===2 ?
-                                <input className='form-input-evaluaciones' name="pregunta" onChange={DatosPreguntas}  type='text' style={{height:"70px"}}/>:null
+                                <textarea className='form-input-evaluaciones' name="pregunta" onChange={DatosPreguntas}  type='text' value={CamposRespuesta.pregunta} style={{height:"70px", width:"100%"}}></textarea>:null
                             }
                                 
                             <div className='form-selecion'>

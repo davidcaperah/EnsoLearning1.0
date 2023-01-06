@@ -19,7 +19,7 @@ const DocenteActividades = (props) => {
     const [materias, setmaterias] = useState([])
     const [Vista, setVista] = useState(0) 
     const [post_quest, setpost_quest] = useState(1);
-    const [pregunta, setpregunta] = useState({})
+    const [pregunta, setpregunta] = useState("")
     const [preguntaadd, setpreguntaadd] = useState([])
     const [fin, setfin] = useState(false)
 
@@ -35,10 +35,7 @@ const DocenteActividades = (props) => {
         setVista(re)
     }
     const info_pregunta = (e) =>{
-        setpregunta({
-            ...pregunta,
-            [e.target.name] : e.target.value.trim()
-    })
+        setpregunta(e.target.value)
     }
     const subir_actividad = async () =>{
         Swal.fire({
@@ -61,6 +58,7 @@ const DocenteActividades = (props) => {
                 }
             } else if (result.isDenied) {
               Swal.fire('La actividad no fue guardada', '', 'info')
+              props.volver()
             }
           })
 
@@ -72,8 +70,9 @@ const DocenteActividades = (props) => {
         c++
         setpreguntaadd([
             ...preguntaadd,
-            pregunta]
+            {pregunta}]
         )
+        setpregunta("")
         setpost_quest(c)
        }else if(fin){
         let LINK = "";
@@ -163,7 +162,6 @@ const DocenteActividades = (props) => {
         sendData();
         //eslint-disable-next-line
     }, []);
-    console.log(formulario)
     return (
         <div>   
         <div> 
@@ -190,9 +188,9 @@ const DocenteActividades = (props) => {
                 <div  onClick={props.volver} className='volver-evaluacion' >{`<`}</div>
                 <form onSubmit={()=>Cvista(1)} id="form" >
                     <p className=""> ¿Como se llamará tú Actividad? </p>
-                    <input className="input-crearEvaluacion input-tam-CrearEvaluacion" type="text" name="Nombre" onChange={onChange} required />
+                    <input className="input-crearEvaluacion input-tam-CrearEvaluacion" type="text" name="Nombre" onChange={onChange} maxLength="250" required />
                     <p className=""> ¿Cual es el obejtivo de esta actividad? </p>
-                    <textarea className="input-crearEvaluacion input-tam-CrearEvaluacion" type="text" name="texto" onChange={onChange} required /> 
+                    <textarea className="input-crearEvaluacion input-tam-CrearEvaluacion" type="text" name="texto" onChange={onChange} maxLength="250" required /> 
                     <div className=" input-tam-medio-CrearEvaluacion">
                         <div className='mr-4'>
                             <p className="mt-2">  ¿Cuantas Puntos tendra tu actividad? </p>
@@ -255,7 +253,12 @@ const DocenteActividades = (props) => {
                         formulario.archivo === "4"? null :
                             <div className='mr-4'>
                                 <p className="mt-2">Recurso</p>
-                                <input  onChange={onChange} className="input-crearEvaluacion input-tam-CrearEvaluacion" accept="image/png, .jpeg, .jpg, image/gif, .pdf" type="file" name="adjunto" id="adjunto"  required />
+                                <label htmlFor="adjunto" className="input-crearEvaluacion input-tam-CrearEvaluacion" style={{height:"48%"}}>
+                                    <input  onChange={onChange}  accept="image/png, .jpeg, .jpg, image/gif, .pdf" type="file" name="adjunto" id="adjunto"  required style={{display:"none"}} />
+                                    {
+                                        formulario.adjunto?`${formulario.adjunto.name}`:`Choose a file`
+                                    }
+                                </label>
                             </div>
                         }
 
@@ -277,7 +280,7 @@ const DocenteActividades = (props) => {
                         <label>Escribe aqui el enunciado de tu pregunta</label>
                         {
                         formulario.tipo === "1" || formulario.tipo === "3" ?  
-                            <input className='form-input-evaluaciones' name="pregunta" id='pregunta' onChange={info_pregunta} type='text'/>:null
+                            <input className='form-input-evaluaciones' name="pregunta" id='pregunta' onChange={info_pregunta} type='text' value={pregunta}/>:null
                         }
                         {
                         formulario.tipo === "2" ?

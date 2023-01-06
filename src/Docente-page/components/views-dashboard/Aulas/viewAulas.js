@@ -1,3 +1,11 @@
+/**
+ * ==================================================
+ * Sistema de planeación de recursos empresariales 
+ * @author Enso-Learning
+ * @copyright Copyright (c) 2022, Enso-Learning
+ * @version 1.0 EDU_PLT
+ * ==================================================
+*/
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import URL from '../../../../URL.js';
@@ -14,13 +22,7 @@ const ViewAulas = () => {
 
     const docente = useSelector(state => state.docente)
     const dispatch = useDispatch()
-    console.log(docente)
-    console.log(CodMateria);
-    // const probar = () =>{
-    //     CodMateria.map(e => {
-    //         console.log(e)
-    //     })
-    // }
+
     useEffect(() => {
         const EnviarDocente = async () => {
             const idDocente = JSON.stringify({ id: docente.id })
@@ -50,7 +52,6 @@ const ViewAulas = () => {
         })
     }
 
-   console.log(CodMateria)
 
     return (
         <div >

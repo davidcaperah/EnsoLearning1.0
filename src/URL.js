@@ -1,7 +1,6 @@
 
 const server = document.domain;
 let URL = "";
-console.log(server);
 if(server === "localhost"){
     URL = {
         local: "http://localhost:3000/",

@@ -256,6 +256,8 @@
 }
 .form-input-evaluaciones{
     height: 30px;
+    border: 2px solid #0092E3;
+    border-radius: 15px;
 }
 .form-selecion{
     display: grid;

@@ -1,22 +1,38 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import Calendario from '../../../../components/calendario'
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Calendario from "../../../../components/calendario";
 import axios from "axios";
 import URL from "../../../../URL";
 
 const Crear = () => {
-  const id = useParams();
+  const [evalue, setEvalue] = useState([]);
+  const [isActive, setIsActive] = useState(true);
+  const [isDefeated, setIsDefeated] = useState(false);
+  const currentCurse = useSelector((state) => state.aulaSeleccionada);
   const dispatch = useDispatch();
   const volver = (e) => {
-    dispatch({
-      type: "@uploadAulaSeleccionada",
-      aulaSeleccionada: {},
-    });
     dispatch({
       type: "@updateNumberInterfazAula",
       numberInterfazAula: 1,
     });
+  };
+
+  useEffect(() => {
+    const data = {
+      d: 19,
+      id_curso: currentCurse.id_curso,
+    };
+    const dataJSON = JSON.stringify(data);
+    axios
+      .post(`${URL.servidor}/api-php-react/info_docente.php`, dataJSON)
+      .then((res) => {
+        setEvalue(res.data);
+      });
+  }, [currentCurse.id_curso]);
+
+  const handleActive = () => {
+    setIsActive(!isActive);
+    setIsDefeated(!isDefeated);
   };
 
   return (
@@ -59,6 +75,7 @@ const Crear = () => {
         </div>
         <div
           className="volver-actividadCurso d-flex justify-center items-center"
+          style={{ zIndex: 1000 }}
           onClick={volver}
         >
           <svg width="30" height="30" xmlns="http://www.w3.org/2000/svg">
@@ -132,6 +149,100 @@ const Crear = () => {
             contenedor={`cont-calendario`}
             diasCale={`dias-calendario`}
           />
+        </div>
+        <div style={{ width: "50%" }}>
+          <div
+            className="d-flex justify-around"
+            style={{ width: "100%", justifyContent: "space-around" }}
+          >
+            <div>
+              <h5
+                style={
+                  !isActive
+                    ? { color: "#9D9D9D" }
+                    : {
+                        color: "#FFAF8D",
+                        borderColor: "#FFAF8D",
+                        borderBottom: "2px solid",
+                      }
+                }
+                onClick={handleActive}
+              >
+                Evaluaciones activas
+              </h5>
+            </div>
+            <div>
+              <h5
+                style={
+                  !isDefeated
+                    ? { color: "#9D9D9D" }
+                    : {
+                        color: "#FFAF8D",
+                        borderColor: "#FFAF8D",
+                        borderBottom: "2px solid",
+                      }
+                }
+                onClick={handleActive}
+              >
+                Evaluaciones vencidas
+              </h5>
+            </div>
+          </div>
+          <div
+            style={{ display: "flex", flexWrap: "wrap", overflowX: "scroll" }}
+          >
+            {
+              isDefeated?evalue.map((e) => {
+                return e.estado===2&&(
+                  <div className="cont-card-evaluacion col-3 " key={e.id}>
+                    <div className="d-flex flex-row">
+                      <div className="estado-evaluaciones-vencida">Estado: Vencida </div>
+                      <div className=""></div>
+                    </div>
+                    <div className="cont-datos-evaluaciones">
+                      <div>
+                        <h2>{e.Titulo} </h2>
+                        <h4 className="overflow">Descripcion: {e.texto} </h4>
+                      </div>
+                      <div>
+                        <p>
+                          Fecha de creacion: {e.fecha_c} <br />
+                          <br />
+                          Fecha max de entrega: {e.fecha_max} <br />
+                          <br />
+                          cantidad de preguntas : {e.preguntas}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }):evalue.map((e) => {
+                return e.estado===1&&(
+                  <div className="cont-card-evaluacion col-3 " key={e.id}>
+                    <div className="d-flex flex-row">
+                      <div className="estado-evaluaciones">Estado:Activo </div>
+                      <div className=""></div>
+                    </div>
+                    <div className="cont-datos-evaluaciones">
+                      <div>
+                        <h2>{e.Titulo} </h2>
+                        <h4 className="overflow">Descripcion: {e.texto} </h4>
+                      </div>
+                      <div>
+                        <p>
+                          Fecha de creacion: {e.fecha_c} <br />
+                          <br />
+                          Fecha max de entrega: {e.fecha_max} <br />
+                          <br />
+                          cantidad de preguntas : {e.preguntas}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+            }
+          </div>
         </div>
       </div>
     </div>

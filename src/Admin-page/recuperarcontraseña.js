@@ -26,7 +26,6 @@ const Recuperarcontraseña = () => {
     window.location.replace("/ClaveAdmin")
   }
 
-  console.log(valorP);
   return (
     <div className="container mt-5 mb-5">
       <h2 className="text-center mt-5 dt"> ¿Haz olvidado tú contraseña? </h2>

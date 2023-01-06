@@ -12,7 +12,6 @@ import URL from '../../../../URL';
 import Swal from 'sweetalert2';
 
 const DocenteActividades = (actividad) => {
-    const [select, setselect] = useState(false)
     const [form, setform] = useState({})
     let datos = actividad.actividad;
     console.log(form)
@@ -20,25 +19,18 @@ const DocenteActividades = (actividad) => {
         setform({...form,
             d:8,
             id:datos.id,
-            [e.target.name] : e.target.value.trim()})
-        if(parseInt(e.target.value) === 1 ){
-            setselect(true)
-        }else{
-            setselect(false)
-        }
-       
+            [e.target.name] : e.target.value.trim()}) 
     }
     const GuardarDatos = (e) => {
         setform({...form,
             [e.target.name] : e.target.value.trim()})
     }
     const CambiarEstado = async () =>  {
-        if(form.estado && form.fecha_max){
+        if(form.estado){
                 let idCurso = JSON.stringify(form)
                 const api = axios.create({baseURL : URL.servidor});
                 const response = await api.post('/api-php-react/info_actividad_maestro.php', idCurso);
                 const data = response.data
-                console.log(data);
                 if(data){
                     Swal.fire('Guardada!', '', 'success')
                     window.location.reload();
@@ -59,14 +51,14 @@ const DocenteActividades = (actividad) => {
                 <div className="row">
                 <div className='col-md-12'>
                     <label for="fecha_max" className="form-label">Estado</label>
-                    <select name="estado" id="estado" className="form-control" onClick={estado} required >
+                    <select name="estado" id="estado" className="form-control" onChange={estado} required >
                         <option value=" ">Seleccione</option>
                         <option value="2">Desactivar</option>
                         <option value="1">Activar</option>
                     </select>
                 </div>
                 </div>
-                {select?
+                {form.estado==="1"?
                 <div className="row">
                 <div className='col-md-12'>
                     <label htmlFor="fecha_max" className="form-label">Fecha Entrega:</label>

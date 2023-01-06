@@ -16,7 +16,6 @@ const DocenteActividades = (actividad) => {
     const vista = (e) =>{
         setVista(e)
     }
-    console.log(puntos)
     return (
     <div>
         {Vista === 0 ?

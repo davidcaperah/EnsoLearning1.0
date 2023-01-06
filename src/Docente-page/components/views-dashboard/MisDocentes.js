@@ -35,8 +35,6 @@ const MisDocenteDocente = () => {
         })  
         let datosRecibidos = consulta.data
 
-        console.log(datosRecibidos)
-
         if (datosRecibidos.mensaje) {
             setDatosRecibidos([])
             setMensaje(datosRecibidos)
@@ -48,15 +46,14 @@ const MisDocenteDocente = () => {
             setMensaje(datosRecibidos)
         }
     }
-    const cargarMaterias = async ()=>{
+
+    useEffect(()=>{
         let DatosJson = JSON.stringify({})
         const api = axios.create({baseURL : URL.servidor});
-        const response = await api.post('/api-php-react/Cargar_materia.php', DatosJson);
-        let data = response.data
-        console.log(data)
-        setMaterias(data)
-        
-    }
+        api.post('/api-php-react/Cargar_materia.php', DatosJson).then(res=>{
+            setMaterias(res.data)
+        })
+    })
 
     const cambiarInterfaz = (docente) => {
         Validacion ? setValidacion(false) : setValidacion(true)

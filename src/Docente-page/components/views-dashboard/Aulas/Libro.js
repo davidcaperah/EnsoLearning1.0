@@ -1,3 +1,11 @@
+/**
+ * ==================================================
+ * Sistema de planeación de recursos empresariales 
+ * @author Enso-Learning
+ * @copyright Copyright (c) 2022, Enso-Learning
+ * @version 1.0 EDU_PLT
+ * ==================================================
+*/
 import React, { useState } from 'react';
 import URL from '../../../../URL.js';
 import Swal from 'sweetalert2'
@@ -184,18 +192,18 @@ const Libro = (data) => {
                     </div>
                     <div className="col-md-6" >
                         <h6 className="text-warning"> Introducción del libro : </h6>
-                        <p className="text-white"> {Datos.intro} </p>
+                        <p className="text-dark"> {Datos.intro} </p>
                         <h6 className="text-warning"> Objetivo del libro :</h6>
-                        <p className="text-white"> {Datos.objetivo} </p>
+                        <p className="text-dark"> {Datos.objetivo} </p>
                         <h6 className="text-warning"> Público permitido: </h6>
-                        {Datos.publico === 1 ? <p className="text-white"> Ciclo Uno </p> : null}
-                        {Datos.publico === 2 ? <p className="text-white"> Ciclo Dos</p> : null}
-                        {Datos.publico === 3 ? <p className="text-white"> Ciclo Tres </p> : null}
-                        {Datos.publico === 4 ? <p className="text-white"> Para todos </p> : null}
-                        <h6 className="text-warning"> Género: </h6>
-                        <p className="text-white"> {Datos.genero} </p>
+                        {Datos.publico === 1 ? <p className="text-dark"> Ciclo Uno </p> : null}
+                        {Datos.publico === 2 ? <p className="text-dark"> Ciclo Dos</p> : null}
+                        {Datos.publico === 3 ? <p className="text-dark"> Ciclo Tres </p> : null}
+                        {Datos.publico === 4 ? <p className="text-dark"> Para todos </p> : null}
+                        <h6 className="text-warning"> Género:</h6>
+                        <p className="text-dark"> {Datos.genero} </p>
                         <h6 className="text-warning"> Reseña </h6>
-                        <p className="text-white"> {Datos.rese} </p>
+                        <p className="text-dark"> {Datos.rese} </p>
                         <button className="btn btn-warning my-2" onClick={() => agregarLibroValidacion(Datos)} >
                             Agregar libro al curso
                         </button>

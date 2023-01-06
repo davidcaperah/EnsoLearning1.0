@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import {BrowserRouter, Route, Routes  } from 'react-router-dom';
 import Estadisticas from './views-dashboard/Estadisticas';
 import InfoDocente from  './views-dashboard/Info';
@@ -17,12 +17,12 @@ const RutasDocente = () => (
                 <Route path = "/DocenteAulas"         element  = {<MisAulas/>}/>
                 <Route path = "/DocenteDocentes"      element  = {<MisDocentesDocente/>}/>
                 <Route path = "/DocenteInfo"          element  = {<InfoDocente/>}/>
-                <Route path = "/DocenteCurso"         element  = {<DocenteCurso/>}/>
+                {/* <Route path = "/DocenteCurso"         element  = {<DocenteCurso/>}/> */}
                 <Route path = "/PlanillaEstudiante"   element  = {<PlanillaEstudiante/>}/>
                 <Route path = "/DocenteEvaluaciones"  element  = {<DocenteEvaluaciones/>}/>
                 <Route path = "/DocenteActividades"   element  = {<DocenteActividades/>}/>
                 <Route path = "/EditActi"             element  = {<EditActividad/>}/>
-                <Route path = "/HomeDocentes"         element  = {<HomeDocente/>}/>
+                {/* <Route path = "/HomeDocentes"         element  = {<HomeDocente/>}/> */}
             </Routes >
     </BrowserRouter>
 );

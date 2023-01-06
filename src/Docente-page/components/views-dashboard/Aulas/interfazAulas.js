@@ -1,3 +1,11 @@
+/**
+ * ==================================================
+ * Sistema de planeación de recursos empresariales 
+ * @author Enso-Learning
+ * @copyright Copyright (c) 2022, Enso-Learning
+ * @version 1.0 EDU_PLT
+ * ==================================================
+*/
 import React, { useState, useEffect } from 'react';
 import URL from '../../../../URL.js';
 import { useSelector, useDispatch } from 'react-redux';

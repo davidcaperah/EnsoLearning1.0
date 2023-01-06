@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 
 const DocenteActividades = (actividad) => {
     const [Formulario, setFormulario] = useState({})
-    const [select, setselect] = useState([])
+    const [aulas, setAulas] = useState([]);
     let datos = actividad.actividad;
     let puntos = JSON.parse(datos.puntos);
     let CryptoJS = require("crypto-js")
@@ -52,18 +52,15 @@ const DocenteActividades = (actividad) => {
 
         })
     }
-    useEffect(() => {
-        const Datase = async () => {
-            const DatosJson = JSON.stringify(Data)
-            const api = axios.create({ baseURL: URL.servidor });
-            const response = await api.post('/api-php-react/info_docente.php', DatosJson);
-            const data = response.data
-            setselect(data)
-        }
-        Datase();
-        
-    }, []);
-    console.log(Formulario)
+
+    useEffect(()=>{
+        const data = {id: iduser};
+        const dataJSON = JSON.stringify(data);
+        const api = axios.create({ baseURL: URL.servidor });
+        api.post('/api-php-react/Cargar_Curaula.php', dataJSON).then((res)=>{
+            setAulas(res.data);
+        })
+    }, [iduser])
     return (
     <div>
         <div className="card">
@@ -98,8 +95,8 @@ const DocenteActividades = (actividad) => {
                     <label for="Nombre" className="form-label">Curso:</label>
                     <select className="text-select" aria-label="Default select example" name='idCurso' onChange={Datos} >
                         <option value=" " selected>Selecione</option>
-                        {select.map(curso=>
-                        <option value={curso.id}>{curso.Curso_Nu}</option>
+                        {aulas.map(curso=>
+                        <option value={curso.id_curso}>{curso.Curso_Nu}</option>
                         )
 
                         }

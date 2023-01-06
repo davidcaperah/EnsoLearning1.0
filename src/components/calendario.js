@@ -26,11 +26,9 @@ const Calendario = (props)=>{
         }
         setMes(esta)
     }
-   console.log(dia);
-   console.log(props.diasCale);
 
     return(
-        <div className='cont-calendario-home'>
+        <div className='cont-calendario-home' style={{height:300}}>
         <div className='mes-calendario'>{
             <div className='row'>
                 <div className='col-md-12'>
