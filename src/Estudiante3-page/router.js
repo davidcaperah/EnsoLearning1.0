@@ -1,36 +1,38 @@
-import React from 'react';
+import React from "react";
 import {
-    BrowserRouter as Router,
-    Route
+  Route,
+  BrowserRouter,
+  Routes,
 } from "react-router-dom";
 
-import Configuracion from './components/Configuracion';
-import Actividades from './components/Actividades';
-import Aulas from './components/Aulas';
-import Curso from './components/Curso';
-import Evaluaciones from './components/Evaluaciones';
-import Page from './components/Page';
-import User from './components/User';
-import Eventos from './components/Eventos';
-import Lecturas from './components/Lecturas'
-import Perfil from './components/miPerfil'
+import Configuracion from "./components/Configuracion";
+import Actividades from "./components/Actividades";
+import Aulas from "./components/Aulas";
+import Curso from "./components/Curso";
+import Evaluaciones from "./components/Evaluaciones";
+import Page from "./components/Page";
+import User from "./components/User";
+import Eventos from "./components/Eventos";
+import Lecturas from "./components/Lecturas";
+import Perfil from "./components/miPerfil";
 
 const Rutas = () => {
-    return (
-        <Router>
-            <Route path="/EstudianteThreeHome" component={Page} />
-            <Route path="/EstudianteThreeAulas" component={Aulas} />
-            <Route path="/EstudianteThreeEvaluaciones" component={Evaluaciones} />
-            <Route path="/EstudianteThreeActividades" component={Actividades} />
-            <Route path="/EstudianteThreeCurso" component={Curso} />
-            <Route path="/EstudianteThreeConfiguracion" component={Configuracion} />
-            <Route path="/EstudianteThreeUser" component={User} />
-            <Route path="/EstudianteThreeEventos" component={Eventos} />
-            <Route path="/EstudianteThreeLecturas" component={Lecturas} />
-            <Route path="/EstudianteThreeMiPerfil" component={Perfil} />r
-            
-        </Router>
-    );
-}
- 
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/EstudianteThreePageHome" element={<Page />} />
+        <Route path="/EstudianteThreeAulas" element={<Aulas />} />
+        <Route path="/EstudianteThreeEvaluaciones" element={<Evaluaciones/>} />
+        <Route path="/EstudianteThreeActividades" element={<Actividades/>} />
+        <Route path="/EstudianteThreeCurso" element={<Curso/>} />
+        <Route path="/EstudianteThreeConfiguracion" element={<Configuracion/>} />
+        <Route path="/EstudianteThreeUser" element={<User/>} />
+        <Route path="/EstudianteThreeEventos" element={<Eventos/>} />
+        <Route path="/EstudianteThreeLecturas" element={<Lecturas/>} />
+        <Route path="/EstudianteThreeMiPerfil" element={<Perfil/>} />r
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
 export default Rutas;
