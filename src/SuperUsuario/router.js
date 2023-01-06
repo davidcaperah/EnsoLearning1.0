@@ -12,6 +12,7 @@ import CodigosLibros from "./components/views-dashboard/CodigosLibros";
 import AddEventos from "./components/views-dashboard/addEventos";
 import QR from "./components/QRCODE/index";
 import Config from "./components/configurar/index"
+import CrearColegio from "./components/CrearColegios/CrearColegio";
 
 const Rutas = () => {
     return (
@@ -29,6 +30,8 @@ const Rutas = () => {
             <Route exact path="/AdminEventos" element={<AddEventos/>} />
             <Route exact path="/QR" element={<QR/>} />
             <Route exact path="/config" element={<Config/>} />
+            {/* reseller */}
+            <Route exact path="/CrearColegio" element={<CrearColegio/>} />
         </Routes>
 </BrowserRouter>
     );

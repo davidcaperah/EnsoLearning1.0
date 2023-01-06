@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import Swal from 'sweetalert2';
 import Cookies from 'universal-cookie';
 import URL from './../../../URL'
 const Crear =() =>{

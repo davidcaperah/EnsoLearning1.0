@@ -1,8 +1,4 @@
-import axios from 'axios';
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import Swal from 'sweetalert2';
-import Cookies from 'universal-cookie';
+import React, { useState } from 'react';
 import Crear from './CrearQR';
 import Consultar from './ConsultarQR';
 
