@@ -208,7 +208,7 @@ const AllPlanillas = () => {
                     src={`${URL.servidor}Archivos_u/iconos/icon-misaulas.svg`}
                     alt="data"
                   />
-                  <div>Notas</div>
+                  <span>Notas</span>
                 </div>
               </div>
             </div>

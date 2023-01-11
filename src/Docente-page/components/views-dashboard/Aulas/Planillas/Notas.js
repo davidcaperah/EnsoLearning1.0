@@ -17,8 +17,10 @@ import "../../../../css/planillaAcademica.css";
 
 const Notas = (props) => {
   const data = useSelector((state) => state.planillasEstudiante);
+  const planillaCurso = useSelector(state=>state.planillasCurso);
   const aulaSelect = useSelector(state=>state.aulaSeleccionada);
 
+  const [prueba, setPrueba] = useState([]);
   const [materianame, setmaterianame] = useState({});
   const [estado, setestado] = useState(false);
 
@@ -26,13 +28,6 @@ const Notas = (props) => {
     d: 11,
     id: data.id,
   };
-
-  let memomerizeParams = useMemo(()=>({
-    d: 18,
-    id_estu: data.id,
-    id_materia: aulaSelect.id_materia,
-    id_curso: aulaSelect.id_curso
-  }), [data, aulaSelect])
 
 
 //   useEffect(() => {
@@ -59,13 +54,27 @@ const Notas = (props) => {
 //     //eslint-disable-next-line
 //   }, []);
 
+  // useEffect(()=>{
+  //   const parserJson = JSON.stringify({
+  //     d: 18,
+  //     id_estu: data.id,
+  //     id_materia: aulaSelect.id_materia,
+  //     id_curso: aulaSelect.id_curso
+  //   });
+  //   const api = axios.create({ baseURL: URL.servidor });
+  //   const request = api.post("/api-php-react/info_docente.php", parserJson).then(res => {
+  //       console.log("🚀 ~ file: Notas.js:66 ~ request ~ res", res.data)
+  //   })
+  // }, [aulaSelect, data])
+
   useEffect(()=>{
-    const parserJson = JSON.stringify(memomerizeParams);
-    const api = axios.create({ baseURL: URL.servidor });
-    const request = api.post("/api-php-react/info_docente.php", parserJson).then(res => {
-        setmaterianame(res.data[0]); 
+    const parserJson = JSON.stringify({d:20, id_col:planillaCurso.IdCol, id_estudiante:data.id});
+    const api = axios.create({baseURL:URL.servidor});
+    api.post('/api-php-react/info_docente.php', parserJson).then(res => {
+      console.log("🚀 ~ file: Notas.js:73 ~ api.post ~ res.data", res.data)
     })
-  }, [memomerizeParams])
+  }, [])
+
   return (
     <div className="d-flex position-fixed justify-content-center aling-items-center modal-agenda">
       <div>
@@ -91,7 +100,7 @@ const Notas = (props) => {
                 <div className="card-parrafo-notas">
                   <p>
                     Ciclo {data.Ciclo} <br />
-                    Promedio materia: {materianame.promedio} <br />
+                    Promedio materia: {data.promedio} <br />
                     Total puntos: {data.Puntos} <br />
                   </p>
                 </div>
@@ -99,7 +108,7 @@ const Notas = (props) => {
             </div>
             <div className="col-5 d-flex flex-column mx-3 mt-5">
               <div className="titulo-materias-notas">
-                <h6>Materia {materianame.N_Materia}</h6>
+                <h6>Materia</h6>
               </div>
               <div className="notas-perido-notas">
                 <div>Periodo</div>

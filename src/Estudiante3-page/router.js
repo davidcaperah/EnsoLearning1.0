@@ -15,6 +15,7 @@ import User from "./components/User";
 import Eventos from "./components/Eventos";
 import Lecturas from "./components/Lecturas";
 import Perfil from "./components/miPerfil";
+import InConstruction from "./components/inConstruction";
 
 const Rutas = () => {
   return (
@@ -29,7 +30,8 @@ const Rutas = () => {
         <Route path="/EstudianteThreeUser" element={<User/>} />
         <Route path="/EstudianteThreeEventos" element={<Eventos/>} />
         <Route path="/EstudianteThreeLecturas" element={<Lecturas/>} />
-        <Route path="/EstudianteThreeMiPerfil" element={<Perfil/>} />r
+        <Route path="/EstudianteThreeMiPerfil" element={<Perfil/>} />
+        <Route path="/EnConstruccion" element={<InConstruction/>}/>
       </Routes>
     </BrowserRouter>
   );

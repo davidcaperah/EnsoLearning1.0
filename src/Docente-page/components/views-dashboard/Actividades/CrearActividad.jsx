@@ -209,6 +209,7 @@ const DocenteActividades = (props) => {
                         <div className='mr-4'>
                             <p className="mt-2">Curso</p>
                             <select className="input-crearEvaluacion input-tam-CrearEvaluacion" name="curso" id="curso" onChange={onChange} required >
+                                    <option defaultValue={""} defaultChecked disabled={formulario.curso?true:false}>Seleccione</option>
                                     <option value="1">1°</option>
                                     <option value="2">2°</option>
                                     <option value="3">3°</option>
@@ -226,6 +227,7 @@ const DocenteActividades = (props) => {
                         <div className='mr-4'>
                             <p className="mt-2"> Materia </p>
                             <select className="input-crearEvaluacion input-tam-CrearEvaluacion" name="materia" id="materia" onChange={onChange} required >
+                                <option defaultValue={""} disabled={formulario.materia?true:false}>Seleccione</option>
                                 {materias.map(materia=>
                                     <option key={materia.id} value={materia.id}>{materia.N_Materia}</option>
                                 )
