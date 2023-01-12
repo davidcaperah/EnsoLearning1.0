@@ -12,7 +12,7 @@ const Index = () =>{
     const [autor, setautor] = useState({})
     const [datos, setdatos] = useState({})
     const [Editar, setEditar] = useState({})
-    
+    const [cargar, setcargar] = useState(false)
 
 const Estado = (tipo,materia) =>{
     setVentana(tipo)
@@ -20,6 +20,7 @@ const Estado = (tipo,materia) =>{
         setEditar(materia)
     }
 }
+var tt = cargar ? false : true;
 const GuardarForm = (e) =>{
     if(e.target.id === 'formFile'){
         setdatos({
@@ -47,9 +48,8 @@ const guardarautor = async () =>{
                 title: 'Correcto',
                 text: 'Subido correctamente'
               })
-              console.log(datos)
-              console.log(edita);
-            //   window.location.reload();
+              setEditar({}); 
+              setcargar(tt)
     }
     }else{
         let idCurso = JSON.stringify({d:1,Nombre:datos.Nombre,genero:datos.genero})
@@ -62,7 +62,7 @@ const guardarautor = async () =>{
                 title: 'Correcto',
                 text: 'Editado correctamente'
               })
-            //   window.location.reload();
+              setcargar(tt)
     }
     }
     
@@ -80,9 +80,8 @@ const guardargenero = async () =>{
                 title: 'Correcto',
                 text: 'Subido correctamente'
               })
-              console.log(datos)
-              console.log(edita);
-              window.location.reload();
+            setEditar({}); 
+            setcargar(tt)
     }
     }else{
         let idCurso = JSON.stringify({d:1,Nombre:datos.Nombre})
@@ -95,7 +94,7 @@ const guardargenero = async () =>{
                 title: 'Correcto',
                 text: 'Editado correctamente'
               })
-              window.location.reload();
+              setcargar(tt)
     }
     }
     
@@ -127,12 +126,11 @@ const GuardarCambios = async () =>{
                     title: 'Correcto',
                     text: 'Cambios realizados correctamente'
                   })
-                //   window.location.reload();
+                  setcargar(tt)
             }
     }else{
         const formDatos = new FormData();
         formDatos.append('archivo',datos.formFile)
-        console.log("🚀 ~ file: index.jsx:135 ~ GuardarCambios ~ formDatos", formDatos)
         const consulta = await axios.post(`${URL.servidor}/api-php-react/Subir_archivo_materia.php`, formDatos, {
           headers: {
               'content-type': 'multipart/form-data'
@@ -157,7 +155,7 @@ const GuardarCambios = async () =>{
                     title: 'Correcto',
                     text: 'Subido correctamente'
                   })
-                //   window.location.reload();
+                  setcargar(tt)
             }
         }
     }
@@ -203,11 +201,9 @@ useEffect(() => {
     TraerAutor()
     TraerMaterias()
     TraerGeneros()
-}, [])
+    console.log("🚀 ~ file: index.jsx:204 ~ Index ~ cargar", cargar)
+}, [cargar])
 console.log(Editar);
-console.log(datos);
-console.log(autor);
-
     return(
         <div className="col-md-12">
             <div className="row center">
@@ -334,7 +330,7 @@ console.log(autor);
                     <br/>
                     <div className='row'>
                         <div className="col-md-12">
-                        <button type="button" onClick={GuardarCambios} class="btn btn-primary center">Editar</button>
+                        <button type="button" onClick={GuardarCambios} class="btn btn-primary center">Guardar</button>
                         </div>
                     </div>
                 </form>
@@ -379,7 +375,7 @@ console.log(autor);
                             <select name="genero" id="genero" className="form-control"  onChange={GuardarForm}>
                                 <option value="0">selecione</option>
                                 {generos.map( genero =>
-                                    <option value={genero.id}>{genero.genero}</option>
+                                    <option selected={Editar.idgenero === genero.id ? true : false} value={genero.id}>{genero.genero}</option>
                                 )
                                 }
                             </select>

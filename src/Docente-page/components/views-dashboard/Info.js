@@ -53,7 +53,7 @@ const InfoDocente = () => {
     const idDocente = JSON.stringify({ id: Docente.id });
     const api = axios.create({ baseURL: URL.servidor });
     api.post("/api-php-react/Cargar_Curaula.php", idDocente).then((res) => {
-      if (!res.data) {
+      if (!res.data || !res.data.Curso_Nu) {
         setValidacionCursos(true);
       } else {
         setCodMateria(res.data);
