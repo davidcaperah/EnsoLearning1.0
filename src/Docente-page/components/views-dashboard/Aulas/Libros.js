@@ -21,6 +21,7 @@ const Libros = () => {
   const [genero, setGenero] = useState(0);
   const [autor, setAutor] = useState(0);
   const [starts, setStarts] = useState(0);
+  const [name, setName] = useState("");
   const [DatosLibros, setDatosLibros] = useState([]);
   const [libros, setLibros] = useState([]);
   const [DatosProp, setDatosProp] = useState({});
@@ -60,10 +61,11 @@ const Libros = () => {
     });
   }, []);
 
-  const nombresLibros = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     let datos = {
       d: 1,
-      nombre: document.getElementById("nombre").value,
+      nombre: name,
     };
     let DatosJson = JSON.stringify(datos);
 
@@ -74,36 +76,14 @@ const Libros = () => {
     });
     let datosRecibidos = consulta.data;
 
-    if (datosRecibidos.mensaje) {
-      setDatosRecibidosTres([]);
-    } else if (datosRecibidos.length > 0) {
-      setDatosRecibidosTres(datosRecibidos);
+    if(!datosRecibidos.mensaje){
+      setDatosLibros(datosRecibidos);
     }
 
-    /*try {
-            let Configuracion = {
-                method : 'POST',
-                headers : {
-                    'Accept' : 'application/json',
-                    'Content-Type' : 'application/json'
-                },
-                body :  DatosJson
-            }
-            let res = await fetch(`${URL.servidor}/api-php-react/info_libros.php`, Configuracion)
-            let json = await res.json()
-            // let json = await res.text()
+  };
 
-            if(json.mensaje){
-                setDatosRecibidosTres([])
-            }else if(json.length > 0){
-                setDatosRecibidosTres(
-                    json
-                )
-            }
-
-        } catch (error) {
-            console.log(error)
-        }*/
+  const handleSearch = (e) => {
+    setName(e.target.value);
   };
 
   const handleAutor = (e) => {
@@ -162,11 +142,11 @@ const Libros = () => {
         <div className="p-3">
           <div>
             <h3 className="text-warning text-center"> Buscar libro </h3>
-            <form className="row p-4">
+            <form className="row p-4" onSubmit={handleSubmit}>
               <input
                 type="text"
                 id="nombre"
-                onChange={nombresLibros}
+                onChange={handleSearch}
                 className="form-control col-md-4"
                 placeholder="Nombre"
               />
@@ -190,9 +170,9 @@ const Libros = () => {
                 className="form-control col-md-2"
               >
                 <option value={0}> Calificación </option>
-                <option value={1}> Mayor a 3 estrellas </option>
-                <option value={2}> Mayor a 4 estrellas </option>
-                <option value={3}> 5 estrellas </option>
+                <option value={3}> Mayor a 3 estrellas </option>
+                <option value={4}> Mayor a 4 estrellas </option>
+                <option value={5}> 5 estrellas </option>
               </select>
               <select
                 name="Autor"
@@ -216,14 +196,15 @@ const Libros = () => {
           </div>
 
           <div className="row">
-            {libros.length === 0 && DatosLibros.length === 0 ? (
+            {libros.length === 0 ? (
               <h1>cargando...</h1>
             ) : DatosLibros.length === 0 ? (
               autor !== 0 || genero !== 0 ? (
                 libros.map((data) => {
                   if (
-                    (autor === data.autor ||
-                    genero === data.genero)
+                    autor === data.autor ||
+                    genero === data.genero ||
+                    starts === data.estrellas
                   ) {
                     return (
                       <div className="col-md-3" key={data.id}>

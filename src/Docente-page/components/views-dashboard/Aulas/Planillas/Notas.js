@@ -34,6 +34,7 @@ const Notas = (props) => {
       d: 20,
       id_col: planillaCurso.IdCol,
       id_estudiante: data.id,
+      id_materia: aulaSelect.id_materia
     });
     const api = axios.create({ baseURL: URL.servidor });
     api.post("/api-php-react/info_docente.php", parserJson).then((res) => {
