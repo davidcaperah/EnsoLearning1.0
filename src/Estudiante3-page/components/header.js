@@ -1,11 +1,13 @@
 import React,{useState} from 'react';
+import { useDispatch } from 'react-redux';
 import '../css/header.css';
 import URL from '../../URL';
 import Cookies from 'universal-cookie';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
-const Header = () => {
+const Header = ({student}) => {
+    const dispatch = useDispatch()
     let CryptoJS = require("crypto-js")
     const cookies =  new Cookies();
     const [subMenu, setSubMenu] = useState(0)
@@ -23,12 +25,12 @@ const Header = () => {
         const api = axios.create({baseURL : URL.servidor});
         const response = await api.post('/api-php-react/Config_estu.php', idusers);
         const data = response.data
-        console.log(data)
         if(data){
             cookies.remove('iduser')
             cookies.remove('idCurso')
             cookies.remove('idcol')
             cookies.remove('estado')
+            dispatch({type:"@addDatauser", user:{}})
             window.location.replace(URL.compartido)
         }else{
             console.log(data)
@@ -45,13 +47,13 @@ const Header = () => {
             </div>
             <div className='cont-info-estudiantes1'>
                 <div className='cont-iconos-estudiantes1'>
-                    <div className='iconos-img-estudiantes'>
+                    <div className='iconos-img-estudiantes3'>
                         < svg className='isvg-iconos-header-estu3' xmlns="http://www.w3.org/2000/svg" version="1.1" width="38px" height="38px" style={{shapeRendering:"geometricPrecision", textRendering:"geometricPrecision", imageRendering:"optimizeQuality", fillRule:"evenodd", clipRule:"evenodd"}}  >
                             <g><path style={{opacity:"0.825"}}  d="M 37.5,12.5 C 37.5,13.1667 37.5,13.8333 37.5,14.5C 36.8333,15.1667 36.1667,15.8333 35.5,16.5C 34.2946,15.3143 32.9613,15.3143 31.5,16.5C 30.0813,15.5489 28.4147,15.2155 26.5,15.5C 25.8333,18.5 25.1667,21.5 24.5,24.5C 23.8333,24.5 23.5,24.8333 23.5,25.5C 22.1009,28.6988 21.1009,32.0321 20.5,35.5C 20.1667,36.1667 19.8333,36.8333 19.5,37.5C 18.5,37.5 17.5,37.5 16.5,37.5C 16.5,37.1667 16.5,36.8333 16.5,36.5C 15.4409,32.2825 14.1075,28.6159 12.5,25.5C 12.6716,24.5084 12.3382,23.8417 11.5,23.5C 11.2437,21.0628 10.5771,18.7294 9.5,16.5C 8.04156,15.218 6.70823,15.218 5.5,16.5C 3.88277,15.962 2.2161,15.6287 0.5,15.5C 0.166667,15.5 -0.166667,15.5 -0.5,15.5C -0.5,14.1667 -0.5,12.8333 -0.5,11.5C 1.47409,8.23012 3.47409,4.89678 5.5,1.5C 13.8134,0.334926 22.1467,0.168259 30.5,1C 32.9845,4.81375 35.3178,8.64708 37.5,12.5 Z M 9.5,5.5 C 14.8692,3.6897 15.5359,4.6897 11.5,8.5C 10.8243,7.39836 10.1577,6.39836 9.5,5.5 Z M 22.5,4.5 C 27.0001,4.21915 27.8335,5.88581 25,9.5C 23.9055,7.92209 23.0722,6.25542 22.5,4.5 Z M 17.5,5.5 C 18.9701,7.15134 20.3034,8.98467 21.5,11C 19.1667,11.6667 16.8333,11.6667 14.5,11C 15.7577,9.25909 16.7577,7.42576 17.5,5.5 Z M 5.5,7.5 C 7.10422,8.28696 7.77089,9.6203 7.5,11.5C 6.32496,11.719 5.32496,11.3857 4.5,10.5C 5.12723,9.58317 5.46056,8.58317 5.5,7.5 Z M 29.5,7.5 C 30.3636,8.68826 31.3636,9.85492 32.5,11C 31.0563,11.7805 29.723,11.6139 28.5,10.5C 29.1272,9.58317 29.4606,8.58317 29.5,7.5 Z M 13.5,15.5 C 16.5,15.5 19.5,15.5 22.5,15.5C 21.5068,20.3134 20.0068,24.9801 18,29.5C 16.393,24.8464 14.893,20.1797 13.5,15.5 Z"/></g>
                             <g><path style={{opacity:"0.81"}}  d="M 0.5,15.5 C 2.2161,15.6287 3.88277,15.962 5.5,16.5C 7.27333,19.0599 9.27333,21.3932 11.5,23.5C 11.3284,24.4916 11.6618,25.1583 12.5,25.5C 14.1075,28.6159 15.4409,32.2825 16.5,36.5C 10.4503,30.078 5.11701,23.078 0.5,15.5 Z"/></g>
                             <g><path style={{opacity:"0.77"}}  d="M 35.5,16.5 C 30.8504,23.1451 25.8504,29.4784 20.5,35.5C 21.1009,32.0321 22.1009,28.6988 23.5,25.5C 24.1667,25.5 24.5,25.1667 24.5,24.5C 26.8333,21.8333 29.1667,19.1667 31.5,16.5C 32.9613,15.3143 34.2946,15.3143 35.5,16.5 Z"/></g>
                         </svg>
-                        5
+                        <span>{student.Puntos}</span>
                     </div>
                     <div className='iconos-img-estudiantes'>
                         <svg className='isvg-iconos-header-estu3' xmlns="http://www.w3.org/2000/svg" version="1.1" width="38px" viewBox="0 0 1280 1280" height="38px" style={{shapeRendering:"geometricPrecision", textRendering:"geometricPrecision", imageRendering:"optimizeQuality", fillRule:"evenodd", clipRule:"evenodd"}}>
@@ -77,8 +79,8 @@ const Header = () => {
                         <img src={`${URL.servidor}Archivos_u/iconos/avatar.svg`}/>
                     </div>
                     <div className='nombre-header-estu1'>
-                        Estudiante <br/>
-                        juan perez
+                        <span>Estudiante</span> <br/>
+                        <span>{`${student.Nombre} ${student.Apellido}`}</span>
                     </div>
                     <div className='iconos-img-estudiantes-avatar'>
                         <img onClick={()=>{ subMenu === 0?setSubMenu(1):setSubMenu(0)}} className='sub-menu-header' src={`${URL.servidor}Archivos_u/iconos/next.svg`}/>

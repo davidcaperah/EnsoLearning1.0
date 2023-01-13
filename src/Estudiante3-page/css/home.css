@@ -25,6 +25,7 @@
     line-height: 27px;
     padding: 10px 10px;
     text-align: center;
+    cursor: pointer;
 }
 .cont-icono-sub-menu-home-estu3 img{
     width: 40px;
@@ -105,7 +106,7 @@
     
 }
 .logo-estu3-home{
-    margin: 0px 40px;
+    margin: 0px auto;
     position: relative;
     top:40px
 }

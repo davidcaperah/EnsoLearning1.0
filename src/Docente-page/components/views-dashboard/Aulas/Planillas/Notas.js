@@ -1,71 +1,46 @@
 /**
  * ==================================================
- * Sistema de planeación de recursos empresariales 
+ * Sistema de planeación de recursos empresariales
  * @author Enso-Learning
  * @copyright Copyright (c) 2022, Enso-Learning
  * @version 1.0 EDU_PLT
  * ==================================================
-*/
+ */
 
-
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Volver from "../volver";
 import URL from "../../../../../URL";
 import { useSelector } from "react-redux";
 import "../../../../css/planillaAcademica.css";
+import { TableBody, TableHead } from "@material-ui/core";
 
 const Notas = (props) => {
   const data = useSelector((state) => state.planillasEstudiante);
-  const aulaSelect = useSelector(state=>state.aulaSeleccionada);
+  const planillaCurso = useSelector((state) => state.planillasCurso);
+  const aulaSelect = useSelector((state) => state.aulaSeleccionada);
 
-  const [materianame, setmaterianame] = useState({});
-  const [estado, setestado] = useState(false);
+  const [promedios, setPromedios] = useState([]);
+  // const [materianame, setmaterianame] = useState({});
+  // const [estado, setestado] = useState(false);
 
-  let Datos = {
-    d: 11,
-    id: data.id,
-  };
+  // let Datos = {
+  //   d: 11,
+  //   id: data.id,
+  // };
 
-  let memomerizeParams = useMemo(()=>({
-    d: 18,
-    id_estu: data.id,
-    id_materia: aulaSelect.id_materia,
-    id_curso: aulaSelect.id_curso
-  }), [data, aulaSelect])
-
-
-//   useEffect(() => {
-//     const TraerDatos = async () => {
-//       let DatosJson = JSON.stringify(Datos);
-//       const api = axios.create({ baseURL: URL.servidor });
-//       const response = await api.post(
-//         "/api-php-react/info_docente.php",
-//         DatosJson
-//       );
-//       let datax = response.data;
-//       let materias = datax.map((e) => {
-//         return {
-//             id: e.id,
-//             materia: e.N_Materia,
-//             nota: e.promedio,
-//           }
-//       });
-
-//       setmaterianame(materias);
-//       setestado(true);
-//     };
-//     TraerDatos();
-//     //eslint-disable-next-line
-//   }, []);
-
-  useEffect(()=>{
-    const parserJson = JSON.stringify(memomerizeParams);
+  useEffect(() => {
+    const parserJson = JSON.stringify({
+      d: 20,
+      id_col: planillaCurso.IdCol,
+      id_estudiante: data.id,
+    });
     const api = axios.create({ baseURL: URL.servidor });
-    const request = api.post("/api-php-react/info_docente.php", parserJson).then(res => {
-        setmaterianame(res.data[0]); 
-    })
-  }, [memomerizeParams])
+    api.post("/api-php-react/info_docente.php", parserJson).then((res) => {
+      setPromedios(res.data);
+    });
+  }, [data.id, planillaCurso.IdCol]);
+
   return (
     <div className="d-flex position-fixed justify-content-center aling-items-center modal-agenda">
       <div>
@@ -83,6 +58,7 @@ const Notas = (props) => {
                   <img
                     className="foto-notas"
                     src={`${URL.servidor}/Archivos_u/Logos_estu/F1.png`}
+                    alt="foto de perfil del estudiante"
                   />
                 </div>
                 <div className="card-nom-notas">
@@ -91,7 +67,7 @@ const Notas = (props) => {
                 <div className="card-parrafo-notas">
                   <p>
                     Ciclo {data.Ciclo} <br />
-                    Promedio materia: {materianame.promedio} <br />
+                    Promedio materia: {data.promedio} <br />
                     Total puntos: {data.Puntos} <br />
                   </p>
                 </div>
@@ -99,27 +75,35 @@ const Notas = (props) => {
             </div>
             <div className="col-5 d-flex flex-column mx-3 mt-5">
               <div className="titulo-materias-notas">
-                <h6>Materia {materianame.N_Materia}</h6>
+                <h6>Materia {aulaSelect.N_Materia}</h6>
               </div>
-              <div className="notas-perido-notas">
-                <div>Periodo</div>
-                <div>notas</div>
-              </div>
-              <div className="notas-perido-nota">
-                <div>
-                  <p>1 perido</p>
-                  <p>2 perido</p>
-                  <p>3 perido</p>
-                  <p>4 perido</p>
-                </div>
-                <div>
-                  <p>8.0</p>
-                  <p>7.0</p>
-                  <p>7.5</p>
-                  <p>8.5</p>
-                </div>
-              </div>
-              <div className="nota-f-notas">Nota final 8.5</div>
+              <table>
+                <TableHead className="notas-perido-notas">
+                  <tr>
+                    <td>Periodo</td>
+                    <td>notas</td>
+                  </tr>
+                </TableHead>
+                <TableBody className="notas-perido-nota">
+                  {promedios.length === 0 ? (
+                    <span>
+                      Este estudiante no tiene notas en ningún periodo
+                    </span>
+                  ) : (
+                    promedios.map((promedio) => (
+                      <tr key={promedio.id}>
+                        <td>{promedio.periodo} periodo</td>
+                        <td>{promedio.promedio}</td>
+                      </tr>
+                    ))
+                  )}
+                </TableBody>
+              </table>
+              {promedios.length !== 0 && (
+                <div className="nota-f-notas">Nota final {Math.round(promedios.reduce((a, b)=>{
+                  return a + b.promedio
+                }, 0)/promedios.length)}</div>
+              )}
             </div>
           </div>
         </div>
@@ -127,66 +111,4 @@ const Notas = (props) => {
     </div>
   );
 };
-
-/*
-
-    <div>
-            <Volver num={4} />
-            <h2 className="text-center text-warning"> Notas </h2>
-            <div className=" p-5 ">
-                <div className="row d-flex  align-self-center align-items-center col-md-12">
-                    <div key={data.id} className="col-md-5 col-sm-12" >
-                        <div className="shadow bg-white p-3 m-2 rounded">
-                            <div className="d-flex justify-content-center" >
-                                <img className="rounded-circle border-1-mio" width="200px" height="200px" src={`${URL.servidor}${data.imagen}`} alt={"Enso Learning " + data.nombre + data.Apellido} />
-                            </div>
-                            <h6 className="mt-3 text-center" > <strong> {data.Nombre} {data.Apellido} </strong></h6>
-                            <div className="text-center">
-                                <p><strong>Ciclo: </strong>{data.Ciclo}</p>
-                                <p><strong>Promedio: </strong>{data.promedio}</p>
-                                <p><strong>Puntos: </strong>{data.Puntos}</p>
-                            </div>
-                        </div>
-                        <div>
-
-                        </div>
-                    </div>
-                    <div className="col-md-7">
-                        <div className="shadow bg-white border" >
-                            <div className="row" >
-                                <div className="col-md-6" >
-                                    <h3 className="text-center mt-3 text-warning"  > Materia </h3>
-                                </div>
-                                <div className="col-md-6" >
-                                    <h3 className="text-center mt-3 text-warning"  > Nota </h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="border">
-                        {estado === true ?
-                        materianame.map(notaStu =>
-                            <div className="bg-ligth" key={notaStu.id}>
-                                <div className="row"  >
-                                    <div className="col-md-6" >
-                                        <p className="text-center mt-3 text-white"  > {notaStu.materia} </p>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <p className="text-center mt-3 text-white"  > {notaStu.nota} </p>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                        ):
-                        <div className="bg-ligth" >
-                            <div className="row" >
-                            <p className="text-center mt-3 text-white"  > Cargando datos </p>
-                            </div>
-                        </div>
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
-*/
 export default Notas;

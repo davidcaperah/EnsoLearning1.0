@@ -1,14 +1,17 @@
 import React,{useState, useEffect} from 'react';
-import '../css/index.css';
+import { useDispatch } from 'react-redux';
 import Rutas from '../router.js';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
 import URL from '../../URL.js';
 import Header from './header'
 import Carga from './pantallaCarga'
+import '../css/index.css';
+
 const Navbar = () => {
 
     const path = window.location.pathname
+    const dispatch = useDispatch();
     const [load, setLoad] = useState(0);
     const [infoEstudiante, setinfoEstudiante] = useState({})
     const cookies = new Cookies()
@@ -46,14 +49,17 @@ const Navbar = () => {
             const response = await api.post('/api-php-react/info_estudiante.php', idCurso);
             setinfoEstudiante(
                 response.data.estu
-            )}
-            TraerDatos()
+            )
+            dispatch({type:"@addDatauser", user: response.data.estu})
+        }
+        TraerDatos()
         //eslint-disable-next-line
-    }, []);   
+    }, []);
+    
     if(load === 200){
     return (
         <div>
-            <Header/>
+            <Header student={infoEstudiante}/>
             <Rutas />
         </div>   
     );

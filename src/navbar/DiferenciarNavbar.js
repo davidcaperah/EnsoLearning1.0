@@ -46,7 +46,6 @@ const DiferenciarNavbar = () => {
                 let CryptoJS = require("crypto-js");
                 let bytes  = CryptoJS.AES.decrypt(estado, 'B');
                 let Sesion = parseInt(JSON.parse(bytes.toString(CryptoJS.enc.Utf8)));
-                console.log("🚀 ~ file: DiferenciarNavbar.js:49 ~ useEffect ~ Sesion", Sesion)
                 switch (Sesion) {
                     case 1:
                         setnumeroInterfaz(1)
