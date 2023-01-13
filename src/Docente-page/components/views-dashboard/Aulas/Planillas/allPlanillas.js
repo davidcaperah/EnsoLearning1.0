@@ -27,6 +27,7 @@ const AllPlanillas = () => {
     "B",
     "C",
     "D",
+    "E",
     "F",
     "G",
     "H",
@@ -50,7 +51,6 @@ const AllPlanillas = () => {
     "Y",
     "Z",
   ];
-  let promGene = 0;
 
   useEffect(() => {
     axios({
@@ -81,10 +81,6 @@ const AllPlanillas = () => {
       planillasEstudiante: estudiante,
     });
   };
-
-  Estudiantes.map((el) => {
-    promGene = promGene + el.promedio;
-  });
 
   const retoceder = () => {
     setCambiarInterfazModal(0);
@@ -155,7 +151,9 @@ const AllPlanillas = () => {
         <div className="col-3 d-flex align-items-end justify-content-start cont-estu-promedio-planilla">
           <p>
             Total estudiantes <strong> {Estudiantes.length} </strong> <br />
-            Promedio General <strong> {promGene}</strong>
+            Promedio General <strong>{Estudiantes.reduce((prev, curr)=>{
+              return prev + curr.promedio
+            }, 0)/Estudiantes.length}</strong>
           </p>
         </div>
       </div>
@@ -190,7 +188,7 @@ const AllPlanillas = () => {
                 {data.Apellido} {data.Nombre}
               </div>
               <div className="d-flex flex-row justify-content-center cont-btn-planilla">
-                <div
+                {/* <div
                   className="enviarMensaje-planilla"
                   onClick={() => cambiarInterfaz(7, data)}
                 >
@@ -199,7 +197,7 @@ const AllPlanillas = () => {
                     alt="student"
                   />
                   <div>Enviar mensaje</div>
-                </div>
+                </div> */}
                 <div
                   className="enviarNotas-planilla"
                   onClick={() => cambiarInterfaz(6, data)}

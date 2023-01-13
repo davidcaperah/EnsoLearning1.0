@@ -34,6 +34,7 @@ const Notas = (props) => {
       d: 20,
       id_col: planillaCurso.IdCol,
       id_estudiante: data.id,
+      id_materia: aulaSelect.id_materia
     });
     const api = axios.create({ baseURL: URL.servidor });
     api.post("/api-php-react/info_docente.php", parserJson).then((res) => {
@@ -66,7 +67,8 @@ const Notas = (props) => {
                 </div>
                 <div className="card-parrafo-notas">
                   <p>
-                    Ciclo {data.Ciclo} <br />
+                    Ciclo {data.Ciclo === 5 && "1"} {data.Ciclo === 6 && "2"}{" "}
+                    {data.Ciclo === 7 && "3"} <br />
                     Promedio materia: {data.promedio} <br />
                     Total puntos: {data.Puntos} <br />
                   </p>
@@ -100,9 +102,14 @@ const Notas = (props) => {
                 </TableBody>
               </table>
               {promedios.length !== 0 && (
-                <div className="nota-f-notas">Nota final {Math.round(promedios.reduce((a, b)=>{
-                  return a + b.promedio
-                }, 0)/promedios.length)}</div>
+                <div className="nota-f-notas">
+                  Nota final{" "}
+                  {Math.round(
+                    promedios.reduce((a, b) => {
+                      return a + b.promedio;
+                    }, 0) / promedios.length
+                  )}
+                </div>
               )}
             </div>
           </div>
