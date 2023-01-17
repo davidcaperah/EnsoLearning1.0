@@ -71,6 +71,7 @@ const DocenteEvaluaciones = () => {
   };
 
   const cambiarEstado = async (id, eva) => {
+    console.log("🚀 ~ file: DocenteEvaluaciones.jsx:74 ~ cambiarEstado ~ eva", eva)
     if (eva === 2) {
       eva = 1;
     } else {
@@ -190,10 +191,6 @@ const DocenteEvaluaciones = () => {
   const volver = () => {
     setnumeroInterfaz(0);
   };
-  console.log(
-    "🚀 ~ file: DocenteEvaluaciones.jsx:15 ~ DocenteEvaluaciones ~ CodMateria",
-    CodMateria
-  );
   return (
     <div className="container-flex">
       {numeroInterfaz === 0 ? (
@@ -477,7 +474,6 @@ const DocenteEvaluaciones = () => {
                                   className="btn-estado-evaluacion"
                                   onClick={() => {
                                     cambiarEstado(
-                                      this,
                                       evaluacion.id,
                                       evaluacion.estado
                                     );

@@ -8,29 +8,10 @@ const IdentificadorMallas = () => {
   const aulaSeleccionada = useSelector(state => state.aulaSeleccionada)
 
   useEffect(() => {
-    const verificarMalla = async () => {
-      const consulta = await axios({
-        method : "post",
-        url : `${URL.servidor}/api-php-react/CRUD_Copia_malla.php`,
-        data : {
-          d:10,
-          id : aulaSeleccionada.id_curso
-        }
-      })
-      if(!consulta.data){
-        dispatch({
-          type : "@updateNumberInterfazAula",
-          numberInterfazAula : 1000
-        })
-      }else{
-        dispatch({
-          type : "@updateNumberInterfazAula",
-          numberInterfazAula : 1
-        })
-      }
-    }
-
-    verificarMalla()
+    dispatch({
+      type : "@updateNumberInterfazAula",
+      numberInterfazAula : 1
+    })
   }, [])
 
 

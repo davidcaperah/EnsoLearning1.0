@@ -27,9 +27,9 @@ const Page = () => {
             })
             const api = axios.create({ baseURL: URL.servidor });
             const response = await api.post('/api-php-react/info_estudiante.php', infoEnviar);
-            const data = response.data
+            const data = response.data;
             console.log(data)
-            if (data.length > 0) {
+            if (data) {
                 setPosiciones(data)
             } else {
                 setPosiciones([])
@@ -208,11 +208,11 @@ const Page = () => {
                             <div>Curso</div>
                             <div> Promedio</div>
                         </div>
-                        {posiciones.map((Estu, index) =>
-                        <div key={index} className='cont-tdatos-table-estu2'>
+                        {posiciones.map((Estu) =>
+                        <div key={Estu.id} className='cont-tdatos-table-estu2'>
                             <div>{Estu.Nombre}</div>
                             <div>{Estu.Curso_Nu}</div>
-                            <div>{Estu.Promedio}</div>
+                            <div>{Estu.promedio}</div>
                         </div>
                         )}
                         

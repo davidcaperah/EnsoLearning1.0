@@ -32,7 +32,7 @@ const Evaluaciones = (props) => {
         idCol: docente.id_col,
         idCurso: aulaSeleccionada.id_curso,
         idDoc: docente.id,
-        idMateria: aulaSeleccionada.id_materia
+        idMateria: docente.Cod_materia
     })
 
     const [CamposRespuesta, setCamposRespuesta] = useState({})
@@ -79,8 +79,6 @@ const Evaluaciones = (props) => {
 
     const EnviarDatosServidor = async (Campos1, NumeroPreguntas) => {
         let DatosJson = JSON.stringify(Campos1)
-        console.log(DatosJson)
-
         const consulta = await axios({
             method : "post",
             url:`${URL.servidor}/api-php-react/Crear_eva.php`,
@@ -93,7 +91,6 @@ const Evaluaciones = (props) => {
                 document.getElementById("form").classList.add("Eliminar")
                 setDescriEvaluacion(1)
                 setidMaestra(datosRecibidos.id_m)
-                console.log(Campos.NumeroPreguntas);
                 setNumeroDepreguntas(parseInt(Campos.NumeroPreguntas))
                 
             }

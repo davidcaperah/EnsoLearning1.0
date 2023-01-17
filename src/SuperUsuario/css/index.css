@@ -162,3 +162,16 @@
 .cursorp{
     cursor: pointer;
 }
+.card-libros{
+    padding-left: 10px;
+
+}
+.card-libro-titulo{
+    height: 50%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.pagina-libros{
+    padding-top: 30px;
+}

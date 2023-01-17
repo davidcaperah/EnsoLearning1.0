@@ -38,7 +38,7 @@ const DocenteActividades = (actividad) => {
         const response = await api.post('/api-php-react/info_actividad_maestro.php', DatosJson);
         const data = response.data
         Swal.fire('creada!', '', 'success')
-        window.location.reload();
+        // window.location.reload();
     }
     const Datos = (e)=>{
         setFormulario({

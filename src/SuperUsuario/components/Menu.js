@@ -59,7 +59,7 @@ const Menu = () => {
                     </div>
                 </div>
             </div>
-            {Nombres.Tipo === 1 ?
+            {parseInt(Nombres.Tipo) === 1 ?
             <div className="bg-dark menu-dashboard" >
              <div className="row align-items-center pointer p-3 Areas" >
                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="col-3 text-light bi bi-columns-gap" viewBox="0 0 16 16">
@@ -155,7 +155,7 @@ const Menu = () => {
             </div>
             :null
             }
-            {Nombres.Tipo === 2 ?
+            {parseInt(Nombres.Tipo) === 2 ?
              <div className="bg-dark menu-dashboard" >
              <div className="row align-items-center pointer p-3 Areas" >
                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="col-3 text-light bi bi-columns-gap" viewBox="0 0 16 16">

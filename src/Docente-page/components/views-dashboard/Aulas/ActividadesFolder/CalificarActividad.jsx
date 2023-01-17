@@ -71,7 +71,7 @@ const DocenteActividades = (prop) => {
             confirmButtonText: 'Guardar',
             showLoaderOnConfirm: true,
             preConfirm: (login)  => {
-                console.log(respt);
+                console.log("🚀 ~ file: CalificarActividad.jsx:76 ~ calificar ~ respt", respt)
                 let comentario = Campos.comentario ? Campos.comentario : "Sin comentario"; 
                 const DatosJson = JSON.stringify({d:0, 
                     id_estu: respt.id_estu,
@@ -83,7 +83,8 @@ const DocenteActividades = (prop) => {
                     id_solucion : respt.id,
                     id_nota: login,
                     comentario: comentario,
-                    tipo: 1
+                    tipo: 1,
+                    periodo:respt.periodo
                 })
                 const api = axios.create({ baseURL: URL.servidor });
                 const response =  api.post('/api-php-react/Crear_Notas.php', DatosJson);
@@ -92,10 +93,10 @@ const DocenteActividades = (prop) => {
             },
             allowOutsideClick: () => !Swal.isLoading()
           }).then((result) => {
-            console.log(result)
+            console.log("🚀 ~ file: CalificarActividad.jsx:96 ~ calificar ~ result", result)
             if (result.value) {
               Swal.fire({
-                title: `${result.value}'s avatar`,
+                title: `${result.value}'actividad calificada`,
               })
             }
           })
@@ -106,6 +107,7 @@ const DocenteActividades = (prop) => {
             const api = axios.create({ baseURL: URL.servidor });
             const response = await api.post('/api-php-react/info_docente.php', DatosJson);
             const data = response.data
+            console.log("🚀 ~ file: CalificarActividad.jsx:110 ~ TraerSolucion ~ data", data)
             setactividades(data)
             setrest(JSON.parse(data[0].puntos))
             

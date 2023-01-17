@@ -13,6 +13,8 @@ const Index = () =>{
     const [datos, setdatos] = useState({})
     const [Editar, setEditar] = useState({})
     const [cargar, setcargar] = useState(false)
+    const [libros, setlibros] = useState({})
+    const [pagina, setpagina] = useState(1)
 
 const Estado = (tipo,materia) =>{
     setVentana(tipo)
@@ -201,9 +203,26 @@ useEffect(() => {
     TraerAutor()
     TraerMaterias()
     TraerGeneros()
-    console.log("🚀 ~ file: index.jsx:204 ~ Index ~ cargar", cargar)
 }, [cargar])
-console.log(Editar);
+useEffect(() => {
+    const TraerLibros =  async () => {
+        let idCurso = JSON.stringify({d:3,pagina:pagina})
+        const api = axios.create({baseURL : URL.servidor});
+        const response = await api.post('/api-php-react/info_libros.php', idCurso);
+        const data = response.data;
+        const lib = data.libros;
+        console.log("🚀 ~ file: index.jsx:215 ~ TraerLibros ~ data.length", lib.length)
+        if(lib.length > 0){
+            setlibros(lib)
+        }else {
+            setlibros([])
+        }
+    }
+    TraerLibros();
+}, [])
+
+console.log(libros);
+    console.log("🚀 ~ file: index.jsx:223 ~ Index ~ libros", libros)
     return(
         <div className="col-md-12">
             <div className="row center">
@@ -300,9 +319,37 @@ console.log(Editar);
             </div> 
             :null }
             {Ventana === 4 ? 
+            <div>
             <div className="row">
-                ver lista de libros
+            {libros.map(libro =>
+            <div className="col-md-3 card-libros">
+            <div className="card">
+                <img src="..." className="card-img-top" alt="..."/>
+                <div className="card-body">
+                    <h5 className="card-title">{libro.Nombre}</h5>
+                    <p className="card-text card-libro-titulo">{libro.rese}</p>
+                    <a href="#" className="btn btn-primary">ver libro</a>
+                </div>
+            </div>
+            </div>
+            )}   
             </div> 
+                <div className="row pagina-libros">
+                    <div className='col-md-4'></div>
+                    <div className="col-md-4">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div className='col-md-4'></div>
+                </div>
+            </div>
             :null }
             {Ventana === 5 ? 
             <div className="row text-center">

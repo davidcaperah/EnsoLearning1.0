@@ -11,7 +11,9 @@ import AsignarActividad from './AsignarActividad'
 const DocenteActividades = (actividad) => {
 
     let datos = actividad.actividad;
+    console.log("🚀 ~ file: VerActividad.jsx:14 ~ DocenteActividades ~ datos", datos)
     let puntos = JSON.parse(datos.puntos);
+    console.log("🚀 ~ file: VerActividad.jsx:15 ~ DocenteActividades ~ puntos", puntos)
     const [Vista, setVista] = useState(0)
     const vista = (e) =>{
         setVista(e)

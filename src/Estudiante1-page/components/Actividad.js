@@ -9,9 +9,11 @@ import Cookies from 'universal-cookie';
 const Actividad = ({idActividad}) => {
 
     const [Validacion, setValidacion] = useState(true)
+    const [ValidacionActividad, setValidacionActividad] = useState(false)
+    console.log("🚀 ~ file: Actividad.js:13 ~ Actividad ~ ValidacionActividad", ValidacionActividad)
     const [ArregloDeActividades, setArregloDeActividades] = useState([])
+    console.log("🚀 ~ file: Actividad.js:14 ~ Actividad ~ ArregloDeActividades", ArregloDeActividades)
     const [Link, setLink] = useState("")
-    const [ValidacionActividad, setValidacionActividad] = useState(true)
     const [puntos,setpuntos] = useState([]);
     const [respuntos,setrespuntos] = useState([]);
 
@@ -32,23 +34,21 @@ const Actividad = ({idActividad}) => {
 
     useEffect(()=>{
         const verificarActividad = async () =>{
-            console.log(idActividad)
             let idCurso = JSON.stringify({idm : idActividad.id , d : 4, iduser : iduser,id:idActividad.id_acti})
             const api = axios.create({baseURL : URL.servidor});
             const response = await api.post('/api-php-react/info_estudiante.php', idCurso);
             const data = response.data
             console.log(data) 
-            let estado = data.cantidad > 0 ? false : true ;
+            let estado = parseInt(data.cantidad) === 0 ? true : false ;
+            console.log("🚀 ~ file: Actividad.js:43 ~ verificarActividad ~ estado", estado)
             setValidacionActividad(estado)
         }
         const TraerDatos = async () =>{
-            console.log(idActividad)
             let idCurso = JSON.stringify({idm : idActividad.id , d : 2, iduser : iduser,id:idActividad.id_acti})
             const api = axios.create({baseURL : URL.servidor});
             const response = await api.post('/api-php-react/info_estudiante.php', idCurso);
             const data = response.data
-            console.log(data) 
-            if(data.length > 0){
+            if(data){
                 setArregloDeActividades(data)
                 const h = data[0]
                 const l = h.puntos
@@ -57,10 +57,8 @@ const Actividad = ({idActividad}) => {
                     let i = parseInt(ob) + 1;
                     json[ob].id = i;
                     json[ob].pos = ob;
-                    console.log(json[ob])
                 }
                 setpuntos(json)
-                console.log(json)
                 let d = data[0]
                 if(d.video !== null){
                     if(d.video !== "NULL"){
@@ -75,6 +73,7 @@ const Actividad = ({idActividad}) => {
             }else if(data.mensaje) {
                 setArregloDeActividades([])
             }
+                
         }
         TraerDatos();
         verificarActividad();
@@ -185,7 +184,6 @@ const Actividad = ({idActividad}) => {
                           console.log(error)
                       }*/
     }
-console.log(respuntos);
     return (
         <div>
             {ValidacionActividad ? 
@@ -199,7 +197,7 @@ console.log(respuntos);
                                         {
                                          puntos.map(datos =>
                                             <div>
-                                                {data.Tipo === 2 ? 
+                                                {data.tipo_s === 1 ? 
                                                     <div key={datos.id}>
                                                         <h4>#{datos.id} - {datos.pregunta}</h4>
                                                         <ul class="list-group">
@@ -210,7 +208,7 @@ console.log(respuntos);
                                                         </ul> 
                                                     </div>
                                                     :
-                                                    data.Tipo === 1?                                
+                                                    data.tipo_s === 3?                                
                                                     <form key={datos.pregunta}>
                                                         <p><span className="h6" >*{datos.pregunta}</span></p>
                                                         <input className="form-control m-2" id={datos} placeholder="Responde" />
@@ -226,7 +224,7 @@ console.log(respuntos);
                                                 
                                         }
                                     <div>
-                                        {data.tipo_s === 1 ?   
+                                        {data.Tipo === 1 ?   
                                             <div>
                                                 <h4>Esta actividad contiene un archivo pdf para realizarlo</h4>
                                                 <iframe id="inlineFrameExample"
@@ -237,12 +235,12 @@ console.log(respuntos);
                                                 </iframe>
                                             </div>
                                         : null }
-                                        {data.tipo_s === 3 ?
+                                        {data.Tipo === 3 ?
                                             <div>
                                                 <img  src={data.link} alt={"Enso Learning "+data.Nombre}  className="w-50" />
                                             </div>   
                                         : null }
-                                        {data.tipo_s === 2 ? 
+                                        {data.Tipo === 2 ? 
                                             <div>
                                                 <span className="w-100" >
                                                     <iframe 
@@ -257,7 +255,7 @@ console.log(respuntos);
                                                 </span>
                                             </div>      
                                         : null }
-                                        {data.tipo_s === 4 ?    
+                                        {data.Tipo === 4 ?    
                                             <div>
                                                 <div className="p-3" >
                                                     {/* {Validacion ? 
