@@ -14,6 +14,7 @@ const Page = (props) => {
     let Idcol = JSON.parse(bytesadmin.toString(CryptoJS.enc.Utf8))
     
     const [posiciones, setPosiciones] = useState([])
+    console.log("🚀 ~ file: Page.js:17 ~ Page ~ posiciones", posiciones)
 
     const Desencriptar = (NombreCookie , Llave) => {
         let IdEncriptado =  cookies.get(NombreCookie)
@@ -290,7 +291,7 @@ const Page = (props) => {
                         <div key={index} className='cont-tdatos-table-estu2'>
                             <div>{Estu.Nombre}</div>
                             <div>{Estu.Curso_Nu}</div>
-                            <div>{Estu.Promedio}</div>
+                            <div>{Estu.promedio}</div>
                         </div>
                         )}
                    
