@@ -1,155 +1,177 @@
-import Actividad from './Actividad';
-import React,{useState, useEffect} from 'react';
-import Cookies from 'universal-cookie';
-import axios from 'axios';
-import URL from '../../URL.js';
-import Calendario from '../../components/calendario'
-import '../css/actividades.css'
+import Actividad from "./Actividad";
+import React, { useState, useEffect } from "react";
+import Cookies from "universal-cookie";
+import axios from "axios";
+import URL from "../../URL.js";
+import Calendario from "../../components/calendario";
+import "../css/actividades.css";
 const Actividades = () => {
+  const [Validacion, setValidacion] = useState(true);
+  const [Id, setId] = useState(0);
+  const [ArregloDeActividades, setArregloDeActividades] = useState([]);
 
-    const [Validacion, setValidacion] = useState(true)
-    const [Id, setId] = useState(0)
-    const [ArregloDeActividades, setArregloDeActividades] = useState([])
+  const DesarrollarActividad = (Acti) => {
+    setValidacion(false);
+    setId(Acti);
+  };
 
-    const DesarrollarActividad = (Acti) => {
-        setValidacion(false)
-        setId(Acti)
-    }
+  const Volver = () => {
+    setValidacion(true);
+    setId(0);
+  };
 
-    const Volver = () => {
-        setValidacion(true)
-        setId(0)
-    }
+  let CryptoJS = require("crypto-js");
+  const cookies = new Cookies();
 
-    let CryptoJS = require("crypto-js")
-    const cookies =  new Cookies();
+  let IdEncriptado = cookies.get("idCurso");
+  let bytes = CryptoJS.AES.decrypt(IdEncriptado, "A");
+  let Idcurso = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
 
-    let IdEncriptado =  cookies.get('idCurso')
-    let bytes  = CryptoJS.AES.decrypt(IdEncriptado, 'A')
-    let Idcurso = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
+  const Datos = {
+    id: Idcurso,
+  };
 
+  useEffect(() => {
+    const TraerDatos = async () => {
+      let idCurso = JSON.stringify({ curso: Datos.id, d: 1 });
+      const api = axios.create({ baseURL: URL.servidor });
+      const response = await api.post(
+        "/api-php-react/info_estudiante.php",
+        idCurso
+      );
+      const data = response.data;
+      console.log(data);
+      if (data.length > 0) {
+        setArregloDeActividades(data);
+      } else {
+        setArregloDeActividades([]);
+      }
+    };
+    TraerDatos();
+    //eslint-disable-next-line
+  }, []);
 
-    const Datos = {
-        id : Idcurso 
-    }
-
-    useEffect(()=>{
-        const TraerDatos = async () =>{
-            let idCurso = JSON.stringify({curso : Datos.id , d : 1})
-            const api = axios.create({baseURL : URL.servidor});
-            const response = await api.post('/api-php-react/info_estudiante.php', idCurso);
-            const data = response.data
-            console.log(data);
-            if(data.length > 0){
-                setArregloDeActividades(data)
-            }else {
-                setArregloDeActividades([])
-            }
-        }
-        TraerDatos()
-        //eslint-disable-next-line
-    }, []);  
-    
-    console.log(ArregloDeActividades)
-    return (
-        
+  console.log(ArregloDeActividades);
+  return (
     <div>
-        {Validacion ?
+      {Validacion ? (
         <div>
-            <div className='con-info-aulas2'>
+          <div className="con-info-aulas2">
+            <div>
+              <h4 className="titu-estu2-evalu">Bienvenido a tus actividades</h4>
+              <p className="con-descri-evaluaciones-estu2">
+                En este espacio podrás encontrar todas las actividades asignadas
+                por tus docentes para poner en practica tus conocimientos y
+                adicionalmente encontraras tus lecturas asignadas
+              </p>
+            </div>
+          </div>
+          <div className="evaluacio-estu-1">
+            <h4>Lecturas asignadas</h4>
+          </div>
+          <div className="cont-actividades-estu1">
+            <div>
+              <div className="iconos-libro-acti-estu">
+                <img
+                  className="ico-selecio-libro-estu1"
+                  src={`${URL.servidor}Archivos_u/iconos/categorias.svg`}
+                />
+                <img src={`${URL.servidor}Archivos_u/iconos/menuHabu.svg`} />
+              </div>
+              <div className="cont-libro-actividad-estu1">
                 <div>
-                    <h4 className='titu-estu2-evalu'>Bienvenido a tus actividades</h4>
-                    <p className='con-descri-evaluaciones-estu2'>
-                        En este espacio podrás encontrar todas las actividades asignadas por 
-                        tus docentes para poner en practica tus conocimientos y adicionalmente 
-                        encontraras tus lecturas asignadas
+                  <img src={`${URL.servidor}Archivos_u/iconos/principe.svg`} />
+                </div>
+                <div className="info-libro-actividades-estu1">
+                  <h5>Libro principito-Capitulo 1</h5>
+                  <p>
+                    El explorador traza su primer dibujo, el cual no era
+                    entendido por los adultos, por que creian que era un
+                    sombrero y no veian lo que habia en su interior. la
+                    enseñanza que deja es que no hay que ver en su exterior de
+                    una persona, si no que hay que ver lo bueno que hay en el
+                    interior de ella.
+                  </p>
+                  <img
+                    src={`${URL.servidor}Archivos_u/iconos/flecha-derecha.svg`}
+                  />
+                </div>
+                <div className="btn-libros-acti-estu1">
+                  <div className="btn-acti-lectura2">Ver lectura</div>
+                  <div className="btn-acti-biblioteca2">ir a la biblioteca</div>
+                </div>
+              </div>
+            </div>
+            <div className="cont-calendario-acti-estu1">
+              <Calendario
+                contenedor={`cont-calendario-home2`}
+                diasCale={`dias-calendario-home`}
+                colorLetra={"mes-calendario2"}
+              />
+            </div>
+          </div>
+          <div className="evaluacio-estu-1">
+            <h4>Actividades pendientes por realizar</h4>
+          </div>
+          <div className="cont-acti-estu-1">
+            {ArregloDeActividades.map((Acti) => (
+              <div key={Acti.id} className="card-actividades-estu2">
+                <div className="cont-datos-evaluacion-estu2">
+                  <div className="cont-titu-card-actividades2">
+                    <h5>{Acti.Nombre}</h5>
+                    <h6>Area de {Acti.materia_name}</h6>
+                  </div>
+                  <div>
+                    <p>
+                      Vencimiento <br />
+                      {Acti.fecha_MAX}
                     </p>
+                  </div>
+                  <div className="progres-bar-actividadesa2"></div>
+                  <div
+                    className="btn-iniciar-acti-estu-2"
+                    onClick={() => DesarrollarActividad(Acti)}
+                  >
+                    Iniciar actividad
+                  </div>
                 </div>
-            </div>
-            <div className='evaluacio-estu-1'>
-                <h4>Lecturas asignadas</h4>
-            </div>
-            <div className="cont-actividades-estu1" >
-                <div >
-                    <div className='iconos-libro-acti-estu'>
-                        <img className="ico-selecio-libro-estu1" src={`${URL.servidor}Archivos_u/iconos/categorias.svg`}/>
-                        <img src={`${URL.servidor}Archivos_u/iconos/menuHabu.svg`}/>
-                    </div>
-                    <div className='cont-libro-actividad-estu1'>
-                        <div>
-                            <img src={`${URL.servidor}Archivos_u/iconos/principe.svg`}/>
-                        </div>
-                        <div className='info-libro-actividades-estu1'>
-                            <h5>Libro principito-Capitulo 1</h5>
-                            <p>
-                                El explorador traza su primer dibujo, el cual no era entendido
-                                por los adultos, por que creian que era un sombrero y no veian
-                                lo que habia en su interior. 
-                                la enseñanza que deja es que no hay que ver en su exterior  de una 
-                                persona, si no que hay que ver  lo bueno que hay en el interior de ella.    
-                            </p>
-                            <img src={`${URL.servidor}Archivos_u/iconos/flecha-derecha.svg`}/>
-                        </div>
-                        <div className='btn-libros-acti-estu1'>
-                            <div className='btn-acti-lectura2'>Ver lectura</div>
-                            <div className='btn-acti-biblioteca2'>ir a la biblioteca</div>
-                        </div>
-                    </div>
+                <div className="card-cont-img-actividades">
+                  <img
+                    src={`${URL.servidor}Archivos_u/iconos/matematicas.svg`}
+                  />
                 </div>
-                <div className='cont-calendario-acti-estu1'>
-                    <Calendario contenedor={`cont-calendario-home2`} diasCale={`dias-calendario-home`} colorLetra={'mes-calendario2'} />
-                </div>
-            </div>
-            <div className='evaluacio-estu-1'>
-                <h4>Actividades pendientes por realizar</h4>
-            </div>
-            <div className='cont-acti-estu-1'>
-            {ArregloDeActividades.map(Acti =>
-                <div  key={Acti.id} className='card-actividades-estu2'>
-                    <div className='cont-datos-evaluacion-estu2'>
-                        <div className='cont-titu-card-actividades2'>
-                            <h5>{Acti.Nombre}</h5>
-                            <h6>Area de {Acti.materia_name} 202</h6>
-                        </div>
-                        <div>
-                            <p>
-                                Vencimiento <br/>
-                                {Acti.fecha_MAX}
-                            </p>
-                        </div>
-                        <div className='progres-bar-actividadesa2'></div>
-                        <div className='btn-iniciar-acti-estu-2' onClick={()=> DesarrollarActividad(Acti) } >
-                            Iniciar actividad
-                        </div>
-                    </div>
-                    <div className='card-cont-img-actividades'>
-                        <img src={`${URL.servidor}Archivos_u/iconos/matematicas.svg`}/>
-                    </div>
-                    
-                </div>
-            )}
-
-            </div>
+              </div>
+            ))}
+          </div>
         </div>
-        :
-        <div className="container" > 
-            <div className="p-3 m-2 shadow" >
-                <div className="d-flex justify-content-start" > 
-                    <div className="pointer rounded-circle  p-2" >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" onClick={Volver} className="bi bi-arrow-left" viewBox="0 0 16 16">
-                            <path fillRule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-                        </svg>
-                    </div>
-                </div>
-                <Actividad idActividad={Id} />
+      ) : (
+        <div className="container">
+          <div className="p-3 m-2 shadow">
+            <div className="d-flex justify-content-start">
+              <div className="pointer rounded-circle  p-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  fill="currentColor"
+                  onClick={Volver}
+                  className="bi bi-arrow-left"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+                  />
+                </svg>
+              </div>
             </div>
+            <Actividad idActividad={Id} />
+          </div>
         </div>
-    }
+      )}
     </div>
-    );
-}
-
-
+  );
+};
 
 /* 
     <div className="bg-pink pb-5" >
@@ -196,5 +218,5 @@ const Actividades = () => {
             }
         </div>
 */
- 
+
 export default Actividades;

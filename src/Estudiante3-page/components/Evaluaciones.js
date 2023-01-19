@@ -1,139 +1,166 @@
-import React, { useState, useEffect } from 'react';
-// import Banner from './Banner';
-import Button from '@material-ui/core/Button';
-import Evaluacion from './Evaluacion';
-import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
-import Cookies from 'universal-cookie';
-import BannerPage from './Banner';
-import Page from './Sistema de Evaluaciones/Page';
-import URL from './../../URL';
-import Calendario from '../../components/calendario'
-import '../css/evaluaciones.css'
+import React, { useState, useEffect } from "react";
+import Evaluacion from "./Evaluacion";
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
+import Cookies from "universal-cookie";
+import Page from "./Sistema de Evaluaciones/Page";
+import URL from "./../../URL";
+import Calendario from "../../components/calendario";
+import "../css/evaluaciones.css";
 const Evaluaciones = () => {
+  const numberInterfazEstudiantes = useSelector(
+    (state) => state.numberInterfazEstudiantes
+  );
+  const dispatch = useDispatch();
 
-    const numberInterfazEstudiantes = useSelector(state => state.numberInterfazEstudiantes)
-    const dispatch = useDispatch()
+  let CryptoJS = require("crypto-js");
+  const cookies = new Cookies();
 
-    let CryptoJS = require("crypto-js")
-    const cookies = new Cookies();
+  const Desencriptar = (NombreCookie, Llave) => {
+    let IdEncriptado = cookies.get(NombreCookie);
+    let bytes = CryptoJS.AES.decrypt(IdEncriptado, Llave);
+    let Datos = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+    return Datos;
+  };
 
+  let idCurso = Desencriptar("idCurso", "A");
+  console.log(
+    "🚀 ~ file: Evaluaciones.js:27 ~ Evaluaciones ~ idCurso",
+    idCurso
+  );
+  let iduser = Desencriptar("iduser", "A");
 
-    const Desencriptar = (NombreCookie, Llave) => {
-        let IdEncriptado = cookies.get(NombreCookie)
-        let bytes = CryptoJS.AES.decrypt(IdEncriptado, Llave)
-        let Datos = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-        return Datos
-    }
+  const [ArregloDeActividades, setArregloDeActividades] = useState([]);
+  const [idEvaluacion, setidEvaluacion] = useState(0);
 
-    let idCurso = Desencriptar("idCurso", "A")
-    let iduser = Desencriptar("iduser", "A")
+  const mostrarEvaluaciones = (Acti, num) => {
+    dispatch({
+      type: "@updatenumberInterfazEstudiantes",
+      numberInterfazEstudiantes: num,
+    });
+    setidEvaluacion(Acti);
+  };
 
-    const [ArregloDeActividades, setArregloDeActividades] = useState([])
-    const [idEvaluacion, setidEvaluacion] = useState(0)
+  const cargarEvaluaciones = async () => {
+    const consulta = await axios({
+      method: "post",
+      url: `${URL.servidor}/api-php-react/Cargar_evaluacion_m.php`,
+      data: {
+        d: 1,
+        id_curso: idCurso,
+      },
+    });
+    setArregloDeActividades(consulta.data);
+  };
 
-    const mostrarEvaluaciones = (Acti, num) => {
-        dispatch({
-            type: "@updatenumberInterfazEstudiantes",
-            numberInterfazEstudiantes: num
-        })
-        setidEvaluacion(Acti)
-    }
-
-    const cargarEvaluaciones = async () => {
-        const consulta = await axios({
-            method: "post",
-            url: `${URL.servidor}/api-php-react/Cargar_evaluacion_m.php`,
-            data: {
-                d: 1,
-                id_curso: idCurso
-            }
-        })
-        setArregloDeActividades(consulta.data)
-    }
-
-    useEffect(() => {
-        cargarEvaluaciones()
-    }, [])
-
-    console.log(ArregloDeActividades)
-    return (
+  useEffect(() => {
+    cargarEvaluaciones();
+  }, []);
+  console.log(
+    "🚀 ~ file: Evaluaciones.js:30 ~ Evaluaciones ~ ArregloDeActividades",
+    ArregloDeActividades
+  );
+  return (
+    <div>
+      {numberInterfazEstudiantes === 0 ? (
         <div>
-            {numberInterfazEstudiantes === 0 ?
+          <div className="con-info-aulas2">
             <div>
-                <div className='con-info-aulas2'>
-                    <div>
-                        <h4 className='titu-estu2-evalu'>Bienvenido a tus Evaluaciones</h4>
-                        <p className='con-descri-evaluaciones-estu2'>
-                            Aquí podrás encontrar todas las evaluaciones disponibles para desarrollar en este periodo...
-                        </p>
-                    </div>
-                </div>
-                <div className='evaluaciones-titulo-estu2'>
-                    <div className='evaluacio-estu-1'>
-                        <h4>Evaluaciones pendientes por realizar</h4>
-                    </div>
-                </div>
-                
-                <div className='cont-evaluaciones-estu1'>
-                    <div className='cont-cards-evaluaciones-estu1'>
-                    {ArregloDeActividades.map(Acti =>
-                        <div key={Acti.id} className='cont-card-evaluaciones-estu2'>
-                            <div className=''>
-                                <img src={`${URL.servidor}Archivos_u/iconos/placa-tornillo.svg`}/>
-                            </div>
-                            <div className='datos-card-evaluacion-estu2'>
-                                <div className='datos-info-estu1'>
-                                
-                                    <div>
-                                        <h5>
-                                            <strong>Suma de tres cifras</strong> <br/>
-                                            Aula de matematicas
-                                        </h5>
-                                        <p>
-                                            Fecha max de entrega <br/>
-                                            2022-08-25<br/>
-                                            cantidad de preguntas : 10 <br/>
-                                            Tiempo estimado : 30 min
-                                            
-                                        </p>
-                                        
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className='deco-img-card-estu3'>
-                                        <img id="img-card-evalu-estu2" src={`${URL.servidor}Archivos_u/iconos/matematicasImg.svg`}/>
-                                        <div onClick={() => mostrarEvaluaciones(Acti, 1)}>Iniciar evaluacion</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-                    </div>
-                    <div className='cont-calentadrio-estu-evalua'>
-                        <Calendario contenedor={`cont-calendario-home3`} diasCale={`dias-calendario-home`} colorLetra={'mes-calendario2'} />
-                    </div>
-                </div>
-            </div>: null}
-            {numberInterfazEstudiantes === 1 ?
-                <div className="container mt-4">
-                    <div className="p-3 m-2 shadow" >
-                        <div className="d-flex justify-content-start" >
-                            <div className="pointer rounded-circle shadow  p-2" >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" onClick={() => mostrarEvaluaciones({}, 0)} className="bi bi-arrow-left" viewBox="0 0 16 16">
-                                    <path fillRule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <Evaluacion idEvaluacion={idEvaluacion} iduser={iduser} />
-                    </div>
-                </div>
-                : null}
+              <h4 className="titu-estu2-evalu">
+                Bienvenido a tus Evaluaciones
+              </h4>
+              <p className="con-descri-evaluaciones-estu2">
+                Aquí podrás encontrar todas las evaluaciones disponibles para
+                desarrollar en este periodo...
+              </p>
+            </div>
+          </div>
+          <div className="evaluaciones-titulo-estu2">
+            <div className="evaluacio-estu-1">
+              <h4>Evaluaciones pendientes por realizar</h4>
+            </div>
+          </div>
 
-            {numberInterfazEstudiantes === 2 ? <Page /> : null}
+          <div className="cont-evaluaciones-estu1">
+            <div className="cont-cards-evaluaciones-estu1">
+              {ArregloDeActividades.map((Acti) => (
+                <div key={Acti.id} className="cont-card-evaluaciones-estu2">
+                  <div className="">
+                    <img
+                      src={`${URL.servidor}Archivos_u/iconos/placa-tornillo.svg`}
+                    />
+                  </div>
+                  <div className="datos-card-evaluacion-estu2">
+                    <div className="datos-info-estu1">
+                      <div>
+                        <h5>
+                          <strong>{Acti.Titulo}</strong> <br />
+                          Aula de {Acti.N_Materia}
+                        </h5>
+                        <p>
+                          Fecha max de entrega <br />
+                          {Acti.fecha_max}
+                          <br />
+                          cantidad de preguntas : {Acti.preguntas} <br />
+                          Tiempo estimado : {Acti.tiempo} min
+                        </p>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="deco-img-card-estu3">
+                        <img
+                          id="img-card-evalu-estu2"
+                          src={`${URL.servidor}Archivos_u/iconos/matematicasImg.svg`}
+                        />
+                        <div onClick={() => mostrarEvaluaciones(Acti, 1)}>
+                          Iniciar evaluacion
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="cont-calentadrio-estu-evalua">
+              <Calendario
+                contenedor={`cont-calendario-home3`}
+                diasCale={`dias-calendario-home`}
+                colorLetra={"mes-calendario2"}
+              />
+            </div>
+          </div>
         </div>
-    );
-}
+      ) : null}
+      {numberInterfazEstudiantes === 1 ? (
+        <div className="container mt-4">
+          <div className="p-3 m-2 shadow">
+            <div className="d-flex justify-content-start">
+              <div className="pointer rounded-circle shadow  p-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  fill="currentColor"
+                  onClick={() => mostrarEvaluaciones({}, 0)}
+                  className="bi bi-arrow-left"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+                  />
+                </svg>
+              </div>
+            </div>
+            <Evaluacion idEvaluacion={idEvaluacion} iduser={iduser} />
+          </div>
+        </div>
+      ) : null}
+
+      {numberInterfazEstudiantes === 2 ? <Page /> : null}
+    </div>
+  );
+};
 
 /*
      <div className="bg-light pb-5" >

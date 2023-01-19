@@ -1,0 +1,76 @@
+.cont-card-evaluaciones-estu1 {
+  background: rgba(196, 196, 196, 0.16);
+  border: 2px solid #12668c;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  margin-bottom: 50px;
+  margin-right: 40px;
+}
+.cont-card-evaluaciones-estu1:hover {
+  transition: background-color 0.3s;
+  background-color: rgba(0, 146, 227, 0.1);
+  border: 2px solid #12668c;
+  box-sizing: border-box;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.308);
+  border-radius: 10px;
+  margin-bottom: 50px;
+  margin-right: 40px;
+}
+
+.con-img-regla-evaluaciones {
+  margin-left: 40px;
+}
+
+.datos-card-evaluacion-estu1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.datos-info-estu1 {
+  padding: 20px 40px;
+}
+.datos-info-estu1 h5 strong {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 18px;
+  color: #04293a;
+}
+.datos-info-estu1 h5 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: #04293a;
+}
+.datos-info-estu1 p {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 16px;
+  color: #3d3c3c;
+  margin-top: 40px;
+}
+
+.deco-img-card-estu1 img {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.deco-img-card-estu1 > div {
+  margin-top: 10px;
+  margin-left: 30px;
+  margin-bottom: 20px;
+  background-color: rgba(0, 146, 227, 1);
+  display: inline-block;
+  padding: 10px 40px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 500;
+  font-size: 13px;
+  cursor: pointer;
+}
+.deco-img-card-estu1 > div:hover {
+  background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    linear-gradient(0deg, #ff993c, #ff993c);
+}

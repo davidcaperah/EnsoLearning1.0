@@ -1,35 +1,35 @@
-import React from 'react';
-import {
-    BrowserRouter as Router,
-    Route
-} from "react-router-dom";
-import App from './App';
-import Aula from './components/Aula';
-import Curso from './components/Curso';
-import Actividades from './components/actividades'
-import Evaluaciones from './components/Evaluaciones'
-import User from './components/user';
-import Configuracion from './components/Configuracion';
-import EventosPage from './components/Eventos';
-import Lecturas from './components/Lecturas';
-import Perfil from './components/miPerfil';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import App from "./App";
+import Aula from "./components/Aula";
+import Curso from "./components/Curso";
+import Actividades from "./components/actividades";
+import Evaluaciones from "./components/Evaluaciones";
+import User from "./components/user";
+import Configuracion from "./components/Configuracion";
+import EventosPage from "./components/Eventos";
+import Lecturas from "./components/Lecturas";
+import Perfil from "./components/miPerfil";
+import Construction from "./components/Construction";
 
 const Rutas = () => {
-    return (
-        <Router>
-            <Route path="/EstudianteTwoHome" component={App} />
-            <Route path="/EstudianteTwoAula" component={Aula} />
-            <Route path="/EstudianteTwoCurso" component={Curso} />
-            <Route path="/EstudianteTwoActividades" component={Actividades} />
-            <Route path="/EstudianteTwoEvaluaciones" component={Evaluaciones} />
-            <Route path="/EstudianteTwoUser" component={User} />
-            <Route path="/EstudianteTwoConfiguracion" component={Configuracion} />
-            <Route path="/EstudianteTwoEventos" component={EventosPage} />
-            <Route path="/EstudianteTwoLecturas" component={Lecturas} />
-            <Route path="/EstudianteTwoMiPerfil" component={Perfil} />
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/EstudianteTwoHome" element={<App />} />
+        <Route path="/EstudianteTwoAula" element={<Aula />} />
+        <Route path="/EstudianteTwoCurso" element={<Curso />} />
+        <Route path="/EstudianteTwoActividades" element={<Actividades />} />
+        <Route path="/EstudianteTwoEvaluaciones" element={<Evaluaciones />} />
+        <Route path="/EstudianteTwoUser" element={<User />} />
+        <Route path="/EstudianteTwoConfiguracion" element={<Configuracion />} />
+        <Route path="/EstudianteTwoEventos" element={<EventosPage />} />
+        <Route path="/EstudianteTwoLecturas" element={<Lecturas />} />
+        <Route path="/EstudianteTwoMiPerfil" element={<Perfil />} />
+        <Route path="/EnConstruccion" element={<Construction />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
-        </Router>
-    );
-}
- 
 export default Rutas;

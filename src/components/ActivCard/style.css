@@ -1,0 +1,83 @@
+.card-actividades-estu1 {
+  display: grid;
+  grid-template-columns: 1fr 0.7fr;
+  background-color: rgba(0, 99, 154, 0.2);
+  border-radius: 10px;
+  margin-bottom: 60px;
+  max-width: 875px;
+}
+.card-actividades-estu1:hover {
+  transition: box-shadow 0.3s;
+  box-shadow: 4px 4px 4px rgba(255, 153, 60, 0.25);
+}
+.card-actividades-estu1 h5 {
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 18px;
+  color: #3d3c3c;
+}
+.card-actividades-estu1 h6 {
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 20px;
+  color: #3d3c3c;
+}
+.card-actividades-estu1 p {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 16px;
+  margin-left: 125px;
+  text-align: left;
+  color: #3d3c3c;
+}
+.card-actividades-estu1 img {
+  margin-top: 30px;
+  margin-left: 30px;
+  width: 70%;
+  height: 70%;
+  border-radius: 10%;
+}
+
+.cont-titu-card-actividades {
+  padding: 50px 20px 10px 130px;
+}
+
+.progres-bar-actividadesa {
+  width: 230.85px;
+  height: 5.88px;
+  background: #ffffff;
+  border-radius: 20px;
+  margin-left: 39%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.card-cont-img-actividades {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.btn-iniciar-acti-estu-1 {
+  display: inline-block;
+  width: 180px;
+  height: 52px;
+  background: #0092e3;
+  border-radius: 7px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #ffffff;
+  padding: 15px 40px;
+  margin-left: 170px;
+  cursor: pointer;
+}
+.btn-iniciar-acti-estu-1:hover {
+  background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    linear-gradient(0deg, #ff993c, #ff993c);
+}
