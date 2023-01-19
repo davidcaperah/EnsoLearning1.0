@@ -580,7 +580,7 @@ const Page = (props) => {
               <div key={index} className="cont-tdatos-table-estu2">
                 <div>{Estu.Nombre}</div>
                 <div>{Estu.Curso_Nu}</div>
-                <div>{Estu.Promedio}</div>
+                <div>{Estu.promedio}</div>
               </div>
             ))}
           </div>
