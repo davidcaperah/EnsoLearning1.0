@@ -76,10 +76,9 @@ const Libros = () => {
     });
     let datosRecibidos = consulta.data;
 
-    if(!datosRecibidos.mensaje){
+    if (!datosRecibidos.mensaje) {
       setDatosLibros(datosRecibidos);
     }
-
   };
 
   const handleSearch = (e) => {
@@ -201,11 +200,7 @@ const Libros = () => {
             ) : DatosLibros.length === 0 ? (
               autor !== 0 || genero !== 0 ? (
                 libros.map((data) => {
-                  if (
-                    autor === data.autor ||
-                    genero === data.genero ||
-                    starts === data.estrellas
-                  ) {
+                  if (autor === data.autor || genero === data.genero) {
                     return (
                       <div className="col-md-3" key={data.id}>
                         <div
