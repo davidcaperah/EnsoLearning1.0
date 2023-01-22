@@ -1,0 +1,33 @@
+.container-form {
+  margin: 15px 0px;
+  width: 91.333%;
+  height: 80%;
+}
+
+.form-create-note {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 80%;
+}
+
+.form-create-note > textarea {
+  width: 100%;
+  height: 60%;
+  border: 2px solid #0092e3;
+  border-radius: 15px;
+  padding: 15px;
+  resize: none;
+}
+
+.form-create-note > button {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  background-color: #0092e3;
+  color: #fff;
+  cursor: pointer;
+}

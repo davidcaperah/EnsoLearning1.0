@@ -1,0 +1,40 @@
+.table-container-modal {
+  width: 91.333%;
+}
+.table-container-modal > thead {
+  border-bottom: 1px solid #000;
+}
+
+.table-container-modal > thead > tr > td {
+  text-align: center;
+  padding: 10px;
+}
+
+.table-container-modal > tbody > tr {
+  border-bottom: 1px solid #000;
+}
+
+.table-container-modal > tbody > tr > td {
+  text-align: center;
+  padding: 10px;
+}
+
+.table-container-modal > tbody > tr > td:nth-child(1) {
+  text-align: justify;
+}
+
+.table-container-modal > tbody button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.table-container-modal > tbody > tr > td:nth-child(5) > button {
+  background-color: #00639a;
+}
+
+.table-container-modal > tbody > tr > td:nth-child(6) > button {
+  background-color: rgb(249, 26, 26);
+}
