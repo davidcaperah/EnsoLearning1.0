@@ -79,6 +79,11 @@
   margin: 50px 20px 20px 20px;
   border-radius: 35px;
   padding: 20px 30px;
+  height: 500px;
+}
+.list-note-container {
+  height: 80%;
+  overflow-y: scroll;
 }
 .cont-notas-tablero-estu2 {
   display: grid;
@@ -207,7 +212,7 @@
   grid-template-columns: repeat(10, 1fr);
   background-color: #4f4f4f;
   width: 98.7vw;
-  height: 500px;
+  height: 100%;
   margin-left: -500px;
   position: absolute;
   z-index: -1;

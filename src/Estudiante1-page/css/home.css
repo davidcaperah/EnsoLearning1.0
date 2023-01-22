@@ -200,9 +200,14 @@
   background-color: rgba(166, 188, 199, 1);
   box-shadow: -24px -14px rgba(4, 41, 58, 0.83);
   border-radius: 70px;
-
+  height: 500px;
   margin: 90px 170px 100px -140px;
   padding: 10px 30px;
+}
+
+.container-note-list {
+  height: 90%;
+  overflow-y: scroll;
 }
 .cont-tablero-home-estu1 h4 {
   font-weight: 700;

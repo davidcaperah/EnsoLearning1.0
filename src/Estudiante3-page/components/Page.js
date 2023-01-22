@@ -5,6 +5,7 @@ import Cookies from "universal-cookie";
 import axios from "axios";
 import URL from "../../URL.js";
 import ItemTableCourse from "../../components/ItemTableCourse";
+import { getAllNotes } from "services/notas-aulas";
 import "../css/home.css";
 const Page = () => {
   let CryptoJS = require("crypto-js");
@@ -18,6 +19,7 @@ const Page = () => {
   const [posiciones, setPosiciones] = useState([]);
   const [courses, setCourses] = useState([]);
   const [currSchool, setCurrSchool] = useState({});
+  const [notes, setNotes] = useState([]);
 
   useEffect(() => {
     const traerPosiciones = async () => {
@@ -57,6 +59,12 @@ const Page = () => {
       setCourses(res.data);
     });
   }, [currStudent]);
+
+  useEffect(() => {
+    getAllNotes({ d: 2, aula: currStudent.Id_curso }).then((res) => {
+      setNotes(res.data);
+    });
+  }, [currStudent.Id_curso]);
 
   return (
     <div>
@@ -319,7 +327,13 @@ const Page = () => {
               tus docentes
             </p>
           </div>
-          <ItemTableCourse />
+          <div className="container-note-list">
+            {notes.length === 0 ? (
+              <h3>No hay notas para este curso</h3>
+            ) : (
+              notes.map((note) => <ItemTableCourse note={note} />)
+            )}
+          </div>
         </div>
       </div>
       <div className="info-estu3-colegio">

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import ItemTableCouse from "components/ItemTableCourse";
+import { getAllNotes } from "services/notas-aulas";
 import Cookies from "universal-cookie";
 import "../../css/home.css";
 import URL from "../../../URL";
@@ -16,6 +18,8 @@ const Page = (props) => {
   const [posiciones, setPosiciones] = useState([]);
   const currStudent = useSelector((state) => state.user);
   const dispatch = useDispatch();
+
+  const [notes, setNotes] = useState([]);
 
   const Desencriptar = (NombreCookie, Llave) => {
     let IdEncriptado = cookies.get(NombreCookie);
@@ -92,6 +96,12 @@ const Page = (props) => {
 
     window.addEventListener("scroll", iniciarA);
   }, []);
+
+  useEffect(() => {
+    getAllNotes({ d: 2, aula: currStudent.Id_curso }).then((res) => {
+      setNotes(res.data);
+    });
+  }, [currStudent.Id_curso]);
 
   return (
     <div>
@@ -292,7 +302,7 @@ const Page = (props) => {
             </svg>
             Enviar mensaje
           </div>
-          <div>
+          <div style={{ margin: "0px auto" }}>
             <img
               alt="palenta-estudiante-ciclo1"
               src={`${URL.servidor}Archivos_u/iconos/planeta.svg`}
@@ -482,32 +492,12 @@ const Page = (props) => {
               </p>
             </div>
           </div>
-
-          <div className="cont-notas-tablero-estu1">
-            <h6>Aula de matematicas</h6>
-            <p className="p-fecha-tablero-estu1">Enviado 15-Enero-2022</p>
-            <p className="p-nota-tablero-estu1">
-              Queridos estudiantes para la proxima clase traer el libro de
-              matematicas y geometria
-            </p>
-          </div>
-
-          <div className="cont-notas-tablero-estu1">
-            <h6>Aula de matematicas</h6>
-            <p className="p-fecha-tablero-estu1">Enviado 15-Enero-2022</p>
-            <p className="p-nota-tablero-estu1">
-              Queridos estudiantes para la proxima clase traer el libro de
-              matematicas y geometria
-            </p>
-          </div>
-
-          <div className="cont-notas-tablero-estu1">
-            <h6>Aula de matematicas</h6>
-            <p className="p-fecha-tablero-estu1">Enviado 15-Enero-2022</p>
-            <p className="p-nota-tablero-estu1">
-              Queridos estudiantes para la proxima clase traer el libro de
-              matematicas y geometria
-            </p>
+          <div className="container-note-list">
+            {notes.length === 0 ? (
+              <h3>Este curso no tiene notas</h3>
+            ) : (
+              notes.map((note) => <ItemTableCouse note={note} />)
+            )}
           </div>
         </div>
       </div>

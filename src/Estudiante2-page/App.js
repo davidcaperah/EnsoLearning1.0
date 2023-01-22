@@ -5,6 +5,7 @@ import Cookies from "universal-cookie";
 import URL from "../URL";
 import axios from "axios";
 import ItemTableCourse from "../components/ItemTableCourse";
+import { getAllNotes } from "services/notas-aulas";
 import "./css/home.css";
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
   const dispatch = useDispatch();
   const currStudent = useSelector((state) => state.user);
   const [currSchool, setCurrSchool] = useState({});
+
+  const [notes, setNotes] = useState([]);
 
   const Desencriptar = (NombreCookie, Llave) => {
     let IdEncriptado = cookies.get(NombreCookie);
@@ -74,6 +77,12 @@ function App() {
       setCurrSchool(res.data);
     });
   }, [currStudent.id_colegio]);
+
+  useEffect(() => {
+    getAllNotes({ d: 2, aula: currStudent.Id_curso }).then((res) => {
+      setNotes(res.data);
+    });
+  }, [currStudent.Id_curso]);
 
   return (
     <div>
@@ -486,7 +495,13 @@ function App() {
               tus docentes
             </p>
           </div>
-          <ItemTableCourse />
+          <div className="list-note-container">
+            {notes.length === 0 ? (
+              <h3>No hay notas para este curso</h3>
+            ) : (
+              notes.map((note) => <ItemTableCourse note={note} />)
+            )}
+          </div>
         </div>
       </div>
       <div className="info-estu2-colegio">
