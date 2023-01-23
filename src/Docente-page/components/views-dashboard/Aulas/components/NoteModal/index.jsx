@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useSelector } from "react-redux";
 import NoteFormAdd from "./components/NoteFormAdd";
 import NoteFormEdit from "./components/NoteFormEdit";
@@ -9,6 +9,8 @@ function Index({ handleStateModal }) {
   const currClassRoom = useSelector((state) => state.aulaSeleccionada);
   const [isOpenFormCreate, setIsOpenFormCreate] = useState(false);
   const [isOpenFormEdit, setIsOpenFormEdit] = useState(false);
+
+  const containerPagination = useRef(null);
 
   const handleStateFormCreate = () => {
     setIsOpenFormCreate(!isOpenFormCreate);
@@ -89,10 +91,17 @@ function Index({ handleStateModal }) {
         ) : isOpenFormEdit ? (
           <NoteFormEdit handleStateForm={handleStateFormEdit} />
         ) : (
-          <NotesTable
-            idClassRoom={currClassRoom.id}
-            handleEdit={handleStateFormEdit}
-          />
+          <>
+            <NotesTable
+              containerPagination={containerPagination}
+              idClassRoom={currClassRoom.id}
+              handleEdit={handleStateFormEdit}
+            />
+            <footer
+              ref={containerPagination}
+              id="container-pagination"
+            ></footer>
+          </>
         )}
       </div>
     </div>

@@ -1,0 +1,11 @@
+.container-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 120px;
+}
+
+.container-pagination > button {
+  border: none;
+  background-color: transparent;
+}
