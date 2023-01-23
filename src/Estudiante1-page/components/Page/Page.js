@@ -6,6 +6,7 @@ import Cookies from "universal-cookie";
 import "../../css/home.css";
 import URL from "../../../URL";
 import axios from "axios";
+import Paginacion from "components/Pagination";
 
 const Page = (props) => {
   let CryptoJS = require("crypto-js");
@@ -20,6 +21,8 @@ const Page = (props) => {
   const dispatch = useDispatch();
 
   const [notes, setNotes] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(0);
 
   const Desencriptar = (NombreCookie, Llave) => {
     let IdEncriptado = cookies.get(NombreCookie);
@@ -98,10 +101,21 @@ const Page = (props) => {
   }, []);
 
   useEffect(() => {
-    getAllNotes({ d: 2, aula: currStudent.Id_curso }).then((res) => {
-      setNotes(res.data);
-    });
-  }, [currStudent.Id_curso]);
+    getAllNotes({ d: 2, aula: currStudent.Id_curso, pagina: page }).then(
+      (res) => {
+        setNotes(res.data.notas_aulas);
+        setTotalPage(res.data.paginas.total_paginas);
+      }
+    );
+  }, [currStudent.Id_curso, page]);
+
+  const handlePlusPage = () => {
+    setPage(page + 1);
+  };
+
+  const handleRestPage = () => {
+    setPage(page - 1);
+  };
 
   return (
     <div>
@@ -499,6 +513,12 @@ const Page = (props) => {
               notes.map((note) => <ItemTableCouse note={note} />)
             )}
           </div>
+          <Paginacion
+            page={page}
+            totalPage={totalPage}
+            plusPage={handlePlusPage}
+            restPage={handleRestPage}
+          />
         </div>
       </div>
       <div className="cont-mision-estu1">

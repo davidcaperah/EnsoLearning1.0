@@ -75,6 +75,9 @@
   margin-bottom: 150px;
 }
 .cont-info-tablero-estu2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: #e1e1e1;
   margin: 50px 20px 20px 20px;
   border-radius: 35px;
@@ -83,6 +86,7 @@
 }
 .list-note-container {
   height: 80%;
+  width: 100%;
   overflow-y: scroll;
 }
 .cont-notas-tablero-estu2 {

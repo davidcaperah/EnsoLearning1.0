@@ -152,6 +152,7 @@
 .titu-rankig-curso-estu1 {
   display: grid;
   grid-template-columns: 0.7fr 1fr;
+  width: 100%;
 }
 .titu-rankig-curso-estu1 h4 {
   font-weight: 900;

@@ -5,6 +5,7 @@ import Cookies from "universal-cookie";
 import axios from "axios";
 import URL from "../../URL.js";
 import ItemTableCourse from "../../components/ItemTableCourse";
+import Pagination from "components/Pagination";
 import { getAllNotes } from "services/notas-aulas";
 import "../css/home.css";
 const Page = () => {
@@ -20,6 +21,8 @@ const Page = () => {
   const [courses, setCourses] = useState([]);
   const [currSchool, setCurrSchool] = useState({});
   const [notes, setNotes] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(0);
 
   useEffect(() => {
     const traerPosiciones = async () => {
@@ -61,16 +64,28 @@ const Page = () => {
   }, [currStudent]);
 
   useEffect(() => {
-    getAllNotes({ d: 2, aula: currStudent.Id_curso }).then((res) => {
-      setNotes(res.data);
-    });
-  }, [currStudent.Id_curso]);
+    getAllNotes({ d: 2, aula: currStudent.Id_curso, pagina: page }).then(
+      (res) => {
+        setNotes(res.data.notas_aulas);
+        setTotalPage(res.data.paginas.total_paginas);
+      }
+    );
+  }, [currStudent.Id_curso, page]);
+
+  const handlePlusPage = () => {
+    setPage(page + 1);
+  };
+
+  const handleRestPage = () => {
+    setPage(page - 1);
+  };
 
   return (
     <div>
       <img
         id="fondo-curso-estu2"
         src={`${URL.servidor}Archivos_u/iconos/rombo-fondo-estu2.svg`}
+        alt="fondo estudiante"
       />
       <div id="circulo-fondo-estu3"></div>
       <div className="cont-info-principla-home3">
@@ -334,6 +349,12 @@ const Page = () => {
               notes.map((note) => <ItemTableCourse note={note} />)
             )}
           </div>
+          <Pagination
+            page={page}
+            totalPage={totalPage}
+            plusPage={handlePlusPage}
+            restPage={handleRestPage}
+          />
         </div>
       </div>
       <div className="info-estu3-colegio">
