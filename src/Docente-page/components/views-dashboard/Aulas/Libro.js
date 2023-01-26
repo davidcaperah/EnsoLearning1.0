@@ -27,6 +27,7 @@ const Libro = (data) => {
   // let idMateria = aulaSeleccionada.id_materia
 
   let Datos = data.data;
+  console.log("🚀 ~ file: Libro.js:30 ~ Libro ~ Datos", Datos);
 
   const agregarLibroValidacion = (Datos) => {
     Swal.fire({
@@ -223,12 +224,14 @@ const Libro = (data) => {
               Calificar
             </button>
             <br />
-            <button
+            <a
+              href={Datos.libro}
+              target={"_blank"}
+              rel="noreferrer"
               className="btn btn-info my-2"
-              onClick={() => calificarLibro(Datos.id, false, "Eliminar")}
             >
               Ver libro
-            </button>
+            </a>
           </div>
         </div>
       ) : (
