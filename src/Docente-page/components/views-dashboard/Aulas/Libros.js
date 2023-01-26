@@ -9,7 +9,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import URL from "../../../../URL.js";
-import Estrellas from "./Estrellas.js";
 import Libro from "./Libro.js";
 import Volver from "./volver.js";
 import Pagination from "components/Pagination";
@@ -19,11 +18,9 @@ import { getBooks } from "services/books";
 const Libros = () => {
   const [DatosRecibidos, setDatosRecibidos] = useState([]);
   const [DatosRecibidosDos, setDatosRecibidosDos] = useState([]);
-  const [DatosRecibidosTres, setDatosRecibidosTres] = useState([]);
   const [Validacionbtn, setValidacionbtn] = useState(true);
   const [genero, setGenero] = useState(0);
   const [autor, setAutor] = useState(0);
-  const [starts, setStarts] = useState(0);
   const [name, setName] = useState("");
   const [DatosLibros, setDatosLibros] = useState([]);
   const [libros, setLibros] = useState([]);
@@ -106,42 +103,6 @@ const Libros = () => {
     setGenero(parseInt(e.target.value));
   };
 
-  const handleStart = (e) => {
-    setStarts(parseInt(e.target.value));
-  };
-
-  //   const NoRecargar = async (e) => {
-  //     e.preventDefault();
-  //     let genero = parseInt(Campos.Genero);
-  //     let autor = parseInt(Campos.Autor);
-  //     let Genero = parseInt(document.getElementById("genero").value);
-  //     let Autor = parseInt(document.getElementById("autor").value);
-
-  //     if (Genero > 0 && Autor > 0) {
-  //       let data = DatosRecibidosTres.filter(
-  //         (data) =>
-  //           data.estrellas === 0 && data.autor === autor && data.genero === genero
-  //       );
-  //       setDatosLibros(data);
-  //     }
-  //     if (Genero === 0) {
-  //       let data = DatosRecibidosTres.filter(
-  //         (data) => data.estrellas === 0 && data.autor === autor
-  //       );
-  //       setDatosLibros(data);
-  //     }
-  //     if (Autor === 0) {
-  //       let data = DatosRecibidosTres.filter(
-  //         (data) => data.estrellas === 0 && data.genero === genero
-  //       );
-  //       setDatosLibros(data);
-  //     }
-
-  //     if (Autor === 0 && Genero === 0) {
-  //       setDatosLibros(DatosRecibidosTres);
-  //     }
-  //   };
-
   const cargarLibro = (data, estado) => {
     setValidacionbtn(estado);
     setDatosProp(data);
@@ -187,7 +148,7 @@ const Libros = () => {
                   </option>
                 ))}
               </select>
-              <select
+              {/* <select
                 name="Calificacion"
                 onChange={handleStart}
                 className="form-control col-md-2"
@@ -196,7 +157,7 @@ const Libros = () => {
                 <option value={3}> Mayor a 3 estrellas </option>
                 <option value={4}> Mayor a 4 estrellas </option>
                 <option value={5}> 5 estrellas </option>
-              </select>
+              </select> */}
               <select
                 name="Autor"
                 id="autor"
@@ -224,7 +185,11 @@ const Libros = () => {
             ) : DatosLibros.length === 0 ? (
               autor !== 0 || genero !== 0 ? (
                 libros.map((data) => {
-                  if (autor === data.autor || genero === data.genero) {
+                  if (
+                    (autor === data.autor && genero === data.genero) ||
+                    autor === data.autor ||
+                    genero === data.genero
+                  ) {
                     return (
                       <div className="col-md-3" key={data.id}>
                         <div
@@ -243,11 +208,10 @@ const Libros = () => {
                             Editorial {data.editorial}{" "}
                           </h6>
                           <p className="text-center mt-3"> {data.Nombre} </p>
-                          {data.estrellas === 0 ? (
-                            <RateBook book={data} />
-                          ) : (
-                            <Estrellas data={data} />
-                          )}
+                          <RateBook
+                            book={data}
+                            style={{ justifyContent: "center" }}
+                          />
                         </div>
                       </div>
                     );
@@ -273,11 +237,10 @@ const Libros = () => {
                           Editorial {data.editorial}{" "}
                         </h6>
                         <p className="text-center mt-3"> {data.Nombre} </p>
-                        {data.estrellas === 0 ? (
-                          <RateBook book={data} />
-                        ) : (
-                          <Estrellas data={data} />
-                        )}
+                        <RateBook
+                          book={data}
+                          style={{ justifyContent: "center" }}
+                        />
                       </div>
                     </div>
                   );
@@ -302,11 +265,10 @@ const Libros = () => {
                       Editorial {data.editorial}{" "}
                     </h6>
                     <p className="text-center mt-3"> {data.Nombre} </p>
-                    {data.estrellas === 0 ? (
-                      <RateBook book={data} />
-                    ) : (
-                      <Estrellas data={data} />
-                    )}
+                    <RateBook
+                      book={data}
+                      style={{ justifyContent: "center" }}
+                    />
                   </div>
                 </div>
               ))
@@ -340,7 +302,7 @@ const Libros = () => {
               />
             </svg>
           </div>
-          <Libro data={DatosProp} />
+          <Libro book={DatosProp} />
         </div>
       )}
     </div>

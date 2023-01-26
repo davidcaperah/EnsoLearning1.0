@@ -1,19 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 
-const Index = function ({ value, OnClick, isClicked, isFetch }) {
-  const [isHover, setIsHover] = useState(false);
-  const handleMouseEnter = () => {
-    if (!isFetch) {
-      setIsHover(true);
-    }
+const Index = function ({
+  value,
+  OnClick,
+  isClicked,
+  onMouseEnter,
+  onMouseOut,
+  isHover,
+}) {
+  const handleMouseEnter = (e) => {
+    onMouseEnter(value);
+    e.stopPropagation();
   };
-
-  const handleMoseOut = () => {
-    if (!isFetch) {
-      setIsHover(false);
-    }
-  };
-
   const handleOnClick = (e) => {
     OnClick(value);
     e.stopPropagation();
@@ -22,7 +20,7 @@ const Index = function ({ value, OnClick, isClicked, isFetch }) {
     <div
       id={value}
       onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMoseOut}
+      onMouseLeave={onMouseOut}
       onClick={handleOnClick}
     >
       {isHover || isClicked ? (
