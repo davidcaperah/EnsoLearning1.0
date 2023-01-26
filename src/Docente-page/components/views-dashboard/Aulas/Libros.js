@@ -12,6 +12,9 @@ import URL from "../../../../URL.js";
 import Estrellas from "./Estrellas.js";
 import Libro from "./Libro.js";
 import Volver from "./volver.js";
+import Pagination from "components/Pagination";
+import RateBook from "./components/RateBook";
+import { getBooks } from "services/books";
 
 const Libros = () => {
   const [DatosRecibidos, setDatosRecibidos] = useState([]);
@@ -25,6 +28,9 @@ const Libros = () => {
   const [DatosLibros, setDatosLibros] = useState([]);
   const [libros, setLibros] = useState([]);
   const [DatosProp, setDatosProp] = useState({});
+
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(0);
 
   useEffect(() => {
     const sendData = async () => {
@@ -50,16 +56,15 @@ const Libros = () => {
   }, []);
 
   useEffect(() => {
-    let datos = {
+    let data = {
       d: 3,
-      pagina: 1,
+      pagina: page,
     };
-    const datosJSON = JSON.stringify(datos);
-    const api = axios.create({ baseURL: URL.servidor });
-    api.post(`/api-php-react/info_libros.php`, datosJSON).then((res) => {
+    getBooks(data).then((res) => {
       setLibros(res.data.libros);
+      setTotalPage(res.data.paginas.total_paginas);
     });
-  }, []);
+  }, [page]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -79,6 +84,14 @@ const Libros = () => {
     if (!datosRecibidos.mensaje) {
       setDatosLibros(datosRecibidos);
     }
+  };
+
+  const handlePlusPage = () => {
+    setPage(page + 1);
+  };
+
+  const handleRestPage = () => {
+    setPage(page - 1);
   };
 
   const handleSearch = (e) => {
@@ -138,10 +151,21 @@ const Libros = () => {
     <div className="container">
       <Volver />
       {Validacionbtn ? (
-        <div className="p-3">
-          <div>
+        <div
+          className="d-flex flex-column p-3"
+          style={{ alignItems: "center" }}
+        >
+          <div style={{ width: "100%" }}>
             <h3 className="text-warning text-center"> Buscar libro </h3>
-            <form className="row p-4" onSubmit={handleSubmit}>
+            <form
+              className="row p-4"
+              onSubmit={handleSubmit}
+              style={{
+                justifyContent: "space-between",
+                width: "100%",
+                margin: "0",
+              }}
+            >
               <input
                 type="text"
                 id="nombre"
@@ -194,7 +218,7 @@ const Libros = () => {
             </form>
           </div>
 
-          <div className="row">
+          <div className="row" style={{ width: "100%" }}>
             {libros.length === 0 ? (
               <h1>cargando...</h1>
             ) : DatosLibros.length === 0 ? (
@@ -219,7 +243,11 @@ const Libros = () => {
                             Editorial {data.editorial}{" "}
                           </h6>
                           <p className="text-center mt-3"> {data.Nombre} </p>
-                          <Estrellas data={data} />
+                          {data.estrellas === 0 ? (
+                            <RateBook book={data} />
+                          ) : (
+                            <Estrellas data={data} />
+                          )}
                         </div>
                       </div>
                     );
@@ -245,7 +273,11 @@ const Libros = () => {
                           Editorial {data.editorial}{" "}
                         </h6>
                         <p className="text-center mt-3"> {data.Nombre} </p>
-                        <Estrellas data={data} />
+                        {data.estrellas === 0 ? (
+                          <RateBook book={data} />
+                        ) : (
+                          <Estrellas data={data} />
+                        )}
                       </div>
                     </div>
                   );
@@ -270,12 +302,22 @@ const Libros = () => {
                       Editorial {data.editorial}{" "}
                     </h6>
                     <p className="text-center mt-3"> {data.Nombre} </p>
-                    <Estrellas data={data} />
+                    {data.estrellas === 0 ? (
+                      <RateBook book={data} />
+                    ) : (
+                      <Estrellas data={data} />
+                    )}
                   </div>
                 </div>
               ))
             )}
           </div>
+          <Pagination
+            page={page}
+            totalPage={totalPage}
+            plusPage={handlePlusPage}
+            restPage={handleRestPage}
+          />
         </div>
       ) : (
         <div>
