@@ -6,7 +6,9 @@ const Preguntas = ({ opciones, numero, id ,carga}) => {
     const opcion = JSON.parse(opciones.respuestas);
     const dispatch = useDispatch();
     const [seleccion, setSeleccion] = useState(0);
+    console.log("🚀 ~ file: Preguntas.js:9 ~ Preguntas ~ seleccion", seleccion)
     const [correcta,setcorrecta] = useState(carga);
+    console.log("🚀 ~ file: Preguntas.js:11 ~ Preguntas ~ correcta", correcta)
     const [Onselect,setOnselect] = useState([]);
     const [Onsubselect,setOnsubselect] = useState();
     const [Onsubestado,setOnsubestado] = useState(0);
@@ -17,7 +19,6 @@ const Preguntas = ({ opciones, numero, id ,carga}) => {
             type: "@updaterespuestaEvalua",
             respuestaEvaluacion: seleccion
         })
-
     }, [seleccion])
         if(opciones.Tipo === 3 && carga === 1 && OnA.length <= 0 && OnB.length <= 0  ){
             let A = []
@@ -62,7 +63,6 @@ const Preguntas = ({ opciones, numero, id ,carga}) => {
     const Ver = (esta) => {
         let A = OnA;
         let B = OnB;
-        console.log(esta);
         let esta1 = esta[0];
         let esta2 = esta[1];
         for (let i = 0; i < A.length; i++) {
@@ -126,10 +126,6 @@ const Preguntas = ({ opciones, numero, id ,carga}) => {
                     e.target.value.trim()
                 ]
             });
-        dispatch({
-            type: "@updaterespuestaEvalua",
-            respuestaEvaluacion: seleccion
-        })
     }
     return (
         <div className="row p-4 d-flex col-md-12 align-items-center justify-content-center "  >
@@ -143,7 +139,7 @@ const Preguntas = ({ opciones, numero, id ,carga}) => {
                 )}
                 {/* {tipo 2} */}
                 </div>  : opciones.Tipo === 2 ?  <div className="btn-group btn-group-toggle col-md-12 d-flex" data-toggle="buttons">
-                    <textarea rows="5" cols="100" onChange={handleChange}></textarea>
+                    <textarea name={numero} rows="5" cols="100" onChange={handleChange}></textarea>
                 {/* {tipo 3} */}
                     </div> : opciones.Tipo === 3 ?
                     <div className='col-md-12'>
