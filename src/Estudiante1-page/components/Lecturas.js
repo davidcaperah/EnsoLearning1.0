@@ -40,7 +40,6 @@ const Aula = () => {
         id: d,
       },
     });
-    console.log(consulta);
     var url = consulta.data[0];
     var url1 = url.libro;
     var url2 = "https://books.enso-learning.com.co/?direc=" + url1;
