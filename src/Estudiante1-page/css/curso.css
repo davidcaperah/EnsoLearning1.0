@@ -103,6 +103,7 @@
   display: grid;
   grid-template-columns: 1fr 0.4fr;
   padding: 50px 200px 10px 70px;
+  gap: 31.25em;
 }
 .cont-list-ranking-curso-estu1 li {
   font-weight: 700;
@@ -173,6 +174,7 @@
   margin-bottom: 15px;
 }
 .ul-puntos-curso-estu1 li {
+  display: flex;
   list-style-type: none;
   text-align: right;
   margin-bottom: 15px;

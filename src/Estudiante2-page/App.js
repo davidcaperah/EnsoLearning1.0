@@ -300,7 +300,7 @@ function App() {
             </svg>
             Enviar mensaje
           </div>
-          <div style={{ margin: "0px auto" }}>
+          <div style={{ margin: "0px auto" }} id="deco-engranaje3">
             <img src={`${URL.servidor}Archivos_u/iconos/engranaje.svg`} />
           </div>
           <div
