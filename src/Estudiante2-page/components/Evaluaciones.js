@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
-import BannerPage from "./bannerPage";
-import quiz from "../img/quiz.svg";
-import Button from "@material-ui/core/Button";
-import Evaluacion from "./Evaluacion";
-import axios from "axios";
-import URL from "../../URL";
-import Cookies from "universal-cookie";
 import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
+import Cookies from "universal-cookie";
 import Page from "./Sistema de Evaluaciones/Page";
 import Calendario from "../../components/calendario";
+import Evaluacion from "./Evaluacion";
+import URL from "URL";
 import "../css/evaluaciones.css";
 const Evaluaciones = () => {
   const numberInterfazEstudiantes = useSelector(
@@ -91,6 +88,7 @@ const Evaluaciones = () => {
                   <div className="">
                     <img
                       src={`${URL.servidor}Archivos_u/iconos/placa-tornillo.svg`}
+                      alt="tornillo"
                     />
                   </div>
                   <div className="datos-card-evaluacion-estu2">
@@ -114,6 +112,7 @@ const Evaluaciones = () => {
                         <img
                           id="img-card-evalu-estu2"
                           src={`${URL.servidor}Archivos_u/iconos/matematicasImg.svg`}
+                          alt="imagen de la evaluación"
                         />
                         <div onClick={() => mostrarEvaluaciones(Acti, 1)}>
                           Iniciar evaluacion
@@ -121,14 +120,17 @@ const Evaluaciones = () => {
                         <img
                           id="tornillo1-evalu-estu2"
                           src={`${URL.servidor}Archivos_u/iconos/tornillo.svg`}
+                          alt="tornillo"
                         />
                         <img
                           id="tornillo2-evalu-estu2"
                           src={`${URL.servidor}Archivos_u/iconos/tornillo.svg`}
+                          alt="tornillo"
                         />
                         <img
                           id="tornillo3-evalu-estu2"
                           src={`${URL.servidor}Archivos_u/iconos/tornillo.svg`}
+                          alt="tornillo"
                         />
                       </div>
                     </div>
