@@ -71,7 +71,7 @@ const DocenteActividades = (prop) => {
             confirmButtonText: 'Guardar',
             showLoaderOnConfirm: true,
             preConfirm: (login)  => {
-                console.log("🚀 ~ file: CalificarActividad.jsx:76 ~ calificar ~ respt", respt)
+
                 let comentario = Campos.comentario ? Campos.comentario : "Sin comentario"; 
                 const DatosJson = JSON.stringify({d:0, 
                     id_estu: respt.id_estu,
@@ -93,7 +93,6 @@ const DocenteActividades = (prop) => {
             },
             allowOutsideClick: () => !Swal.isLoading()
           }).then((result) => {
-            console.log("🚀 ~ file: CalificarActividad.jsx:96 ~ calificar ~ result", result)
             if (result.value) {
               Swal.fire({
                 title: `${result.value}'actividad calificada`,

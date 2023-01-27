@@ -9,7 +9,6 @@
 import React, { useState} from 'react';
 const CrearColegio = () => {
     const [estado, setestado] = useState(0)
-    console.log("🚀 ~ file: CrearColegio.jsx:12 ~ CrearColegio ~ estado", estado)
     return (
         <div className="row">
                <div className="col-md-12">

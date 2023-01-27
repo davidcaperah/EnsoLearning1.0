@@ -15,6 +15,7 @@ const Page = () => {
     const [preguntaUnitaria, setUnitaria] = useState({})
     const [iniciarr, setIniciar] = useState(false)
     const respuestaEvaluacion = useSelector(state => state.respuestaEvaluacion);
+    console.log("🚀 ~ file: Page.js:18 ~ Page ~ respuestaEvaluacion", respuestaEvaluacion)
     const tiempoSalioEva = useSelector(state => state.tiempoSalioEva);
     const horasEvaluacion = useSelector(state => state.horasEvaluacion);
     const SegundosEvaluacion = useSelector(state => state.SegundosEvaluacion);
@@ -80,7 +81,7 @@ const Page = () => {
         const api = axios.create({ baseURL: URL.servidor });
         const response = await api.post('/api-php-react/Cargar_evaluacion_m.php', DatosJson);
         const data = response.data
-        if(data !== ""){
+        if(data > 0){
             if(data){
                 Swal.fire({
                     icon: 'success',
@@ -88,7 +89,7 @@ const Page = () => {
                     text : 'Su evaluación ha sido guardada y enviada con el id: ' + data
                 }).then(res => {
                     if(res.isConfirmed) {
-                        window.location.replace('/EstudianteTwoEvaluaciones')
+                        window.location.replace('/EstudianteOneEvaluaciones')
                     }
                 })
             }else{

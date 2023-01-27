@@ -80,7 +80,8 @@ const Header = ()=>{
                         } 
                 </div>
                 <div className='cont-nombreDocente'>
-                    <p>{`${Docente.Nombre} ${Docente.apellido} docente`} </p>
+                {`${Docente.Nombre} ${Docente.apellido}`} <br/>
+                docente
                 </div>
                 <div className='sub-menu-header'>
                     <img onClick={menu} src={`${URL.servidor}Archivos_u/iconos/flecha-hacia-abajo.svg`}/>
