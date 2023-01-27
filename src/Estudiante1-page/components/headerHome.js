@@ -1,7 +1,24 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react';
+import {useDispatch} from 'react-redux';
+import axios from 'axios';
+import decode from '../../utils/decode';
+import URL from '../../URL';
 import '../css/headerHome.css'
-import URL from '../../URL'
+
 const HeaderHome = ()=>{
+    const [curStudent, setCurStudent] = useState({});
+    const iduser = decode("iduser" , "A");
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+        const data = JSON.stringify({d:11, id: iduser});
+        const api = axios.create({baseURL:URL.servidor});
+        api.post('/api-php-react/info_estudiante.php', data).then(res=>{
+            setCurStudent(res.data)
+            dispatch({type:'@addDatauser', user:res.data})
+        });
+    }, [iduser, dispatch])
+
     return(
         <div className='cont-header-estudiantes-home'>
             <div className='logo-header-home'>
@@ -14,8 +31,10 @@ const HeaderHome = ()=>{
                     </div>
                     <div>
                         <p>
-                            estudiante <br/>
-                            juan perez
+                            estudiante
+                        </p>
+                        <p>
+                            {`${curStudent.Nombre} ${curStudent.Apellido}`}
                         </p>
                     </div>
                 </div>

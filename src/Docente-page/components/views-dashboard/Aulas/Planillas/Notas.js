@@ -9,8 +9,7 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Volver from "../volver";
-import URL from "../../../../../URL";
+import URL from "URL";
 import { useSelector } from "react-redux";
 import "../../../../css/planillaAcademica.css";
 import { TableBody, TableHead } from "@material-ui/core";
@@ -34,7 +33,7 @@ const Notas = (props) => {
       d: 20,
       id_col: planillaCurso.IdCol,
       id_estudiante: data.id,
-      id_materia: aulaSelect.id_materia
+      id_materia: aulaSelect.id_materia,
     });
     const api = axios.create({ baseURL: URL.servidor });
     api.post("/api-php-react/info_docente.php", parserJson).then((res) => {

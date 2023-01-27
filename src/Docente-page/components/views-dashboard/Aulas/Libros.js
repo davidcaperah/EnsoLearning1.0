@@ -9,22 +9,25 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import URL from "../../../../URL.js";
-import Estrellas from "./Estrellas.js";
 import Libro from "./Libro.js";
 import Volver from "./volver.js";
+import Pagination from "components/Pagination";
+import RateBook from "./components/RateBook";
+import { getBooks } from "services/books";
 
 const Libros = () => {
   const [DatosRecibidos, setDatosRecibidos] = useState([]);
   const [DatosRecibidosDos, setDatosRecibidosDos] = useState([]);
-  const [DatosRecibidosTres, setDatosRecibidosTres] = useState([]);
   const [Validacionbtn, setValidacionbtn] = useState(true);
   const [genero, setGenero] = useState(0);
   const [autor, setAutor] = useState(0);
-  const [starts, setStarts] = useState(0);
   const [name, setName] = useState("");
   const [DatosLibros, setDatosLibros] = useState([]);
   const [libros, setLibros] = useState([]);
   const [DatosProp, setDatosProp] = useState({});
+
+  const [page, setPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(0);
 
   useEffect(() => {
     const sendData = async () => {
@@ -50,16 +53,15 @@ const Libros = () => {
   }, []);
 
   useEffect(() => {
-    let datos = {
+    let data = {
       d: 3,
-      pagina: 1,
+      pagina: page,
     };
-    const datosJSON = JSON.stringify(datos);
-    const api = axios.create({ baseURL: URL.servidor });
-    api.post(`/api-php-react/info_libros.php`, datosJSON).then((res) => {
+    getBooks(data).then((res) => {
       setLibros(res.data.libros);
+      setTotalPage(res.data.paginas.total_paginas);
     });
-  }, []);
+  }, [page]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -76,10 +78,17 @@ const Libros = () => {
     });
     let datosRecibidos = consulta.data;
 
-    if(!datosRecibidos.mensaje){
+    if (!datosRecibidos.mensaje) {
       setDatosLibros(datosRecibidos);
     }
+  };
 
+  const handlePlusPage = () => {
+    setPage(page + 1);
+  };
+
+  const handleRestPage = () => {
+    setPage(page - 1);
   };
 
   const handleSearch = (e) => {
@@ -94,42 +103,6 @@ const Libros = () => {
     setGenero(parseInt(e.target.value));
   };
 
-  const handleStart = (e) => {
-    setStarts(parseInt(e.target.value));
-  };
-
-  //   const NoRecargar = async (e) => {
-  //     e.preventDefault();
-  //     let genero = parseInt(Campos.Genero);
-  //     let autor = parseInt(Campos.Autor);
-  //     let Genero = parseInt(document.getElementById("genero").value);
-  //     let Autor = parseInt(document.getElementById("autor").value);
-
-  //     if (Genero > 0 && Autor > 0) {
-  //       let data = DatosRecibidosTres.filter(
-  //         (data) =>
-  //           data.estrellas === 0 && data.autor === autor && data.genero === genero
-  //       );
-  //       setDatosLibros(data);
-  //     }
-  //     if (Genero === 0) {
-  //       let data = DatosRecibidosTres.filter(
-  //         (data) => data.estrellas === 0 && data.autor === autor
-  //       );
-  //       setDatosLibros(data);
-  //     }
-  //     if (Autor === 0) {
-  //       let data = DatosRecibidosTres.filter(
-  //         (data) => data.estrellas === 0 && data.genero === genero
-  //       );
-  //       setDatosLibros(data);
-  //     }
-
-  //     if (Autor === 0 && Genero === 0) {
-  //       setDatosLibros(DatosRecibidosTres);
-  //     }
-  //   };
-
   const cargarLibro = (data, estado) => {
     setValidacionbtn(estado);
     setDatosProp(data);
@@ -139,10 +112,21 @@ const Libros = () => {
     <div className="container">
       <Volver />
       {Validacionbtn ? (
-        <div className="p-3">
-          <div>
+        <div
+          className="d-flex flex-column p-3"
+          style={{ alignItems: "center" }}
+        >
+          <div style={{ width: "100%" }}>
             <h3 className="text-warning text-center"> Buscar libro </h3>
-            <form className="row p-4" onSubmit={handleSubmit}>
+            <form
+              className="row p-4"
+              onSubmit={handleSubmit}
+              style={{
+                justifyContent: "space-between",
+                width: "100%",
+                margin: "0",
+              }}
+            >
               <input
                 type="text"
                 id="nombre"
@@ -164,7 +148,7 @@ const Libros = () => {
                   </option>
                 ))}
               </select>
-              <select
+              {/* <select
                 name="Calificacion"
                 onChange={handleStart}
                 className="form-control col-md-2"
@@ -173,7 +157,7 @@ const Libros = () => {
                 <option value={3}> Mayor a 3 estrellas </option>
                 <option value={4}> Mayor a 4 estrellas </option>
                 <option value={5}> 5 estrellas </option>
-              </select>
+              </select> */}
               <select
                 name="Autor"
                 id="autor"
@@ -195,16 +179,16 @@ const Libros = () => {
             </form>
           </div>
 
-          <div className="row">
+          <div className="row" style={{ width: "100%" }}>
             {libros.length === 0 ? (
               <h1>cargando...</h1>
             ) : DatosLibros.length === 0 ? (
               autor !== 0 || genero !== 0 ? (
                 libros.map((data) => {
                   if (
+                    (autor === data.autor && genero === data.genero) ||
                     autor === data.autor ||
-                    genero === data.genero ||
-                    starts === data.estrellas
+                    genero === data.genero
                   ) {
                     return (
                       <div className="col-md-3" key={data.id}>
@@ -224,7 +208,10 @@ const Libros = () => {
                             Editorial {data.editorial}{" "}
                           </h6>
                           <p className="text-center mt-3"> {data.Nombre} </p>
-                          <Estrellas data={data} />
+                          <RateBook
+                            book={data}
+                            style={{ justifyContent: "center" }}
+                          />
                         </div>
                       </div>
                     );
@@ -250,7 +237,10 @@ const Libros = () => {
                           Editorial {data.editorial}{" "}
                         </h6>
                         <p className="text-center mt-3"> {data.Nombre} </p>
-                        <Estrellas data={data} />
+                        <RateBook
+                          book={data}
+                          style={{ justifyContent: "center" }}
+                        />
                       </div>
                     </div>
                   );
@@ -275,12 +265,21 @@ const Libros = () => {
                       Editorial {data.editorial}{" "}
                     </h6>
                     <p className="text-center mt-3"> {data.Nombre} </p>
-                    <Estrellas data={data} />
+                    <RateBook
+                      book={data}
+                      style={{ justifyContent: "center" }}
+                    />
                   </div>
                 </div>
               ))
             )}
           </div>
+          <Pagination
+            page={page}
+            totalPage={totalPage}
+            plusPage={handlePlusPage}
+            restPage={handleRestPage}
+          />
         </div>
       ) : (
         <div>
@@ -303,7 +302,7 @@ const Libros = () => {
               />
             </svg>
           </div>
-          <Libro data={DatosProp} />
+          <Libro book={DatosProp} />
         </div>
       )}
     </div>

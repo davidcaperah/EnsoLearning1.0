@@ -1,36 +1,37 @@
-.cont-contac-curso-estu3{
-    border: 2px solid #04293A;
-    box-sizing: border-box;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-right: 150px;
-    padding: 40px 0px;
-    margin-top: -50px;
+.cont-contac-curso-estu3 {
+  border: 2px solid #04293a;
+  box-sizing: border-box;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 150px;
+  padding: 40px 0px;
+  margin-top: -50px;
+  cursor: pointer;
 }
-.cont-contac-curso-estu3 h5{
-    font-weight: 700;
-    font-size: 25px;
-    line-height: 31px;
-    text-align: center;
-    color: #04293A
+.cont-contac-curso-estu3 h5 {
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 31px;
+  text-align: center;
+  color: #04293a;
 }
-.cont-contac-curso-estu3 p{
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 31px;
-    text-align: center;
-    color: #04293A
+.cont-contac-curso-estu3 p {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 31px;
+  text-align: center;
+  color: #04293a;
 }
-.cont-contac-curso-estu3 img{
-    padding-right: 10px;
+.cont-contac-curso-estu3 img {
+  padding-right: 10px;
 }
-.tablero-estu3-curso{
-    margin:70px 160px 100px 160px;
-    border-radius: 45px;
-    background: rgba(86, 164, 207, 0.95);
-    padding-bottom: 10px;
-    padding-top: 20px;
+.tablero-estu3-curso {
+  margin: 70px 160px 100px 160px;
+  border-radius: 45px;
+  background: rgba(86, 164, 207, 0.95);
+  padding-bottom: 10px;
+  padding-top: 20px;
 }

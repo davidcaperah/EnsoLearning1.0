@@ -1,49 +1,54 @@
-import React,{useState, useEffect} from 'react';
-import Carga from './pantallaCarga'
-import Rutas from '../router';
-import Cookies from 'universal-cookie';
-import axios from 'axios';
-import URL from '../../URL.js';
-import  Header from './header'
-import  HeaderHome from './headerHome'
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import Carga from "./pantallaCarga";
+import Rutas from "../router";
+import axios from "axios";
+import URL from "../../URL.js";
+import Header from "./header";
+import HeaderHome from "./headerHome";
+import decode from "../../utils/decode";
 const Navbar = () => {
+  const [load, setLoad] = useState(0);
+  const [currStudent, setCurrStudent] = useState({});
+  const path = window.location.pathname;
+  const idStudent = decode("iduser", "A");
+  const dispatch = useDispatch();
 
-    const [load, setLoad] = useState(0);
-    const path = window.location.pathname
-    console.log(path)
-    useEffect(() => {
-
-        fetch(`http://localhost:3000${path}`)
-        .then((response) => {
-          if(response.status === 200){
-            setLoad(200)
-          }
-        }) 
-    
-      }, []);
-
-      if(load === 200){
-        return (
-        
-            <div className={path == "/EstudianteTwoHome"? 'cont-home-menu-estu1': ""} >
-                {
-                    path == "/EstudianteTwoHome" ?
-                    <HeaderHome />
-                    :<Header />
-                }
-                <Rutas />
-            </div>
-            
-        );
+  useEffect(() => {
+    fetch(`http://localhost:3000${path}`).then((response) => {
+      if (response.status === 200) {
+        setLoad(200);
       }
-      else{
-          return(
-              <Carga/>
-          )
-      }
-   
-}
- 
+    });
+  }, []);
+
+  useEffect(() => {
+    const data = JSON.stringify({ d: 11, id: idStudent });
+    const api = axios.create({ baseURL: URL.servidor });
+    api.post("/api-php-react/info_estudiante.php", data).then((res) => {
+      setCurrStudent(res.data);
+      dispatch({ type: "@addDatauser", user: res.data });
+    });
+  }, [idStudent, dispatch]);
+
+  if (load === 200) {
+    return (
+      <div
+        className={path == "/EstudianteTwoHome" ? "cont-home-menu-estu1" : ""}
+      >
+        {path == "/EstudianteTwoHome" ? (
+          <HeaderHome currStudent={currStudent} />
+        ) : (
+          <Header currStudent={currStudent} />
+        )}
+        <Rutas />
+      </div>
+    );
+  } else {
+    return <Carga />;
+  }
+};
+
 /*
     <div className="container pt-2">
                 <div className="d-flex justify-content-between align-items-center" >

@@ -35,7 +35,7 @@ const initialState = {
   CrearActividadDocente: {},
   RecursosImagen: {},
   aulasList: [],
-  Correcta_eva: "",
+  currNote: 0,
 };
 
 const reducer = (state = initialState, action) => {
@@ -75,19 +75,20 @@ const reducer = (state = initialState, action) => {
     CrearActividadDocente,
     RecursosImagen,
     aulasList,
-    Correcta_eva,
+    currNote,
   } = action;
+
+  if (type === "currNote") {
+    return {
+      ...state,
+      currNote,
+    };
+  }
 
   if (type === "RecursosImagen") {
     return {
       ...state,
       RecursosImagen,
-    };
-  }  
-  if (type === "Correcta_eva") {
-    return {
-      ...state,
-      Correcta_eva,
     };
   }
   if (type === "aulasList") {

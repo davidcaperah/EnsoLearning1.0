@@ -1,134 +1,157 @@
-import React,{useEffect,useState} from 'react';import Banner from './Banner';
-import team from "../img/kid.svg";
-import axios from 'axios';
-import URL from '../../URL';
-import Cookies from 'universal-cookie';
-import '../css/curso.css'
+import React, { useEffect, useState } from "react";
+import * as ReactDOM from "react-dom";
+import axios from "axios";
+import Cookies from "universal-cookie";
+import URL from "URL";
+import ModalContainer from "components/ModalContainer";
+import "../css/curso.css";
 const Curso = () => {
+  const [DatosCurso, setDatosCurso] = useState({});
+  const [Estudiantes, setEstudiantes] = useState([]);
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
-    const [DatosCurso, setDatosCurso] = useState({})
-    const [Estudiantes, setEstudiantes] = useState([])
+  let CryptoJS = require("crypto-js");
+  const cookies = new Cookies();
 
-    let CryptoJS = require("crypto-js")
-    const cookies =  new Cookies();
+  const Desencriptar = (NombreCookie, Llave) => {
+    let IdEncriptado = cookies.get(NombreCookie);
+    let bytes = CryptoJS.AES.decrypt(IdEncriptado, Llave);
+    let Datos = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+    return Datos;
+  };
 
-    const Desencriptar = (NombreCookie , Llave) => {
-        let IdEncriptado =  cookies.get(NombreCookie)
-        let bytes  = CryptoJS.AES.decrypt(IdEncriptado, Llave)
-        let Datos = JSON.parse(bytes.toString(CryptoJS.enc.Utf8))
-        return Datos
-    }
+  let idCurso = Desencriptar("idCurso", "A");
 
-    let idCurso = Desencriptar("idCurso" , "A")
+  const cargarDatosCurso = async () => {
+    const consulta = await axios({
+      method: "post",
+      url: `${URL.servidor}/api-php-react/info_estudiante.php`,
+      data: {
+        d: 8,
+        Curso: idCurso,
+      },
+    });
+    setDatosCurso(consulta.data[0]);
+  };
 
+  const cargarEstudiantes = async () => {
+    const consulta = await axios({
+      method: "post",
+      url: `${URL.servidor}/api-php-react/info_estudiante.php`,
+      data: {
+        d: 9,
+        Curso: idCurso,
+      },
+    });
+    setEstudiantes(consulta.data);
+  };
 
-    const cargarDatosCurso = async () => {
-        const consulta = await axios({
-            method : "post",
-            url  : `${URL.servidor}/api-php-react/info_estudiante.php`,
-            data : {
-                d : 8 ,
-                Curso: idCurso
-            }
-        })
-        setDatosCurso(consulta.data[0])
-    }
+  useEffect(() => {
+    cargarEstudiantes();
+    cargarDatosCurso();
+  }, []);
 
-    const cargarEstudiantes = async () => {
-        const consulta = await axios({
-            method : "post",
-            url  : `${URL.servidor}/api-php-react/info_estudiante.php`,
-            data : {
-                d : 9 ,
-                Curso: idCurso
-            }
-        })
-        setEstudiantes(consulta.data)
-    }
-    
+  const handleModal = () => {
+    setIsOpenModal(!isOpenModal);
+  };
 
-    useEffect(() => {
-        cargarEstudiantes()
-        cargarDatosCurso()
-    }, [])
-
-    return (
+  return (
+    <div>
+      {isOpenModal &&
+        ReactDOM.createPortal(
+          <ModalContainer onClose={handleModal}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+              }}
+            >
+              <h1>En construcción</h1>
+            </div>
+          </ModalContainer>,
+          document.getElementById("modal-container-render")
+        )}
+      <div className="con-info-aulas2">
         <div>
-            <div className='con-info-aulas2'>
-                <div>
-                    <h4 className='titu-estu2-evalu'>Bienvenido a tus Curso</h4>
-                    <p className='con-descri-evaluaciones-estu2'>
-                        En este espacio podrás encontrar a tus compañeros de curso
-                        ver tu promedio e interactuar con tu docente director de curso
-                    </p>
-                </div>
-            </div>
-      
-
-        <div className='curso-info-estu2' >
-            <div className='cont-info-curso-estu2'>
-                <div> 
-                    <h5>Tu Curso</h5>
-                    <p>{DatosCurso.Curso_Nu}</p>
-                </div>
-                <div className='borde-curso-info'>
-                    <h5> Jornada</h5>
-                    <p>{DatosCurso.jornada === 1? "Tarde" : "Mañana"}</p>
-                </div>
-                <div>
-                    <h5>Total Estudiantes</h5>
-                    <p> {DatosCurso.Can_Est}</p>
-                </div>
-            </div>
-            <div className='cont-contac-curso-estu3' >
-                <h5>Director de curso</h5>
-                <p>Juan andres quintero</p>
-                <div>
-                    <img src={`${URL.servidor}Archivos_u/iconos/mensaje-estu.svg`}/>
-                    Enviar mensaje
-                </div>
-            </div>
+          <h4 className="titu-estu2-evalu">Bienvenido a tus Curso</h4>
+          <p className="con-descri-evaluaciones-estu2">
+            En este espacio podrás encontrar a tus compañeros de curso ver tu
+            promedio e interactuar con tu docente director de curso
+          </p>
         </div>
-
-        <div className="tablero-estu3-curso">
-            <div className="cont-info-tablero-estu2">
-            <div className='titu-rankig-curso-estu1'>
-                <h4>Mis Compañeros</h4>
-                <p>
-                    *Estas viendo el ranking de tus compañeros recuerda que puedes
-                     acumular tus diamantes para canje en la seccion de juegos 
-                     interactivos.
-                </p>
-            </div>
-
-            <div className='cont-list-ranking-curso-estu1'>
-                    <div className='ul-nombre-curso-estu1'>
-                        <ul>
-                        {Estudiantes.map(Compa =>
-                            <li key={Compa.id}>{Compa.Nombre} {Compa.Apellido}</li>
-                        )}
-                        </ul>
-                    </div>
-                    <div className='ul-puntos-curso-estu1'>
-                        <ul>
-                            {Estudiantes.map(Compa =>
-                                <li key={Compa.id}>{Compa.Puntos} <img src={`${URL.servidor}Archivos_u/iconos/diamante-azul.svg`}/></li>
-                            )}    
-                        </ul>
-                    </div>
-                </div>
-
-            
-            </div>
       </div>
-            
 
-            
-        
+      <div className="curso-info-estu2">
+        <div className="cont-info-curso-estu2">
+          <div>
+            <h5>Tu Curso</h5>
+            <p>{DatosCurso.Curso_Nu}</p>
+          </div>
+          <div className="borde-curso-info">
+            <h5> Jornada</h5>
+            <p>{DatosCurso.jornada === 1 ? "Tarde" : "Mañana"}</p>
+          </div>
+          <div>
+            <h5>Total Estudiantes</h5>
+            <p> {Estudiantes.length}</p>
+          </div>
+        </div>
+        <div className="cont-contac-curso-estu3" onClick={handleModal}>
+          <h5>Director de curso</h5>
+          <p>Juan andres quintero</p>
+          <div>
+            <img
+              src={`${URL.servidor}Archivos_u/iconos/mensaje-estu.svg`}
+              alt="mensajes"
+            />
+            Enviar mensaje
+          </div>
+        </div>
+      </div>
+
+      <div className="tablero-estu3-curso">
+        <div className="cont-info-tablero-estu2">
+          <div className="titu-rankig-curso-estu1">
+            <h4>Mis Compañeros</h4>
+            <p>
+              *Estas viendo el ranking de tus compañeros recuerda que puedes
+              acumular tus diamantes para canje en la seccion de juegos
+              interactivos.
+            </p>
+          </div>
+
+          <div className="cont-list-ranking-curso-estu1">
+            <div className="ul-nombre-curso-estu1">
+              <ul>
+                {Estudiantes.map((Compa) => (
+                  <li key={Compa.id}>
+                    {Compa.Nombre} {Compa.Apellido}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="ul-puntos-curso-estu1">
+              <ul>
+                {Estudiantes.map((Compa) => (
+                  <li key={Compa.id}>
+                    {Compa.Puntos}{" "}
+                    <img
+                      src={`${URL.servidor}Archivos_u/iconos/diamante-azul.svg`}
+                      alt="points"
+                    />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    );
-}
- 
+  );
+};
+
 /*
 <div className="bg-light pb-5" >
             <Banner img={team} welcome="Bienvenido, aquí podrás ver tu curso y ver su promedio y tu docente director de curso." text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?" />
