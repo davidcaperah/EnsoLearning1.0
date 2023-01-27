@@ -42,8 +42,7 @@ const Aula = () => {
     });
     var url = consulta.data[0];
     var url1 = url.libro;
-    var url2 = "https://books.enso-learning.com.co/?direc=" + url1;
-    window.location.replace(url2);
+    window.open(url1);
   };
   useEffect(() => {
     cargarAulas();
@@ -128,8 +127,7 @@ const Aula = () => {
         {Aulas.length === 0 ? (
           <div className="shadow p-3 m-5 w-50 m-auto">
             <h6 className="text-center">
-              {" "}
-              <strong>No tienes aulas asignadas en el momento!</strong>{" "}
+              <strong>No tienes aulas asignadas en el momento!</strong>
             </h6>
           </div>
         ) : (
@@ -139,8 +137,7 @@ const Aula = () => {
                 <div className="shadow p-3 m-2">
                   <div className="p-3 rounded bg-pink-2 my-2">
                     <p className="h1 text-center text-lucky">
-                      {" "}
-                      <strong> {math.materia_name} </strong>{" "}
+                      <strong> {math.materia_name} </strong>
                     </p>
                   </div>
 
@@ -148,10 +145,8 @@ const Aula = () => {
                     <div className="col-md-4">
                       <div className="p-2">
                         <p className="h5 mt-3">
-                          {" "}
                           <strong>
-                            {" "}
-                            {math.Pro_name} {math.Pro_apellidos}{" "}
+                            {math.Pro_name} {math.Pro_apellidos}
                           </strong>
                         </p>
                         <p> {math.descr} </p>
@@ -162,8 +157,7 @@ const Aula = () => {
                       {math.libro === 0 ? (
                         <div className="col-md-6">
                           <h6 className="text-center">
-                            {" "}
-                            <strong>No tienes lecturas{math.libro}</strong>{" "}
+                            <strong>No tienes lecturas{math.libro}</strong>
                           </h6>
                         </div>
                       ) : (
@@ -178,8 +172,7 @@ const Aula = () => {
                               alt="libro"
                             />
                             <h6 className="text-center my-2">
-                              {" "}
-                              <strong>tienes una lectura</strong>{" "}
+                              <strong>tienes una lectura</strong>
                             </h6>
                           </div>
                         </div>
