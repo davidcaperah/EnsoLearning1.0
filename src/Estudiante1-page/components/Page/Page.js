@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Cookies from "universal-cookie";
 import ItemTableCouse from "components/ItemTableCourse";
 import { getAllNotes } from "services/notas-aulas";
-import Cookies from "universal-cookie";
-import "../../css/home.css";
-import URL from "../../../URL";
-import axios from "axios";
 import Paginacion from "components/Pagination";
+import URL from "../../../URL";
+import "../../css/home.css";
 
 const Page = (props) => {
   let CryptoJS = require("crypto-js");
@@ -19,6 +20,8 @@ const Page = (props) => {
   const [posiciones, setPosiciones] = useState([]);
   const currStudent = useSelector((state) => state.user);
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const [notes, setNotes] = useState([]);
   const [page, setPage] = useState(1);
@@ -273,7 +276,10 @@ const Page = (props) => {
           <h4>EnsonLearning</h4>
         </div>
         <div className="cont-sub-menu-ico-estu1">
-          <div className="cont-icono-sub-menu-home-estu1">
+          <div
+            className="cont-icono-sub-menu-home-estu1"
+            onClick={() => navigate("/EstudianteConstruccion")}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="white"
@@ -322,7 +328,10 @@ const Page = (props) => {
               src={`${URL.servidor}Archivos_u/iconos/planeta.svg`}
             />
           </div>
-          <div className="cont-icono-sub-menu-home-estu1">
+          <div
+            className="cont-icono-sub-menu-home-estu1"
+            onClick={() => navigate("/EstudianteOneEventos")}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="white"
@@ -353,7 +362,10 @@ const Page = (props) => {
             </svg>
             Agenda
           </div>
-          <div className="cont-icono-sub-menu-home-estu1">
+          <div
+            className="cont-icono-sub-menu-home-estu1"
+            onClick={() => navigate("/EstudianteOneLecturas")}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="white"
@@ -421,7 +433,10 @@ const Page = (props) => {
             Biblioteca
           </div>
           <div className="titu-ciclo-estu1-home">Ciclo 1</div>
-          <div className="cont-icono-sub-menu-home-estu1">
+          <div
+            className="cont-icono-sub-menu-home-estu1"
+            onClick={() => navigate("/EstudianteConstruccion")}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="white"
