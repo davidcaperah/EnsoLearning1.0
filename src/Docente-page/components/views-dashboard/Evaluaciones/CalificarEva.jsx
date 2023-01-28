@@ -109,6 +109,8 @@ const Crear = () => {
   function cargar_respuesta(e, r) {
     setvista(e);
     setrespuesta(r);
+    var resultado = JSON.parse(r.resultado);
+    setpregutares(resultado);
   }
   useEffect(() => {
     const data = {
@@ -120,6 +122,9 @@ const Crear = () => {
       .post(`${URL.servidor}/api-php-react/info_docente.php`, dataJSON)
       .then((res) => {
         setevaluaciones(res.data);
+        if (vista !== 3) {
+          setrespuesta([]);
+        }
       });
   }, [vista]);
   useEffect(() => {
@@ -133,8 +138,6 @@ const Crear = () => {
       .then((res) => {
         res = res.data;
         setrespuestas(res);
-        var resultado = JSON.parse(res[0].resultado);
-        setpregutares(resultado);
       });
   }, [curso]);
   useEffect(() => {
@@ -147,28 +150,31 @@ const Crear = () => {
       .post(`${URL.servidor}/api-php-react/Cargar_evaluacion_m.php`, dataJSON1)
       .then((res) => {
         res = res.data;
+        console.log("🚀 ~ file: CalificarEva.jsx:149 ~ .then ~ res", res);
         let datos = [];
         for (let llave in res) {
           let elemento = res[llave];
           if (elemento.Tipo === 2) {
-            for (const key in pregutares) {
-              const element = pregutares[key];
-              if (element[0] === elemento.id) {
+            const element = pregutares;
+            for (const key in element) {
+              const respue = element[key];
+              if (respue[0] === elemento.id) {
                 datos = [
                   ...datos,
                   {
                     pregunta: elemento.pregunta,
-                    respuesta: element[1],
+                    respuesta: respue[1],
                     id: elemento.id,
                   },
                 ];
               }
             }
+
+            setpreguntas(datos);
           }
-          setpreguntas(datos);
         }
       });
-  }, [respuesta]);
+  }, [respuesta, pregutares]);
 
   return (
     <div className="container-flex">
