@@ -6,7 +6,10 @@ function Index({ eva, onClick }) {
   return (
     <div className="cont-card-evaluaciones-estu1">
       <div className="con-img-regla-evaluaciones">
-        <img src={`${URL.servidor}Archivos_u/iconos/regla.svg`} />
+        <img
+          src={`${URL.servidor}Archivos_u/iconos/regla.svg`}
+          alt="rule icon"
+        />
       </div>
       <div className="datos-card-evaluacion-estu1">
         <div className="datos-info-estu1">
@@ -38,7 +41,10 @@ function Index({ eva, onClick }) {
         </div>
         <div>
           <div className="deco-img-card-estu1">
-            <img src={`${URL.servidor}Archivos_u/iconos/matematicasImg.svg`} />
+            <img
+              src={`${URL.servidor}Archivos_u/iconos/matematicasImg.svg`}
+              alt="imagen de la avaluación"
+            />
             <div
               onClick={() => {
                 onClick(eva, 1);

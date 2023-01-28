@@ -31,7 +31,6 @@ function Evaluaciones() {
   const [idEvaluacion, setidEvaluacion] = useState(0);
 
   const mostrarEvaluaciones = (Acti, num) => {
-    console.log(Acti);
     dispatch({
       type: "@updatenumberInterfazEstudiantes",
       numberInterfazEstudiantes: num,
@@ -150,80 +149,4 @@ function Evaluaciones() {
   );
 }
 
-/*
-    <div className="bg-white pb-5" >
-            {numberInterfazEstudiantes === 0 ?
-                <div>
-                    <BannerPage img="hola" welcome="Bienvenido, aquí podrás ver todas tus actividades pendientes." text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas?" />
-                    <div className="container pt-3" >
-                        <div className="row m-3  rounded"  >
-                            {ArregloDeActividades.map(Acti =>
-                                <div className="col-md-6 " key={Acti.id} >
-                                    <div className="m-1 p-3 bg-light rounded shadow" >
-                                        <h4> {Acti.Titulo} </h4>
-                                        <p> <span className="h6" > Materia: </span>  Sociales </p>
-                                        <p> <span className="h6" > Objetivo: </span> {Acti.texto} </p>
-                                        <p> <span className="h6" > Fecha de entrega:</span> {Acti.fecha_max} </p>
-                                        <p> <span className="h6" > Tiempo para la Evaluación:</span> {Acti.tiempo} Minutos </p>
-                                        <p> <span className="h6" > Número de preguntas:</span> {Acti.preguntas} </p>
-                                        {parseInt(Acti.estado) &&
-                                            <div>
-                                                <div className="d-block">
-                                                    <div className="alert alert-success w-100 text-center p-2" > Activo </div>
-                                                </div>
-                                                <Button variant="contained" color="primary" className="d-block" onClick={() => mostrarEvaluaciones(Acti, 1)} >
-                                                    Desarrollar evaluacion
-                                                </Button>
-                                            </div>
-                                        }
-                                        {Acti.estado === "2" &&
-                                        <div>
-                                            <div className="d-block">
-                                                <div className="alert alert-warning w-100 text-center p-2" > Inactivo </div>
-                                            </div>
-                                            <Button variant="contained" color="primary" className=" m-auto d-block" onClick={() => mostrarEvaluaciones(Acti, 1)} >
-                                                Ver nota
-                                            </Button>
-                                        </div>
-                                        }
-                                        {Acti.estado === "0" &&
-                                        <div>
-                                            <div className="d-block">
-                                                <div className="alert alert-warning w-100 text-center p-2" > Inactivo </div>
-                                            </div>
-                                            <Button variant="contained" color="primary" className=" m-auto d-block" onClick={() => mostrarEvaluaciones(Acti, 1)} >
-                                                Ver nota
-                                            </Button>
-                                        </div>
-                                        }
-                                    </div>
-                                </div>
-                            )}{ArregloDeActividades.length === 0 &&
-                                <div className="shadow p-3 m-2 w-50 m-auto" >
-                                    <h6 className="text-center"> <strong>¡Felicidades!</strong>, en el momento no cuentas con evaluaciones pendientes! </h6>
-                                </div>
-                            }
-                        </div>
-                    </div>
-                </div>
-                : null}
-
-            {numberInterfazEstudiantes === 1 ?
-                <div className="container mt-4">
-                    <div className="p-3 m-2 shadow" >
-                        <div className="d-flex justify-content-start" >
-                            <div className="pointer rounded-circle shadow  p-2" >
-                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" onClick={() => mostrarEvaluaciones({}, 0)} className="bi bi-arrow-left" viewBox="0 0 16 16">
-                                    <path fillRule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <Evaluacion idEvaluacion={idEvaluacion} iduser={iduser} />
-                    </div>
-                </div>
-                : null}
-
-            {numberInterfazEstudiantes === 2 ? <Page /> : null}
-        </div>
-*/
 export default Evaluaciones;
