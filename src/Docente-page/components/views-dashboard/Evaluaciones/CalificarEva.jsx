@@ -437,7 +437,7 @@ const Crear = () => {
                         </div>
                       </div>
                       <div className="row">
-                        {!respuesta.n_estado === "Calificado" && (
+                        {respuesta.n_estado !== "Calificado" && (
                           <div className="col-md-6">
                             <strong> periodo: </strong>
                             <select
