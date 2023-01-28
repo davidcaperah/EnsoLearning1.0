@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import Page from "./Sistema de Evaluaciones/Page";
-import URL from "./../../URL";
 import Calendario from "../../components/calendario";
+import URL from "URL";
 import "../css/evaluaciones.css";
 const Evaluaciones = () => {
   const numberInterfazEstudiantes = useSelector(
@@ -56,10 +56,6 @@ const Evaluaciones = () => {
   useEffect(() => {
     cargarEvaluaciones();
   }, []);
-  console.log(
-    "🚀 ~ file: Evaluaciones.js:30 ~ Evaluaciones ~ ArregloDeActividades",
-    ArregloDeActividades
-  );
   return (
     <div>
       {numberInterfazEstudiantes === 0 ? (
@@ -88,6 +84,7 @@ const Evaluaciones = () => {
                   <div className="">
                     <img
                       src={`${URL.servidor}Archivos_u/iconos/placa-tornillo.svg`}
+                      alt="tornillo"
                     />
                   </div>
                   <div className="datos-card-evaluacion-estu2">
@@ -111,6 +108,7 @@ const Evaluaciones = () => {
                         <img
                           id="img-card-evalu-estu2"
                           src={`${URL.servidor}Archivos_u/iconos/matematicasImg.svg`}
+                          alt="imagen de la evaluación"
                         />
                         <div onClick={() => mostrarEvaluaciones(Acti, 1)}>
                           Iniciar evaluacion

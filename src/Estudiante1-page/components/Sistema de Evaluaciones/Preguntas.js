@@ -102,8 +102,6 @@ const Preguntas = ({ opciones, numero, id, carga }) => {
       }
     }
 
-    console.log(esta1);
-    console.log(esta2);
     setOnA(A);
     setOnB(B);
     // B.map( item =>

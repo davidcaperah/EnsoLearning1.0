@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Cronometro from "./Cronometro";
 import Pregunta from "./Pregunta";
 import Preguntas from "./Preguntas";
@@ -8,6 +9,7 @@ import URL from "../../../URL";
 import Swal from "sweetalert2";
 import Cookies from "universal-cookie";
 const Page = () => {
+  const navigate = useNavigate();
   const datosEvaluacionEstudiantes = useSelector(
     (state) => state.datosEvaluacionEstudiantes
   );
@@ -35,7 +37,6 @@ const Page = () => {
 
   const siguiente = (n) => {
     const valor = valorPregunta + n;
-    console.log(valor);
     setValor(valor);
     setUnitaria(preguntass[valorPregunta]);
   };
@@ -52,7 +53,6 @@ const Page = () => {
       id_estu: datosEvaluacionEstudiantes.estudiante,
       id_curso: idCurso,
     });
-    console.log(DatosJson);
     const api = axios.create({ baseURL: URL.servidor });
     const response = await api.post(
       "/api-php-react/Cargar_evaluacion_m.php",
@@ -67,7 +67,7 @@ const Page = () => {
           text: "Su evaluación ha sido guardada y enviada con el id: " + data,
         }).then((res) => {
           if (res.isConfirmed) {
-            window.location.replace("/EstudianteTwoEvaluaciones");
+            window.location.replace("/EstudianteThreeEvaluaciones");
           }
         });
       } else {
@@ -154,7 +154,6 @@ const Page = () => {
                 </div>
               </div>
             )}
-            {/* } */}
 
             {valorPregunta === preguntass.length && (
               <div className="col text-center p-4">
@@ -170,13 +169,18 @@ const Page = () => {
         ) : (
           <div className="col-md-12">
             <div className="col text-center p-4">
+              <h3 className="text-light">
+                {datosEvaluacionEstudiantes.evaluacion.Titulo}
+              </h3>
+              <h6 className="text-light">
+                {datosEvaluacionEstudiantes.evaluacion.texto}
+              </h6>
               <button
                 className="btn btn-warning"
                 type="submit"
                 onClick={() => iniciar()}
               >
-                {" "}
-                INICIAR{" "}
+                INICIAR
               </button>
             </div>
           </div>

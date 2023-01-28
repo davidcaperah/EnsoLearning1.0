@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Cookies from "universal-cookie";
-import Calendario from "../../../../components/calendario";
+import Calendario from "components/calendario";
 import axios from "axios";
 import Swal from "sweetalert2";
-import URL from "../../../../URL";
-import { json } from "react-router-dom";
+import URL from "URL";
 
 const Crear = () => {
   const docente = useSelector((state) => state.docente);
@@ -432,22 +431,24 @@ const Crear = () => {
                         </div>
                       </div>
                       <div className="row">
-                        <div className="col-md-6">
-                          <strong> periodo: </strong>
-                          <select
-                            className="form-select"
-                            name="periodo"
-                            onChange={onChange}
-                          >
-                            <option value=" " selected>
-                              Seleccione
-                            </option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                          </select>
-                        </div>
+                        {!respuesta.n_estado === "Calificado" && (
+                          <div className="col-md-6">
+                            <strong> periodo: </strong>
+                            <select
+                              className="form-select"
+                              name="periodo"
+                              onChange={onChange}
+                            >
+                              <option value=" " selected>
+                                Seleccione
+                              </option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                            </select>
+                          </div>
+                        )}
                       </div>
                       <br />
                       <h5 className="text-center">
@@ -466,7 +467,7 @@ const Crear = () => {
                       )}
                       {respuesta.nota > 0 ? (
                         <ul className="list-group list-group-flush text-center">
-                          Ya se encuentra calificado la nota es{" "}
+                          Ya se encuentra calificado la nota es
                           <strong>{respuesta.nota}</strong>
                         </ul>
                       ) : (
