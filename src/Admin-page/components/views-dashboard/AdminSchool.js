@@ -1,65 +1,21 @@
 import React, { useState, useEffect } from "react";
-import Cookies from "universal-cookie";
-import axios from "axios";
-import URL from "../../../URL.js";
-import EditColegio from "./editColegio";
 import { useDispatch } from "react-redux";
 import Calendario from "../../../components/calendario.js";
+import decode from "utils/decode.js";
 
 const AdminSchool = () => {
-  let CryptoJS = require("crypto-js");
-  const cookies = new Cookies();
   const dispatch = useDispatch();
-  let IdAdminEncriptado = cookies.get("iduser");
-  let bytesadmin = CryptoJS.AES.decrypt(IdAdminEncriptado, "A");
-  let IdAdmin = JSON.parse(bytesadmin.toString(CryptoJS.enc.Utf8));
+  const idUser = decode("iduser", "A");
+  const [currSchool, setCurrSchool] = useState({});
 
-  const Datos = {
-    id: IdAdmin,
-  };
-
-  const [DatosRecibidos, setDatosRecibidos] = useState({});
-  const [Validacion, setValidacion] = useState(0);
-
-  useEffect(() => {
-    const sendData = async () => {
-      let DatosJson = JSON.stringify(Datos);
-      const api = axios.create({ baseURL: URL.servidor });
-      const response = await api.post(
-        "/api-php-react/Cargar_col.php",
-        DatosJson
-      );
-      setDatosRecibidos(response.data);
-      console.log(DatosRecibidos);
-      let CryptoJS = require("crypto-js");
-      const cookies = new Cookies();
-      cookies.remove("idcol");
-
-      let idEncriptado = CryptoJS.AES.encrypt(
-        JSON.stringify(response.data.id),
-        "A"
-      ).toString();
-      cookies.set("colid", idEncriptado, {
-        path: "/",
-        expires: new Date(Date.now() + 5 * 60 * 60 * 1000),
-      });
-    };
-    sendData();
-    //eslint-disable-next-line
-  }, []);
-
-  const editarCole = (num) => {
-    setValidacion(num);
-    dispatch({
-      type: "@updateInfoCoordi",
-      infoCoordi: DatosRecibidos,
-    });
-  };
+  useEffect(() => {}, []);
 
   return (
     <div className="cont-princi-docentes">
       <div className="cont-imagen-docentes1">
-        <div className="titulo-Vista">Bienvenido docentes</div>
+        <div className="titulo-Vista">
+          Bienvenido coordinador o administrativo
+        </div>
         <div className="titulo-Vista1"> I.E.D Gonzalo Arango </div>
       </div>
 

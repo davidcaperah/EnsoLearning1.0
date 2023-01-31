@@ -1,7 +1,7 @@
 import axios from "axios";
 import URL from "../../URL";
 
-const getAllNotes = async (data) => {
+const getAll = async (data) => {
   try {
     const api = axios.create({ baseURL: URL.servidor });
     const request = await api.post(
@@ -14,4 +14,4 @@ const getAllNotes = async (data) => {
   }
 };
 
-export default getAllNotes;
+export default getAll;

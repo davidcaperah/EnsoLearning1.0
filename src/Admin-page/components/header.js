@@ -1,45 +1,28 @@
-import React, { useEffect, useState, useMemo } from "react";
-import URL from "../../URL";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import Cookies from "universal-cookie";
-import axios from "axios";
 import Logo from "../../assets/img/VBBV.svg";
-import { useDispatch, useSelector } from "react-redux";
 import decode from "../../utils/decode";
+import { getById } from "services/coordinator";
+import URL from "URL";
 
 const Header = () => {
   const dispatch = useDispatch();
 
-  const Docente = useSelector((state) => state.user);
+  const [currCoordinator, setCurrCoordinator] = useState({});
 
   const [abrirMenu, setAbrirMenu] = useState(0);
 
   const cookies = new Cookies();
 
-  let IdDoc = decode("iduser", "A");
-
-  const DatosDoc = useMemo(
-    () => ({
-      id: IdDoc,
-    }),
-    [IdDoc]
-  );
+  let idUser = decode("iduser", "A");
 
   useEffect(() => {
-    const EnviarDocente = async () => {
-      let idDocente = JSON.stringify(DatosDoc);
-      const api = axios.create({ baseURL: URL.servidor });
-      const response = await api.post(
-        "/api-php-react/Cargar_proid.php",
-        idDocente
-      );
-      dispatch({
-        type: "@addDatauser",
-        user: response.data,
-      });
-    };
-
-    EnviarDocente();
-  }, [dispatch, DatosDoc]);
+    getById({ d: 1, id: idUser }).then((res) => {
+      setCurrCoordinator(res.data[0]);
+      dispatch({ type: "@addDatauser", user: res.data[0] });
+    });
+  }, [dispatch, idUser]);
 
   const CerrarSesion = () => {
     cookies.remove("estado");
@@ -48,6 +31,7 @@ const Header = () => {
     cookies.remove("idcol");
     cookies.remove("idCurso");
     cookies.remove("idMateria");
+    dispatch({ type: "@addDatauser", user: {} });
     window.location.replace(URL.compartido);
   };
 
@@ -76,11 +60,11 @@ const Header = () => {
       </div>
       <div className="cont-infoDocente">
         <div>
-          {Docente.imagen ? (
+          {currCoordinator.imagen ? (
             <div>
               <img
                 className="foto-perfilDoce"
-                src={`${URL.servidor}${Docente.imagen}`}
+                src={`${URL.servidor}${currCoordinator.imagen}`}
                 alt="Logo"
               />
             </div>
@@ -96,7 +80,8 @@ const Header = () => {
         </div>
         <div className="cont-nombreDocente">
           <p>
-            {`${Docente.Nombre} ${Docente.apellido}`} <br /> Coordinador
+            {`${currCoordinator.nombre} ${currCoordinator.apellido}`} <br />{" "}
+            Coordinador
           </p>
         </div>
         <div className="sub-menu-header">

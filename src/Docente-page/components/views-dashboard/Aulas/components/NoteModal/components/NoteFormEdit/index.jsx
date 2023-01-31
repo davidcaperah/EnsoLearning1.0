@@ -1,7 +1,7 @@
 import React, { useState, forwardRef } from "react";
 import Swal from "sweetalert2";
 import NoteForm from "./../NoteForm";
-import { editNote } from "services/notas-aulas";
+import { edit } from "services/notas-aulas";
 import { useSelector } from "react-redux";
 
 const Index = forwardRef(function ({ handleStateForm }, ref) {
@@ -15,7 +15,7 @@ const Index = forwardRef(function ({ handleStateForm }, ref) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const request = await editNote({ d: 1, id: idNote, nota: note });
+      const request = await edit({ d: 1, id: idNote, nota: note });
       if (request.data) {
         Swal.fire({
           position: "center",

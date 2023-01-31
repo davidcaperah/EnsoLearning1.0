@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import ItemTableCouse from "components/ItemTableCourse";
-import { getAllNotes } from "services/notas-aulas";
+import { getAll } from "services/notas-aulas";
 import Paginacion from "components/Pagination";
 import URL from "../../../URL";
 import "../../css/home.css";
@@ -104,12 +104,10 @@ const Page = (props) => {
   }, []);
 
   useEffect(() => {
-    getAllNotes({ d: 2, aula: currStudent.Id_curso, pagina: page }).then(
-      (res) => {
-        setNotes(res.data.notas_aulas);
-        setTotalPage(res.data.paginas.total_paginas);
-      }
-    );
+    getAll({ d: 2, aula: currStudent.Id_curso, pagina: page }).then((res) => {
+      setNotes(res.data.notas_aulas);
+      setTotalPage(res.data.paginas.total_paginas);
+    });
   }, [currStudent.Id_curso, page]);
 
   const handlePlusPage = () => {

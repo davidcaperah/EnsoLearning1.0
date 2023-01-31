@@ -6,7 +6,7 @@ import axios from "axios";
 import URL from "../../URL.js";
 import ItemTableCourse from "../../components/ItemTableCourse";
 import Pagination from "components/Pagination";
-import { getAllNotes } from "services/notas-aulas";
+import { getAll } from "services/notas-aulas";
 import "../css/home.css";
 const Page = () => {
   let CryptoJS = require("crypto-js");
@@ -64,12 +64,10 @@ const Page = () => {
   }, [currStudent]);
 
   useEffect(() => {
-    getAllNotes({ d: 2, aula: currStudent.Id_curso, pagina: page }).then(
-      (res) => {
-        setNotes(res.data.notas_aulas);
-        setTotalPage(res.data.paginas.total_paginas);
-      }
-    );
+    getAll({ d: 2, aula: currStudent.Id_curso, pagina: page }).then((res) => {
+      setNotes(res.data.notas_aulas);
+      setTotalPage(res.data.paginas.total_paginas);
+    });
   }, [currStudent.Id_curso, page]);
 
   const handlePlusPage = () => {

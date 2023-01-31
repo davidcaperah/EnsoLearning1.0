@@ -6,7 +6,7 @@ import URL from "../URL";
 import axios from "axios";
 import ItemTableCourse from "../components/ItemTableCourse";
 import Pagination from "components/Pagination";
-import { getAllNotes } from "services/notas-aulas";
+import { getAll } from "services/notas-aulas";
 import "./css/home.css";
 
 function App() {
@@ -82,12 +82,10 @@ function App() {
   }, [currStudent.id_colegio]);
 
   useEffect(() => {
-    getAllNotes({ d: 2, aula: currStudent.Id_curso, pagina: page }).then(
-      (res) => {
-        setNotes(res.data.notas_aulas);
-        setTotalPage(res.data.paginas.total_paginas);
-      }
-    );
+    getAll({ d: 2, aula: currStudent.Id_curso, pagina: page }).then((res) => {
+      setNotes(res.data.notas_aulas);
+      setTotalPage(res.data.paginas.total_paginas);
+    });
   }, [currStudent.Id_curso, page]);
 
   const handlePlusPage = () => {

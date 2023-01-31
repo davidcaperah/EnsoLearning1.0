@@ -1,13 +1,13 @@
 import axios from "axios";
 import URL from "URL";
 
-const deleteNote = async (data) => {
+const edit = async (data) => {
   const api = axios.create({ baseURL: URL.servidor });
-  const request = api.post(
+  const request = await api.put(
     "/api-php-react/info_notas_aulas.php",
     JSON.stringify(data)
   );
   return request;
 };
 
-export default deleteNote;
+export default edit;
