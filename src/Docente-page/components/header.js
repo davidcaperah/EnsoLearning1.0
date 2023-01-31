@@ -55,7 +55,7 @@ const Header = () => {
   };
 
   return (
-    <div className="cont-header">
+    <div className="cont-header-docente">
       <div>
         <img src={Logo} className="logo" />
       </div>
@@ -97,7 +97,7 @@ const Header = () => {
           />
         </div>
         {abrirMenu === 1 ? (
-          <div className="menu-des-header">
+          <div className="menu-des-header-docente">
             <div>
               <img
                 src={`${URL.servidor}Archivos_u/iconos/flecha-hacia-abajo.svg`}
