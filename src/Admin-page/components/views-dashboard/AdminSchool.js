@@ -1,14 +1,22 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import Calendario from "../../../components/calendario.js";
-import decode from "utils/decode.js";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import Calendario from "components/calendario.js";
+import { getById } from "services/school";
 
 const AdminSchool = () => {
-  const dispatch = useDispatch();
-  const idUser = decode("iduser", "A");
+  const currCoordinator = useSelector((state) => state.user);
   const [currSchool, setCurrSchool] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    getById({ d: 0, id: currCoordinator.id_Col })
+      .then((res) => {
+        setCurrSchool(res.data[0]);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [currCoordinator.id_Col]);
 
   return (
     <div className="cont-princi-docentes">
@@ -16,7 +24,9 @@ const AdminSchool = () => {
         <div className="titulo-Vista">
           Bienvenido coordinador o administrativo
         </div>
-        <div className="titulo-Vista1"> I.E.D Gonzalo Arango </div>
+        <div className="titulo-Vista1">
+          {isLoading || !currSchool ? <h3>Cargando...</h3> : currSchool.nombreC}
+        </div>
       </div>
 
       <div>

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Cookies from "universal-cookie";
-import Logo from "../../assets/img/VBBV.svg";
-import decode from "../../utils/decode";
+import Logo from "assets/img/VBBV.svg";
+import decode from "utils/decode";
 import { getById } from "services/coordinator";
 import URL from "URL";
 
@@ -15,7 +15,7 @@ const Header = () => {
 
   const cookies = new Cookies();
 
-  let idUser = decode("iduser", "A");
+  const idUser = decode("iduser", "A");
 
   useEffect(() => {
     getById({ d: 1, id: idUser }).then((res) => {
@@ -80,7 +80,8 @@ const Header = () => {
         </div>
         <div className="cont-nombreDocente">
           <p>
-            {`${currCoordinator.nombre} ${currCoordinator.apellido}`} <br />{" "}
+            {`${currCoordinator.nombre} ${currCoordinator.apellido}`}
+            <br />
             Coordinador
           </p>
         </div>
