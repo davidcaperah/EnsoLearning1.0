@@ -19,8 +19,6 @@ const useStyles = makeStyles((theme) => ({
 const Login = () => {
   const classes = useStyles();
 
-  const history = useNavigate();
-
   const [Datos, setDatos] = useState({});
 
   const Escribir = (e) => {
@@ -50,8 +48,8 @@ const Login = () => {
     } else if (Usuario.id) {
       const cookies = new Cookies();
       const CryptoJS = require("crypto-js");
-      if (Usuario.id_col) {
-        let idCol = Usuario.id_col;
+      if (Usuario.id_Col) {
+        let idCol = Usuario.id_Col;
         let idColEncriptado = CryptoJS.AES.encrypt(
           JSON.stringify(idCol),
           "A"

@@ -11,7 +11,7 @@ const AdminSchool = () => {
   useEffect(() => {
     getById({ d: 0, id: currCoordinator.id_Col })
       .then((res) => {
-        setCurrSchool(res.data[0]);
+        setCurrSchool(res.data);
       })
       .finally(() => {
         setIsLoading(false);

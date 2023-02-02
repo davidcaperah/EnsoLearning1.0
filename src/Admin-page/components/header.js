@@ -10,6 +10,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const [currCoordinator, setCurrCoordinator] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   const [abrirMenu, setAbrirMenu] = useState(0);
 
@@ -18,16 +19,20 @@ const Header = () => {
   const idUser = decode("iduser", "A");
 
   useEffect(() => {
-    getById({ d: 1, id: idUser }).then((res) => {
-      setCurrCoordinator(res.data[0]);
-      dispatch({ type: "@addDatauser", user: res.data[0] });
-    });
+    getById({ d: 1, id: idUser })
+      .then((res) => {
+        setCurrCoordinator(res.data);
+        dispatch({ type: "@addDatauser", user: res.data });
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [dispatch, idUser]);
 
   const CerrarSesion = () => {
     cookies.remove("estado");
     cookies.remove("iduser");
-    cookies.remove("colid");
+    cookies.remove("idcol");
     cookies.remove("idcol");
     cookies.remove("idCurso");
     cookies.remove("idMateria");
@@ -60,27 +65,19 @@ const Header = () => {
       </div>
       <div className="cont-infoDocente">
         <div>
-          {currCoordinator.imagen ? (
-            <div>
-              <img
-                className="foto-perfilDoce"
-                src={`${URL.servidor}${currCoordinator.imagen}`}
-                alt="Logo"
-              />
-            </div>
-          ) : (
-            <div>
-              <img
-                className="foto-perfilDoce"
-                src={`${URL.servidor}/Archivos_u/Logos_estu/F1.png`}
-                alt="logo student"
-              />
-            </div>
-          )}
+          <div>
+            <img
+              className="foto-perfilDoce"
+              src={`${URL.servidor}/Archivos_u/Logos_estu/F1.png`}
+              alt="logo student"
+            />
+          </div>
         </div>
         <div className="cont-nombreDocente">
           <p>
-            {`${currCoordinator.nombre} ${currCoordinator.apellido}`}
+            {isLoading
+              ? "cargando..."
+              : `${currCoordinator.nombre} ${currCoordinator.apellido}`}
             <br />
             Coordinador
           </p>
