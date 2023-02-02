@@ -5,19 +5,18 @@ import Swal from "sweetalert2";
 import AddAnuncios from "./addAnuncios";
 import EditAnuncios from "./editAnuncios";
 import { getAll, remove } from "services/announcements";
-import decode from "utils/decode";
 
 const AdminAnuncios = () => {
   const { id_Col } = useSelector((state) => state.user);
   const [announcements, setAnnouncements] = useState([]);
-  const [numeroInterfaz, setnumeroInterfaz] = useState(0);
+  const [interfaceNumber, setInterfaceNumber] = useState(0);
   const [announcementSingle, setAnnouncementSingle] = useState({});
 
   useEffect(() => {
     getAll({ d: 3, id_col: id_Col }).then((res) => {
       setAnnouncements(res.data);
     });
-  }, [id_Col]);
+  }, [id_Col, interfaceNumber]);
 
   const removeAnnouncement = (announcement) => {
     Swal.fire({
@@ -42,18 +41,26 @@ const AdminAnuncios = () => {
   };
 
   const editAnnouncement = (announcement) => {
-    setnumeroInterfaz(2);
+    setInterfaceNumber(2);
     setAnnouncementSingle(announcement);
   };
 
   return (
     <div>
-      {numeroInterfaz === 0 ? (
-        <div className="p-3">
+      {interfaceNumber === 0 ? (
+        <div
+          className="p-3"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           {announcements.length !== 0 ? (
             announcements.map((announcement) => (
               <div
                 className="p-2 m-2 shadow row bg-gris-whi border-30 rounded"
+                style={{ width: "50%" }}
                 key={announcement.id}
               >
                 <div className="col-sm-10">
@@ -63,8 +70,7 @@ const AdminAnuncios = () => {
                     alt={"enso learning" + announcement.titulo}
                   />
                   <h5 className="mt-3">
-                    {" "}
-                    <strong> {announcement.titulo} </strong>{" "}
+                    <strong> {announcement.titulo} </strong>
                   </h5>
                   <h6> {announcement.anuncio} </h6>
                   <p className="text-secondary"> {announcement.fecha} </p>
@@ -116,7 +122,7 @@ const AdminAnuncios = () => {
             <div className="d-flex justify-content-center mr-2">
               <div
                 className="bg-warning rounded-circle pointer p-3  shadow Areas"
-                onClick={() => setnumeroInterfaz(1)}
+                onClick={() => setInterfaceNumber(1)}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -134,12 +140,12 @@ const AdminAnuncios = () => {
         </div>
       ) : null}
 
-      {numeroInterfaz !== 0 ? (
+      {interfaceNumber !== 0 ? (
         <div>
           <div className="d-flex justify-content-start mt-2">
             <div
               className="shadow pointer rounded-circle p-3 bg-white "
-              onClick={() => setnumeroInterfaz(0)}
+              onClick={() => setInterfaceNumber(0)}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -156,9 +162,17 @@ const AdminAnuncios = () => {
               </svg>
             </div>
           </div>
-          {numeroInterfaz === 1 ? <AddAnuncios colegio={id_Col} /> : null}
-          {numeroInterfaz === 2 ? (
-            <EditAnuncios datosAnuncio={announcementSingle} />
+          {interfaceNumber === 1 ? (
+            <AddAnuncios
+              idSchool={id_Col}
+              handleChangeView={setInterfaceNumber}
+            />
+          ) : null}
+          {interfaceNumber === 2 ? (
+            <EditAnuncios
+              announcementSingle={announcementSingle}
+              handleChangeView={setInterfaceNumber}
+            />
           ) : null}
         </div>
       ) : null}
