@@ -2,9 +2,13 @@ import React from "react";
 import URL from "../../URL.js";
 import "../css/docente.css";
 
-const Menu = () => {
+const Menu = ({ onMouseEnter, onMouseOut }) => {
   return (
-    <div className="menu-coordinador">
+    <div
+      className="menu-coordinador"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseOut}
+    >
       <div className="list-group">
         <li className="btn-menu">
           <img src={`${URL.servidor}Archivos_u/iconos/menu1.svg`} />

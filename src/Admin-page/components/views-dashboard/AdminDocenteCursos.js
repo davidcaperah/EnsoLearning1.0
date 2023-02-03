@@ -98,58 +98,24 @@ const AdminDocenteCursos = () => {
         text: datosRecibidos.mensaje,
       });
     }
-    /*try {
-            //Envía configuración de json 
-            let Configuracion = {
-                method : 'POST',
-                headers : {
-                    'Accept' : 'application/json',
-                    'Content-Type' : 'application/json'
-                },
-                body :  DatosJson
-            }
-            //Envía datos de json a la api
-            let res = await fetch(`${URL.servidor}/api-php-react/Consulta_procursos.php`, Configuracion)
-            let json = await res.json()
-            // let json = await res.text()
-            console.log(json)
-            if(json.mensaje === "Cambio guardado correctamente" ){
-                Swal.fire({
-                    icon: 'success',
-                    text: json.mensaje
-                })
-                cookies.remove("idDoc")
-                window.location.replace("/AdminTeacher");
-            }else{
-                Swal.fire({
-                    icon: 'error',
-                    text: json.mensaje
-                })
-            }
-        } catch (error) {
-            console.log(error)
-        }*/
   }
 
   return (
     <div className="p-4">
       <h5>
-        {" "}
         Aquí podrás selecionar la materia y el curso que este docente dictará en
         tu colegio, podrás agregar más de un curso y más de una materia a cada
-        docente.{" "}
+        docente.
       </h5>
       <form className="mt-2" onSubmit={NoRecargar}>
         <p className="m-2">
-          {" "}
-          Seleciona el curso que le quieres asignar a este docente.{" "}
+          Seleciona el curso que le quieres asignar a este docente.
         </p>
         <select className="form-control m-2" onChange={onChange} name="curso">
           <option> Curso </option>
           {DatosRecibidos.map((curso) => (
             <option key={curso.id} value={curso.id}>
-              {" "}
-              {curso.Curso_Nu}{" "}
+              {curso.Curso_Nu}
             </option>
           ))}
         </select>
@@ -162,14 +128,13 @@ const AdminDocenteCursos = () => {
           <option> Materias </option>
           {Materias.map((data) => (
             <option key={data.id} value={data.id}>
-              {" "}
-              {data.N_Materia}{" "}
+              {data.N_Materia}
             </option>
           ))}
         </select>
 
         <button type="submit" className="btn btn-primary m-2">
-          Enviar{" "}
+          Enviar
         </button>
       </form>
     </div>

@@ -249,9 +249,8 @@
   margin: 0 90px;
 }
 
-.contenedor-info-pri {
+.contenedor-info-pri-coordinator {
   display: inline-block;
-  width: 100%;
   grid-column-start: 2;
   grid-column-end: 3;
 }
@@ -322,9 +321,9 @@
 .cont-princi-docentes {
   margin: 0;
 }
-.contenedor-pri {
+.contenedor-pri-coordinator {
   display: grid;
-  grid-template-columns: 0.1fr 2fr;
+  grid-template-columns: auto 95vw;
 }
 .cont-nombre-profesion {
   color: white;
