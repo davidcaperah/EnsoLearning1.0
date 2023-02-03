@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { getAll } from "services/courses";
+import URL from "URL";
+import decode from "utils/decode";
 import "../../../css/curso.css";
 
 function CoursesView() {
+  const navigate = useNavigate();
+  const schoolId = decode("idcol", "A");
+  const [courses, setCourses] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    getAll({ d: 1, id: schoolId })
+      .then((res) => {
+        setCourses(res.data);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [schoolId]);
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        width: "100%",
+        height: "30%",
+      }}
+    >
       <div className="cont-header-usuario-coor">
         <div>
           <h4>Mis cursos </h4>
@@ -30,66 +55,29 @@ function CoursesView() {
           <div className="btn-crear-use-cordi">+ Crear curso</div>
         </div>
       </div>
-      <div className="cont-filtos-crear-aula-coord1">
-        <div>
-          <h4>Grado</h4>
-          <select>
-            <option>Seleccionar el grado</option>
-          </select>
-        </div>
-        <div>
-          <h4>Curso</h4>
-          <select>
-            <option>Seleccionar el curso</option>
-          </select>
-        </div>
-      </div>
-
-      <div>
-        <div className="tabla-docentes-coordi">
-          <div className="titulo-tabla-docentes-coordi2">
-            <div>Nombre del Estudiante</div>
-            <div>Correo electronico</div>
-            <div>Grado</div>
-            <div>Curso</div>
-            <div>Director de grupo</div>
-          </div>
-
-          <div className="datos-docente-coordi2">
-            <div>docente.Nombre </div>
-            <div>docente.Documento</div>
-            <div>2</div>
-            <div>201</div>
-            <div>director grupo</div>
-            <div className="btn-tabla-modifi-curso-coord">Modificar curso</div>
-          </div>
-
-          <div className="datos-docente-coordi2">
-            <div>docente.Nombre </div>
-            <div>docente.Documento</div>
-            <div>2</div>
-            <div>201</div>
-            <div>director grupo</div>
-            <div className="btn-tabla-modifi-curso-coord">Modificar curso</div>
-          </div>
-
-          <div className="datos-docente-coordi2">
-            <div>docente.Nombre </div>
-            <div>docente.Documento</div>
-            <div>2</div>
-            <div>201</div>
-            <div>director grupo</div>
-            <div className="btn-tabla-modifi-curso-coord">Modificar curso</div>
-          </div>
-
-          <div className="datos-docente-coordi2">
-            <div>docente.Nombre </div>
-            <div>docente.Documento</div>
-            <div>2</div>
-            <div>201</div>
-            <div>director grupo</div>
-            <div className="btn-tabla-modifi-curso-coord">Modificar curso</div>
-          </div>
+      <div className="cont-cursos-coord-v1">
+        <div className="cont-cursos-coord-v2 ">
+          {isLoading ? (
+            <h1>Cargando...</h1>
+          ) : courses.length === 0 ? (
+            <h1>No hay cursos en este colegio</h1>
+          ) : (
+            courses.map((course) => {
+              return (
+                <div
+                  key={course.id}
+                  onClick={() => navigate(`/AdminLearn/courses/${course.id}`)}
+                >
+                  <div className="card-aula">
+                    <img
+                      src={`${URL.servidor}Archivos_u/iconos/aulaMatematicas.svg`}
+                    />
+                    <h6>Curso {course.Curso_Nu}</h6>
+                  </div>
+                </div>
+              );
+            })
+          )}
         </div>
       </div>
     </div>

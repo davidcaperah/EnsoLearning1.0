@@ -13,13 +13,16 @@ import RegistroDocente from "./views-dashboard/adminBuscaDocente";
 import RegistroEstudiante from "./views-dashboard/AdminRegistroEstudi";
 import CoursesView from "./views-dashboard/Cursos/CoursesView";
 import ClassroomView from "./views-dashboard/Classroom/ClassroomView";
+import CourseView from "./views-dashboard/Cursos/CourseView";
 const Rutas = () => (
   <BrowserRouter>
     <Routes>
       <Route exact path="/AdminLearn" element={<AdminLearn />} />
+      <Route exact path="/AdminLearn/courses" element={<CoursesView />} />
+      <Route exact path="/AdminLearn/courses/:id" element={<CourseView />} />
+      <Route exact path="/AdminLearn/classroom" element={<ClassroomView />} />
       <Route exact path="/AdminSchool" element={<AdminSchool />} />
-      <Route exact path="/AdminSchool/courses" element={<CoursesView />} />
-      <Route exact path="/AdminSchool/classroom" element={<ClassroomView />} />
+
       {/* <Route exact path="/AdminStatistics" element={<AdminStatistics/>} /> */}
       <Route exact path="/AdminStudent" element={<AdminStudent />} />
       {/* <Route exact path="/AdminTeacher" element={<AdminTeacher/>} /> */}

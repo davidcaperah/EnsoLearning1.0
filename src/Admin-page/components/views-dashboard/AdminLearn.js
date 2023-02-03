@@ -40,7 +40,7 @@ const AdminLearn = () => {
           <div
             id="aulas-curso-coord"
             onClick={() => {
-              navigate("/AdminSchool/classroom");
+              navigate("/AdminLearn/classroom");
             }}
           >
             <h5>Mis aulas</h5>
@@ -49,7 +49,7 @@ const AdminLearn = () => {
           <div
             id="misCursos-curso-coord"
             onClick={() => {
-              navigate("/AdminSchool/courses");
+              navigate("/AdminLearn/courses");
             }}
           >
             <h5>Mis cursos</h5>

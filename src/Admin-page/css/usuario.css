@@ -54,6 +54,7 @@
 }
 .cont-header-usuario-coor svg {
   position: relative;
+  width: 700px;
   top: -120px;
   left: -100px;
   z-index: -100;
