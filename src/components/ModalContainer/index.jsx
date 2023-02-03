@@ -2,8 +2,18 @@ import React from "react";
 import "./style.css";
 
 function Index({ children, onClose }) {
+  const handleOnClose = (e) => {
+    if (e.target.id === "backdrop-container") {
+      onClose();
+    }
+    e.stopPropagation();
+  };
   return (
-    <div className="backdrop-container">
+    <div
+      className="backdrop-container"
+      id="backdrop-container"
+      onClick={handleOnClose}
+    >
       <div className="modal-container">
         <header className="modal-header">
           <svg

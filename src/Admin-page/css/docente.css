@@ -170,7 +170,7 @@
   max-height: 70px;
   background-color: white;
   position: relative;
-  z-index: 10000;
+  z-index: 7000;
 }
 .con-ico-areaInteres > img {
   border-radius: 50%;
@@ -528,13 +528,20 @@
   position: relative;
   z-index: 3000;
 }
-.titulo-Vista1 {
+.view-title-coordinator {
+  display: flex;
+  align-items: center;
   color: white;
   font-size: 35px;
   padding-left: 180px;
   font-weight: bold;
   position: relative;
   z-index: 3000;
+}
+
+.view-title-coordinator > svg {
+  margin: 0px 15px;
+  cursor: pointer;
 }
 .mensaje-docentes {
   border-right: 2px solid #00639a;
