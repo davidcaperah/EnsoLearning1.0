@@ -1,171 +1,175 @@
-.btn-curso-coord{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 10px 12%  70px 17%;
+.btn-curso-coord {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 10px 12% 70px 17%;
 }
-.btn-curso-coord >div{
-    height: 227px;
-    margin-right: 70px;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-    color: white;
-    padding: 0px 15px;
-    cursor: pointer;
+.btn-curso-coord > div {
+  height: 227px;
+  margin-right: 70px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  color: white;
+  padding: 0px 15px;
+  cursor: pointer;
 }
-.btn-tabla-modifi-curso-coord{  
-    background: #28B2FF;
-    border-radius: 7px;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 13px;
-    color: #FFFFFF;
-    width: 139px;
-    padding: 10px 0px;
-    text-align: center;
-    margin-left: 30px;
-    cursor: pointer;
+.btn-tabla-modifi-curso-coord {
+  background: #28b2ff;
+  border-radius: 7px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 13px;
+  color: #ffffff;
+  width: 139px;
+  padding: 10px 0px;
+  text-align: center;
+  margin-left: 30px;
+  cursor: pointer;
 }
-.cont-cursos-coord{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin: 10px 3% 60px 16%;
+.cont-cursos-coord-v1 {
+  margin: 50px 0px;
+  width: 91.333%;
 }
-.cont-cursos-coord > div{
-    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius:20px;
-    width: 237px;
-    margin-right:70px ;
+.cont-cursos-coord-v2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: scroll;
 }
-.cont-cursos-coord  h5{
-    font-weight: 500;
-    font-size: 22px;
-    line-height: 25px;
-    color: #00639A;
-    padding-left: 30px;
-    padding-top: 20px;
+.card-aula {
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  width: 237px;
+  margin-right: 70px;
 }
-.cont-cursos-coord  h6{
-    font-weight: 100;
-    font-size: 22px;
-    line-height: 25px;
-    color: #00639A;
-    padding-left: 30px;
+.card-aula h5 {
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 25px;
+  color: #00639a;
+  padding-left: 30px;
+  padding-top: 20px;
 }
-.cont-filtos-crear-aula-coord{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin: -210px 8% 70px 17%;
+.card-aula h6 {
+  font-weight: 100;
+  font-size: 22px;
+  line-height: 25px;
+  color: #00639a;
+  padding-left: 30px;
 }
-.cont-filtos-crear-aula-coord h4{
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 23px;
-    color: #00639A;
+.cont-filtos-crear-aula-coord {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: -210px 8% 70px 17%;
 }
-.cont-filtos-crear-aula-coord select{
-    background-color: white;
-    border :none;
-    border-bottom: 2px solid #707070;
-    color:#707070;
+.cont-filtos-crear-aula-coord h4 {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  color: #00639a;
 }
-.cont-filtos-crear-aula-coord1{
-    display: grid;
-    grid-template-columns: 1fr 1fr ;
-    margin: -250px 10% 70px 38%;
+.cont-filtos-crear-aula-coord select {
+  background-color: white;
+  border: none;
+  border-bottom: 2px solid #707070;
+  color: #707070;
 }
-.cont-filtos-crear-aula-coord1 h4{
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 23px;
-    color: #00639A;
+.cont-filtos-crear-aula-coord1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: -250px 10% 70px 38%;
 }
-.cont-filtos-crear-aula-coord1 select{
-    background-color: white;
-    border :none;
-    border-bottom: 2px solid #707070;
-    color:#707070;
+.cont-filtos-crear-aula-coord1 h4 {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  color: #00639a;
 }
-.datos-docente-coordi2{
-    display: grid;
-    grid-template-columns: repeat(2,1fr) 0.4fr .4fr repeat(2,1fr);
-    border-bottom:2px solid  rgba(0, 99, 154, 0.1) ;
-    padding: 15px 0;
-    text-align: center;
+.cont-filtos-crear-aula-coord1 select {
+  background-color: white;
+  border: none;
+  border-bottom: 2px solid #707070;
+  color: #707070;
 }
-.descri-curso-coord-header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 294px;
+.datos-docente-coordi2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr) 0.4fr 0.4fr repeat(2, 1fr);
+  border-bottom: 2px solid rgba(0, 99, 154, 0.1);
+  padding: 15px 0;
+  text-align: center;
 }
-.header-curso-coord{
-    display: grid;
-    grid-template-columns: 1fr .9fr;
-    margin-right: 70px
+.descri-curso-coord-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 294px;
 }
-.header-curso-coord svg{
-    position: absolute;
-    top:0px;
-    left: -10px;
+.header-curso-coord {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  margin-right: 70px;
 }
-.header-curso-coord h4{
-    position: absolute;
-    top:170px;
-    left: 160px;
-    font-weight: 700;
-    font-size: 30px;
-    line-height: 45px;
-    color: #FFFFFF;
-    
+.header-curso-coord svg {
+  position: absolute;
+  top: 0px;
+  left: -10px;
+}
+.header-curso-coord h4 {
+  position: absolute;
+  top: 170px;
+  left: 160px;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 45px;
+  color: #ffffff;
 }
 .header-curso-coord p {
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 27px;
-    text-align: left;
-    color: #0A2749;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: left;
+  color: #0a2749;
 }
-.titulo-tabla-docentes-coordi2{
-    display: grid;
-    grid-template-columns: repeat(2,1fr) 0.4fr .4fr repeat(2,1fr);
-    background: rgba(0, 99, 154, 0.9);
-    color: white;
-    text-align: center;
-    padding: 15px 0;
-    border-radius: 5px;
-    font-weight: 500;
-    font-size: 16px
+.titulo-tabla-docentes-coordi2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr) 0.4fr 0.4fr repeat(2, 1fr);
+  background: rgba(0, 99, 154, 0.9);
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 16px;
 }
-.titulo-tabla-docentes-coordi2 div{
-    font-weight: 500;
-    font-size: 16px
+.titulo-tabla-docentes-coordi2 div {
+  font-weight: 500;
+  font-size: 16px;
 }
 
-#aulas-curso-coord{  
-    background-image: url('./img/aulasCursoCoord.svg'); 
+#aulas-curso-coord {
+  background-image: url("./img/aulasCursoCoord.svg");
 }
-#aulas-curso-coord h5{  
-    position: relative;
-    z-index: 1000;
+#aulas-curso-coord h5 {
+  position: relative;
+  z-index: 1000;
 }
-#aulas-curso-coord p{  
-    position: relative;
-    z-index: 1000;
+#aulas-curso-coord p {
+  position: relative;
+  z-index: 1000;
 }
-#aulas-curso-coord::before{  
-    position: relative;
-    content: "";
-    min-width: 109%;
-    min-height: 227px;
-    top:70px;
-    left: -10px;
-    background-color:  rgba(0, 1, 34, 0.322);
-    border-radius: 20px;
-    z-index: 10;
+#aulas-curso-coord::before {
+  position: relative;
+  content: "";
+  min-width: 109%;
+  min-height: 227px;
+  top: 70px;
+  left: -10px;
+  background-color: rgba(0, 1, 34, 0.322);
+  border-radius: 20px;
+  z-index: 10;
 }
-#misCursos-curso-coord{
-    background-image: url('./img/misCursosCursoCoord.svg');
+#misCursos-curso-coord {
+  background-image: url("./img/misCursosCursoCoord.svg");
 }

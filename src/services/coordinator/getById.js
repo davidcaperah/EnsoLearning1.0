@@ -1,11 +1,11 @@
 import axios from "axios";
-import URL from "../../URL";
+import URL from "URL";
 
-const getAllNotes = async (data) => {
+const getById = async (data) => {
   try {
     const api = axios.create({ baseURL: URL.servidor });
     const request = await api.post(
-      "/api-php-react/info_notas_aulas.php",
+      "/api-php-react/info_cordinador.php",
       JSON.stringify(data)
     );
     return request;
@@ -14,4 +14,4 @@ const getAllNotes = async (data) => {
   }
 };
 
-export default getAllNotes;
+export default getById;

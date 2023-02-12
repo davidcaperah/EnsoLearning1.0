@@ -160,7 +160,7 @@
   margin: 60px 140px;
   grid-gap: 20px;
 }
-.cont-header {
+.cont-header-docente {
   display: grid;
   border-bottom: 1px solid rgba(139, 139, 139, 0.418);
   box-shadow: 2px 0 5px rgba(139, 139, 139, 0.397);
@@ -539,34 +539,34 @@
 .mensaje-docentes {
   border-right: 2px solid #00639a;
 }
-.menu {
+.menu-docente {
   height: 100%;
   box-shadow: 0px 2px 4px rgba(139, 139, 139, 0.616);
 }
-.menu div li a {
+.menu-docente div li a {
   display: inline-block;
   position: relative;
   overflow: hidden;
   white-space: nowrap;
   padding-left: 13px;
 }
-.menu div li p {
+.menu-docente div li p {
   display: inline-block;
   position: relative;
   overflow: hidden;
   white-space: nowrap;
   padding-left: 13px;
 }
-.menu:hover {
+.menu-docente:hover {
   position: static;
-  z-index: 1;
+  z-index: 2000;
   transition: width 0.4s;
   width: 270px;
   height: 100%;
   background-color: white;
 }
 
-.menu:not(:hover) {
+.menu-docente:not(:hover) {
   position: static;
   z-index: 1;
   transition: width 0.4s;
@@ -574,34 +574,34 @@
   background-color: white;
   height: 100%;
 }
-.menu-des-header {
+.menu-des-header-docente {
   position: absolute;
   background-color: white;
   font-size: 15px;
   cursor: pointer;
   border-radius: 10px;
   width: 20%;
-  margin-top: 9%;
+  margin-top: 7.5%;
   padding: 5px;
 }
-.menu-des-header a {
+.menu-des-header-docente a {
   text-decoration: none;
   color: black;
 }
-.menu-des-header > div {
+.menu-des-header-docente > div {
   width: 100%;
   height: 30%;
   display: flex;
   align-items: center;
 }
-.menu-des-header > div:hover {
+.menu-des-header-docente > div:hover {
   background-color: rgba(179, 179, 179, 0.568);
 }
-.menu-des-header > div > a:hover {
+.menu-des-header-docente > div > a:hover {
   text-decoration: none;
   color: black;
 }
-.menu-des-header > div > img {
+.menu-des-header-docente > div > img {
   width: 15px;
   height: 15px;
   margin-right: 30px;

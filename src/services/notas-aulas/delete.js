@@ -1,7 +1,7 @@
 import axios from "axios";
 import URL from "URL";
 
-const deleteNote = async (data) => {
+const remove = async (data) => {
   const api = axios.create({ baseURL: URL.servidor });
   const request = api.post(
     "/api-php-react/info_notas_aulas.php",
@@ -10,4 +10,4 @@ const deleteNote = async (data) => {
   return request;
 };
 
-export default deleteNote;
+export default remove;

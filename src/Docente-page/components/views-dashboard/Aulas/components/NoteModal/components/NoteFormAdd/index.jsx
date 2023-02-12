@@ -1,5 +1,5 @@
 import React, { useState, forwardRef } from "react";
-import { createNote } from "services/notas-aulas";
+import { create } from "services/notas-aulas";
 import NoteForm from "../NoteForm";
 import Swal from "sweetalert2";
 
@@ -12,7 +12,7 @@ const Index = forwardRef(function ({ idClassRoom, handleStateForm }, ref) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const request = await createNote({ d: 0, nota: note, aula: idClassRoom });
+      const request = await create({ d: 0, nota: note, aula: idClassRoom });
       if (request.data) {
         Swal.fire({
           position: "center",

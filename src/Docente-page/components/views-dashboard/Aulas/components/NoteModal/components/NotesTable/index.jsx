@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as ReactDOM from "react-dom";
 import { useDispatch } from "react-redux";
 import Pagination from "components/Pagination";
-import { getAllNotes, deleteNote } from "services/notas-aulas";
+import { getAll, remove } from "services/notas-aulas";
 import Swal from "sweetalert2";
 import "./style.css";
 
@@ -12,7 +12,7 @@ function Index({ idClassRoom, handleEdit, containerPagination }) {
   const [totalPage, setTotalPage] = useState(1);
   const dispatch = useDispatch();
   useEffect(() => {
-    getAllNotes({ d: 2, aula: idClassRoom, pagina: page })
+    getAll({ d: 2, aula: idClassRoom, pagina: page })
       .then((res) => {
         setNotes(res.data.notas_aulas);
         setTotalPage(res.data.paginas.total_paginas);
@@ -36,7 +36,7 @@ function Index({ idClassRoom, handleEdit, containerPagination }) {
   const handleOnclickDelete = async (id) => {
     const temporal = Array.from(notes);
     try {
-      const request = await deleteNote({ d: 3, id });
+      const request = await remove({ d: 3, id });
       const indexNote = notes.findIndex((note) => note.id === id);
       temporal.splice(indexNote, 1);
       setNotes(temporal);
