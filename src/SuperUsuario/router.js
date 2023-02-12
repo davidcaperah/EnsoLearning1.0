@@ -13,6 +13,7 @@ import AddEventos from "./components/views-dashboard/addEventos";
 import QR from "./components/QRCODE/index";
 import Config from "./components/configurar/index"
 import CrearColegio from "./components/CrearColegios/CrearColegio";
+import CrearCoordinador from "./components/Crear_Coordinador/Crear_Coordinador";
 
 const Rutas = () => {
     return (
@@ -32,6 +33,7 @@ const Rutas = () => {
             <Route exact path="/config" element={<Config/>} />
             {/* reseller */}
             <Route exact path="/CrearColegio" element={<CrearColegio/>} />
+            <Route exact path="/CrearCoordinador" element={<CrearCoordinador/>} />
         </Routes>
 </BrowserRouter>
     );

@@ -15,23 +15,17 @@ const CrearColegio = () => {
     const [estado, setestado] = useState(0)
     const [colegios, setcolegios] = useState([])
     const [form, setform] = useState([])
-    console.log("🚀 ~ file: CrearColegio.jsx:18 ~ CrearColegio ~ form", form)
     let User = useSelector((state) => state.user);
 
-    const GuardarDatos = (e) => {
-        setform({...form,
-            [e.target.name] : e.target.value.trim()})
-    }
     const Enviar = async (e) =>{
         e.preventDefault();
         var Datos = {
-            d:1,
-            Nombre: form.Nombre,
-            id:0,
-            Telefono:form.Telefono,
-            Info:form.Descripcion,
-            Reseller:User.id,
-            cupos:form.cupos
+            d:3,
+            Nombres:form.Nombres,
+            email:form.email,
+            CC:form.CC,
+            Apellidos:form.Apellidos,
+            Colegio: form.Colegio
         }
         const consulta = await axios({
             method: "post",
@@ -51,9 +45,14 @@ const CrearColegio = () => {
               })
         }
     }
+
+    const GuardarDatos = (e) => {
+        setform({...form,
+            [e.target.name] : e.target.value.trim()})
+    }
     useEffect(()  =>  {
         const TrearDatos = async () => {
-          let idCurso = JSON.stringify({ d: 2, reseller: User.id});
+          let idCurso = JSON.stringify({ d: 4, reseller: User.id});
           const api = axios.create({ baseURL: URL.servidor });
           const response = await api.post(
             "/api-php-react/admin/Crud_admin.php",
@@ -70,42 +69,62 @@ const CrearColegio = () => {
         <div className="col-md-12">
             <div className="row center">
                 <div className="col-md-6">
-                    <p className="card-text text-center shadow p-3 m-2 Areas pointer" onClick={() => setestado(0)}>Crear Colegio</p>
+                    <p className="card-text text-center shadow p-3 m-2 Areas pointer" onClick={() => setestado(0)}>Crear Coordinador</p>
                 </div>
                 <div className="col-md-6">
-                    <p className="card-text text-center shadow p-3 m-2 Areas pointer" onClick={() => setestado(1)}>Consultar Colegio</p>
+                    <p className="card-text text-center shadow p-3 m-2 Areas pointer" onClick={() => setestado(1)}>Consultar Coordinador</p>
                 </div>
             </div>
             {estado === 0 ?
             <div className="row">
                 <div className="col-md-12">
                     <form onSubmit={Enviar}>
-                        <div className="mb-3">
-                            <label for="exampleInputEmail1" className="form-label">Nombre Colegio</label>
-                            <input type="text" name='Nombre' className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={GuardarDatos} />
-                                <div id="emailHelp" className="form-text">Agregue un nombre de la institución</div>
-                        </div>
                         <div className="row">
                             <div className="col-md-6">
                                 <div className="mb-3">
-                                    <label for="exampleInputEmail1" className="form-label">Telefono</label>
-                                    <input type="number" onChange={GuardarDatos} name='Telefono' className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                                <label for="exampleInputEmail1" className="form-label">Nombres Coordinador</label>
+                                <input type="text" name='Nombres' onChange={GuardarDatos} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
                                 </div>
                             </div>
                             <div className="col-md-6">
                                 <div className="mb-3">
-                                    <label for="exampleInputEmail1" className="form-label">Cupos</label>
-                                    <input type="number" name='cupos' onChange={GuardarDatos} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                                <label for="exampleInputEmail1" className="form-label">Apellidos Coordinador</label>
+                                <input type="text" name='Apellidos' onChange={GuardarDatos} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-6">
+                                <div className="mb-3">
+                                    <label for="exampleInputEmail1" className="form-label">Email</label>
+                                    <input type="email" name='email' onChange={GuardarDatos} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                                </div>
+                            </div>
+                            <div className="col-md-6">
+                                <div className="mb-3">
+                                    <label for="exampleInputEmail1" className="form-label">CC</label>
+                                    <input type="number" name='CC' onChange={GuardarDatos} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
                                 </div>
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-md-12">
                             <label for="exampleInputEmail1" className="form-label">Descripción</label>
-                            <textarea name="Descripcion" onChange={GuardarDatos} id="" cols="110" rows="10"></textarea>
+                            <select name="Colegio" id="Colegio" onChange={GuardarDatos} className='form-control'>
+                                <option value="">Seleccione</option>
+                                {colegios.length > 0 ? 
+                                colegios.map((colegio)=>
+                                colegio.Cordinador > 0 ?
+                                    <option value={colegio.id}>{colegio.nombreC}</option>
+                                    :
+                                    null
+                                ) :
+                                null
+                                }
+                            </select>
                             </div>
                         </div>
-                        <button type="submit" className="btn btn-primary">Submit</button>
+                        <button type="submit" className="btn btn-primary">Grabar</button>
                     </form>
                 </div>
             </div>
@@ -120,7 +139,8 @@ const CrearColegio = () => {
                         <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Fecha</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Correo</th>
                         <th scope="col">Cupos</th>
                         <th scope="col">fecha vencimiento</th>
                         <th scope="col">Estado</th>
@@ -131,8 +151,9 @@ const CrearColegio = () => {
                         ? colegios.map((Colegio) =>
                         <tr>
                         <th scope="row">{Colegio.id}</th>
-                        <td>{Colegio.nombreC}</td>
-                        <td>{Colegio.fecha_creación}</td>
+                        <td>{Colegio.nombre}</td>
+                        <td>{Colegio.apellido}</td>
+                        <td>{Colegio.correo}</td>
                         <td>{Colegio.cupos}</td>
                         <td>{Colegio.fecha_vencimiento}</td>
                         <td className='text-center'>

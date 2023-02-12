@@ -1,8 +1,3 @@
-//// version 1.0.1 20/11/22
-cambio de en los archivos 
-fuctions 
-info_actividad_maestro.php
-info_docente.php
-para poner a funcioanr el calificar del sitio.
-
-queda pendiente terminar sistema de calificar
+// 02/02/2023
+Se crea el campo para almacenar los cupos del reseller
+tabla admin unidades tipo int puede ser nullo

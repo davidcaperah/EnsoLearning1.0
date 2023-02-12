@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import Crear from './CrearQR';
 import Consultar from './ConsultarQR';
+import Editar from './Editar_QR'
 
 const Index = () =>{
     const [Ventana, setVentana] = useState(0);
-
-const Estado = (tipo) =>{
-    setVentana(tipo)
-}
+    const [qr, setqr] = useState([])
+    const Estado = (tipo) =>{
+        setVentana(tipo)
+    }
 
     return(
         <div className="col-md-12">
@@ -20,11 +21,15 @@ const Estado = (tipo) =>{
                 </div>            
             </div>
             {Ventana === 2 ? 
-            <Crear/>
+            <Crear vista={setVentana} />
             :null }
             {Ventana === 1 ? 
-            <Consultar/>
+            <Consultar estado={Estado} qr={setqr} />
             :null }
+            {Ventana === 3 ? 
+            <Editar datos={qr} vista={Estado} />
+            : null
+            }
          
         </div>
     )

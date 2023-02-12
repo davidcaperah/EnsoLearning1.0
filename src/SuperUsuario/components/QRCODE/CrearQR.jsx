@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import Swal from 'sweetalert2';
 import Cookies from 'universal-cookie';
 import URL from './../../../URL'
-const Crear =() =>{
+const Crear =(prop) =>{
     const cookies =  new Cookies();
     let Usuario = cookies.get('iduser');
     console.log(Usuario)
@@ -36,7 +36,7 @@ const Crear =() =>{
               }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
-                    document.location.reload();
+                   prop.vista(1);
                 }
               })
         }

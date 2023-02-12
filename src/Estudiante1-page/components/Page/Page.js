@@ -520,7 +520,7 @@ const Page = (props) => {
             </div>
           </div>
           <div className="container-note-list">
-            {notes.length === 0 ? (
+            {notes.page ? (
               <h3>Este curso no tiene notas</h3>
             ) : (
               notes.map((note) => <ItemTableCouse note={note} />)

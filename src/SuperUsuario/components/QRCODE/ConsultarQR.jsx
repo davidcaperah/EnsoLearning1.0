@@ -2,7 +2,9 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Cookies from "universal-cookie";
 import URL from "./../../../URL";
-const Crear = () => {
+import Swal from "sweetalert2";
+const Crear = (e) => {
+  console.log("🚀 ~ file: ConsultarQR.jsx:7 ~ Crear ~ e", e)
   const cookies = new Cookies();
   let Usuario = cookies.get("iduser");
   console.log(Usuario);
@@ -10,13 +12,38 @@ const Crear = () => {
   let bytes = CryptoJS.AES.decrypt(Usuario, "A");
   let iduser = parseInt(bytes.toString(CryptoJS.enc.Utf8));
   const [Datos, setDatos] = useState({});
-  let estado = "hgolaaaaadasdsadasdasas";
   // const Copiar_QR = (e) =>{
   //     console.log("entraaaa")
   //     e.preventDefault()
   //     e.clipboardData.setData("Text",estado)
   //     console.log( e.clipboardData.setData("Text",estado))
   // }
+  const Estado = (item) => {
+    console.log(e)
+    e.qr(item);
+    e.estado(3);
+  }
+  const Eliminar = async (item)  =>{
+    let idCurso = JSON.stringify({ d: 3 , id: item.id});
+    const api = axios.create({ baseURL: URL.servidor });
+    const response = await api.post(
+      "/api-php-react/admin/cr_QR.php",
+      idCurso
+    );
+    const data = response.data;
+    if(data){
+      Swal.fire({
+        icon: 'success',
+        title: 'QR eliminado',
+        text: 'Se a eliminado el elemento con la id: '+item.id,
+      }).then((result) => {
+        if(result.isConfirmed){
+          e.estado(0);
+        }
+      })
+    }
+
+  }
   useEffect(() => {
     const TraerQr = async () => {
       let idCurso = JSON.stringify({ d: 1 });
@@ -86,7 +113,7 @@ const Crear = () => {
                         </span>
                       </div>
                       <div className="col-md-4">
-                        <span className="cursorp">
+                        <span className="cursorp" onClick={() => Eliminar(item)}>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -100,7 +127,7 @@ const Crear = () => {
                         </span>
                       </div>
                       <div className="col-md-4">
-                        <span className="cursorp">
+                        <span className="cursorp" onClick={() => Estado(item)}>
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -124,7 +151,9 @@ const Crear = () => {
             </tbody>
           </table>
         ) : (
-          <h1>N hay datos</h1>
+        <div className="text-center">
+            <h1>No hay QR's creados</h1>
+        </div>
         )}
       </div>
     </div>
