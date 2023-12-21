@@ -21,9 +21,9 @@ const AdminAnuncios = () => {
   const removeAnnouncement = (announcement) => {
     Swal.fire({
       title: "¿Quieres eliminar este anuncio?",
-      showDenyButton: true,
-      confirmButtonText: `Si`,
-      denyButtonText: `No`,
+      showDenybutton: true,
+      confirmbuttonText: `Si`,
+      denybuttonText: `No`,
     }).then(async (result) => {
       if (result.isConfirmed) {
         const request = await remove({

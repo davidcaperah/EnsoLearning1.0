@@ -118,9 +118,9 @@ const DocenteEvaluaciones = () => {
   const eliminarEva = (eva) => {
     Swal.fire({
       title: "¿Quieres eliminar esta evaluación?",
-      showDenyButton: true,
-      confirmButtonText: `Si`,
-      denyButtonText: `No`,
+      showDenybutton: true,
+      confirmbuttonText: `Si`,
+      denybuttonText: `No`,
     }).then(async (result) => {
       if (result.isConfirmed) {
         let datosEvalua = {

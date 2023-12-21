@@ -49,10 +49,10 @@ const GradosInterfaz = () => {
       Swal.fire({
         title: '¿Quieres eliminar este curso?',
         text: 'se eliminarán todas las mallas agregadas a este curso.',
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: `Estoy seguro`,
-        denyButtonText: `Quiero verificar`,
+        showDenybutton: true,
+        showCancelbutton: true,
+        confirmbuttonText: `Estoy seguro`,
+        denybuttonText: `Quiero verificar`,
       }).then(async (result) => {      
           if(result.isConfirmed){
 

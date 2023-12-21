@@ -48,9 +48,9 @@ const DocenteActividades = () => {
   const deleteAct = (act) => {
     Swal.fire({
       title: "¿Quieres eliminar esta actividad?",
-      showDenyButton: true,
-      confirmButtonText: `Si`,
-      denyButtonText: `No`,
+      showDenybutton: true,
+      confirmbuttonText: `Si`,
+      denybuttonText: `No`,
     }).then(async (result) => {
       if (result.isConfirmed) {
         const DatosJson = JSON.stringify({

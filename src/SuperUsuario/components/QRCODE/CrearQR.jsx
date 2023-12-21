@@ -32,7 +32,7 @@ const Crear =(prop) =>{
                 icon: 'success',
                 title: 'Exitoso!',
                 text: 'Se a creado el nuevo link',
-                confirmButtonText: 'Entendido'
+                confirmbuttonText: 'Entendido'
               }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {

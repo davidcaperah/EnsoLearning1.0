@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Button from '@material-ui/core/Button';
+
 import Cookies from 'universal-cookie';
 import Swal from 'sweetalert2';
 import URL from '../../../URL';
@@ -136,14 +136,14 @@ const LoginSuperUsuario = () => {
                             onChange={Escribir}
                         />
 
-                        <Button  
+                        <button  
                             variant="contained"
                             color="secondary"
                             type="submit"
                             className={`CeroBootstrap ml-2 link-button`}
                         >
                             Entrar
-                        </Button>
+                        </button>
                         <button className="text-primary link pointer btn-link-cero" onClick={handleClick}> Recuperar clave  </button>
                     </form>
                     

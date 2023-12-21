@@ -42,10 +42,10 @@ const Icfes= ({datos}) => {
     const VerActividad =  (data) => {
         Swal.fire({
             title: '¿Quieres agregar esta icfes a esta actividad?',
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: `¡Si!`,
-            denyButtonText: `¡No!`,
+            showDenybutton: true,
+            showCancelbutton: true,
+            confirmbuttonText: `¡Si!`,
+            denybuttonText: `¡No!`,
           }).then((result) => {
             if (result.isConfirmed) {
                 AgregarActividad(data)

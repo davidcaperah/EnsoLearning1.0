@@ -1,17 +1,11 @@
 import React, {useState} from 'react';
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
 import URL from '../../URL'
-const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
+
 
 
 const FormAcudiente = () => {
-    const classes = useStyles();
+    
 
     const [Datos, setDatos] = useState({});
 
@@ -65,15 +59,15 @@ const FormAcudiente = () => {
                         <input className="form-control m-2" name="Codigo"    onChange={onChange} minLength="5" maxLength="40" required pattern="[A-Za-z0-9--- -ñ-@-á-é-í-ó-ú]+"  type="text"     placeholder="Codigo de Validación" />
                         <p className="text-muted" > Recuerda que debes tener un codigo de validación, si no cuentas con uno, comunicate con tu docente acargo.</p>
 
-                        <Button
+                        <button
                             variant="contained" 
                             type="submit"
                             color="primary"
-                            className={`${classes.button} CeroBootstrap`}
+                            className={` CeroBootstrap`}
                             name="submit"
                         >
                             Aceptar 
-                        </Button>
+                        </button>
                     </form> 
                 </div>
                 <div className="col-md bg-dark" > 

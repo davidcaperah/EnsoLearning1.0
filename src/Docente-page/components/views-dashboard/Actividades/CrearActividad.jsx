@@ -42,10 +42,10 @@ const DocenteActividades = (props) => {
     const subir_actividad = async () =>{
         Swal.fire({
             title: '¿Desea guardar la evaluación?',
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: 'Guardar',
-            denyButtonText: `No guardar`,
+            showDenybutton: true,
+            showCancelbutton: true,
+            confirmbuttonText: 'Guardar',
+            denybuttonText: `No guardar`,
           }).then(async (result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
@@ -273,7 +273,7 @@ const DocenteActividades = (props) => {
 
                     </div>
                     <div className="col text-center p-4">
-                        <button  className="boton-form-Crear-Evaluacion" type="submit"> Agregar Puntos </button>
+                        <button className="boton-form-Crear-Evaluacion" type="submit"> Agregar Puntos </button>
                     </div>
                 </form>
             </div>
@@ -320,9 +320,9 @@ const DocenteActividades = (props) => {
                         
                         <div className='btn-form-Crear-evaluacion'>
                             {fin ? 
-                            <button  type="submit" >Subir actividad</button>
+                            <button type="submit" >Subir actividad</button>
                             :
-                            <button  type="submit" > Agregar Punto </button>
+                            <button type="submit" > Agregar Punto </button>
                             }
                         </div>   
                     </form>

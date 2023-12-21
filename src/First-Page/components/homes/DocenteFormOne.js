@@ -1,29 +1,16 @@
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+
+
 import URL from '../../../URL.js';
 import Swal from 'sweetalert2';
 
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > * ': {
-      margin: theme.spacing(1),
-      width: '25ch',
-    },
-  },
-}))
-
-
-
 const DocenteFormOne = () => {
-    const classes = useStyles();
+    
     let CryptoJS = require("crypto-js")
     const cookies =  new Cookies();
 
-  
     let IdDocEncriptado =  cookies.get('idDoc')
     let IdColEncriptado =  cookies.get('idcol')
     let IdCursoEncriptado =  cookies.get('idcurso')
@@ -168,14 +155,14 @@ const DocenteFormOne = () => {
               </div>
 
 
-              <Button
+             < button
               variant="contained"
               color="primary"
               type="submit"
-              className={`${classes.button} CeroBootstrap  link-button`}
+              className={` CeroBootstrap  link-button`}
               >
                 Enviar
-              </Button>
+              </button>
             </form>
 
         </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "@material-ui/core/Button";
+
 import InfoEventos from "./infoEventos";
 import axios from "axios";
 import URL from "../../URL";
@@ -201,7 +201,7 @@ function Eventos() {
                         </div>
                         <hr></hr>
                         <div className="d-flex justify-content-center m-3">
-                          <Button
+                          <button
                             variant="contained"
                             type="submit"
                             color="primary"
@@ -210,7 +210,7 @@ function Eventos() {
                             className="text-center w-50 m-auto"
                           >
                             Participar
-                          </Button>
+                          </button>
                         </div>
                       </div>
                     ) : (

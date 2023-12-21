@@ -39,9 +39,9 @@ function ListaEventos() {
     const eliminarEvento = async (evento) => {
         Swal.fire({
             title: '¿Quieres eliminar este evento?',
-            showDenyButton: true,
-            confirmButtonText: `Si`,
-            denyButtonText: `No`,
+            showDenybutton: true,
+            confirmbuttonText: `Si`,
+            denybuttonText: `No`,
           }).then(async (result) => {
             if (result.isConfirmed) {
                 let infoEvento = JSON.stringify({               

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from 'react-router-dom'
-import Button from "@material-ui/core/Button";
+
 import Swal from "sweetalert2";
 import axios from 'axios';
 import URL from './../../URL';
@@ -78,9 +78,9 @@ const Cambiarcontraseña = () => {
       } else {
         Swal.fire({
           title: '¿Desea cambiar la contraseña?',
-          showDenyButton: true,
-          confirmButtonText: `¡Si!`,
-          denyButtonText: `No`,
+          showDenybutton: true,
+          confirmbuttonText: `¡Si!`,
+          denybuttonText: `No`,
         }).then((result) => {
           if (result.isConfirmed) {
             claveNueva().then(r => {
@@ -139,7 +139,7 @@ const Cambiarcontraseña = () => {
               placeholder="Confirmar contraseña"
             />
 
-            <Button
+           < button
               variant="contained"
               type="submit"
               color="primary"
@@ -148,7 +148,7 @@ const Cambiarcontraseña = () => {
 
             >
               Confirmar
-            </Button>
+            </button>
           </form>
         </div>
       </div>

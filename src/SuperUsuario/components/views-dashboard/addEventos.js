@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import PagelistaEventos from './listaEventos';
 import URL from './../../../URL';
-import Button from '@material-ui/core/Button';
+
 
 
 
@@ -66,9 +66,9 @@ function AddEventos() {
 
             Swal.fire({
                 title: '¿Deseas agregar el evento?',
-                showDenyButton: true,
-                confirmButtonText: `¡Si!`,
-                denyButtonText: `No`,
+                showDenybutton: true,
+                confirmbuttonText: `¡Si!`,
+                denybuttonText: `No`,
             }).then((result) => {
                 if (result.isConfirmed) {
                     insertarDatos().then(r => {
@@ -76,7 +76,7 @@ function AddEventos() {
                             icon: 'success',
                             title: 'Felicidades',
                             text: '¡Se ha agregado el evento!',
-                            confirmButtonText: `OK`
+                            confirmbuttonText: `OK`
                         })
                         console.log(r);
                         window.location.replace("/AdminInicio");
@@ -122,7 +122,7 @@ function AddEventos() {
                         <h6> Fecha del finalización del evento </h6>
                         <input type="date" onChange={escritoenCampo} required name="fecha_f" className="form-control my-2" />
                         <div className="d-flex flex-sm-row justify-content-center p-2">
-                            <Button
+                            <button
                                 variant="contained"
                                 type="submit"
                                 color="primary"
@@ -131,7 +131,7 @@ function AddEventos() {
 
                             >
                                Añadir evento
-                            </Button>
+                            </button>
                         </div>
                     </form>
                     <p className="mt-4 pointer text-center" onClick={() => cambiarPage(2)} > Ir a lista de eventos agregados </p>

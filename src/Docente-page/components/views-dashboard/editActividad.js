@@ -31,9 +31,9 @@ const EditActividad = ({ datosEnviar }) => {
             console.log(datosEscritos.Nombre)
             Swal.fire({
                 title: '¿Quieres editar esta actividad?',
-                showDenyButton: true,
-                confirmButtonText: `Si`,
-                denyButtonText: `No`,
+                showDenybutton: true,
+                confirmbuttonText: `Si`,
+                denybuttonText: `No`,
             }).then(async (result) => {
                 if (result.isConfirmed) {
                     const api = axios.create({ baseURL: URL.servidor });

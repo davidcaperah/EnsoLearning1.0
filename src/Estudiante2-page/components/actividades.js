@@ -188,9 +188,9 @@ const Actividades = () => {
                                 <p> <span className="h6" > Fecha de entrega: </span> {Acti.fecha_MAX} </p>
                                 <p> <span className="h6" > Periodo: </span> {Acti.periodo} </p>
                                 {Acti.estado_name === "Activo" ? <div className="alert alert-success" > Activo </div> :  <div className="alert alert-danger" > No Activo </div> }
-                                <Button variant="contained" color="secondary" className="mt-3" onClick={()=> DesarrollarActividad(Acti) }  >
+                                <button variant="contained" color="secondary" className="mt-3" onClick={()=> DesarrollarActividad(Acti) }  >
                                     Desarrollar Actividad
-                                </Button>
+                                </button>
                             </div>
                         </div>
                     )}{ArregloDeActividades.length === 0 &&

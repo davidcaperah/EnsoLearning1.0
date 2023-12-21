@@ -25,7 +25,7 @@ const Crear = (e) => {
                 icon: 'success',
                 title: 'Exitoso!',
                 text: 'Se a editado el link correctamente',
-                confirmButtonText: 'Entendido'
+                confirmbuttonText: 'Entendido'
               }).then((result) => {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import URL from "../../../../../URL.js";
 import Swal from "sweetalert2";
-import { Button } from "@material-ui/core";
+
 import { useSelector } from "react-redux";
 import axios from "axios";
 import decode from "../../../../../utils/decode.js";
@@ -18,10 +18,10 @@ const ElegirActividades = (vista) => {
   const agregarActividad = () => {
     Swal.fire({
       title: "¿Esta seguro de utilizar esta actividad?",
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: `Si`,
-      denyButtonText: `No`,
+      showDenybutton: true,
+      showCancelbutton: true,
+      confirmbuttonText: `Si`,
+      denybuttonText: `No`,
     }).then((result) => {
       if (result.isConfirmed) {
         agregarActividadServidor(datos);
@@ -134,7 +134,7 @@ const ElegirActividades = (vista) => {
           </div>
         ) : null}
 
-        <Button
+        <button
           variant="contained"
           color="secondary"
           className="m-3"
@@ -142,7 +142,7 @@ const ElegirActividades = (vista) => {
           onClick={() => agregarActividad()}
         >
           agregar
-        </Button>
+        </button>
       </div>
     </div>
   );

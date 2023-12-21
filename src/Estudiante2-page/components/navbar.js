@@ -67,7 +67,7 @@ const Navbar = () => {
                     </div>
 
                     <div className="botonNav" >
-                        <Button  variant="contained" color="secondary" onClick={DesplegarMenu} >
+                        button  variant="contained" color="secondary" onClick={DesplegarMenu} >
                             <div className="d-flex align-items-center" >
                                 <p className="m-1 mr-2" > {infoEstudiante.Nombre} </p>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
@@ -75,7 +75,7 @@ const Navbar = () => {
                                     <path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
                                 </svg>
                             </div>
-                        </Button>
+                        </button>
                         <div className="Desplegable Eliminar" id="Desplegable" >
                             <ul className="list-group">
                                 <li className="Aparecer list-group-item pointer link-desplegable"><a className="link-formateado text-dark "  href="/EstudianteTwoAula" > Mis Aulas </a> </li>

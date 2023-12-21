@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import "./style.css";
 
 const Index = forwardRef(function (
-  { title, titleButton, handleSubmit, noteText, handleInput, id },
+  { title, titlebutton, handleSubmit, noteText, handleInput, id },
   ref
 ) {
   return (
@@ -16,7 +16,7 @@ const Index = forwardRef(function (
         >
           {noteText}
         </textarea>
-        <button type="submit">{titleButton}</button>
+        <button type="submit">{titlebutton}</button>
       </form>
     </div>
   );

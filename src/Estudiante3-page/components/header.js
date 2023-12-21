@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import '../css/header.css';
 import URL from '../../URL';
 import Cookies from 'universal-cookie';
-import Button from '@material-ui/core/Button';
+
 import axios from 'axios';
 
 const Header = ({student}) => {
@@ -282,9 +282,9 @@ const Header = ({student}) => {
                 </div>        
                 <div className="col-md-2">
                     <div className="mt-2" >
-                        <Button variant="contained" color="primary" onClick={Salir}>
+                        <button variant="contained" color="primary" onClick={Salir}>
                             Salir
-                        </Button>
+                        </button>
                     </div>
                 </div>        
             </div>

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Button from '@material-ui/core/Button';
+
 import Swal from 'sweetalert2'
 
 
@@ -14,10 +14,10 @@ const Icfes = () => {
         if(Respuesta !== 0){
             Swal.fire({
                 title: '¿Estas seguro de tu respuesta?, no podrás cambiarla.',
-                showDenyButton: true,
-                showCancelButton: true,
-                confirmButtonText: `¡Si!`,
-                denyButtonText: `Cancelar`,
+                showDenybutton: true,
+                showCancelbutton: true,
+                confirmbuttonText: `¡Si!`,
+                denybuttonText: `Cancelar`,
               }).then((result) => {
                 if (result.isConfirmed) {
                     setRespuesta(0)
@@ -93,9 +93,9 @@ const Icfes = () => {
                                 </div>
                             </div>
                         </div>
-                        <Button variant="contained" color="secondary" className="mt-3" onClick={EnviarRespuesta}  >
+                        <button variant="contained" color="secondary" className="mt-3" onClick={EnviarRespuesta}  >
                                 Enviar Respuesta
-                        </Button>
+                        </button>
                     </div>
                 )}
             </div>

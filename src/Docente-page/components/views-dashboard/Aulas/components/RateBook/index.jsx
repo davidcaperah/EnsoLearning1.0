@@ -83,10 +83,10 @@ function Index({ book, style }) {
 
       Swal.fire({
         title: `¿Quieres calificar con ${value} estrellas este libro?`,
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: `Si`,
-        denyButtonText: `No`,
+        showDenybutton: true,
+        showCancelbutton: true,
+        confirmbuttonText: `Si`,
+        denybuttonText: `No`,
       }).then((res) => {
         if (res.isConfirmed) {
           setIsClicked(true);

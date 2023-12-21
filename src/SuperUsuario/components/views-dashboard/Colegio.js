@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import URL from '../../../URL.js';
-import Button from '@material-ui/core/Button';
+
 import Swal from 'sweetalert2';
 
 const Colegio = () => {
@@ -111,7 +111,7 @@ const Colegio = () => {
                        </div>
                         :
                         <div><div className="alert text-center alert-danger" >  No valido </div> <div className="d-flex flex-sm-row justify-content-center p-2">
-                        <Button
+                        <button
                             variant="contained"
                             type="submit"
                             color="primary"
@@ -120,11 +120,11 @@ const Colegio = () => {
                             onClick={() => agregarDias(data.id)}
                         >
                             +30 días
-                        </Button>
+                        </button>
                     </div></div>}
                     <div className="d-flex flex-sm-row justify-content-center p-2">
                         <input type="number" placeholder="Cupos maximo" className="form-control m-2 w-75" name="cupos" onChange={escritoenCampo} />
-                        <Button
+                        <button
                             variant="contained"
                             type="submit"
                             color="primary"
@@ -133,7 +133,7 @@ const Colegio = () => {
                             onClick={() => agregarNinos(data.id)}
                         >
                             Aceptar
-                        </Button>
+                        </button>
                     </div>
                 </div>
             )}

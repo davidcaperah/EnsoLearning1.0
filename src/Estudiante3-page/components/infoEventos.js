@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Cookies from 'universal-cookie';
 import URL from './../../URL';
-import { Button } from '@material-ui/core';
+
 import Swal from 'sweetalert2';
 import React, {useEffect, useState } from 'react'; 
 
@@ -58,8 +58,8 @@ function InfoEventos({idEvento}) {
                     icon : "success",
                     title : "Su regsitro al evento fue exitoso",
                     text : `Desde este momento estas participando en el evento!`,
-                    showDenyButton: true,
-                    confirmButtonText: 'confirmar',
+                    showDenybutton: true,
+                    confirmbuttonText: 'confirmar',
                 }).then((r)=>{
                     if(r.isConfirmed){
                         window.location.replace("EstudianteThreeEventos")
@@ -154,7 +154,7 @@ function InfoEventos({idEvento}) {
                                 <p>fecha fin <strong className="text-warning">{DatosRecibidos.fecha_f}</strong> y fue creada el dia <strong className="text-warning">{DatosRecibidos.fecha_i}</strong>.
                                 </p>
                                {eventop === false ?
-                                <Button variant="contained" type="submit" color="primary" name="submit" onClick={() => unirevento()} className="text-center w-50 m-auto">Entrar</Button>
+                                <button variant="contained" type="submit" color="primary" name="submit" onClick={() => unirevento()} className="text-center w-50 m-auto">Entrar</button>
                                 :
                                 <h3 className="text-center text-warning font-weight-bold">Ya estas parcipando en el evento</h3>
                                }

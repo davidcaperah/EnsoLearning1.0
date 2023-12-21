@@ -20,7 +20,7 @@ const AddAnuncios = ({ idSchool, handleChangeView }) => {
         position: "center",
         icon: "success",
         title: "Your work has been saved",
-        showConfirmButton: true,
+        showConfirmbutton: true,
       }).then((result) => {
         if (result.isConfirmed) {
           handleChangeView(0);

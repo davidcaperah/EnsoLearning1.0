@@ -21,7 +21,7 @@ const Index = forwardRef(function ({ handleStateForm }, ref) {
           position: "center",
           icon: "success",
           title: "La nota fue editada correctamente",
-          showConfirmButton: false,
+          showConfirmbutton: false,
           timer: 1500,
         }).then((res) => {
           handleStateForm();
@@ -32,7 +32,7 @@ const Index = forwardRef(function ({ handleStateForm }, ref) {
         position: "center",
         icon: "error",
         title: "Error al editar la nota, por favor contacta con soporte",
-        showConfirmButton: false,
+        showConfirmbutton: false,
         timer: 1500,
       });
     }
@@ -41,7 +41,7 @@ const Index = forwardRef(function ({ handleStateForm }, ref) {
     <NoteForm
       ref={ref}
       title={"Editar nota"}
-      titleButton={"Editar"}
+      titlebutton={"Editar"}
       handleInput={handleNoteInput}
       handleSubmit={handleSubmit}
     />

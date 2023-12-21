@@ -49,8 +49,8 @@ const Crear = () => {
             inputAttributes: {
               autocapitalize: "off",
             },
-            showCancelButton: true,
-            confirmButtonText: "Guardar",
+            showCancelbutton: true,
+            confirmbuttonText: "Guardar",
             showLoaderOnConfirm: true,
             preConfirm: (nota) => {
               const DatosJson = JSON.stringify({

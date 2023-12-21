@@ -43,7 +43,7 @@ const CrearColegio = () => {
                 icon: 'success',
                 title: 'Exitoso!',
                 text: 'Colegio creado con exito',
-                confirmButtonText: 'Entendido'
+                confirmbuttonText: 'Entendido'
               }).then((result) => {
                 if (result.isConfirmed) {
                     setestado(1)

@@ -18,7 +18,7 @@ const Index = forwardRef(function ({ idClassRoom, handleStateForm }, ref) {
           position: "center",
           icon: "success",
           title: "La nota fue guardada correctamente",
-          showConfirmButton: false,
+          showConfirmbutton: false,
           timer: 1500,
         }).then((res) => {
           handleStateForm();
@@ -29,7 +29,7 @@ const Index = forwardRef(function ({ idClassRoom, handleStateForm }, ref) {
         position: "center",
         icon: "error",
         title: "Error al guardar la nota, por favor contacta con soporte",
-        showConfirmButton: false,
+        showConfirmbutton: false,
         timer: 1500,
       });
     }
@@ -38,7 +38,7 @@ const Index = forwardRef(function ({ idClassRoom, handleStateForm }, ref) {
     <NoteForm
       ref={ref}
       title={"Añadir una nota a esta aula"}
-      titleButton={"Crear"}
+      titlebutton={"Crear"}
       handleInput={handleNoteInput}
       handleSubmit={handleSubmit}
     />

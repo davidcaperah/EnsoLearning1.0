@@ -50,10 +50,10 @@ const GetActividades = () => {
         Swal.fire({
             title: '¿Quieres eliminar esta actividad?',
             text : "¡Se quitará de todos los subtemas en los que este agregado!",
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: `Si`,
-            denyButtonText: `No`,
+            showDenybutton: true,
+            showCancelbutton: true,
+            confirmbuttonText: `Si`,
+            denybuttonText: `No`,
             }).then(async  (result) => {
             if (result.isConfirmed) {
                 const consulta = await axios({

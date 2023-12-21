@@ -35,10 +35,10 @@ const SearchActividades = ({datos}) => {
     const asignarActividad = (data) => {
         Swal.fire({
             title: '¿Quieres agregar esta actividad a este subtema?',
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: `Si`,
-            denyButtonText: `No`,
+            showDenybutton: true,
+            showCancelbutton: true,
+            confirmbuttonText: `Si`,
+            denybuttonText: `No`,
           }).then(async (result) => {
             if (result.isConfirmed) {
                 const consulta = await axios({

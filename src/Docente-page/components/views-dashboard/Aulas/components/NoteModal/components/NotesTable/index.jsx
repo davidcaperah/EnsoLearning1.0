@@ -22,7 +22,7 @@ function Index({ idClassRoom, handleEdit, containerPagination }) {
           position: "center",
           icon: "error",
           title: "Error al traerme las notas, por favor contacta con soporte",
-          showConfirmButton: false,
+          showConfirmbutton: false,
           timer: 1500,
         });
       });
@@ -45,7 +45,7 @@ function Index({ idClassRoom, handleEdit, containerPagination }) {
           position: "center",
           icon: "success",
           title: "Nota eliminada correctamente",
-          showConfirmButton: false,
+          showConfirmbutton: false,
           timer: 1500,
         });
       }
@@ -54,7 +54,7 @@ function Index({ idClassRoom, handleEdit, containerPagination }) {
         position: "center",
         icon: "error",
         title: "Error en el servidor",
-        showConfirmButton: false,
+        showConfirmbutton: false,
         timer: 1500,
       });
     }

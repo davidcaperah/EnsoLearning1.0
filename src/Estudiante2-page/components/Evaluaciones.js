@@ -199,18 +199,18 @@ const Evaluaciones = () => {
                                                 <div className="d-block">
                                                     <div className="alert alert-success w-100 text-center p-2" > Activo </div>
                                                 </div>
-                                                <Button variant="contained" color="secondary" className="d-block" onClick={() => mostrarEvaluaciones(Acti, 1)} >
+                                                <button variant="contained" color="secondary" className="d-block" onClick={() => mostrarEvaluaciones(Acti, 1)} >
                                                     Desarrollar evaluacion
-                                                </Button>
+                                                </button>
                                             </div>
                                             :
                                             <div>
                                                 <div className="d-block">
                                                     <div className="alert alert-warning w-100 text-center p-2" > Inactivo </div>
                                                 </div>
-                                                <Button variant="contained" color="secondary" className=" m-auto d-block" onClick={() => mostrarEvaluaciones(Acti, 1)} >
+                                                <button variant="contained" color="secondary" className=" m-auto d-block" onClick={() => mostrarEvaluaciones(Acti, 1)} >
                                                     Ver nota
-                                                </Button>
+                                                </button>
                                             </div>}
                                     </div>
                                 </div>

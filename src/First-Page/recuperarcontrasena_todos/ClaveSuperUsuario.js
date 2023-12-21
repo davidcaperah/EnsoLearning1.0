@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import Button from '@material-ui/core/Button';
+
 import Swal from 'sweetalert2';
 import URL from '../../URL.js'
 import axios from 'axios';
@@ -36,9 +36,9 @@ const ClaveSuperUsuario = () => {
       } else {
         Swal.fire({
           title: '¿El correo ingresado es el correcto?',
-          showDenyButton: true,
-          confirmButtonText: `¡Si!`,
-          denyButtonText: `Corregir`,
+          showDenybutton: true,
+          confirmbuttonText: `¡Si!`,
+          denybuttonText: `Corregir`,
           text: Datos.Correo
         }).then((result) => {
           if (result.isConfirmed) {
@@ -87,7 +87,7 @@ const ClaveSuperUsuario = () => {
                 type="email"
                 placeholder="Correo registrado"
               />
-              <Button
+              <button
                 variant="contained"
                 type="submit"
                 color="primary"
@@ -107,7 +107,7 @@ const ClaveSuperUsuario = () => {
                     d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
                   />
                 </svg>
-              </Button>
+              </button>
             </form>
           </div>
         </div>

@@ -1095,9 +1095,9 @@ const Header = ({ currStudent }) => {
                 </div>        
                 <div className="col-md-2">
                     <div className="mt-2" >
-                        <Button variant="contained" color="primary" onClick={Salir}>
+                        <button variant="contained" color="primary" onClick={Salir}>
                             Salir
-                        </Button>
+                        </button>
                     </div>
                 </div>        
             </div>

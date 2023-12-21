@@ -1,26 +1,15 @@
 import React,  {useState} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
+
+
 import uuid from 'react-uuid';
 import URL from '../../../URL.js';
 import Swal from 'sweetalert2'
 import axios from 'axios';
 import AdminFormFour from './adminformfour.js';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '25ch',
-    },
-  },
-}));
-
-
-
 const AdminFormTwo = ({id}) => {
 
-    const classes = useStyles();
+    
     const [datosProps, setdatosProps] = useState({})
     const [Validacion, setValidacion] = useState(true)
 
@@ -61,7 +50,7 @@ const AdminFormTwo = ({id}) => {
                     position: 'top-end',
                     icon: 'success',
                     title: 'Datos guardados correctamente',
-                    showConfirmButton: false,
+                    showConfirmbutton: false,
                     timer: 1500
                   })
 
@@ -104,16 +93,16 @@ const AdminFormTwo = ({id}) => {
                                     {Datos.Codigo}
                                 </div>
         
-                                <Button 
+                                <button 
                                 variant="contained"
                                 color="secondary"
-                                className={`${classes.button} CeroBootstrap ml-2 my-3`}
+                                className={` CeroBootstrap ml-2 my-3`}
                                 type="submit"
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="30" fill="currentColor" className=" bi bi-arrow-right" viewBox="0 0 16 16">
                                         <path fillRule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
                                     </svg>                       
-                                </Button>
+                                </button>
                             </form>    
         
         

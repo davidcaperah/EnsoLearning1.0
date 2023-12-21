@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import axios from 'axios';
-import Button from '@material-ui/core/Button';
+
 import Swal from 'sweetalert2'
 import Icfes from './Icfes';
 import URL from '../../URL.js';
@@ -67,10 +67,10 @@ const Actividad = ({idActividad}) => {
     const Volver = () => {
         Swal.fire({
             title: '¿Seguro que quieres volver? perderás todas tus respuestas.',
-            showDenyButton: true,
-            showCancelButton: true,
-            confirmButtonText: `¡Si,volver!`,
-            denyButtonText: `Cancelar`,
+            showDenybutton: true,
+            showCancelbutton: true,
+            confirmbuttonText: `¡Si,volver!`,
+            denybuttonText: `Cancelar`,
           }).then((result) => {
             if (result.isConfirmed) {
                 setValidacion(true)
@@ -208,12 +208,12 @@ console.log(ArregloDeActividades);
                                             <form key={index}>
                                                 <p><span className="h6" >*{datos}</span></p>
                                                 <input className="form-control m-2" id={datos} placeholder="Responde" />
-                                                <Button variant="contained" color="secondary" className="m-3" type="button" onClick={()=>preguntas(datos)}>
+                                                <button variant="contained" color="secondary" className="m-3" type="button" onClick={()=>preguntas(datos)}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-check" viewBox="0 0 16 16">
                                                 <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
                                                 </svg>
                                                     responder
-                                                </Button>
+                                                </button>
                                             </form>
                                                 )
                                         }
@@ -252,9 +252,9 @@ console.log(ArregloDeActividades);
                                                             <h3> Preguntas ICFES </h3>
                                                             <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi non quis exercitationem culpa nesciunt nihil aut nostrum explicabo reprehenderit optio amet ab temporibus asperiores quasi cupiditate. Voluptatum ducimus voluptates voluptas? </p>
                                                             <p> <span className="h6" > Tiempo: </span> 30 minutos </p>
-                                                            <Button variant="contained" color="secondary" className="mt-3" onClick={()=> setValidacion(false)}  >
+                                                            <button variant="contained" color="secondary" className="mt-3" onClick={()=> setValidacion(false)}  >
                                                                     ¡Resolver!
-                                                            </Button>
+                                                            </button>
                                                         </div>
                                                     : 
                                                         <div className="mt-5" >
@@ -288,9 +288,9 @@ console.log(ArregloDeActividades);
                             <form  onSubmit={EnviarTarea} >
                                 <input className="form-control m-2" id="PDF" type="file" />
                                 <input className="form-control m-2" id="comentario" placeholder="Comentario de trabajo" />
-                                <Button variant="contained" color="secondary" className="m-3" type="submit">
+                                <button variant="contained" color="secondary" className="m-3" type="submit">
                                     Subir Actividad
-                                </Button>
+                                </button>
                             </form>
                         </div>
                     </div>

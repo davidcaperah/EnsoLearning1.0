@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import URL from '../../../../../URL.js';
 import Swal from 'sweetalert2'
-import { Button } from '@material-ui/core';
+
 import {useDispatch,useSelector} from 'react-redux';
 import VistaActividades from '../ActividadesFolder/VistaActividad';
 import axios from "axios"
@@ -140,9 +140,9 @@ const ElegirActividades = () => {
                                 <div className="shadow p-3 m-2">
                                     <p className="text-white"> <span className="h6" > Nombre: </span> {data.Nombre} </p>
                                     <p className="text-white">  <span className="h6" > Objetivo: </span> {data.objetivo} </p>
-                                    <Button variant="contained" color="secondary" className="m-3" type="button" onClick={()=> agregarActividad(data)}>
+                                    <button variant="contained" color="secondary" className="m-3" type="button" onClick={()=> agregarActividad(data)}>
                                             ver
-                                </Button>
+                                </button>
                                 </div>
                             </div>  
                             )}

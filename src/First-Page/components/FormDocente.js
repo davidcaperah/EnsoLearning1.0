@@ -1,21 +1,13 @@
 import React, {useState} from 'react';
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
+
+
 import Cookies from 'universal-cookie';
 import URL from '../../URL.js'
 import Swal from 'sweetalert2';
 import axios from 'axios';
 
-
-const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
-
-
 const FormDocente = () => {
-    const classes = useStyles();
+    
 
     const [Datos, setDatos] = useState({});
     const [DatosValidacion, setDatosValidacion] = useState({});
@@ -193,14 +185,14 @@ const FormDocente = () => {
                     <p> Nos da gusto que quieras usar nuestra plataforma, te pedimos que llenes los siguientes campos </p>  
                     <form onSubmit={EnviarCodigo} className="w-75" >
                         <input className="form-control m-2" name="Codigo"    onChange={onChangeCodigo}  minLength="10" maxLength="50" required pattern="[A-Za-z0-9--- -ñ]+"   type="text"     placeholder="Codigo de Validación" />            
-                        <Button
+                        <button
                             variant="contained" 
                             type="submit"
                             color="primary"
-                            className={`${classes.button} CeroBootstrap`}
+                            className={` CeroBootstrap`}
                         >
                             Aceptar 
-                        </Button>
+                        </button>
                     </form> 
                 </div>
             </div>
@@ -217,15 +209,15 @@ const FormDocente = () => {
                             <input className="form-control m-2" name="pass2"     onChange={onChange} minLength="5" maxLength="40"  required pattern="[A-Za-z0-9--- -ñ-@-á-é-í-ó-ú]+" type="password" autoComplete="on" placeholder="Valida tu Contraseña" />
                             <p className="text-muted" > Recuerda que debes tener un codigo de validación, si no cuentas con uno, comunicate con el administrador de tu institución educativa </p>
 
-                            <Button
+                            <button
                                 variant="contained" 
                                 type="submit"
                                 color="primary"
-                                className={`${classes.button} CeroBootstrap`}
+                                className={` CeroBootstrap`}
                                 name="submit"
                             >
                                 Aceptar 
-                            </Button>
+                            </button>
                         </form> 
                     </div>
                     <div className="col-md bg-dark" > 

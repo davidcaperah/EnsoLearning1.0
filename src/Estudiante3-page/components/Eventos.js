@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; import Button from "@material-ui/core/Button";
+import React, { useState, useEffect } from 'react'; 
 import BannerPage from './Banner';
 import InfoEventos from './infoEventos';
 import axios from 'axios';
@@ -83,7 +83,7 @@ function Eventos() {
                                                 <div className="alert alert-success w-75 m-auto text-center p-2" > Activo </div>
                                                 <hr></hr>
                                                 <div className="d-flex justify-content-center m-3">
-                                                    <Button variant="contained" type="submit" color="primary" name="submit" onClick={() => verEvento(prueba.id)} className="text-center w-50 m-auto">Participar</Button>
+                                                    <button variant="contained" type="submit" color="primary" name="submit" onClick={() => verEvento(prueba.id)} className="text-center w-50 m-auto">Participar</button>
                                                 </div>
                                             </div>
 

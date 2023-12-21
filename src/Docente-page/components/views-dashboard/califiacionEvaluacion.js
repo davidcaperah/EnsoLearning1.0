@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Cookies from 'universal-cookie';
 import URL from './../../../URL';
-import { Button } from '@material-ui/core';
+
 import Swal from 'sweetalert2';
 
 
@@ -93,7 +93,7 @@ function CalifiacionEvaluacion({ Datos }) {
             Swal.fire({
                 icon: 'success',
                 title: 'Cargando datos...',
-                showConfirmButton: false,
+                showConfirmbutton: false,
                 timer: 1000
             })
             console.log(contador);
@@ -104,9 +104,9 @@ function CalifiacionEvaluacion({ Datos }) {
     const enviarDatos = async (daticxos) => {
         Swal.fire({
             title: '¿Desea asignar esta nota?',
-            showDenyButton: true,
-            confirmButtonText: `Si`,
-            denyButtonText: `No`,
+            showDenybutton: true,
+            confirmbuttonText: `Si`,
+            denybuttonText: `No`,
         }).then(async (result) => {
             if (result.isConfirmed) {
                 console.log(contador);
@@ -168,7 +168,7 @@ function CalifiacionEvaluacion({ Datos }) {
                                             <hr></hr>
                                             <div className="col-md-12 d-flex justify-content-around align-items-center p-2" >
                                                 {contador === 0 &&
-                                                    <Button
+                                                    button
                                                         variant="contained"
                                                         color="primary"
                                                         type="submit"
@@ -177,11 +177,11 @@ function CalifiacionEvaluacion({ Datos }) {
                                                         id="btn-calificar"
                                                     >
                                                         Cargar
-                                                    </Button>
+                                                    </button>
                                                 }
                                                 {contador === 1 &&
 
-                                                    <Button
+                                                    button
                                                         variant="contained"
                                                         color="primary"
                                                         type="submit"
@@ -190,7 +190,7 @@ function CalifiacionEvaluacion({ Datos }) {
                                                         id="btn-calificar"
                                                     >
                                                         Enviar
-                                                    </Button>
+                                                    </button>
                                                 }
                                             </div>
                                         </div>

@@ -24,7 +24,7 @@ function Index({ onOpenModal, school, handleFetcher }) {
         position: "center",
         icon: "success",
         title: "Los cambios han sido guardados correctamente",
-        showConfirmButton: true,
+        showConfirmbutton: true,
         customClass: {
           container: "z-10",
         },
@@ -41,7 +41,7 @@ function Index({ onOpenModal, school, handleFetcher }) {
       position: "center",
       icon: "error",
       title: "Error al guardar los cambios",
-      showConfirmButton: false,
+      showConfirmbutton: false,
       timer: 1000,
     });
   };

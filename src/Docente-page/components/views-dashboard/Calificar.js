@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Cookies from 'universal-cookie';
 import URL from './../../../URL';
-import { Button } from '@material-ui/core';
+
 import Swal from 'sweetalert2';
 // import Swal from 'sweetalert2';
 
@@ -89,7 +89,7 @@ function Calificar({ Datos }) {
             Swal.fire({
                 icon: 'success',
                 title: 'Cargando datos...',
-                showConfirmButton: false,
+                showConfirmbutton: false,
                 timer: 1000
             })
         }
@@ -109,9 +109,9 @@ function Calificar({ Datos }) {
     const enviarDatos = async (daticxos) => {
         Swal.fire({
             title: '¿Desea asignar esta nota?',
-            showDenyButton: true,
-            confirmButtonText: `Si`,
-            denyButtonText: `No`,
+            showDenybutton: true,
+            confirmbuttonText: `Si`,
+            denybuttonText: `No`,
         }).then(async (result) => {
             if (result.isConfirmed) {
                 const DatosJson = JSON.stringify(daticxos)
@@ -123,9 +123,9 @@ function Calificar({ Datos }) {
                     Swal.fire({
                         title: 'Se ha agregado la nota',
                         icon: 'success',
-                        showDenyButton: true,
-                        confirmButtonText: `Si`,
-                        denyButtonText: `No`,
+                        showDenybutton: true,
+                        confirmbuttonText: `Si`,
+                        denybuttonText: `No`,
                     }).then(async(result)=>{
                         if(result.isConfirmed){
                             window.location.replace('/DocenteActividades');
@@ -185,23 +185,23 @@ function Calificar({ Datos }) {
                                                         )
                                                     })
                                                 }
-                                                <Button variant="contained" color="secondary" className="m-3" type="button" onClick={()=>respuestas(Estu.respuestas)}>
+                                                <button variant="contained" color="secondary" className="m-3" type="button" onClick={()=>respuestas(Estu.respuestas)}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
                                                 <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z"/>
                                                 <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z"/>
                                                 </svg>
                                                     ocultar respuestas
-                                                </Button>
+                                                </button>
                                             </div>
                                              
                                             :
-                                            <Button variant="contained" color="secondary" className="m-3" type="button" onClick={()=>respuestas(Estu.respuestas)}>
+                                            <button variant="contained" color="secondary" className="m-3" type="button" onClick={()=>respuestas(Estu.respuestas)}>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" className="bi bi-eye-fill" viewBox="0 0 16 16">
                                                     <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
                                                     <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
                                                     </svg> 
                                                 Ver respuestas
-                                            </Button>
+                                            </button>
                                             }
                                             <div className="col-md-12 pt-2 d-md-flex justify-content-center align-items-center  col-sm-2" >
                                                 <p className="col-md-2 text-center mt-3 pointer Areas" onClick={() => abrirPDF(Estu.evidencia)} >
@@ -216,7 +216,7 @@ function Calificar({ Datos }) {
                                             <hr></hr>
                                             <div className="col-md-12 d-flex justify-content-around align-items-center p-2" >
                                                 <input type="number" id = "nota" name="id_nota" min="1" max="100" className="border border-bottom w-50" placeholder="Nota de la actividad" onChange={()=>escritosDocente(Estu)} />
-                                                <Button
+                                                button
                                                     variant="contained"
                                                     color="primary"
                                                     type="submit"
@@ -225,7 +225,7 @@ function Calificar({ Datos }) {
                                                     id="btn-calificar"
                                                 >
                                                     Enviar
-                                                </Button>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>}

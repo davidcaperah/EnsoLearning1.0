@@ -1,17 +1,13 @@
 import React,  {useState} from 'react';
-import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
+
+
 import URL from '../../URL.js';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import AdminFormTwo from './homes/adminformtwo.js';
 
 
-const useStyles = makeStyles((theme) => ({
-  button: {
-    margin: theme.spacing(1),
-  },
-}));
+
 
 
 const FormAdmin = () => {
@@ -75,7 +71,7 @@ const FormAdmin = () => {
     }
 
 
-    const classes = useStyles();
+    
 
     
     return (
@@ -96,12 +92,12 @@ const FormAdmin = () => {
                                     <input className="form-control m-2"  onChange={onChange}  name="pass1"        minLength="5" maxLength="40" required pattern="[A-Za-z0-9--- -ñ-@-á-é-í-ó-ú]+"  type="password" placeholder="Contraseña"             />
                                     <input className="form-control m-2"  onChange={onChange}  name="pass2"        minLength="5" maxLength="40" required pattern="[A-Za-z0-9--- -ñ-@-á-é-í-ó-ú]+"  type="password" placeholder="Valida tu Contraseña"      />
                                     <p className="m-2" >  Recuerda que debes tener un codigo de validación, si no cuentas con uno, puedes conseguir uno facilmente    aquí: <span className="text-primary" > Subscripciones  </span>  </p>
-                                    <Button
-                                        variant="contained" type="submit" color="secondary" 
-                                        className={`${classes.button} CeroBootstrap`}
+                                    <button
+                                    variant="contained" type="submit" color="secondary" 
+                                        className={` CeroBootstrap`}
                                         name="submit">
                                         Aceptar 
-                                    </Button>
+                                    </button>
                                 </form> 
                             </div>
                         </div>

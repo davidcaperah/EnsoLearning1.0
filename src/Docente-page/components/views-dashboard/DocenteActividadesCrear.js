@@ -5,7 +5,7 @@ import axios from "axios"
 import VistaActividades from './Aulas/ActividadesFolder/VistaActividad';
 import URL from  '../../../URL'
 
-import { Button } from '@material-ui/core';
+
 
 const CrearActividad = () =>{
 
@@ -94,9 +94,9 @@ const CrearActividad = () =>{
                         
                     {select == 1?                        
                         <div>
-                        <Button variant="contained" color="secondary" className="m-3" type="button" onClick={()=> agregarActividad(0,0)}>
+                        <button variant="contained" color="secondary" className="m-3" type="button" onClick={()=> agregarActividad(0,0)}>
                                             Volver
-                        </Button>
+                        </button>
                             <VistaActividades ver={datos}/>
                         </div> 
                         :
@@ -140,9 +140,9 @@ export default CrearActividad
                                 <div className="shadow p-3 m-2">
                                     <p className="text-white"> <span className="h6" > Nombre: </span> {data.Nombre} </p>
                                     <p className="text-white">  <span className="h6" > Objetivo: </span> {data.objetivo} </p>
-                                    <Button variant="contained" color="secondary" className="m-3" type="button" onClick={()=> agregarActividad(data)}>
+                                    <button variant="contained" color="secondary" className="m-3" type="button" onClick={()=> agregarActividad(data)}>
                                             ver
-                                </Button>
+                                </button>
                                 </div>
                             </div>  
 */

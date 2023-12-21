@@ -47,10 +47,10 @@ const Libro = ({ book }) => {
   const handleOnClick = () => {
     Swal.fire({
       title: `Seguro que quieres asignar este libro?`,
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: `Si`,
-      denyButtonText: `No`,
+      showDenybutton: true,
+      showCancelbutton: true,
+      confirmbuttonText: `Si`,
+      denybuttonText: `No`,
     }).then((res) => {
       if (res.isConfirmed) {
         doToRequest();

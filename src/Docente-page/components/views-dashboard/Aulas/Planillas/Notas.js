@@ -12,7 +12,7 @@ import axios from "axios";
 import URL from "URL";
 import { useSelector } from "react-redux";
 import "../../../../css/planillaAcademica.css";
-import { TableBody, TableHead } from "@material-ui/core";
+
 
 const Notas = (props) => {
   const data = useSelector((state) => state.planillasEstudiante);
@@ -79,13 +79,13 @@ const Notas = (props) => {
                 <h6>Materia {aulaSelect.N_Materia}</h6>
               </div>
               <table>
-                <TableHead className="notas-perido-notas">
+                <thead className="notas-perido-notas">
                   <tr>
                     <td>Periodo</td>
                     <td>notas</td>
                   </tr>
-                </TableHead>
-                <TableBody className="notas-perido-nota">
+                </thead>
+                <tbody className="notas-perido-nota">
                   {promedios.length === 0 ? (
                     <span>
                       Este estudiante no tiene notas en ningún periodo
@@ -98,7 +98,7 @@ const Notas = (props) => {
                       </tr>
                     ))
                   )}
-                </TableBody>
+                </tbody>
               </table>
               {promedios.length !== 0 && (
                 <div className="nota-f-notas">

@@ -13,14 +13,6 @@ import { useSelector } from "react-redux";
 import Volver from "./volver.js";
 import axios from "axios";
 
-// const useStyles = makeStyles((theme) => ({
-//     root: {
-//         '& .MuiTextField-root': {
-//             margin: theme.spacing(1),
-//             width: '25ch',
-//         },
-//     },
-// }));
 
 const Evaluaciones = (props) => {
   const opcionesRespuesta = ["A", "B", "C", "D", "E"];
@@ -56,10 +48,10 @@ const Evaluaciones = (props) => {
     if (NumeroPreguntas > 0 && NumeroPreguntas <= 10) {
       Swal.fire({
         title: "¿Has verificado correctamente los datos? ",
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: `¡Listo!`,
-        denyButtonText: `Quiero verificar nuevamente`,
+        showDenybutton: true,
+        showCancelbutton: true,
+        confirmbuttonText: `¡Listo!`,
+        denybuttonText: `Quiero verificar nuevamente`,
       }).then((result) => {
         if (result.isConfirmed) {
           console.log(Campos);

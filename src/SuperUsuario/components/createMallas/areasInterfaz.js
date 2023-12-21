@@ -36,10 +36,10 @@ const AreasInterfaz = ({grado}) => {
         Swal.fire({
           title: '¿Quieres eliminar esta area?',
           text: 'se eliminarán todas las mallas agregadas a esta area.',
-          showDenyButton: true,
-          showCancelButton: true,
-          confirmButtonText: `Estoy seguro`,
-          denyButtonText: `Quiero verificar`,
+          showDenybutton: true,
+          showCancelbutton: true,
+          confirmbuttonText: `Estoy seguro`,
+          denybuttonText: `Quiero verificar`,
         }).then(async (result) => {      
             if(result.isConfirmed){
 
